@@ -1,0 +1,16 @@
+@font-face{font-family:Poppins;src:url(file:///Users/azim/dotandkey-hackathon/studio-web/public/fonts/poppins-regular.woff2);font-weight:400}
+@font-face{font-family:Poppins;src:url(file:///Users/azim/dotandkey-hackathon/studio-web/public/fonts/poppins-medium.woff2);font-weight:500}
+@font-face{font-family:Poppins;src:url(file:///Users/azim/dotandkey-hackathon/studio-web/public/fonts/poppins-semibold.woff2);font-weight:600}
+@font-face{font-family:Instrument;src:url(file:///Users/azim/dotandkey-hackathon/studio-web/public/fonts/instrument-serif.ttf)}
+:root{--ink:#20211f;--muted:#63665f;--canvas:#ededeb;--frame:#f4f4f1;--card:#fbfbf9;--lime:#82b51c;--pink:#ff40b1;--rule:#ddded7}
+*{box-sizing:border-box;margin:0}
+body{width:1920px;height:1080px;font-family:Poppins,sans-serif;color:var(--ink);background:var(--canvas);overflow:hidden}
+.frame{position:absolute;inset:28px;border-radius:44px;background:var(--frame);overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.logo{height:46px}
+h1{font-weight:600;letter-spacing:-.045em;line-height:.95}
+h1 i{font-style:normal;color:var(--lime)}
+.eyebrow{font-size:20px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:999px;background:var(--card);border:1px solid var(--rule);font-size:22px;font-weight:500}
+.chip b{width:10px;height:10px;border-radius:50%;background:var(--lime);display:inline-block}
+.arrow{color:var(--muted);font-size:26px;margin:0 4px}
