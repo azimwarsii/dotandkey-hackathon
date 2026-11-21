@@ -1,5 +1,6 @@
 "use client";
-import { useRef, useState } from "react";
+import { useExampleTyping } from "./guided-tour";
+import { useEffect, useRef, useState } from "react";
 import {
   asList,
   Badge,
@@ -12,7 +13,16 @@ import {
   nice,
 } from "./ui";
 
-export function Swipe({ s, asset, act, enter, upload, busy, sourceLink }) {
+export function Swipe({
+  s,
+  asset,
+  act,
+  enter,
+  upload,
+  busy,
+  sourceLink,
+  tourStep,
+}) {
   const [url, setUrl] = useState(sourceLink || ""),
     [platform, setPlatform] = useState(""),
     [brand, setBrand] = useState(""),
@@ -34,6 +44,16 @@ export function Swipe({ s, asset, act, enter, upload, busy, sourceLink }) {
     ? s.discovery
     : s.discovery?.candidates || s.discovery?.posts || [];
   const [search, setSearch] = useState("");
+  const searchInput = useRef(null);
+  useEffect(() => {
+    if (tourStep === "references")
+      searchInput.current?.scrollIntoView({ block: "center" });
+  }, [tourStep]);
+  const stopTyping = useExampleTyping(
+    tourStep === "references",
+    "deconstruct",
+    setSearch,
+  );
   const catalog = [...s.posts, ...candidates];
   const owners = [
     ...new Set(
@@ -165,10 +185,12 @@ export function Swipe({ s, asset, act, enter, upload, busy, sourceLink }) {
       >
         <div className="filters">
           <input
+            ref={searchInput}
             aria-label="Search references"
             placeholder="Search posts or creators"
             value={search}
             onChange={(e) => {
+              stopTyping();
               setSearch(e.target.value);
               setLimit(24);
             }}
@@ -411,18 +433,44 @@ export function Inspect({ s, postId, setPost, asset, inspect, attach }) {
           {p.status && <p className="muted">{nice(p.status)}</p>}
         </div>
       </div>
-      {p.status === "ready" && <Section title="Reference at a glance">
-        <div className="panel research-summary">
-          {semantic.some((r) => r.field === "hook") && <>
-            <h3>How it opens</h3>
-            <p>{textOf(semantic.find((r) => r.field === "hook").value)}</p>
-          </>}
-          {p.duration > 0 && <p>{asList(p.shots).length} recorded shots in {Math.round(p.duration)} seconds.
-            {p.first_text_at != null && <> First on-screen text at <button className="link" onClick={() => jump(p.first_text_at)}>{p.first_text_at}s</button>.</>}
-          </p>}
-          {p.outlier_ratio != null && <p>{Number(p.outlier_ratio).toFixed(1)}× the creator’s typical views, measured against {p.baseline_n || "the available"} reference posts.</p>}
-        </div>
-      </Section>}
+      {p.status === "ready" && (
+        <Section title="Reference at a glance">
+          <div className="panel research-summary">
+            {semantic.some((r) => r.field === "hook") && (
+              <>
+                <h3>How it opens</h3>
+                <p>{textOf(semantic.find((r) => r.field === "hook").value)}</p>
+              </>
+            )}
+            {p.duration > 0 && (
+              <p>
+                {asList(p.shots).length} recorded shots in{" "}
+                {Math.round(p.duration)} seconds.
+                {p.first_text_at != null && (
+                  <>
+                    {" "}
+                    First on-screen text at{" "}
+                    <button
+                      className="link"
+                      onClick={() => jump(p.first_text_at)}
+                    >
+                      {p.first_text_at}s
+                    </button>
+                    .
+                  </>
+                )}
+              </p>
+            )}
+            {p.outlier_ratio != null && (
+              <p>
+                {Number(p.outlier_ratio).toFixed(1)}× the creator’s typical
+                views, measured against {p.baseline_n || "the available"}{" "}
+                reference posts.
+              </p>
+            )}
+          </div>
+        </Section>
+      )}
       <Section title="Hook & shot frames">
         {frames.length ? (
           <div className="filmstrip">
@@ -571,7 +619,9 @@ export function Inspect({ s, postId, setPost, asset, inspect, attach }) {
               )}
             </div>
           ))}
-          {!semantic.length && <p>No visual interpretation was saved for this reference.</p>}
+          {!semantic.length && (
+            <p>No visual interpretation was saved for this reference.</p>
+          )}
         </div>
       </Section>
       <Section title="Cuts & audio">
@@ -656,7 +706,10 @@ export function Patterns({ s, asset, enter, inspect }) {
           </article>
         ))
       ) : (
-        <Empty>Analyze a reference in the research library to see its creative patterns.</Empty>
+        <Empty>
+          Analyze a reference in the research library to see its creative
+          patterns.
+        </Empty>
       )}
     </Section>
   );

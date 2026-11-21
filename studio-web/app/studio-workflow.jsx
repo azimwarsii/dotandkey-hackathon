@@ -3,18 +3,56 @@ import { useState } from "react";
 import { Badge, Icon } from "./ui";
 
 const steps = [
-  ["overview", "Brief", "Check the product facts and the customer evidence behind this campaign."],
-  ["swipe", "References", "Paste a post, upload media or discover examples. You can also continue using the product brief alone."],
-  ["inspect", "Breakdown", "Review the opening hook, timing and transcript of your reference."],
-  ["patterns", "Patterns", "See which creative techniques appear across the analyzed references."],
-  ["concepts", "Concepts", "Generate directions, then produce the one you want to use."],
-  ["script", "Script & ads", "Check the words, shot timings and artwork before rendering."],
-  ["video", "Video", "Render catalog-photo drafts or a hero with generated motion. Preview the finished files here."],
-  ["testing", "Review", "Review the production checks and choose the variants to test."],
+  [
+    "overview",
+    "Brief",
+    "Check the product facts and the customer evidence behind this campaign.",
+  ],
+  [
+    "swipe",
+    "References",
+    "Paste a post, upload media or discover examples. You can also continue using the product brief alone.",
+  ],
+  [
+    "inspect",
+    "Breakdown",
+    "Review the opening hook, timing and transcript of your reference.",
+  ],
+  [
+    "patterns",
+    "Patterns",
+    "See which creative techniques appear across the analyzed references.",
+  ],
+  [
+    "concepts",
+    "Concepts",
+    "Generate directions, then produce the one you want to use.",
+  ],
+  [
+    "script",
+    "Script & ads",
+    "Check the words, shot timings and artwork before rendering.",
+  ],
+  [
+    "video",
+    "Video",
+    "Render catalog-photo drafts or a hero with generated motion. Preview the finished files here.",
+  ],
+  [
+    "testing",
+    "Review",
+    "Review the production checks and choose the variants to test.",
+  ],
   ["kit", "Kit", "Download the campaign files or share a link to this kit."],
 ];
-export const outputs = [["script", "Script & storyboard"], ["statics", "Ads"], ["aplus", "A+ content"], ["listings", "Listing"]];
-const stageOf = (view) => outputs.some(([id]) => id === view) ? "script" : view;
+export const outputs = [
+  ["script", "Script & storyboard"],
+  ["statics", "Ads"],
+  ["aplus", "A+ content"],
+  ["listings", "Listing"],
+];
+const stageOf = (view) =>
+  outputs.some(([id]) => id === view) ? "script" : view;
 
 export function StepGuide({ s, view, go, act, busy }) {
   const stage = stageOf(view);
@@ -24,34 +62,82 @@ export function StepGuide({ s, view, go, act, busy }) {
   let target = steps[index + 1]?.[0];
   let label = target && "Next · " + steps[index + 1][1];
   let operation;
-  if (!s.brief.product) { target = "overview"; label = "Build product brief"; operation = "brief"; }
-  else if (["swipe", "inspect"].includes(stage) && !hasReference) { target = "concepts"; label = "Continue without a reference"; }
-  else if (stage === "concepts" && !s.creative.script) {
-    if (!s.concepts.length) { operation = "concepts"; label = "Generate creative directions"; }
-    else { target = "choose"; label = "Choose a direction"; }
+  if (!s.brief.product) {
+    target = "overview";
+    label = "Build product brief";
+    operation = "brief";
+  } else if (["swipe", "inspect"].includes(stage) && !hasReference) {
+    target = "concepts";
+    label = "Continue without a reference";
+  } else if (stage === "concepts" && !s.creative.script) {
+    if (!s.concepts.length) {
+      operation = "concepts";
+      label = "Generate creative directions";
+    } else {
+      target = "choose";
+      label = "Choose a direction";
+    }
+  } else if (index >= 5 && !s.creative.script) {
+    target = "concepts";
+    label = "Go to creative directions";
+  } else if (stage === "video" && !s.film.video) {
+    operation = "film";
+    label = "Generate draft videos";
   }
-  else if (index >= 5 && !s.creative.script) { target = "concepts"; label = "Go to creative directions"; }
-  else if (stage === "video" && !s.film.video) { operation = "film"; label = "Generate draft videos"; }
   const actNext = () => {
     if (operation) act(operation);
-    else if (target === "choose") document.querySelector(".concept .primary")?.focus();
+    else if (target === "choose")
+      document.querySelector(".concept .primary")?.focus();
     else go(target);
   };
-  return <section className="step-guide" aria-label="Current workflow step">
-    <div><small>Step {index + 1} of {steps.length} · {steps[index][1]}</small><p>{steps[index][2]}</p></div>
-    <div className="step-actions">
-      {index > 0 && <button className="link" onClick={() => go(steps[index - 1][0])}>Back</button>}
-      {label && <button className="primary" onClick={actNext} disabled={!!operation && busy}>{label} <Icon name="arrow" size={14}/></button>}
-      {stage === "kit" && s.creative.script && <a className="primary" href={"/studio-api/runs/" + s.id + "/kit.zip"} download>Download kit <Icon name="download" size={14}/></a>}
-    </div>
-  </section>;
+  return (
+    <section className="step-guide" aria-label="Current workflow step">
+      <div>
+        <small>
+          Step {index + 1} of {steps.length} · {steps[index][1]}
+        </small>
+        <p>{steps[index][2]}</p>
+      </div>
+      <div className="step-actions">
+        {index > 0 && (
+          <button className="link" onClick={() => go(steps[index - 1][0])}>
+            Back
+          </button>
+        )}
+        {label && (
+          <button
+            className="primary"
+            onClick={actNext}
+            disabled={!!operation && busy}
+          >
+            {label} <Icon name="arrow" size={14} />
+          </button>
+        )}
+        {stage === "kit" && s.creative.script && (
+          <a
+            className="primary"
+            href={"/studio-api/runs/" + s.id + "/kit.zip"}
+            download
+          >
+            Download kit <Icon name="download" size={14} />
+          </a>
+        )}
+      </div>
+    </section>
+  );
 }
 export function Workflow({ s, view, go, open }) {
   const stage = stageOf(view);
   const ready = {
-    overview: s?.brief?.product, swipe: s?.posts?.some((p) => p.status === "ready"), inspect: s?.posts?.some((p) => p.status === "ready"),
-    patterns: s?.patterns?.length, concepts: s?.concepts?.length, script: s?.creative?.script, video: s?.film?.video,
-    testing: s?.readbacks?.length, kit: s?.creative?.script,
+    overview: s?.brief?.product,
+    swipe: s?.posts?.some((p) => p.status === "ready"),
+    inspect: s?.posts?.some((p) => p.status === "ready"),
+    patterns: s?.patterns?.length,
+    concepts: s?.concepts?.length,
+    script: s?.creative?.script,
+    video: s?.film?.video,
+    testing: s?.readbacks?.length,
+    kit: s?.creative?.script,
   };
   return (
     <div className="studio-flow">
@@ -96,7 +182,9 @@ export function Workflow({ s, view, go, open }) {
             onClick={() => go(id)}
             aria-current={stage === id ? "step" : undefined}
           >
-            <span aria-label={ready[id] ? "Available" : undefined}>{ready[id] ? "✓" : i + 1}</span>
+            <span aria-label={ready[id] ? "Available" : undefined}>
+              {ready[id] ? "✓" : i + 1}
+            </span>
             {title}
           </button>
         ))}

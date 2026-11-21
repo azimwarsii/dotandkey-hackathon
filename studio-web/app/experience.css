@@ -40,26 +40,6 @@
   height: auto;
   width: 42%;
 }
-.welcome-art.art-1 {
-  background: #eadae4;
-}
-.welcome-art.art-2 {
-  background: linear-gradient(105deg, #ffc690, #f3a0d1, #a8deeb);
-}
-.welcome-art span {
-  font-size: 85px;
-}
-.welcome-bars {
-  display: flex;
-  height: 95px;
-  align-items: flex-end;
-  gap: 8px;
-}
-.welcome-bars i {
-  width: 24px;
-  background: #b53e7a;
-  border-radius: 6px 6px 0 0;
-}
 .welcome-copy {
   padding: 25px;
 }
@@ -75,15 +55,14 @@
 .welcome-copy p {
   line-height: 1.5;
 }
-.welcome-actions,
-.welcome-pages,
-.tour-dots {
+.welcome-actions {
   display: flex;
   gap: 6px;
   align-items: center;
 }
 .welcome-actions {
   justify-content: space-between;
+  margin-top: 16px;
 }
 .welcome-actions button,
 .install-market {
@@ -94,37 +73,6 @@
 .welcome-actions .tour-primary {
   background: #1a1a1a;
   color: #fff;
-}
-.welcome-pages {
-  justify-content: center;
-}
-.welcome-pages button {
-  height: 44px;
-  min-width: 32px;
-  display: grid;
-  place-items: center;
-}
-.welcome-pages i,
-.tour-dots i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #c9c9c6;
-}
-.welcome-pages [aria-pressed="true"] i,
-.tour-dots .on {
-  background: #668b16;
-}
-.tour-dots {
-  margin: 14px 0 8px;
-}
-.driver-popover {
-  border-radius: 18px !important;
-  font-family: inherit !important;
-  padding: 18px !important;
-}
-.driver-popover-footer button {
-  min-height: 40px;
 }
 .experience-banner,
 .market-coach,
@@ -177,4 +125,46 @@
   .welcome-copy {
     padding: 20px;
   }
+}
+.tour-guide,
+.render-replay {
+  padding: 16px 20px;
+  margin: 12px 0;
+  background: #e8efd9;
+  color: #26351d;
+  border: 1px solid #cedcba;
+  border-radius: 16px;
+}
+.tour-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.tour-guide small {
+  font-size: 12px;
+  font-weight: 650;
+}
+.tour-guide p,
+.render-replay p {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 4px 0;
+}
+.tour-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.tour-controls button {
+  min-height: 40px;
+  font-size: 13px;
+}
+.search-tour {
+  padding: 12px;
+}
+.render-replay .job-progress {
+  margin-bottom: 0;
 }

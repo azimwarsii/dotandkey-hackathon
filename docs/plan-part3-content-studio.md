@@ -1,5 +1,7 @@
 # Part 3 Plan: Content Research, Testing and Creation Studio
 
+> **Status: design plan, written before the build.** For how the system actually works now, see [architecture.md](architecture.md). For commands, see the [README](../README.md).
+
 Turns the Part 1–2 findings into marketing material, and adds a **"what's working" research loop** for videos and posts. Every stage can be checked visually: each output shows the inputs, frames, transcript and checks it was built from.
 
 Built on two open-source projects (read on 21 Nov):

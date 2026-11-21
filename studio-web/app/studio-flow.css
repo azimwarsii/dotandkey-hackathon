@@ -340,30 +340,158 @@
   color: #555c50;
   margin: 8px 0 16px;
 }
-.studio-steps { grid-template-columns: repeat(9, minmax(0, 1fr)); }
-.studio-steps button { font-size: 12px; gap: 5px; }
-.step-guide, .job-progress { border: 1px solid #dce1d3; border-radius: 16px; padding: 14px 18px; margin: 10px 0 18px; color: #293125; background: #f4f7ee; }
-.step-guide { display: flex; align-items: center; justify-content: space-between; gap: 12px 22px; flex-wrap: wrap; }
-.step-guide > div:first-child { flex: 1 1 280px; }
-.step-guide small { font-size: 12px; font-weight: 650; }
-.step-guide p,.job-progress p { margin: 4px 0; font-size: 14px; line-height: 1.45; }
-.step-actions,.job-title,.job-title strong { display: flex; gap: 10px; align-items: center; }
-.step-actions { flex-wrap: wrap; }
-.job-progress { background: #fbfcf8; }
-.job-progress.running { position: sticky; top: 6px; z-index: 7; box-shadow: 0 4px 18px #26391c13; }
-.job-progress.failed { background: #fff1e9; border-color: #e3bfa5; }
-.job-title { justify-content: space-between; font-size: 14px; }
-.job-title > span,.job-progress summary,.work-meter { font-size: 12px; }
-.studio-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #bfccb0; border-top-color: #466629; border-radius: 50%; animation: studio-spin .9s linear infinite; }
-@keyframes studio-spin { to { transform: rotate(360deg); } }
-@media(prefers-reduced-motion: reduce) { .studio-spinner { animation: none; } }
-.render-phases { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 9px 0; padding: 0; list-style: none; font-size: 12px; color: #686e60; }
-.render-phases [aria-current=step] { font-weight: 700; color: #253719; text-decoration: underline; text-underline-offset: 3px; }
-.render-phases .done { color: #3e5c27; }
-.work-meter, .work-meter progress { display: block; width: 100%; accent-color: #638732; }
-.work-meter progress, progress.work-meter { height: 7px; margin: 6px 0; }
-.job-progress summary { cursor: pointer; padding-top: 6px; }
-.job-history { max-height: 150px; overflow: auto; margin: 6px 0; padding: 0; list-style: none; font-size: 12px; }
-.job-history li { display: flex; gap: 12px; margin-block: 5px; }
-.job-history time { white-space: nowrap; color: #62685c; }
-@media(max-width: 900px) { .studio-steps { display:flex; overflow-x:auto; } .studio-steps button {flex:0 0 auto;} }
+.studio-steps {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+.studio-steps button {
+  font-size: 12px;
+  gap: 5px;
+}
+.step-guide,
+.job-progress {
+  border: 1px solid #dce1d3;
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin: 10px 0 18px;
+  color: #293125;
+  background: #f4f7ee;
+}
+.step-guide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 22px;
+  flex-wrap: wrap;
+}
+.step-guide > div:first-child {
+  flex: 1 1 280px;
+}
+.step-guide small {
+  font-size: 12px;
+  font-weight: 650;
+}
+.step-guide p,
+.job-progress p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.step-actions,
+.job-title,
+.job-title strong {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.step-actions {
+  flex-wrap: wrap;
+}
+.job-progress {
+  background: #fbfcf8;
+}
+.job-progress.running {
+  position: sticky;
+  top: 6px;
+  z-index: 7;
+  box-shadow: 0 4px 18px #26391c13;
+}
+.job-progress.failed {
+  background: #fff1e9;
+  border-color: #e3bfa5;
+}
+.job-title {
+  justify-content: space-between;
+  font-size: 14px;
+}
+.job-title > span,
+.job-progress summary,
+.work-meter {
+  font-size: 12px;
+}
+.studio-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #bfccb0;
+  border-top-color: #466629;
+  border-radius: 50%;
+  animation: studio-spin 0.9s linear infinite;
+}
+@keyframes studio-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-spinner {
+    animation: none;
+  }
+}
+.render-phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 9px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: #686e60;
+}
+.render-phases [aria-current="step"] {
+  font-weight: 700;
+  color: #253719;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.render-phases .done {
+  color: #3e5c27;
+}
+.work-meter,
+.work-meter progress {
+  display: block;
+  width: 100%;
+  accent-color: #638732;
+}
+.work-meter progress,
+progress.work-meter {
+  height: 7px;
+  margin: 6px 0;
+}
+.job-progress summary {
+  cursor: pointer;
+  padding-top: 6px;
+}
+.job-history {
+  max-height: 150px;
+  overflow: auto;
+  margin: 6px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+}
+.job-history li {
+  display: flex;
+  gap: 12px;
+  margin-block: 5px;
+}
+.job-history time {
+  white-space: nowrap;
+  color: #62685c;
+}
+@media (max-width: 900px) {
+  .studio-steps {
+    display: flex;
+    overflow-x: auto;
+  }
+  .studio-steps button {
+    flex: 0 0 auto;
+  }
+}
+.step-guide { position: sticky; top: 6px; z-index: 6; }
+.content:has(.job-progress.running) .step-guide { position: static; }
+@media(max-width: 600px) {
+  .step-guide { padding: 9px 12px; gap: 6px; }
+  .step-guide > div:first-child { flex-basis: 100%; }
+  .step-guide p { font-size: 12px; }
+  .step-actions .primary { min-height: 36px; }
+}

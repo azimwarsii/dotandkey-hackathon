@@ -1,5 +1,7 @@
 # Run Market Studio
 
+How the pieces fit together under the hood is described in [architecture.md](architecture.md). The live demo script is in [demo-script.md](demo-script.md).
+
 From the repository root, start the same web, API and ClipForge containers used in production. The first build downloads the media tools and pinned inference models.
 
 ```sh

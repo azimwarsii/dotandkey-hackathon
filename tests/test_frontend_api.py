@@ -120,6 +120,8 @@ def test_cached_overview_cutoffs_and_invalidation(market, monkeypatch):
     assert sum(r["positive"] for r in response["review_velocity"]) == 1
     assert sum(r["negative"] for r in response["review_velocity"]) == 0
     assert response["review_share"]["markets"][0]["rating"] == 4.5
+    assert response["review_share"]["markets"][0]["rating_count"] == 210
+    assert response["review_share"]["markets"][0]["review_volume"] == 1
     assert response["categories"][0]["opportunity_score"] is None
     assert c.get("/api/overview?as_of=2026-02-02&compare=2026-03-03").status_code == 422
     assert (cache.directory() / "sunscreen-2026-02-20.json").is_file()
@@ -308,3 +310,65 @@ def test_refresh_honors_deadline_for_rate_limit_wait(tmp_path):
         pytest.raises(TimeoutError, match="time limit"),
     ):
         http.get("https://example.test/source")
+
+
+def test_workspace_search_links_to_reviews_and_current_campaign_outputs(market):
+    client, _ = market
+    item = next(
+        r
+        for r in client.get("/api/search", params={"q": "absorbs quickly"}).json()[
+            "results"
+        ]
+        if r["type"] == "review"
+    )
+    detail = client.get("/api/products/test-spf").json()
+    review = next(r for r in detail["reviews"] if r["body"] == "Absorbs quickly.")
+    assert item["href"].endswith("#" + review["search_id"])
+    historical = client.get(
+        "/api/search", params={"q": "absorbs quickly", "as_of": "2026-01-01"}
+    ).json()
+    assert all(r["type"] != "review" for r in historical["results"])
+    root = runs.run_path("campaign-example")
+    runs.write_json(
+        root / "run.json",
+        {"handle": "test-spf", "title": "Summer campaign", "created_at": "2026-03-03"},
+    )
+    runs.write_json(root / "selected.json", {"directory": "campaigns/current"})
+    runs.write_json(root / "film.json", {"video": "older.mp4"})
+
+    def films():
+        return [
+            r
+            for r in client.get("/api/search", params={"q": "summer film"}).json()[
+                "results"
+            ]
+            if r["type"] == "video"
+        ]
+
+    assert not films()
+    runs.write_json(root / "campaigns/current/film.json", {"video": "new.mp4"})
+    assert "run=campaign-example" in films()[0]["href"]
+
+
+def test_studio_stream_replays_real_work_counts_on_reconnect(market):
+    client, _ = market
+    folder = runs.run_path("progress-example")
+    folder.mkdir(parents=True)
+
+    def compose():
+        for i in range(3):
+            runs.progress(
+                "Composing frames",
+                phase="hero",
+                completed=i,
+                total=2,
+                unit="shots assembled",
+            )
+
+    job = runs.submit(folder, "Render hero film", compose)
+    url = "/api/jobs/" + job["id"] + "/events"
+    history = messages(client.get(url))
+    assert [h["work"].get("completed") for h in history[1:-1]] == [0, 1, 2]
+    assert history[-1]["status"] == "complete"
+    resumed = messages(client.get(url, headers={"Last-Event-ID": "2"}))
+    assert resumed == history[2:]

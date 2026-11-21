@@ -1,78 +1,100 @@
 # Live Demo Script (about 8 minutes)
 
-Every Ask question below was run through the real `/api/ask` pipeline on 21 Nov 2026, and the quoted answers are what came back. Ask doesn't write free text. It picks evidence cards from the data and quotes them with numbered sources, so every answer can be traced to a review, a listing or a catalog entry.
+Every question below was run through the real `/api/ask` pipeline on 21 Nov 2026. The answers are summarised from what came back. **The exact figures change whenever the data is re-crawled**, so run through the questions once on the deployed app before the demo.
 
-Open the command bar with **⌘K** (or Ctrl+K). It has two tabs. **Search** jumps anywhere, and anything starting with `/` is a jump. **Ask the market** answers questions about the category that is currently selected.
+Ask doesn't write free text. It picks up to three evidence cards from the data and quotes them with numbered sources, so every answer can be traced to a review, a listing or a catalog entry. That is the pitch: *it can't make things up*. See [architecture.md §4](architecture.md#how-ask-answers-a-question).
+
+## How the box works
+Press **⌘K** (Ctrl+K), or click the search pill.
+- **A question** (starting with *what, who, how, which, why…* or ending in `?`) → Enter **answers** it for the current category.
+- **Anything else** (a product, category, campaign or view) → Enter **jumps** to the top result.
+- `/` at the start always jumps: `/lip balm`, `/sunscreen`, `/competitors`, `/swot`, `/product watermelon`, `/campaign kit`, `/video production`.
+- Click a numbered source under an answer to open the exact card behind it.
 
 ## 0. Before the reps arrive
-- Open the app and pick **Sunscreen**.
-- Press **Refresh data** now. The Crustdata re-crawl runs in the background, and you reveal the fresh `as of` timestamp at the end.
-- Have two tabs ready: the Studio run **Watermelon Sunscreen** (`watermelon-demo`), and one Instagram reel or YouTube Short link copied to the clipboard.
+- Open the app.
+- Press **Refresh data** on one category. The re-crawl runs in the background with live stage names, and you reveal the fresh `as of` date at the end.
+- Copy one Instagram reel or YouTube Short link to the clipboard.
+- **Use a different network (or phone hotspot) for the rehearsal than for the demo.** Every Ask, Refresh and Studio action counts toward a hidden limit of 60 per hour per IP.
 
 ## 1. Hook: "Where should Dot & Key spend next?" (Overview)
-Point at the Category Opportunity bars: **Lip Balm 0.70 · Body 0.58 · Sunscreen 0.40 · Moisturiser 0.40**.
+Point at the **Category opportunity** bars. Lip Balm leads (0.70), then Body (0.58).
 
-| Type | Answer you'll get |
+| Type | What comes back |
 |---|---|
-| `/lip balm` (Search) | jumps to the Lip Balm category |
-| **Ask:** `What is our review share?` | "Dot & Key accounts for **19.8%** of observed lip balm review volume" (vs **67.8%** in Sunscreen) |
-| **Ask:** `Who are our top competitors in lip balm?` | Chemist at Play, WishCare, Deconstruct, ranked, with links |
-| **Ask:** `What should we do in lip balm?` | Foxtale has 3 recent lip balm launches, plus Minimalist and Mamaearth |
+| `/lip balm` | jumps to the Lip Balm category |
+| `Why is lip balm our biggest opportunity?` | the score and its parts: **+21.7% projected growth, only 19.8% D&K review share, 4 distinct market gaps**, plus the gaps themselves (tinted lip balm for sensitive and oily skin: 0 products) |
+| `Who are our top competitors in lip balm?` | Chemist at Play, WishCare, Deconstruct, with median price and rating |
+| `Who launched new lip balms recently?` | Foxtale Pout Plumping Lip Mask (26 Oct), Foxtale Lip Up Plumping Balm (15 Oct), Mamaearth × Chaayos Kulhad Chai (4 Sep) |
+| `How does demand look for the next 3 months?` | +21.7% projected growth in review activity, plus Foxtale's launch push |
 
-> Line: "Lip Balm is where you're under-indexed, and Foxtale is moving in right now."
+> Line: "Lip Balm is growing, you hold under a fifth of the conversation, and Foxtale is launching into it right now."
 
-## 2. Market intelligence (Sunscreen, the hero category)
-Type `/sunscreen`, then use Ask:
+## 2. Market intelligence (Sunscreen, the most competitive category)
+Type `/sunscreen`, then ask:
 
-| Ask | Answer |
+| Ask | What comes back |
 |---|---|
-| `What do customers complain about?` | Greasy/sticky in 182 reviews (12 negative) · White cast in 72 (10 negative) · Irritation in 26 (6 negative) |
-| `What are the threats?` | Foxtale has 4 recent sunscreen launches · DermDoc scores higher at a comparable or lower price per g · Deconstruct launch |
-| `Who beats us on price per gram?` | DermDoc, plus the action "Benchmark the comparable pack against DermDoc before the next price test" |
-| `Which of our sunscreens rates lower on Amazon?` | Vitamin C + E Mineral Sunscreen SPF 50+, plus "Audit the Amazon listing… compare with Flipkart" |
-| `What are the biggest gaps?` | **Mist · SPF 50 · under ₹500: 0 products.** Stick and tinted at the same spec: 0 products |
-| `Who launched new sunscreens recently?` | Foxtale Tinted Fluid (14 Oct) · Re'equil UV Mini (12 Oct) · Deconstruct Gel (9 Oct) |
-| `How does demand look for the next 3 months?` | +30.9% projected growth in review activity |
+| `What do customers complain about?` | Greasy/sticky (about 190 reviews), white cast (about 75), irritation (about 25), each with its negative count |
+| `What are our weaknesses?` | The Vitamin C + E Mineral Sunscreen rates lower on Amazon, plus white cast and greasiness |
+| `Which of our sunscreens rates lower on Amazon?` | That SKU, with the action "Audit the Amazon listing… compare with Flipkart" |
+| `What are the threats?` | Foxtale has 4 recent sunscreen launches, then Deconstruct and Re'equil launches |
+| `Who scores higher at a lower price?` | **Foxtale scores higher at a comparable or lower price per ml**, plus "Benchmark the comparable pack against Foxtale before the next price test" |
+| `What are the biggest gaps?` | SPF 50 lotion at ₹500–999, SPF 50 mist under ₹500 and SPF 50 stick under ₹500: **0 products observed** in each |
+| `Who launched new sunscreens recently?` | Foxtale Tinted Fluid (14 Oct), Re'equil UV Mini (12 Oct), Deconstruct Gel (9 Oct) |
 | `What are our strengths?` | Dot & Key ranks 2 of 6 on Bayesian rating |
+| `What should we do next quarter?` | Audit the Amazon listing, then compare the new Foxtale and Deconstruct listings with the closest D&K variants |
 
-**Click a numbered source** in any answer. It opens the exact card, with the review quotes and marketplace URL behind it. That's the trust moment.
+**Click a numbered source.** It opens the exact card with the review quotes and marketplace URLs. This is the moment the reps start to trust it.
 
-Then use Search: `/swot` to open the full SWOT, and `/competitors` to open the top 5 with prices, ratings and launches.
+Then open `/swot` for the full SWOT and `/competitors` for the top 5 with prices, ratings, launches and the aspect radar.
 
 > Line: "No one wrote these insights. Rules over scraped reviews and catalogs produced them, so they cost no AI and they're the same every time you run them."
 
 ## 3. From insight to content (Studio)
-1. On the **mist · SPF 50 · under ₹500** gap card, click **Create content from this →**. The campaign brief opens with that evidence attached.
-2. Search `/product watermelon` to show the hero SKU.
-3. **Research → Paste link:** paste the reel URL you copied. *(Live; it takes a little while and uses one ScrapeCreators credit for Instagram. Fallback: one of the four reels already broken down, such as `instagram.com/reel/DY1Ln6bzPh7`, outlier ×168.)*
-4. **Deconstruct:** walk through the hook timing, beats and on-screen text.
-5. **Patterns:** "Show the demonstration early". The hook is under 1.5 s and the product appears by 3 s.
-6. **Concepts → Create:** tab through **Statics** (Meta, Amazon, Flipkart and Nykaa banners), **A+ content**, **Listing**, **Script & storyboard** and **Video** (the pre-rendered hero film, with Reels, Shorts and Meta exports).
-7. **Listing → Localize → Hindi** (Sarvam). *(Live, fast, costs a few paise.)*
-8. **Test:** show the QC gate (claim guard: exact catalog wording and SPF = pass), then download the campaign kit .zip.
+1. On the **SPF 50 mist under ₹500** gap card (Strategy → Market gaps), click **Create content from this**. The campaign brief opens with that evidence attached.
+2. To show the finished example, open `/campaign kit`, or switch to the **Watermelon Sunscreen** campaign.
+3. **Research → paste link:** paste the reel URL from your clipboard. *(This runs live and takes a little while. Instagram uses one ScrapeCreators credit, while YouTube is free through yt-dlp. Fallback: open one of the four reels already broken down, such as `instagram.com/reel/DY1Ln6bzPh7`, which reached 168× its account's median views.)*
+4. **Deconstruct:** click through the frames, cuts, on-screen text, transcript, hook timing and beats. Clicking any of them seeks the video.
+5. **Patterns:** "Show the demonstration early". The hook is under 1.5 s, the product appears by 3 s and text by 1 s.
+6. **Concepts → Create:** tab through:
+   - **Statics** (Meta, Amazon, Flipkart, Nykaa, display)
+   - **A+ content**
+   - **Listing**
+   - **Script & storyboard**
+   - **Video** (the pre-rendered 16 s hero film with Reels, Shorts and Meta exports)
+7. **Listing → Hindi → Localize** with Sarvam. *(This runs live, is fast and costs a few paise.)* Click a line to show the back-translation check.
+8. **Test:** show the gate (claim guard against the exact catalog wording and SPF), the variant matrix, then **download the campaign kit**.
 
 ## 4. Close (peak-end)
-Go back to Overview and show the refreshed `as of` timestamp from step 0.
+Go back to Overview and show the refreshed `as of` date from step 0.
 
-> Line: "Catalog to competitors to sentiment to SWOT to a finished, checked campaign. Your team can run this nightly."
+> Line: "Catalog to competitors to sentiment to SWOT to a finished, checked campaign. Your team can run this every night."
 
 ## Don't do these live
 | Avoid | Why |
 |---|---|
-| Generating a **new video** | Takes minutes and costs about $0.50–0.75. Show the pre-rendered film. |
-| "Why…" or open-ended trend questions, such as `Is no white cast still a trend?` | Returns "insufficient evidence". Ask is built to refuse rather than guess, so it's a good answer to give if a rep tries it. |
-| `Which competitor offers better value?` | Returns the competitor list. Use `Who beats us on price per gram?` instead. |
-| `Why is lip balm our biggest opportunity?` | Returns only the bare score. Use the review share and competitor questions instead. |
+| **Generate hero film** | Takes minutes and costs about $0.50–0.75. Show the pre-rendered film instead. |
+| Demand or forecast questions on **Sunscreen** | Sunscreen's latest data doesn't meet the forecast's coverage threshold, so it answers "I couldn't find enough saved evidence". Ask demand questions on Lip Balm, Moisturiser, Body or Mask. |
+| `Which competitor offers better value?` | Returns the plain competitor list. Use `Who scores higher at a lower price?` instead. |
+| `What do people say about the watermelon sunscreen?` | Too vague. Type `watermelon sunscreen reviews`, or `/product watermelon` and open the product. |
+| Running out of the hourly limit | Ask, Refresh and every Studio action count toward 60 per hour per IP. Don't rehearse on the demo network. |
+
+If a rep tries an off-topic question, Ask answers "I couldn't find enough saved evidence…". **Present that as a feature:** the system refuses to guess.
 
 ## If a rep asks their own question
 Steer it toward a topic Ask can answer from evidence:
 - complaints
-- gaps or whitespace
+- weaknesses, threats or strengths
+- gaps
 - launches
 - competitors
-- threats, weaknesses or strengths
 - review share
-- demand or forecast
+- price or value
+- demand (in categories with a forecast)
 - what we should do
 
-These work in any category, e.g. Moisturiser → `What do customers complain about?` (greasy/sticky, breakouts, irritation) or `What new launches should we worry about?` (Plum CeraSense, Mamaearth Rice Dewy, TDC Nia-Ceramide).
+These work in any category. For example, in Moisturiser:
+- `What do customers complain about?` → greasy/sticky, breakouts, irritation
+- `What new launches should we worry about?` → Foxtale (7 recent launches), Pilgrim, The Derma Co
+- `How does demand look for the next 3 months?` → +16.7%

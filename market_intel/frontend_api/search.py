@@ -242,7 +242,7 @@ def retrieve(question, default, day, *, workspace=False):
     markets = cache.categories() if workspace and not mentioned else names
     signature = tuple(cache.signature())
     allocation = re.search(
-        r"\b(invest|spend|budget|prioriti[sz]e|biggest opportunity|highest opportunity|rank categories)\b",
+        r"\b(where (?:should|can|to).{0,35}(?:invest|spend|budget)|which categor(?:y|ies).{0,35}(?:invest|prioriti[sz]e)|biggest opportunity|highest opportunity|rank categories)\b",
         question,
         re.IGNORECASE,
     )

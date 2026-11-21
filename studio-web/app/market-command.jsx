@@ -1,4 +1,5 @@
 "use client";
+import { useExampleTyping } from "./guided-tour";
 import { useEffect, useRef, useState } from "react";
 import {
   VIEWS,
@@ -14,6 +15,7 @@ const normal = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 function fuzzy(value, query) {
   const a = normal(value),
     b = normal(query);
+  if (!b) return false;
   if (a.includes(b)) return true;
   let i = 0;
   for (const c of a) if (c === b[i]) i++;
@@ -36,6 +38,9 @@ export default function MarketCommand({
   run,
   navigate,
   close,
+  tour,
+  exitTour,
+  demoBrief,
 }) {
   const [query, setQuery] = useState(""),
     [answer, setAnswer] = useState(""),
@@ -45,7 +50,8 @@ export default function MarketCommand({
     [matches, setMatches] = useState(null),
     [active, setActive] = useState(-1),
     [recent, setRecent] = useState([]),
-    [asked, setAsked] = useState(false);
+    [asked, setAsked] = useState(false),
+    [openAfterSearch, setOpenAfterSearch] = useState("");
   const abort = useRef(null),
     input = useRef(null),
     list = useRef(null);
@@ -54,6 +60,7 @@ export default function MarketCommand({
     input.current?.focus();
     return () => abort.current?.abort();
   }, []);
+  const stopTyping = useExampleTyping(tour, "watermelon", setQuery);
   const command = query.trim().startsWith("/"),
     q = query.replace(/^\s*\//, "").trim(),
     psearch = q.replace(/^product\s+/i, "");
@@ -165,7 +172,6 @@ export default function MarketCommand({
         ),
       );
     } catch {}
-    close();
     navigate(item.view, item.args || {});
   }
   async function ask(question = query.trim()) {
@@ -242,23 +248,46 @@ export default function MarketCommand({
       q.endsWith("?"));
   const loading = psearch.length >= 2 && !found;
   const opensResult = active >= 0 || (!isQuestion && options.length > 0);
+  useEffect(() => {
+    if (!found || !openAfterSearch || openAfterSearch !== psearch) return;
+    setOpenAfterSearch("");
+    if (found.results?.length) go(fromLink(found.results[0]));
+  }, [found, openAfterSearch, psearch]);
   function submit(e) {
     e.preventDefault();
     if (pending) return;
     if (opensResult) go(options[active] || options[0]);
-    else if (q && !command && (!loading || isQuestion)) ask();
+    else if (loading && !isQuestion) setOpenAfterSearch(psearch);
+    else if (q && !command) ask();
   }
   function edit(value) {
+    stopTyping();
     abort.current?.abort();
     setPending(false);
     setQuery(value);
     setAsked(false);
     setErr("");
     setActive(-1);
+    setOpenAfterSearch("");
   }
   return (
     <Sheet title="Search or ask the market" close={close}>
       <div className="mk-command">
+        {tour && (
+          <aside className="tour-guide search-tour">
+            <div>
+              <small>Guided walkthrough · 1 · Search</small>
+              <p>
+                Watch “watermelon” appear, then open a product result. You can
+                type a different product at any time.
+              </p>
+              <div className="tour-controls">
+                <button onClick={exitTour}>Exit tour</button>
+                <button onClick={demoBrief}>Skip to example campaign →</button>
+              </div>
+            </div>
+          </aside>
+        )}
         <form onSubmit={submit} className="mk-command-input">
           <Mark name="search" size={16} />
           <input
@@ -291,8 +320,7 @@ export default function MarketCommand({
           />
           <button
             disabled={
-              pending ||
-              (!opensResult && (!q || command || (loading && !isQuestion)))
+              pending || (!opensResult && (!q || (command && !loading)))
             }
             aria-label={opensResult ? "Open result" : "Ask question"}
           >

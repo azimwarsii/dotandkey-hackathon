@@ -92,17 +92,20 @@ def _overview(name, day, compare, database_signature):
     )
     report = cached_report(name, day)
     forecast = report["forecast"]
-    value = forecast["score_factors"]["dk_share"]
+    factors = forecast["score_factors"]
+    value = factors["dk_share"]
+    activity_field = (
+        "rating_increment" if forecast["evidence"]["rating_panel"] else "dated_reviews"
+    )
     previous = cached_report(name, compare, index_only=True)["dk_share"]
     delta = value - previous if value is not None and previous is not None else None
     own = report["metrics"]["brands"].get("Dot & Key", {})
+    ratings = own.get("rating", {}).get("by_market", {})
     markets = [
         {
             "market": market,
-            "rating": own.get("rating", {})
-            .get("by_market", {})
-            .get(market, {})
-            .get("mean"),
+            "rating": ratings.get(market, {}).get("mean"),
+            "rating_count": ratings.get(market, {}).get("n"),
             "review_volume": own.get("review_sources", {}).get(market, 0),
             "volume_basis": "collected_review_texts",
         }
@@ -145,17 +148,28 @@ def _overview(name, day, compare, database_signature):
         "as_of": str(day),
         "compare": str(compare),
         "categories": summary,
+        "gap_count": factors["gap_count"],
         "priority": priority,
         "review_share": {
             "value": value,
             "previous": previous,
             "delta": delta,
             "markets": markets,
-            "scope": forecast["score_factors"]["share_scope"],
+            "scope": factors["share_scope"],
+            "source": factors["share_source"],
+            "dk_review_volume": factors["dk_review_volume"],
+            "top_six_review_volume": factors["top_six_review_volume"],
+            "marketplaces": sorted(
+                {r["market"] for r in factors["share_observations"]}
+            ),
         },
         "demand": {
             "series": [
-                {"month": r["month"], "index": r.get("index")}
+                {
+                    "month": r["month"],
+                    "index": r.get("index"),
+                    "activity": r[activity_field],
+                }
                 for r in forecast["series"]
             ],
             "projection": forecast["projection"],
@@ -163,6 +177,10 @@ def _overview(name, day, compare, database_signature):
             "status": forecast["status"],
             "observations": forecast["n"],
             "source": forecast["source"],
+            "baseline": forecast.get("baseline"),
+            "activity_unit": "ratings"
+            if activity_field == "rating_increment"
+            else "reviews",
         },
         "review_velocity": reviews,
         "launch_velocity": launches,

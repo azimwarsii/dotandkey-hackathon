@@ -381,6 +381,14 @@ export function Video({ s, media, act, busy, inspect, go }) {
   const selected = chosen === "hero" || (!chosen && f.hero) ? f.hero : pick;
   const file = movie(selected) || movie(f.video);
   const gate = selected?.gate || f.gate;
+  const editNotes = asList(selected?.clipforge?.gate?.report?.items)
+    .filter((item) => ["warn", "fail"].includes(item.status))
+    .flatMap((item) => {
+      const problems = asList(item.problems)
+        .map((p) => p?.en)
+        .filter(Boolean);
+      return problems.length ? problems : [item.message?.en].filter(Boolean);
+    });
   if (!s.creative.script)
     return (
       <Empty>
@@ -434,18 +442,20 @@ export function Video({ s, media, act, busy, inspect, go }) {
       <Section
         title="Screening room"
         action={
-          <select
-            aria-label="Video variant"
-            value={chosen || (f.hero ? "hero" : pick?.id || "")}
-            onChange={(e) => setChosen(e.target.value)}
-          >
-            {f.hero && <option value="hero">Hero film</option>}
-            {rows.map((v, i) => (
-              <option key={v.id || i} value={v.id}>
-                {v.title || nice(v.id) || "Variant " + (i + 1)}
-              </option>
-            ))}
-          </select>
+          (f.hero || rows.length > 0) && (
+            <select
+              aria-label="Video variant"
+              value={chosen || (f.hero ? "hero" : pick?.id || "")}
+              onChange={(e) => setChosen(e.target.value)}
+            >
+              {f.hero && <option value="hero">Hero film</option>}
+              {rows.map((v, i) => (
+                <option key={v.id || i} value={v.id}>
+                  {v.title || nice(v.id) || "Variant " + (i + 1)}
+                </option>
+              ))}
+            </select>
+          )
         }
       >
         {file ? (
@@ -463,6 +473,23 @@ export function Video({ s, media, act, busy, inspect, go }) {
                   (selected === f.hero ? "Hero film" : "Draft variant")}
               </h2>
               <p>{selected?.format || selected?.engine || f.engine}</p>
+              {!!selected?.duration && (
+                <p>
+                  {Math.round(selected.duration)} seconds
+                  {selected.recipe?.narration?.length > 0 &&
+                    " · Narration by " + selected.recipe.narration.join(", ")}
+                </p>
+              )}
+              {editNotes.length > 0 && (
+                <div className="video-review-notes">
+                  <h3>ClipForge edit review</h3>
+                  <ul>
+                    {editNotes.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <a className="secondary" download href={media(file)}>
                 <Icon name="download" /> Download film
               </a>
@@ -483,7 +510,11 @@ export function Video({ s, media, act, busy, inspect, go }) {
             </aside>
           </div>
         ) : (
-          <Empty>Render a generated script to preview its film.</Empty>
+          <Empty>
+            {busy
+              ? "Your preview will appear here when rendering finishes."
+              : "Generate draft videos to preview your script."}
+          </Empty>
         )}
       </Section>
       {(selected?.contact_sheet || f.contact_sheet) && (

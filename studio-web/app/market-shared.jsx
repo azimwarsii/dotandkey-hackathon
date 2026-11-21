@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export const VIEWS = [
   "overview",
@@ -244,6 +244,32 @@ export function Status({ error, retry }) {
     </div>
   );
 }
+export function Table({ headers, rows }) {
+  return (
+    <div className="mk-data-table">
+      <table>
+        <thead>
+          <tr>
+            {headers.map((h) => (
+              <th key={h} scope="col">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((v, j) => (
+                <td key={j}>{v}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 export function Facts({ rows, caption }) {
   return (
     <table className="mk-sr">
@@ -268,7 +294,7 @@ export function Facts({ rows, caption }) {
 }
 export function Sheet({ title, children, close, wide = false }) {
   const ref = useRef(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     el.showModal();
     return () => el.close();

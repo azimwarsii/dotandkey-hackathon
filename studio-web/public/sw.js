@@ -191,7 +191,7 @@ self.addEventListener("fetch", (event) => {
   }
   if (/^\/(?:api|studio-api)\//.test(url.pathname)) {
     // Job snapshots must stay current online. Retain them for offline review.
-    if (url.pathname === "/api/search" || url.pathname === "/studio-api/film-quote" || /^\/studio-api\/runs(?:\/[^/]+)?$/.test(url.pathname)) {
+    if (url.pathname === "/api/search" || /^\/api\/jobs\/[a-f0-9]+$/.test(url.pathname) || url.pathname === "/studio-api/film-quote" || /^\/studio-api\/runs(?:\/[^/]+)?$/.test(url.pathname)) {
       event.respondWith(
         (async () => {
           const cache = await caches.open(DATA);

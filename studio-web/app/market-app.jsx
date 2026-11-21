@@ -16,6 +16,7 @@ import {
   dateLabel,
 } from "./market-shared";
 import { Overview } from "./market-charts";
+import { TourCoach } from "./guided-tour";
 import ProductPicker from "./product-picker";
 import AppExperience from "./experience";
 import "./market.css";
@@ -160,6 +161,7 @@ export default function MarketApp({
 }) {
   const [route, setRoute] = useState(() => normalRoute(initialRoute)),
     [sheet, setSheet] = useState(null),
+    [tourStep, setTourStep] = useState(null),
     [version, setVersion] = useState(0),
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false),
@@ -210,12 +212,28 @@ export default function MarketApp({
       withQuery("/", params) +
       (next.card ? "#" + encodeURIComponent(next.card) : "");
     history.pushState(null, "", url);
+    setTourStep((current) => {
+      if (!current) return null;
+      if (next.view === "products" && next.product)
+        return next.tab === "reviews" ? "evidence" : "product";
+      if (next.view === "studio" && next.run === "watermelon-demo")
+        return (
+          {
+            overview: "brief",
+            swipe: "references",
+            inspect: "breakdown",
+            video: "video",
+          }[next.studioStep] || null
+        );
+      return null;
+    });
     setRoute(next);
     setSheet(null);
     if (!next.card) window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
   useEffect(() => {
     const back = () => {
+      setTourStep(null);
       const next = routeFromLocation();
       setRoute((prev) =>
         JSON.stringify(prev) === JSON.stringify(next) ? prev : next,
@@ -276,6 +294,24 @@ export default function MarketApp({
     invalidate();
     setVersion((n) => n + 1);
   };
+  const exitTour = useCallback(() => setTourStep(null), []);
+  function advanceTour() {
+    if (tourStep === "product")
+      return navigate("products", { product, category, tab: "reviews" });
+    const step = {
+      evidence: "overview",
+      brief: "swipe",
+      references: "inspect",
+      breakdown: "video",
+    }[tourStep];
+    if (step)
+      navigate("studio", {
+        run: "watermelon-demo",
+        category: "Sunscreen",
+        studioStep: step,
+      });
+    else exitTour();
+  }
   async function create(item) {
     if (busy || !onlineForAction()) return;
     if (item.id && !item.handle) {
@@ -529,6 +565,7 @@ export default function MarketApp({
                 </button>
               </div>
             )}
+            <TourCoach step={tourStep} advance={advanceTour} exit={exitTour} />
             <div key={view} className="mk-view-body">
               {view === "studio" ? (
                 <Studio
@@ -550,6 +587,7 @@ export default function MarketApp({
                   initialId={route.run || "watermelon-demo"}
                   initialView={route.studioStep}
                   initialReference={route.reference}
+                  tourStep={tourStep}
                   product={product}
                 />
               ) : state.error || !state.data ? (
@@ -567,6 +605,10 @@ export default function MarketApp({
                   <ProductDetail
                     data={state.data}
                     card={card}
+                    startTab={route.tab}
+                    onReviews={() => {
+                      if (tourStep === "product") setTourStep("evidence");
+                    }}
                     navigate={navigate}
                     create={create}
                     busy={busy}
@@ -709,7 +751,19 @@ export default function MarketApp({
           run={route.run}
           asOf={asOf}
           navigate={navigate}
-          close={() => setSheet(null)}
+          tour={tourStep === "search"}
+          exitTour={exitTour}
+          demoBrief={() =>
+            navigate("studio", {
+              run: "watermelon-demo",
+              category: "Sunscreen",
+              studioStep: "overview",
+            })
+          }
+          close={() => {
+            setSheet(null);
+            if (tourStep === "search") exitTour();
+          }}
         />
       )}
       {notice && (
@@ -725,7 +779,12 @@ export default function MarketApp({
       )}
       <AppExperience
         welcomeInitially={initialWelcome}
-        navigate={navigate}
+        startTour={() => {
+          setTourStep("search");
+          setSheet("search");
+        }}
+        exitTour={exitTour}
+        step={tourStep}
         view={view}
         asOf={summary?.as_of || state.data?.as_of || route.as_of}
       />

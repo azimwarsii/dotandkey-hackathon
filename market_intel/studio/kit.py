@@ -8,6 +8,62 @@ from zipfile import ZIP_DEFLATED, ZipFile
 from . import runs
 
 
+def brief_text(brief, creative):
+    product = brief.get("product", {})
+    lines = [
+        "Dot & Key campaign brief",
+        product.get("title") or "Campaign",
+        brief.get("as_of"),
+        product.get("url"),
+    ]
+    evidence = brief.get("market_evidence")
+    if evidence:
+        lines.extend(["", "Campaign starting point", evidence.get("title")])
+    lines.extend(["", "Catalog wording", *brief.get("allowed_claims", [])])
+    audience = brief.get("audience", {})
+    for title, key in [
+        ("4–5 star product reviews", "top_desires"),
+        ("1–2 star product reviews", "top_objections"),
+        ("Category review examples", "category_objections"),
+    ]:
+        lines.extend(["", title])
+        rows = audience.get(key) or []
+        for row in rows:
+            lines.extend(
+                [
+                    row.get("quote"),
+                    f"{row.get('rating', '—')} / 5 · {row.get('platform') or 'Review'}",
+                    row.get("source"),
+                ]
+            )
+        if not rows:
+            lines.append("No sampled quotes in this group.")
+    script = creative.get("script") or {}
+    if script.get("shots"):
+        lines.extend(["", "Script and storyboard", script.get("title")])
+        for shot in script["shots"]:
+            lines.extend(
+                [
+                    "",
+                    f"{shot.get('start', 0)}s · {shot.get('duration', 0)} seconds",
+                    shot.get("visual"),
+                    "On screen — " + (shot.get("text") or ""),
+                    "Voiceover — " + (shot.get("vo") or ""),
+                ]
+            )
+    for listing in creative.get("listings", []):
+        lines.extend(
+            [
+                "",
+                listing.get("market"),
+                listing.get("title"),
+                *listing.get("bullets", []),
+                listing.get("description"),
+            ]
+        )
+    return "\n".join(str(line) for line in lines if line is not None) + "\n"
+
+
 def archive(folder):
     campaign = runs.campaign_dir(folder).resolve()
     creative = runs.load(campaign / "creative.json", {})
@@ -35,6 +91,11 @@ def archive(folder):
     stream = SpooledTemporaryFile(max_size=2**20)  # noqa: SIM115 - caller streams and closes it
     try:
         with ZipFile(stream, "w", ZIP_DEFLATED, compresslevel=1) as out:
+            brief = runs.load(campaign / "brief.json") or runs.load(
+                folder / "brief.json", {}
+            )
+            if brief.get("product"):
+                out.writestr("Campaign brief.txt", brief_text(brief, creative))
             for key in ("script", "listings", "test_plan", "lineage", "variants"):
                 if key in creative:
                     out.writestr(

@@ -17,10 +17,16 @@ export default function CampaignBrief({ brief }) {
   const product = brief.product;
   const audience = brief.audience || {};
   const facts = brief.claim_sources || [];
-  const claims = [...new Set([
-    ...facts.filter((r) => ["feature", "benefit", "ingredient", "spf"].includes(r.kind)).map((r) => r.text),
-    ...(brief.allowed_claims || []),
-  ])];
+  const claims = [
+    ...new Set([
+      ...facts
+        .filter((r) =>
+          ["feature", "benefit", "ingredient", "spf"].includes(r.kind),
+        )
+        .map((r) => r.text),
+      ...(brief.allowed_claims || []),
+    ]),
+  ];
   const links = (brief.strengths || [])
     .slice(0, 1)
     .concat((brief.gaps || []).slice(0, 1));

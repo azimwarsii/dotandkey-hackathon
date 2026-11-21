@@ -92,18 +92,18 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
         )
     folder.mkdir(parents=True, exist_ok=True)
     outputs = []
+
+    def report_motion(index, message, completed):
+        progress(
+            f"Motion clip {index + 1} of {len(frames)} · {message}",
+            phase="motion",
+            completed=completed,
+            total=len(frames),
+            unit="clips ready",
+        )
+
     for i, (frame, prompt) in enumerate(zip(frames, prompts)):
-
-        def report_motion(message, count=i):
-            progress(
-                f"Motion clip {i + 1} of {len(frames)} · {message}",
-                phase="motion",
-                completed=count,
-                total=len(frames),
-                unit="clips ready",
-            )
-
-        report_motion("checking saved render")
+        report_motion(i, "checking saved render", i)
         field = {
             "type": "image_url",
             "frame_type": "first_frame",
@@ -145,7 +145,7 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
             }
             with record.open("x") as stream:
                 json.dump(job, stream)
-            report_motion("submitting to the video provider")
+            report_motion(i, "submitting to the video provider", i)
             if adapter:
                 response = adapter.post(
                     "/videos",
@@ -175,11 +175,13 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
                 status = data.get("status")
                 if status != job.get("status"):
                     report_motion(
+                        i,
                         {
                             "queued": "waiting in the provider queue",
                             "in_progress": "generating motion",
                             "completed": "downloading the finished clip",
-                        }.get(status, "waiting for the video provider")
+                        }.get(status, "waiting for the video provider"),
+                        i,
                     )
                 job["status"] = status
                 save_json(record, job)
@@ -206,5 +208,5 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
                     "Video is still processing. Resume this run to poll the saved job."
                 )
         outputs.append(destination)
-        report_motion("ready", i + 1)
+        report_motion(i, "ready", i + 1)
     return quote, outputs

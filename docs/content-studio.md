@@ -1,5 +1,7 @@
 # Content Studio
 
+How the pieces fit together under the hood is described in [architecture.md](architecture.md). The live demo script is in [demo-script.md](demo-script.md).
+
 The Watermelon Sunscreen campaign is included at `data/studio/runs/watermelon-demo`. Read the stored campaign without provider credentials. Creating new research and media uses the services enabled in the local `.env`. For hosted operation use the private API, spend controls and HTTPS frontend in the [deployment guide](market-studio-deployment.md).
 
 ## Open the studio

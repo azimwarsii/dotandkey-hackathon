@@ -12,6 +12,13 @@ import {
   dateLabel,
 } from "./market-shared";
 
+import {
+  ActivityGuide,
+  DemandGuide,
+  OpportunityGuide,
+  ReviewShareGuide,
+} from "./market-kpi-guide";
+
 const shortMonth = (m) =>
   m ? dateLabel(m.slice(0, 7) + "-01", { month: "short" }) : "";
 const sum = (rows) => rows.reduce((v, r) => v + Number(r.total || 0), 0);
@@ -29,8 +36,7 @@ function Widget({
   icon,
   tone,
   children,
-  method,
-  rows,
+  details,
   tour,
   extra = "",
 }) {
@@ -45,6 +51,8 @@ function Widget({
         <button
           className="mk-menu"
           aria-label={title + " details"}
+          aria-haspopup="dialog"
+          title={"Understand " + title}
           onClick={() => setOpen(true)}
         >
           <Mark name="menu" />
@@ -52,23 +60,8 @@ function Widget({
       </header>
       {children}
       {open && (
-        <Sheet title={title} close={() => setOpen(false)}>
-          <p>{method}</p>
-          {rows?.length > 0 && (
-            <div className="mk-data-table">
-              <table>
-                <tbody>
-                  {rows.map((r, i) => (
-                    <tr key={i}>
-                      {r.map((v, j) => (
-                        <td key={j}>{v}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+        <Sheet title={title} close={() => setOpen(false)} wide>
+          {details}
         </Sheet>
       )}
     </section>
@@ -86,7 +79,13 @@ const subscribeMobile = (callback) => {
   media.addEventListener("change", callback);
   return () => media.removeEventListener("change", callback);
 };
-export function Opportunity({ rows = [], category, onSelect }) {
+export function Opportunity({
+  rows = [],
+  category,
+  onSelect,
+  context,
+  gapCount,
+}) {
   const id = useId().replaceAll(":", ""),
     [point, setPoint] = useState(null);
   const ranked = [...rows].sort(
@@ -94,6 +93,7 @@ export function Opportunity({ rows = [], category, onSelect }) {
       (b.opportunity_score ?? -Infinity) - (a.opportunity_score ?? -Infinity),
   );
   const chosen = ranked.find((x) => x.category === category);
+  const rank = ranked.indexOf(chosen) + 1;
   const hovered = ranked.find((x) => x.category === point);
   const listing = ranked.map((d) => [
     d.category,
@@ -130,17 +130,34 @@ export function Opportunity({ rows = [], category, onSelect }) {
       tone="lime"
       tour="opportunity"
       extra="mk-opportunity"
-      rows={listing}
-      method="The score combines forecast growth, Dot & Key’s share of observed reviews and the number of distinct gaps. A dash indicates insufficient evidence."
+      details={
+        <OpportunityGuide
+          context={context}
+          chosen={chosen}
+          rank={rank}
+          rankedCount={ranked.filter((r) => r.opportunity_score != null).length}
+          gapCount={gapCount}
+          rows={listing}
+        />
+      }
     >
       <div className="mk-metric">
-        {chosen?.opportunity_score == null ? <span className="metric-unavailable">Unranked</span> : <Count value={chosen.opportunity_score} digits={3} />}
+        {chosen?.opportunity_score == null ? (
+          <span className="metric-unavailable">Unranked</span>
+        ) : (
+          <Count value={chosen.opportunity_score} digits={3} />
+        )}
         {chosen?.opportunity_score != null && (
-          <span className="mk-tag lime">Rank {ranked.indexOf(chosen) + 1}</span>
+          <span className="mk-tag lime">Rank {rank}</span>
         )}
       </div>
       <p className="mk-caption">
-        {chosen?.opportunity_score != null ? "Opportunity score" : chosen?.forecast_growth == null ? "More review history needed" : "More brand coverage needed"} <span>·</span> {category}
+        {chosen?.opportunity_score != null
+          ? "Opportunity score"
+          : chosen?.forecast_growth == null
+            ? "More review history needed"
+            : "More brand coverage needed"}{" "}
+        <span>·</span> {category}
       </p>
       <div className="mk-bars-wrap">
         <svg
@@ -310,7 +327,7 @@ export function Opportunity({ rows = [], category, onSelect }) {
     </Widget>
   );
 }
-export function ReviewShare({ data = {} }) {
+export function ReviewShare({ data = {}, context, compare }) {
   const rows = data.markets || [],
     max = Math.max(1, ...rows.map((x) => x.review_volume || 0));
   return (
@@ -319,19 +336,19 @@ export function ReviewShare({ data = {} }) {
       title="D&K review share"
       icon="share"
       tone="lime"
-      method="Dot & Key’s share of observed review volume across the six tracked brands. Marketplace rows show sampled review texts and the average star rating weighted by listing rating counts."
-      rows={rows.map((r) => [
-        label(r.market),
-        number(r.review_volume),
-        number(r.rating, 2) + " stars",
-      ])}
+      details={
+        <ReviewShareGuide context={context} data={data} compare={compare} />
+      }
     >
       <div className="mk-metric">
-        <Count
-          value={data.value == null ? null : data.value * 100}
-          digits={1}
-        />
-        <em>%</em>
+        {data.value == null ? (
+          <span className="metric-unavailable">Awaiting data</span>
+        ) : (
+          <>
+            <Count value={data.value * 100} digits={1} />
+            <em>%</em>
+          </>
+        )}
         {data.delta != null && (
           <span className="mk-tag lime">
             {data.delta >= 0 ? "+" : ""}
@@ -339,7 +356,7 @@ export function ReviewShare({ data = {} }) {
           </span>
         )}
       </div>
-      <p className="mk-caption">Across tracked marketplaces</p>
+      <p className="mk-caption">Share of reviews across tracked brands</p>
       <div className="mk-progress">
         {rows.map((row, i) => (
           <div className="mk-market-row" key={row.market}>
@@ -478,21 +495,23 @@ export function StepChart({ series = [], projection = [] }) {
     </div>
   );
 }
-export function Demand({ data = {} }) {
+export function Demand({ data = {}, context }) {
   const observed = (data.series || []).filter((r) => r.index != null).at(-1);
   return (
     <Widget
       title="Demand index"
       icon="demand"
       tone="pink"
-      rows={[...(data.series || []), ...(data.projection || [])].map((d) => [
-        d.month,
-        number(d.index, 2),
-      ])}
-      method="Monthly activity in dated marketplace reviews, indexed to the category baseline. Dashed steps show the forecast."
+      details={
+        <DemandGuide context={context} data={data} observed={observed} />
+      }
     >
       <div className="mk-metric">
-        {observed ? <Count value={observed.index} digits={1} /> : <span className="metric-unavailable">Awaiting data</span>}
+        {observed ? (
+          <Count value={observed.index} digits={1} />
+        ) : (
+          <span className="metric-unavailable">Awaiting data</span>
+        )}
         {data.forecast_growth != null && (
           <span className="mk-tag pink">
             {percent(data.forecast_growth, true)}
@@ -504,9 +523,16 @@ export function Demand({ data = {} }) {
           ? shortMonth(observed.month) + " review activity"
           : "More dated observations are needed for a demand index."}
       </p>
-      {observed || data.projection?.length ? <StepChart {...data} /> : <p className="mk-forecast-note">
-        A projection needs at least six observed months and 30 observations, including activity in each of the latest three complete months.{data.observations != null && " This sample has " + number(data.observations) + " observations."}
-      </p>}
+      {observed || data.projection?.length ? (
+        <StepChart {...data} />
+      ) : (
+        <p className="mk-forecast-note">
+          A projection needs at least six months with data and 30 observations.
+          The latest three complete months must all have data.
+          {data.observations != null &&
+            " This sample has " + number(data.observations) + " observations."}
+        </p>
+      )}
       <div className="mk-card-foot">
         <Legend color="#ed549e">Observed</Legend>
         <span className="mk-dash-key" />
@@ -626,7 +652,7 @@ export function DotChart({ rows = [], launch = false }) {
     </div>
   );
 }
-export function Activity({ rows = [], launch = false }) {
+export function Activity({ rows = [], launch = false, context }) {
   const peak = rows.reduce((p, r) => (r.total > (p?.total ?? 0) ? r : p), null),
     total = sum(rows);
   return (
@@ -634,27 +660,27 @@ export function Activity({ rows = [], launch = false }) {
       title={launch ? "Competitor launches" : "Review velocity"}
       icon={launch ? "launches" : "velocity"}
       tone={launch ? "cyan" : "lilac"}
-      rows={rows.map((r) => [
-        r.week,
-        number(r.total),
-        ...(launch
-          ? []
-          : [
-              number(r.positive) + " positive",
-              number(r.negative) + " negative",
-              number(r.neutral) + " neutral",
-              number(r.unrated) + " unrated",
-            ]),
-      ])}
-      method={
-        launch
-          ? "Weekly counts of observed competitor launch candidates in the tracked catalogs."
-          : "Sampled reviews grouped by week and sentiment for the current category."
+      details={
+        <ActivityGuide
+          context={context}
+          rows={rows}
+          total={total}
+          peak={peak}
+          launch={launch}
+        />
       }
     >
       <div className="mk-metric mk-small-metric">
         <Count value={total} />
-        <span className="mk-unit">{launch ? "launches" : "reviews"}</span>
+        <span className="mk-unit">
+          {launch
+            ? total === 1
+              ? "possible launch"
+              : "possible launches"
+            : total === 1
+              ? "review"
+              : "reviews"}
+        </span>
       </div>
       <p className="mk-caption">
         {peak
@@ -665,7 +691,7 @@ export function Activity({ rows = [], launch = false }) {
       <DotChart rows={rows} launch={launch} />
       <div className="mk-card-foot">
         {launch ? (
-          <Legend color="#26a9cf">Catalog launches</Legend>
+          <Legend color="#26a9cf">Launch candidates</Legend>
         ) : (
           <>
             <Legend color="#83ac39">Positive</Legend>
@@ -762,6 +788,7 @@ export function Insight({ items = [], create, busy }) {
   );
 }
 export function Overview({ data, select, create, busy, navigate }) {
+  const context = data.category + " · As of " + dateLabel(data.as_of);
   return (
     <>
       {data.priority && (
@@ -797,12 +824,18 @@ export function Overview({ data, select, create, busy, navigate }) {
         <Opportunity
           rows={data.categories}
           category={data.category}
+          context={context}
+          gapCount={data.gap_count}
           onSelect={select}
         />
-        <ReviewShare data={data.review_share} />
-        <Demand data={data.demand} />
-        <Activity rows={data.review_velocity} />
-        <Activity rows={data.launch_velocity} launch />
+        <ReviewShare
+          data={data.review_share}
+          context={context}
+          compare={data.compare}
+        />
+        <Demand data={data.demand} context={context} />
+        <Activity rows={data.review_velocity} context={context} />
+        <Activity rows={data.launch_velocity} context={context} launch />
         <Insight items={data.insights} create={create} busy={busy} />
       </div>
     </>

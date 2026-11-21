@@ -13,7 +13,7 @@ from urllib.parse import urlsplit
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, Request
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, PlainTextResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 from market_intel.store import Store
@@ -261,6 +261,19 @@ def new_run(body: NewRun):
 @router.get("/runs/{run_id}")
 def get_run(run_id: str):
     return runs.snapshot(folder_for(run_id))
+
+
+@router.get("/runs/{run_id}/brief.txt", response_class=PlainTextResponse)
+def download_brief(run_id: str):
+    from .kit import brief_text
+
+    folder = folder_for(run_id)
+    dest = runs.campaign_dir(folder)
+    brief = runs.load(dest / "brief.json") or need_brief(folder)
+    return PlainTextResponse(
+        brief_text(brief, runs.load(dest / "creative.json", {})),
+        headers={"Content-Disposition": f'attachment; filename="{run_id}-brief.txt"'},
+    )
 
 
 @router.get("/runs/{run_id}/kit.zip")

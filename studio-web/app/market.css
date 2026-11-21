@@ -823,6 +823,61 @@
 .mk-wide-dialog {
   width: min(700px, calc(100vw - 32px));
 }
+.mk-kpi-guide {
+  display: grid;
+  gap: 18px;
+}
+.mk-kpi-reading {
+  padding: 14px 16px;
+  background: #eef1e7;
+  border-radius: 12px;
+}
+.mk-kpi-reading small {
+  color: #536047;
+  font-size: 12px;
+}
+.mk-kpi-guide p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.mk-kpi-reading p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: var(--mk-ink);
+}
+.mk-kpi-guide h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.mk-kpi-factors {
+  margin: 8px 0;
+}
+.mk-kpi-factors div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--mk-rule);
+}
+.mk-kpi-factors dd,
+.mk-kpi-math {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.mk-kpi-guide details {
+  min-width: 0;
+  border-top: 1px solid var(--mk-rule);
+}
+.mk-kpi-guide summary {
+  padding: 13px 0;
+  cursor: pointer;
+  color: #40552b;
+  font-weight: 500;
+}
 .mk-categories,
 .mk-help-items,
 .mk-date-form,

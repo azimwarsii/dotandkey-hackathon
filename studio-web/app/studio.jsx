@@ -18,7 +18,7 @@ import { Concepts, Script, Video, Statics, Testing } from "./production";
 import ProductPicker from "./product-picker";
 import CampaignBrief, { MarketSource } from "./campaign-brief";
 import { dateLabel } from "./market-shared";
-import { JobProgress } from "./studio-progress";
+import { JobProgress, RenderReplay } from "./studio-progress";
 import { Workflow, StepGuide, Kit } from "./studio-workflow";
 
 const titles = {
@@ -275,6 +275,7 @@ export default function Studio({
   initialId = "watermelon-demo",
   initialView,
   initialReference,
+  tourStep,
   embedded = false,
   onRoute,
 }) {
@@ -283,6 +284,8 @@ export default function Studio({
     [view, setView] = useState(titles[initialView] ? initialView : "overview"),
     [runList, setRuns] = useState([]),
     [products, setProducts] = useState([]),
+    [listState, setListState] = useState("loading"),
+    [loadError, setLoadError] = useState(""),
     [item, setItem] = useState(null),
     [dialog, setDialog] = useState(""),
     [error, setError] = useState(""),
@@ -307,54 +310,110 @@ export default function Studio({
     if (current.current === id) setState(v);
     return v;
   }, []);
-  const lists = useCallback(
-    () =>
-      Promise.all([api("/runs"), api("/products")]).then(([r, p]) => {
-        setRuns(r);
-        setProducts(p);
-      }),
-    [],
-  );
+  const loadCampaign = useCallback(async () => {
+    const id = current.current;
+    setLoadError("");
+    try {
+      await refresh();
+    } catch (e) {
+      if (current.current === id) setLoadError(e.message);
+    }
+  }, [refresh]);
+  const lists = useCallback(async () => {
+    setListState("loading");
+    try {
+      const [r, p] = await Promise.all([api("/runs"), api("/products")]);
+      setRuns(r);
+      setProducts(p);
+      setListState("ready");
+    } catch {
+      setListState("failed");
+    }
+  }, []);
   useEffect(() => {
-    lists().catch((e) => setError(e.message));
-    refresh().catch((e) => setError(e.message));
-  }, [run, lists, refresh]);
+    lists();
+    loadCampaign();
+  }, [run, lists, loadCampaign]);
   const job = s?.jobs?.[0],
     busy = pending || job?.status === "running";
   useEffect(() => {
     if (job?.status !== "running") return;
     const path = "/api/jobs/" + encodeURIComponent(job.id);
-    let closed = false, polling = false;
+    let closed = false,
+      polling = false;
     const controller = new AbortController();
-    const events = new EventSource(path + "/events?run=" + encodeURIComponent(run));
+    const events = new EventSource(
+      path + "/events?run=" + encodeURIComponent(run),
+    );
     setConnectionLost(false);
     const apply = (update) => {
       if (closed) return;
       setLiveJob((old) => {
-        if (old?.id === update.id && old.updated_at > update.updated_at) return old;
-        const stages = old?.id === update.id ? old.stages || [] : job.stages || [];
-        const newer = !stages.length || update.updated_at > stages.at(-1).updated_at;
-        return { ...update, stages: update.stages || (newer ? [...stages, {stage:update.stage, updated_at:update.updated_at}] : stages) };
+        if (old?.id === update.id && old.updated_at > update.updated_at)
+          return old;
+        const stages =
+          old?.id === update.id ? old.stages || [] : job.stages || [];
+        const newer =
+          !stages.length || update.updated_at > stages.at(-1).updated_at;
+        return {
+          ...update,
+          stages:
+            update.stages ||
+            (newer
+              ? [
+                  ...stages,
+                  { stage: update.stage, updated_at: update.updated_at },
+                ]
+              : stages),
+        };
       });
       if (["complete", "failed", "interrupted"].includes(update.status)) {
-        refresh().then(() => { if (!closed) events.close(); }).catch(() => { if (!closed) setConnectionLost(true); });
+        refresh()
+          .then(() => {
+            if (!closed) events.close();
+          })
+          .catch(() => {
+            if (!closed) setConnectionLost(true);
+          });
       }
     };
     const poll = async () => {
       if (closed || polling) return;
       polling = true;
       try {
-        const response = await fetch(path, { cache: "no-store", signal: controller.signal });
+        const response = await fetch(path, {
+          cache: "no-store",
+          signal: controller.signal,
+        });
         if (!response.ok) throw Error();
         const next = await response.json();
-        if (!closed) { apply(next); setConnectionLost(false); }
-      } catch { if (!closed) setConnectionLost(true); }
-      finally { polling = false; }
+        if (!closed) {
+          apply(next);
+          setConnectionLost(false);
+        }
+      } catch {
+        if (!closed) setConnectionLost(true);
+      } finally {
+        polling = false;
+      }
     };
-    events.onmessage = (message) => { setConnectionLost(false); apply(JSON.parse(message.data)); };
-    events.onerror = () => { if (!closed) { setConnectionLost(true); poll(); } };
+    events.onmessage = (message) => {
+      setConnectionLost(false);
+      apply(JSON.parse(message.data));
+    };
+    events.onerror = () => {
+      if (!closed) {
+        setConnectionLost(true);
+        poll();
+      }
+    };
     const timer = setInterval(poll, 6500);
-    return () => { closed = true; controller.abort(); clearInterval(timer); events.close(); };
+    return () => {
+      closed = true;
+      controller.abort();
+      clearInterval(timer);
+      events.close();
+    };
   }, [job?.id, job?.status, run, refresh]);
   useEffect(() => {
     const pop = () => {
@@ -401,7 +460,16 @@ export default function Studio({
   const act = async (action, body = {}) => {
     if (busy) return;
     setPending(true);
-    setSubmitting("Starting " + ({film: "video production", generate: "campaign production", deconstruct: "reference analysis", concepts: "concept development"}[action] || action) + "…");
+    setSubmitting(
+      "Starting " +
+        ({
+          film: "video production",
+          generate: "campaign production",
+          deconstruct: "reference analysis",
+          concepts: "concept development",
+        }[action] || action) +
+        "…",
+    );
     setError("");
     try {
       const submitted = await post("/runs/" + run + "/" + action, body);
@@ -428,7 +496,9 @@ export default function Studio({
     try {
       const ids = [];
       for (const [index, f] of files.entries()) {
-        setSubmitting("Uploading file " + (index + 1) + " of " + files.length + "…");
+        setSubmitting(
+          "Uploading file " + (index + 1) + " of " + files.length + "…",
+        );
         if (files.length > 10 || f.size > 48 * 1024 ** 2)
           throw Error("Select up to ten files of 48 MiB each.");
         const r = await api(
@@ -440,13 +510,14 @@ export default function Studio({
       await act("deconstruct", { uploads: ids, ...extra });
     } catch (e) {
       setError(e.message);
-    } finally { setSubmitting(""); }
+    } finally {
+      setSubmitting("");
+    }
   };
   const create = async (handle) => {
     setPending(true);
     try {
       const res = await post("/runs", { handle });
-      await lists();
       navigate(
         "overview",
         res.id,
@@ -460,8 +531,20 @@ export default function Studio({
   };
   const asset = (p) => urlFor(run, p),
     media = (p) => urlFor(run, p, s?.selected?.directory || "");
+  const listNotice =
+    listState === "loading" ? (
+      <div role="status" className="job-progress">
+        <i className="studio-spinner" /> Loading campaigns and products…
+      </div>
+    ) : listState === "failed" ? (
+      <div role="alert" className="notice bad">
+        Couldn’t load campaigns and products.{" "}
+        <button onClick={lists}>Try again</button>
+      </div>
+    ) : null;
   const shared = {
     s,
+    tourStep,
     asset,
     media,
     act,
@@ -576,6 +659,15 @@ export default function Studio({
         <div className="content">
           <div className="page-heading">
             <h1>{titles[view]}</h1>
+            {view === "overview" && s?.brief?.product && (
+              <a
+                className="secondary"
+                download
+                href={"/studio-api/runs/" + run + "/brief.txt"}
+              >
+                Download brief <Icon name="download" size={14} />
+              </a>
+            )}
             {view === "overview" && !embedded && (
               <button className="secondary" onClick={() => setDialog("new")}>
                 <Icon name="plus" /> New campaign
@@ -588,9 +680,25 @@ export default function Studio({
               <button onClick={() => setError("")}>Dismiss</button>
             </div>
           )}
-          <JobProgress job={liveJob?.id === job?.id && liveJob?.updated_at >= job?.updated_at ? liveJob : job}
-            submitting={submitting} disconnected={connectionLost} view={view} go={navigate} />
-          <StepGuide {...shared}/>
+          {s && loadError && (
+            <div role="alert" className="notice bad">
+              Showing the last saved campaign. Couldn’t refresh its status.
+              <button onClick={loadCampaign}>Try again</button>
+            </div>
+          )}
+          <JobProgress
+            job={
+              liveJob?.id === job?.id && liveJob?.updated_at >= job?.updated_at
+                ? liveJob
+                : job
+            }
+            submitting={submitting}
+            disconnected={connectionLost}
+            view={view}
+            go={navigate}
+          />
+          <StepGuide {...shared} view={view} />
+          {tourStep === "video" && view === "video" && <RenderReplay />}
           {s ? (
             !s.brief?.product && busy ? (
               <Empty>{job?.stage || "Preparing the product brief…"}</Empty>
@@ -604,8 +712,16 @@ export default function Studio({
             ) : (
               loaders[view]()
             )
+          ) : loadError ? (
+            <div role="alert" className="notice bad">
+              Couldn’t open this campaign. {loadError}{" "}
+              <button onClick={loadCampaign}>Try again</button>
+            </div>
           ) : (
-            <div className="job-progress" role="status"><i className="studio-spinner"/> Loading campaign brief and saved outputs…</div>
+            <div className="job-progress" role="status">
+              <i className="studio-spinner" /> Loading campaign brief and saved
+              outputs…
+            </div>
           )}
         </div>
       </div>
@@ -628,22 +744,27 @@ export default function Studio({
       )}
       {dialog === "runs" && (
         <Modal title="Campaigns" close={() => setDialog("")}>
+          {listNotice}
           <div className="run-list">
-            {runList.map((r) => (
-              <button key={r.id} onClick={() => navigate("overview", r.id)}>
-                <Icon name="folder" />
-                <span>
-                  {r.title ||
-                    products.find((p) => p.handle === r.handle)?.title ||
-                    nice(r.handle)}
-                  <small>
-                    {dateLabel(r.created_at)}
-                    {r.evidence?.category && " · " + r.evidence.category}
-                  </small>
-                </span>
-                <Icon name="arrow" />
-              </button>
-            ))}
+            {listState === "ready" && !runList.length && (
+              <p>Your first campaign will appear here.</p>
+            )}
+            {listState === "ready" &&
+              runList.map((r) => (
+                <button key={r.id} onClick={() => navigate("overview", r.id)}>
+                  <Icon name="folder" />
+                  <span>
+                    {r.title ||
+                      products.find((p) => p.handle === r.handle)?.title ||
+                      nice(r.handle)}
+                    <small>
+                      {dateLabel(r.created_at)}
+                      {r.evidence?.category && " · " + r.evidence.category}
+                    </small>
+                  </span>
+                  <Icon name="arrow" />
+                </button>
+              ))}
           </div>
           <button className="primary" onClick={() => setDialog("new")}>
             <Icon name="plus" /> New campaign
@@ -653,7 +774,9 @@ export default function Studio({
       {dialog === "new" && (
         <Modal title="New campaign" close={() => setDialog("")}>
           {error && <p role="alert">{error}</p>}
-          <ProductPicker products={products} choose={create} busy={pending} />
+          {listNotice || (
+            <ProductPicker products={products} choose={create} busy={pending} />
+          )}
         </Modal>
       )}
     </div>

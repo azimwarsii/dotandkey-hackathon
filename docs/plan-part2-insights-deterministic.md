@@ -1,5 +1,7 @@
 # Part 2 Plan: Deterministic Insights (SWOT, Gaps, Trends, Launches)
 
+> **Status: design plan, written before the build.** For how the system actually works now, see [architecture.md](architecture.md). For commands, see the [README](../README.md).
+
 **Principle:** rules and statistics do the reasoning, and AI is optional polish. Every insight is a **metric plus a threshold plus evidence**: numbers, sample size and 2–3 quoted reviews. The same data always produces the same output, and every claim is traceable for the judges.
 
 Input: the tables from Part 1 (`product`, `listing_snapshot`, `review`, `competitor_set`, `brand_signal`, `news_item`).

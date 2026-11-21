@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Mark,
   Facts,
+  Table,
   label,
   dateLabel,
   price,
@@ -55,32 +56,6 @@ function Tabs({ tabs, value, change }) {
           {t}
         </button>
       ))}
-    </div>
-  );
-}
-function Table({ headers, rows }) {
-  return (
-    <div className="mk-data-table">
-      <table>
-        <thead>
-          <tr>
-            {headers.map((h) => (
-              <th key={h} scope="col">
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
-              {row.map((v, j) => (
-                <td key={j}>{v}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
@@ -290,7 +265,15 @@ export function Products({ data, navigate, query = "" }) {
     </div>
   );
 }
-export function ProductDetail({ data, navigate, create, busy, card }) {
+export function ProductDetail({
+  data,
+  navigate,
+  create,
+  busy,
+  card,
+  startTab,
+  onReviews,
+}) {
   const [tab, setTab] = useState("Listings"),
     [limit, setLimit] = useState(12),
     p = data.product || {},
@@ -298,12 +281,13 @@ export function ProductDetail({ data, navigate, create, busy, card }) {
     reviews = data.reviews || [],
     listings = data.listings || [];
   useEffect(() => {
+    if (startTab === "reviews") setTab("Reviews");
     const index = data.reviews?.findIndex((r) => r.search_id === card) ?? -1;
     if (index >= 0) {
       setTab("Reviews");
       setLimit(Math.max(12, index + 1));
     }
-  }, [data, card]);
+  }, [data, card, startTab]);
   return (
     <div className="mk-detail-view">
       <button className="mk-text-btn" onClick={() => navigate("products")}>
@@ -338,7 +322,10 @@ export function ProductDetail({ data, navigate, create, busy, card }) {
       <Tabs
         tabs={["Listings", "Price history", "Reviews"]}
         value={tab}
-        change={setTab}
+        change={(tab) => {
+          setTab(tab);
+          if (tab === "Reviews") onReviews?.();
+        }}
       />
       {tab === "Listings" && (
         <Card title="Marketplace listings">

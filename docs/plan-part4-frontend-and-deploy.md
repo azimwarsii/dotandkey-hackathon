@@ -1,5 +1,7 @@
 # Part 4 Plan: One Product Frontend, PWA and Deployment
 
+> **Status: design plan, written before the build.** For how the system actually works now, see [architecture.md](architecture.md). For commands, see the [README](../README.md).
+
 **Goal:** one app that runs the whole chain from the brief:
 
 > catalog → marketplaces → reviews → competitors → SWOT, gaps and trends → **content** (statics, A+, listing copy, script, storyboard, video) → tests

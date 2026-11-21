@@ -1,5 +1,7 @@
 # Part 1 Plan: Catalog, Marketplace, Review and Competitor Collection
 
+> **Status: design plan, written before the build.** For how the system actually works now, see [architecture.md](architecture.md). For commands, see the [README](../README.md).
+
 Scope: the data-collection layer of the Dot & Key brief. It covers extracting the catalog, finding each product on marketplaces, collecting price, rating and reviews, picking the top 5 competitors per category, and gathering brand-level signals. Sentiment, SWOT, gaps and content generation consume this layer's output and are not covered here.
 
 ---

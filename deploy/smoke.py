@@ -14,6 +14,28 @@ ORIGIN = os.getenv("STUDIO_TEST_ORIGIN", "http://127.0.0.1:3000").rstrip("/")
 RESULTS = Path(os.getenv("STUDIO_TEST_RESULTS", "/tmp/market-studio-smoke"))
 
 
+def walkthrough(page):
+    page.get_by_role("button", name="Start interactive walkthrough").click()
+    query = page.get_by_role("textbox", name="Search the workspace or ask a question")
+    expect(query).to_have_value("watermelon")
+    page.locator(".mk-command-options button").filter(
+        has_text="Product · Sunscreen"
+    ).first.click()
+    page.get_by_role("button", name="Reviews", exact=True).click()
+    guide = page.get_by_role("complementary", name="Guided walkthrough")
+    guide.get_by_role("button", name="Open example brief").click()
+    page.locator(".step-guide").get_by_role("button", name="Next").click()
+    expect(page.get_by_role("textbox", name="Search references")).to_have_value(
+        "deconstruct"
+    )
+    page.locator("button.media-card").first.click()
+    guide.get_by_role("button", name="Explore video production").click()
+    page.get_by_role("button", name="Next update").click()
+    expect(page.locator(".render-replay")).to_contain_text("5 of 6 drafts ready")
+    guide.get_by_role("button", name="Finish walkthrough").click()
+    expect(guide).to_have_count(0)
+
+
 def check(context, width):
     mobile = width < 768
     page = context.new_page()
@@ -21,7 +43,11 @@ def check(context, width):
     errors = []
     page.on("pageerror", lambda error: errors.append(str(error)))
     page.goto(ORIGIN, wait_until="domcontentloaded")
-    page.get_by_role("button", name="Skip", exact=True).click()
+    if mobile:
+        page.get_by_role("button", name="Skip", exact=True).click()
+    else:
+        walkthrough(page)
+        page.goto(ORIGIN, wait_until="domcontentloaded")
     expect(page.locator('[data-tour="opportunity"]')).to_be_visible()
     expect(page.locator('[data-tour="insight"]')).to_be_visible()
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), (

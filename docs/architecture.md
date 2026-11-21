@@ -23,8 +23,8 @@ flowchart TB
   end
   subgraph api [api: private :8000]
     FA[FastAPI market_intel.api]
-    MAPI[/api: frontend_api/]
-    SAPI[/studio: studio/]
+    MAPI["/api · frontend_api"]
+    SAPI["/studio · studio"]
     TH[GenerationThrottle]
     VOL[(volume /app/data<br/>SQLite · insight cache ·<br/>jobs · Studio runs)]
   end
@@ -148,7 +148,7 @@ Long operations return a job ID straight away (HTTP 202). They run on a 3-worker
 |---|---|---|
 | **Brief** | `POST /studio/runs`, `/brief` | `studio_creative/brief.py` builds a fact sheet from the catalog (approved wording, claims, SPF, ingredients, images) and attaches the market evidence card the user started from. Catalog facts and research findings are kept apart. |
 | **Research** | `/discover`, `/uploads` | `studio_research/sources.py` pulls competitor and creator accounts. Instagram and TikTok come from ScrapeCreators, YouTube from the Data API v3, and Crustdata social search adds more. Each post is scored by **outlier ratio = views ÷ the account's median views**, using the Creator Breakout Kit method (`vendor/creator-breakout-kit`). |
-| **Paste a link** | `/deconstruct` | `studio_research/analysis.py` resolves any public Instagram, YouTube or TikTok URL, or an uploaded MP4 or image carousel. When a platform blocks the download, you can attach the media yourself. |
+| **Paste a link** | `/deconstruct` | `studio_research/analysis.py` resolves any public Instagram, YouTube or TikTok URL, or an uploaded MP4 or image carousel. Instagram and TikTok media comes through ScrapeCreators, and YouTube through yt-dlp. When a platform blocks the download, you can attach the media yourself. |
 | **Deconstruct** | (same job) | `studio_research/media.py`:<br/>• ffmpeg normalization<br/>• shot boundaries<br/>• timestamped frames<br/>• Tesseract OCR (English and Hindi) for on-screen text<br/>• OpenCV pack and face presence<br/>• transcript via **Sarvam Saaras v3**, with local faster-whisper as fallback<br/>• a semantic read by **Gemini 2.5 Flash** on OpenRouter (`STUDIO_VISION_MODEL`), giving hook, beats and portable "bricks" with timestamp citations |
 | **Patterns** | (derived) | `studio_research/patterns.py` groups inspected posts into formats ("Show the demonstration early") with a winning spec: hook ≤1.5 s, product by 3 s, text by 1 s, length band. A direction backed by one source is labelled a hypothesis. |
 | **Concepts** | `/concepts` | `studio_creative/copy.py` asks **Claude Sonnet 5.5** (`STUDIO_COPY_MODEL`) for three directions grounded in the brief and the patterns |
@@ -212,6 +212,7 @@ Each media operation needs a bearer `STUDIO_SHIM_TOKEN`. The API opens the callb
 There is no authentication. Paid generation is held back by limits the user never sees:
 - **Per-IP throttle** (`studio/throttle.py`). This ASGI middleware applies 60 POSTs per hour per client to `/api/ask`, `/api/refresh`, `/studio/runs` and every Studio operation. Above that it returns HTTP 429 with `Retry-After`. Counts live in `data/studio/rate-limits.sqlite3`, and the client IP comes from Railway's `X-Real-IP` when `STUDIO_TRUST_PROXY=1`.
 - **OpenRouter key cap.** `deploy/railway.py` checks with OpenRouter that the key has a credit limit before it enables public paid generation. Without a cap, the deterministic tools and the demo still work.
+- **Same-origin writes.** Studio mutations are accepted only from the app's own origin (`STUDIO_PUBLIC_ORIGIN`, or localhost:3000), so other sites can't drive generation through a visitor's browser.
 - **Single-flight market jobs**, a deadline on collection runs, and generation receipts that let a known paid video job resume instead of being paid for again.
 
 ---
@@ -248,7 +249,7 @@ Details are in [market-studio-deployment.md](market-studio-deployment.md).
 | Video and post understanding | OpenRouter `google/gemini-2.5-flash` | `STUDIO_VISION_MODEL` |
 | Backgrounds and images | OpenRouter `bytedance-seed/seedream-4.5` | `STUDIO_IMAGE_MODEL` |
 | Hero film motion | OpenRouter `google/veo-3.1-lite` | n/a |
-| ClipForge's own LLM | OpenRouter `google/gemini-2.5-flash-lite` | n/a |
+| ClipForge script judge | OpenRouter `google/gemini-2.5-flash-lite` | `STUDIO_JUDGE_MODEL` |
 | Narration | Sarvam `bulbul:v3` | n/a |
 | Transcription | Sarvam `saaras:v3`, local faster-whisper as fallback | `STUDIO_WHISPER_MODEL` |
 | Translation | Sarvam `mayura:v1` forward, `sarvam-translate:v1` reverse | n/a |
