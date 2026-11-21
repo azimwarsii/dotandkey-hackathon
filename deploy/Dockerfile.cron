@@ -1,0 +1,3 @@
+FROM curlimages/curl:8.17.0
+COPY deploy/nightly.sh /nightly.sh
+ENTRYPOINT ["/bin/sh", "/nightly.sh"]

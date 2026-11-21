@@ -1,0 +1,171 @@
+.welcome-sheet {
+  padding: 0;
+  max-width: min(430px, 92vw);
+  width: 430px;
+  border: 0;
+  background: #f9f9f7;
+  border-radius: 30px;
+  color: #1a1a1a;
+  box-shadow: 0 22px 90px #0003;
+  font-family: inherit;
+}
+.welcome-sheet::backdrop {
+  background: #25282060;
+  backdrop-filter: blur(3px);
+}
+.welcome-art {
+  display: grid;
+  place-items: center;
+  margin: 10px 10px 0;
+  height: 130px;
+  border-radius: 22px;
+  background: repeating-linear-gradient(
+    128deg,
+    #d4eb9a 0px,
+    #d4eb9a 2px,
+    #d9eea5 2px,
+    #d9eea5 7px
+  );
+}
+.welcome-art img {
+  height: auto;
+  width: 42%;
+}
+.welcome-art.art-1 {
+  background: #eadae4;
+}
+.welcome-art.art-2 {
+  background: linear-gradient(105deg, #ffc690, #f3a0d1, #a8deeb);
+}
+.welcome-art span {
+  font-size: 85px;
+}
+.welcome-bars {
+  display: flex;
+  height: 95px;
+  align-items: flex-end;
+  gap: 8px;
+}
+.welcome-bars i {
+  width: 24px;
+  background: #b53e7a;
+  border-radius: 6px 6px 0 0;
+}
+.welcome-copy {
+  padding: 25px;
+}
+.welcome-copy small {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.welcome-copy h2 {
+  font-size: 30px;
+  margin: 8px 0 6px;
+}
+.welcome-copy p {
+  line-height: 1.5;
+}
+.welcome-actions,
+.welcome-pages,
+.tour-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.welcome-actions {
+  justify-content: space-between;
+}
+.welcome-actions button,
+.install-market {
+  min-height: 44px;
+  border-radius: 40px;
+  padding: 8px 14px;
+}
+.welcome-actions .tour-primary {
+  background: #1a1a1a;
+  color: #fff;
+}
+.welcome-pages {
+  justify-content: center;
+}
+.welcome-pages button {
+  height: 44px;
+  min-width: 32px;
+  display: grid;
+  place-items: center;
+}
+.welcome-pages i,
+.tour-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c9c9c6;
+}
+.welcome-pages [aria-pressed="true"] i,
+.tour-dots .on {
+  background: #668b16;
+}
+.tour-dots {
+  margin: 14px 0 8px;
+}
+.driver-popover {
+  border-radius: 18px !important;
+  font-family: inherit !important;
+  padding: 18px !important;
+}
+.driver-popover-footer button {
+  min-height: 40px;
+}
+.experience-banner,
+.market-coach,
+.install-market {
+  position: fixed;
+  z-index: 70;
+  background: #20251e;
+  color: white;
+  border-radius: 15px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 25px #0002;
+  font-size: 13px;
+}
+.experience-banner {
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90vw;
+}
+.market-coach {
+  right: 25px;
+  bottom: 94px;
+  max-width: min(340px, 90vw);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.market-coach button,
+.experience-banner button {
+  color: white;
+  min-width: 38px;
+  min-height: 40px;
+}
+.install-market {
+  right: 18px;
+  top: 70px;
+  border-radius: 30px;
+}
+.market-coach button {
+  font-size: 22px;
+}
+@media (max-width: 767px) {
+  .market-coach {
+    bottom: 156px;
+    right: 10px;
+  }
+  .welcome-sheet {
+    border-radius: 22px;
+  }
+  .welcome-copy {
+    padding: 20px;
+  }
+}

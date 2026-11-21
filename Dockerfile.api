@@ -1,0 +1,23 @@
+FROM python:3.12-slim-bookworm
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 PORT=8000 STUDIO_CHROME_BIN=/usr/bin/chromium \
+    FFMPEG_PATH=/usr/bin/ffmpeg MARKET_INTEL_MINILM_PATH=/opt/models/minilm \
+    STUDIO_WHISPER_MODEL=/opt/models/whisper OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+RUN sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources \
+    && apt-get -o Acquire::Retries=4 update && apt-get -o Acquire::Retries=4 install --no-install-recommends -y \
+    ca-certificates chromium espeak ffmpeg fonts-dejavu-core fonts-noto-core tesseract-ocr tesseract-ocr-hin \
+    && rm -rf /var/lib/apt/lists/*
+COPY requirements*.txt ./
+RUN python -m pip install -r requirements-studio.txt -r requirements-minilm.txt \
+    https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+COPY market_intel/minilm.py market_intel/studio_research/whisper_setup.py /tmp/model-installers/
+RUN python /tmp/model-installers/minilm.py && python /tmp/model-installers/whisper_setup.py
+COPY market_intel ./market_intel
+COPY lexicons ./lexicons
+COPY validation/aspect_precision.json ./validation/aspect_precision.json
+COPY vendor/creator-breakout-kit ./vendor/creator-breakout-kit
+COPY data/market-intel.sqlite3 data/competitor-catalogs.sqlite3 /app/seed-data/
+COPY data/studio/runs/watermelon-demo /app/seed-data/studio/runs/watermelon-demo
+COPY deploy/start_api.py ./deploy/start_api.py
+EXPOSE 8000
+CMD ["python", "-m", "deploy.start_api"]

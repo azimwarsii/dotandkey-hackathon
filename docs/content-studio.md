@@ -1,6 +1,6 @@
 # Content Studio
 
-The Watermelon Sunscreen campaign is included at `data/studio/runs/watermelon-demo`. Read the stored campaign without provider credentials. Creating new research and media uses the services enabled in the local `.env`. Keep both servers bound to loopback: the mutation endpoints are intended for local operators and can incur provider charges.
+The Watermelon Sunscreen campaign is included at `data/studio/runs/watermelon-demo`. Read the stored campaign without provider credentials. Creating new research and media uses the services enabled in the local `.env`. For hosted operation use the private API, spend controls and HTTPS frontend in the [deployment guide](market-studio-deployment.md).
 
 ## Open the studio
 
@@ -41,7 +41,7 @@ The last command installs pinned local transcription weights for the Whisper fal
 
 Choose **New campaign**, select a Part 1 product and build its brief. Discovery uses available ScrapeCreators, YouTube and Crustdata observations. A pasted public post URL or an uploaded MP4/image carousel can enter the same research pipeline. When a platform blocks retrieval, paste its URL and attach the original media. For a Meta Ad Library screenshot, enter observed campaign dates to calculate running time. Longevity is a proxy for selection, and performance requires actual measurements.
 
-Select a concept and optionally a research reference to match its cuts. Generating a campaign writes its script, listings and artwork into a new versioned folder. Draft film composition uses real catalog images and free speech synthesis. The hero control obtains a current OpenRouter motion quote before accepting an approved dollar cap. Audio, image and text services have their own usage. OpenRouter handles creative copy, video understanding, backgrounds and hero motion. Sarvam provides Indian-language transcription and final narration.
+Select a concept and optionally a research reference to match its cuts. Generating a campaign writes its script, listings and artwork into a versioned folder. Draft film composition uses real catalog images and free speech synthesis. **Render hero film** obtains the current motion estimate server-side and records it in the recipe. Audio, image and text services have their own usage. OpenRouter handles creative copy, video understanding, backgrounds and hero motion. Sarvam provides Indian-language transcription and final narration.
 
 All run-owned paths are relative. `STUDIO_RUNS_DIR` selects the storage root. The API returns job IDs for long operations, exposes status via `GET /studio/runs/{id}`, and serializes mutations for each run. A stopped worker is reported as interrupted. Generation receipts permit resuming known paid video jobs. The studio does not publish assets.
 

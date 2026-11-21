@@ -42,11 +42,12 @@ def retry_delay(headers, attempt):
 
 
 class Client:
-    def __init__(self, cache_dir, log, *, refresh=False, transport=None):
+    def __init__(self, cache_dir, log, *, refresh=False, transport=None, deadline=None):
         self.cache = Path(cache_dir)
         self.cache.mkdir(parents=True, exist_ok=True)
         self.log = log
         self.refresh = refresh
+        self.deadline = deadline
         self.key = os.getenv("CRUSTDATA_API_KEY")
         self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
         self.openrouter_key = os.getenv("OPENROUTER_API_KEY")
@@ -98,16 +99,25 @@ class Client:
         self.observations[label] = stamp
         return value
 
+    def _check_deadline(self, delay=0):
+        if self.deadline is not None and time.monotonic() + delay >= self.deadline:
+            raise TimeoutError("The collection time limit was reached.")
+
+    def _wait(self, delay):
+        self._check_deadline(delay)
+        time.sleep(delay)
+
     def _pace(self, bucket, limit, window):
         history = self.calls[bucket]
         if len(history) >= limit:
-            time.sleep(max(0, history.popleft() + window - time.monotonic()))
+            self._wait(max(0, history.popleft() + window - time.monotonic()))
         history.append(time.monotonic())
 
     def _request(self, method, url, *, paid=False, **kwargs):
         parts = urlsplit(url)
         label = parts.netloc + parts.path if paid else url
         for attempt in range(3):
+            self._check_deadline()
             self._pace(label if paid else parts.hostname, 10 if paid else 1, 60 if paid else 1)
             try:
                 resp = self.http.request(method, url, **kwargs)
@@ -118,7 +128,7 @@ class Client:
                 raise SourceUnavailable(f"{parts.hostname} failed: {type(exc).__name__}") from exc
             self.log(label, str(resp.status_code), credits=resp.headers.get("x-credits-used"))
             if resp.status_code == 429 and attempt < 2:
-                time.sleep(retry_delay(resp.headers, attempt))
+                self._wait(retry_delay(resp.headers, attempt))
                 continue
             if 500 <= resp.status_code < 600 and attempt == 0 and method == "GET":
                 continue

@@ -6,6 +6,12 @@ The [Part 1 collector](docs/plan-part1-market-intel.md) stores catalog, marketpl
 
 The [Content Studio](studio-web) connects the per-product brief to reference research, concepts, scripts, storyboard frames, video exports, ads, marketplace listings and test results. The included [Watermelon Sunscreen campaign](data/studio/runs/watermelon-demo) opens with saved artifacts. [Setup, demo walkthrough and refresh commands](docs/content-studio.md)
 
+## Market Studio (Part 4)
+
+The dashboard brings Overview, Products, Competitors, Customers, Strategy and Studio into one installable app. Choose a category and reporting date to explore the observations. Open a source card and select **Create content** to carry the dated evidence into a new campaign. The included Watermelon demo has a downloadable kit with film exports, artwork, scripts, listing copy and testing materials.
+
+Start the stack with `docker compose up --build` and open [Market Studio](http://localhost:3000). The first visit includes a guided tour. Once opened online, visited reports and campaign outputs can be revisited offline. [Local setup, verification and Railway deployment](docs/market-studio-deployment.md)
+
 ## Included crawl
 
 The 21 November 2026 dataset contains 66 single Dot & Key products, 55 linked combos and 50 ranked competitors across ten categories. All 66 singles have a matched marketplace listing and a timestamped observation. There are 248 listings across Amazon India (74), Flipkart (85) and Nykaa (89), and 257 marketplace observations. The 6,133 deduplicated review records comprise 3,606 Judge.me reviews, 1,629 Flipkart reviews, 582 Amazon reviews, 306 Nykaa reviews and 10 indexed Reddit excerpts. Nykaa covers 59 of 66 Dot & Key singles and 30 of 50 selected peers.

@@ -9,6 +9,14 @@ from urllib.parse import urlsplit
 import httpx
 
 
+PRIVATE_SIDECARS = {"localhost", "127.0.0.1", "::1", "clipforge", "clipforge.railway.internal"}
+
+
+def is_private_sidecar(url):
+    parsed = urlsplit(url)
+    return parsed.scheme == "http" and parsed.hostname in PRIVATE_SIDECARS
+
+
 def prepare_project(client, product, brief, script):
     def post(path, body):
         response = client.post(path, json=body)
@@ -66,7 +74,7 @@ def prepare_project(client, product, brief, script):
 def render_sidecar(
     base, brief, script, segments, directory, *, judges=False, exports=False
 ):
-    if urlsplit(base).hostname not in {"127.0.0.1", "localhost", "::1", "clipforge"}:
+    if not is_private_sidecar(base):
         raise ValueError(
             "Configure ClipForge on the local machine or private compose service."
         )
@@ -194,7 +202,7 @@ def generate_grid(run, brief, script, base, shim_url, token, *, prepared=False):
         raise RuntimeError(
             "Storyboard submission requires reconciliation before another charge"
         )
-    if urlsplit(base).hostname not in {"localhost", "127.0.0.1", "clipforge", "::1"}:
+    if not is_private_sidecar(base):
         raise ValueError("Use a local ClipForge instance")
     with httpx.Client(base_url=base, timeout=240, trust_env=False) as client:
         project, identifier, _ = prepare_project(
@@ -314,7 +322,12 @@ def media_adapter(source=None):
         os.getenv("STUDIO_GRID_BIND_HOST", "127.0.0.1") if source else "127.0.0.1"
     )
     callback_host = os.getenv("STUDIO_GRID_CALLBACK_HOST", "127.0.0.1")
-    with socket.socket() as listener:
+    family = socket.AF_INET6 if ":" in bind_host else socket.AF_INET
+    # In IPv6-only private networks, both the callback and the readiness probe use IPv6.
+    loopback = "[::1]" if family == socket.AF_INET6 else "127.0.0.1"
+    if ":" in callback_host and not callback_host.startswith("["):
+        callback_host = f"[{callback_host}]"
+    with socket.socket(family) as listener:
         listener.bind((bind_host, 0))
         listener.listen()
         port = listener.getsockname()[1]
@@ -341,7 +354,7 @@ def media_adapter(source=None):
             for _ in range(60):
                 try:
                     probe = httpx.get(
-                        f"http://127.0.0.1:{port}/openapi.json",
+                        f"http://{loopback}:{port}/openapi.json",
                         timeout=0.5,
                         trust_env=False,
                     )
@@ -355,7 +368,7 @@ def media_adapter(source=None):
             else:
                 raise RuntimeError("The local film adapter did not start in time")
             yield (
-                f"http://127.0.0.1:{port}/v1",
+                f"http://{loopback}:{port}/v1",
                 f"http://{callback_host}:{port}/v1",
                 token,
             )
@@ -382,7 +395,7 @@ def cover_and_carousel(base, run, hero, script):
             (run / p).is_file() for p in [existing["cover"], *existing["carousel"]]
         ):
             return existing
-    if urlsplit(base).hostname not in {"127.0.0.1", "localhost", "::1", "clipforge"}:
+    if not is_private_sidecar(base):
         raise ValueError("Configure a local ClipForge project")
     with httpx.Client(base_url=base, timeout=180, trust_env=False) as client:
         prefix = f"/api/project/{project}"

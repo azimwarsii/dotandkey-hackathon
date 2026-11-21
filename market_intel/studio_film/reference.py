@@ -2,12 +2,12 @@
 
 import os
 from pathlib import Path
-from urllib.parse import urlsplit
 
 import httpx
 
 from .compose import safe_file
 from .providers import save_json
+from .sidecar import is_private_sidecar
 
 MIME = {".mp4": "video/mp4", ".webm": "video/webm", ".mov": "video/quicktime"}
 
@@ -50,7 +50,7 @@ def match_reference(run_dir, reference, destination, *, sidecar_url=None):
         report["reason"] = "There is no saved reference video for ClipForge to analyze."
     elif media.stat().st_size > 80 * 1024**2:
         report["reason"] = "The reference exceeds ClipForge's 80 MB input limit."
-    elif urlsplit(base).hostname not in {"localhost", "127.0.0.1", "::1", "clipforge"}:
+    elif not is_private_sidecar(base):
         report["reason"] = "Reference analysis requires a local ClipForge endpoint."
     else:
         try:

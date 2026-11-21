@@ -139,7 +139,27 @@ def test_studio_campaign_versions_and_job_lock(studio, monkeypatch):
     state = finished(client)
     assert state["creative"]["script"]["id"] == "draft"
     assert Path(state["selected"]["directory"]).parts[0] == "campaigns"
-    assert client.post(base + "/film", json={"paid": True}).status_code == 422
+    from market_intel import studio_film
+    from market_intel.studio import measurement
+    from market_intel.studio_film import providers
+
+    calls = []
+    monkeypatch.setattr(providers, "estimate_hero", lambda: {"estimated_usd": 0.48})
+
+    def render(*args, paid, approved_usd):
+        calls.append((paid, approved_usd))
+        return {"variants": [], "hero": {"id": "demo"}}
+
+    monkeypatch.setattr(studio_film, "render_film", render)
+    monkeypatch.setattr(
+        measurement, "measure_campaign", lambda dest, result, *args: result
+    )
+    assert client.post(base + "/film", json={"paid": True}).status_code == 202
+    assert finished(client)["film"]["hero"]["id"] == "demo"
+    assert (
+        client.post(base + "/film", json={"paid": True}).json()["status"] == "complete"
+    )
+    assert calls == [(True, 0.48)]
 
 
 def test_readback_records_measured_winner_and_missing_denominators(studio, monkeypatch):

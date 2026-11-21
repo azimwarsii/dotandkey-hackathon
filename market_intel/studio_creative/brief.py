@@ -18,6 +18,7 @@ from PIL import Image, ImageOps
 from selectolax.lexbor import LexborHTMLParser
 
 from ..insights import build_insights
+from ..metrics import utc_date
 from ..store import Store
 
 
@@ -228,11 +229,17 @@ def _brand(product, root):
     return kit
 
 
-def build_brief(handle, db_path, catalog_path, run_dir):
+def build_brief(handle, db_path, catalog_path, run_dir, *, as_of=None):
     root = Path(run_dir)
     (root / "inputs").mkdir(parents=True, exist_ok=True)
     with closing(Store(db_path)) as store:
-        catalog = store.catalog()
+        catalog = [
+            p
+            for p in store.catalog()
+            if not as_of
+            or not utc_date(p.get("published_at"))
+            or utc_date(p["published_at"]) <= as_of
+        ]
         product = next(
             (p for p in catalog if p["handle"] == handle and not p.get("is_combo")),
             None,
@@ -240,7 +247,16 @@ def build_brief(handle, db_path, catalog_path, run_dir):
         if not product:
             raise ValueError("Unknown single-product handle")
         raw = store.report(product["category"])
-    result = build_insights(db_path, catalog_path, product["category"])
+    result = build_insights(db_path, catalog_path, product["category"], as_of)
+    if as_of:
+        raw["reviews"] = [
+            r
+            for r in raw["reviews"]
+            if all(
+                not utc_date(r.get(k)) or utc_date(r[k]) <= as_of
+                for k in ("date", "observed_at")
+            )
+        ]
     props = {
         k: product.get(k)
         for k in (

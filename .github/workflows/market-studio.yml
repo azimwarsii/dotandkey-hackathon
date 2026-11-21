@@ -1,0 +1,51 @@
+name: Market Studio
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Python and deployment configuration
+        run: |
+          pip install ruff playwright
+          ruff check --isolated --select E9,F63,F7,F82 market_intel tests validation deploy
+          docker compose config --quiet
+      - name: Build standalone web, API, and pinned ClipForge
+        run: docker compose up --build --wait --wait-timeout 240 -d
+      - name: Run Python regression tests in the API environment
+        run: |
+          docker compose run --rm --no-deps -v "$PWD/tests:/app/tests:ro" -v "$PWD/validation:/app/validation:ro" api \
+            sh -c 'python -m pip install pytest && python -m pytest -q tests'
+      - name: Check web and sidecar health
+        run: |
+          curl --retry 20 --retry-all-errors --retry-delay 2 --fail --silent http://localhost:3000/api/health
+          docker compose exec -T api python -c "import httpx; httpx.get('http://clipforge:3000/api/health').raise_for_status()"
+      - name: Check desktop, mobile, manifest, service worker and offline demo
+        env:
+          STUDIO_TEST_RESULTS: ${{ runner.temp }}/market-studio-results
+        run: |
+          python -m playwright install --with-deps chromium
+          python deploy/smoke.py
+      - name: Audit mobile performance and accessibility
+        run: |
+          npx --yes lighthouse@13.6.0 http://localhost:3000 --quiet --chrome-flags="--headless --no-sandbox" \
+              --only-categories=performance,accessibility --output=json --output-path="$RUNNER_TEMP/market-studio-results/lighthouse.json"
+          jq -e '.categories.performance.score >= 0.90 and .categories.accessibility.score >= 0.90' "$RUNNER_TEMP/market-studio-results/lighthouse.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: market-studio-verification
+          path: ${{ runner.temp }}/market-studio-results
+          if-no-files-found: ignore

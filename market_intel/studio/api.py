@@ -3,6 +3,7 @@
 # ruff: noqa: FA100
 
 import math
+import os
 import shutil
 from contextlib import closing
 from datetime import date
@@ -12,7 +13,7 @@ from urllib.parse import urlsplit
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
 from market_intel.store import Store
@@ -27,6 +28,7 @@ def local_operator(request: Request):
             f"{request.url.scheme}://{request.url.netloc}",
             "http://127.0.0.1:3000",
             "http://localhost:3000",
+            os.getenv("STUDIO_PUBLIC_ORIGIN", "").rstrip("/"),
         }
         if origin not in permitted:
             raise HTTPException(403, "Open the local studio to change this campaign.")
@@ -62,7 +64,14 @@ PLATFORMS = {
 
 
 class NewRun(BaseModel):
-    handle: str = Field(min_length=1, max_length=180)
+    handle: Optional[str] = Field(default=None, min_length=1, max_length=180)
+    evidence: Optional["Evidence"] = None
+
+
+class Evidence(BaseModel):
+    id: str = Field(min_length=1, max_length=240)
+    category: str = Field(min_length=1, max_length=100)
+    as_of: Optional[date] = None
 
 
 class Source(BaseModel):
@@ -103,9 +112,9 @@ def folder_for(run_id):
     return path
 
 
-def launch(folder, action, task):
+def launch(folder, action, task, signature=None):
     try:
-        return runs.submit(folder, action, task)
+        return runs.submit(folder, action, task, signature)
     except runs.Busy as exc:
         raise HTTPException(409, str(exc)) from exc
 
@@ -176,6 +185,7 @@ def products():
                 "handle": p["handle"],
                 "title": p["title"],
                 "category": p["category"],
+                "published_at": p.get("published_at"),
                 "image": (p.get("images") or [None])[0],
             }
             for p in store.catalog()
@@ -197,14 +207,46 @@ def list_runs():
 
 @router.post("/runs", status_code=202)
 def new_run(body: NewRun):
-    if not any(p["handle"] == body.handle for p in products()):
+    catalog = products()
+    source = None
+    if body.evidence:
+        from market_intel.frontend_api.evidence import resolve_evidence
+
+        ref = body.evidence
+        source = resolve_evidence(ref.category, ref.as_of, ref.id)
+        if not source:
+            raise HTTPException(
+                404, "This source is unavailable for the selected date."
+            )
+        catalog = [
+            p for p in catalog if p["category"].casefold() == ref.category.casefold()
+        ]
+        if source.get("as_of"):
+            from market_intel.metrics import utc_date
+
+            day = date.fromisoformat(source["as_of"])
+            catalog = [
+                p
+                for p in catalog
+                if not utc_date(p.get("published_at"))
+                or utc_date(p["published_at"]) <= day
+            ]
+    if not body.handle and not source:
+        raise HTTPException(422, "Choose a product or market insight.")
+    handle = body.handle or (catalog[0]["handle"] if catalog else None)
+    if not any(p["handle"] == handle for p in catalog):
         raise HTTPException(404, "Unknown product handle")
     run_id = uuid4().hex[:14]
     folder = runs.run_path(run_id)
     folder.mkdir(parents=True, exist_ok=False)
     runs.write_json(
         folder / "run.json",
-        {"id": run_id, "handle": body.handle, "created_at": runs.timestamp()},
+        {
+            "id": run_id,
+            "handle": handle,
+            "created_at": runs.timestamp(),
+            "evidence": source,
+        },
     )
     return {"id": run_id, "job": build_brief(run_id)}
 
@@ -214,6 +256,29 @@ def get_run(run_id: str):
     return runs.snapshot(folder_for(run_id))
 
 
+@router.get("/runs/{run_id}/kit.zip")
+def download_kit(run_id: str):
+    from .kit import archive
+
+    try:
+        stream = archive(folder_for(run_id))
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
+
+    def chunks():
+        with stream:
+            while chunk := stream.read(128 * 1024):
+                yield chunk
+
+    return StreamingResponse(
+        chunks(),
+        media_type="application/zip",
+        headers={
+            "Content-Disposition": f'attachment; filename="{run_id}-campaign-kit.zip"'
+        },
+    )
+
+
 @router.post("/runs/{run_id}/brief", status_code=202)
 def build_brief(run_id: str):
     folder = folder_for(run_id)
@@ -221,8 +286,19 @@ def build_brief(run_id: str):
     def work():
         from market_intel.studio_creative import build_brief as build
 
-        handle = runs.load(folder / "run.json")["handle"]
-        runs.write_json(folder / "brief.json", build(handle, *runs.db_paths(), folder))
+        meta = runs.load(folder / "run.json")
+        runs.progress("Fetching catalog and insight evidence")
+        day = (meta.get("evidence") or {}).get("as_of")
+        brief = build(
+            meta["handle"],
+            *runs.db_paths(),
+            folder,
+            **({"as_of": date.fromisoformat(day)} if day else {}),
+        )
+        runs.progress("Assembling product brief")
+        if meta.get("evidence"):
+            brief["market_evidence"] = meta["evidence"]
+        runs.write_json(folder / "brief.json", brief)
 
     return launch(folder, "Product brief", work)
 
@@ -298,6 +374,7 @@ def deconstruct(run_id: str, body: Source):
 
         brief = runs.load(folder / "brief.json", {})
         images = brief.get("product", {}).get("local_images") or []
+        runs.progress("Analyzing source media")
         post = analyze(
             folder,
             url=url,
@@ -319,6 +396,7 @@ def deconstruct(run_id: str, body: Source):
                 "provenance": "user-transcribed Ad Library dates",
             }
             runs.write_json(folder / "research" / post["id"] / "post.json", post)
+        runs.progress("Analyzing creative patterns")
         runs.refresh_patterns(folder)
 
     return launch(folder, "Deconstruct source", work)
@@ -340,17 +418,20 @@ def discover(run_id: str):
             recommended_sources,
         )
 
+        runs.progress("Fetching relevant posts")
         result = find(folder, brief)
         if not (folder / "research/discovery.json").is_file():
             runs.write_json(folder / "research/discovery.json", result)
         if not any(p.get("status") == "ready" for p in runs.posts_in(folder)):
             photos = brief["product"].get("local_images", [])
             for candidate in recommended_sources(result, brief, limit=2):
+                runs.progress("Analyzing discovered source")
                 analyze(
                     folder,
                     url=candidate["url"],
                     product_image=(folder / photos[0]) if photos else None,
                 )
+        runs.progress("Analyzing creative patterns")
         runs.refresh_patterns(folder)
 
     return launch(folder, "Discover posts", work)
@@ -364,12 +445,19 @@ def concepts(run_id: str):
     def work():
         from market_intel.studio_creative import concepts as build
 
+        runs.progress("Analyzing creative patterns")
+        patterns = runs.refresh_patterns(folder)
+        runs.progress("Composing concept slate")
         runs.write_json(
-            folder / "concepts.json",
-            build(brief, runs.refresh_patterns(folder), run_dir=folder),
+            folder / "concepts.json", build(brief, patterns, run_dir=folder)
         )
 
-    return launch(folder, "Concept slate", work)
+    return launch(
+        folder,
+        "Concept slate",
+        work,
+        runs.fingerprint("concepts", brief, runs.posts_in(folder)),
+    )
 
 
 @router.post("/runs/{run_id}/generate", status_code=202)
@@ -384,20 +472,26 @@ def generate(run_id: str, body: Choice):
         else None
     )
 
+    key = runs.fingerprint("campaign-v1", brief, state["patterns"], concept, reference)
+
     def work():
         from market_intel.studio_creative import generate as build
         from market_intel.studio_film.reference import match_reference
 
-        rel = "campaigns/" + uuid4().hex[:12]
+        rel = "campaigns/" + key[:24]
         dest = folder / rel
-        dest.mkdir(parents=True)
-        seed_files([brief, reference], folder, dest)
-        runs.write_json(dest / "brief.json", brief)
-        runs.write_json(dest / "concepts.json", state["concepts"])
-        runs.write_json(dest / "patterns.json", state["patterns"])
-        rhythm = match_reference(folder, reference, dest)
-        result = build(dest, brief, state["patterns"], concept, reference=rhythm)
-        runs.write_json(dest / "creative.json", result)
+        if not (dest / "creative.json").is_file():
+            dest.mkdir(parents=True, exist_ok=True)
+            seed_files([brief, reference], folder, dest)
+            runs.write_json(dest / "brief.json", brief)
+            runs.write_json(dest / "concepts.json", state["concepts"])
+            runs.write_json(dest / "patterns.json", state["patterns"])
+            runs.progress("Analyzing reference rhythm")
+            rhythm = match_reference(folder, reference, dest)
+            runs.progress("Composing campaign assets and copy")
+            result = build(dest, brief, state["patterns"], concept, reference=rhythm)
+            runs.write_json(dest / "creative.json", result)
+        runs.progress("Publishing campaign outputs")
         runs.write_json(
             folder / "selected.json",
             {
@@ -423,10 +517,15 @@ def localize(run_id: str, body: Localization):
         raise HTTPException(422, "Select Hindi or Hinglish.")
     if not creative.get("script"):
         raise HTTPException(409, "Generate a script first.")
+
+    def work():
+        runs.progress("Adapting script and listing copy")
+        return translate(dest, brief, creative, body.language)
+
     return launch(
         folder,
         "Adapt copy into " + LANGUAGES[body.language],
-        lambda: translate(dest, brief, creative, body.language),
+        work,
     )
 
 
@@ -438,22 +537,24 @@ def film(run_id: str, body: FilmRequest):
     creative = runs.load(dest / "creative.json", {})
     if not creative.get("script"):
         raise HTTPException(409, "Generate a script first.")
-    if body.paid and body.approved_usd is None:
-        raise HTTPException(422, "A paid render needs the displayed quote.")
 
     def work():
         from market_intel.studio_film import render_film
+        from market_intel.studio_film.providers import estimate_hero
 
+        runs.progress("Composing film and rendering variants")
         result = render_film(
             dest,
             brief,
             creative["script"],
             creative["variants"],
             paid=body.paid,
-            approved_usd=body.approved_usd,
+            approved_usd=body.approved_usd
+            or (estimate_hero()["estimated_usd"] if body.paid else None),
         )
         from .measurement import measure_campaign
 
+        runs.progress("Checking film quality and campaign measurements")
         patterns = runs.load(
             dest / "patterns.json", runs.load(folder / "research/patterns.json", [])
         )
@@ -463,7 +564,10 @@ def film(run_id: str, body: FilmRequest):
         )
 
     return launch(
-        folder, "Render hero film" if body.paid else "Render draft variants", work
+        folder,
+        "Render hero film" if body.paid else "Render draft variants",
+        work,
+        runs.fingerprint("film", dest.name, creative, body.paid),
     )
 
 
@@ -493,11 +597,13 @@ def readback(run_id: str, body: Readback):
     def work():
         from market_intel.studio_research import deconstruct as analyze
 
+        runs.progress("Fetching and analyzing published post")
         post = analyze(folder, url=url)
         if post.get("status") != "ready":
             raise ValueError("The live post could not be resolved.")
         from market_intel.studio_research import readback_baseline
 
+        runs.progress("Comparing observed performance with baseline")
         baseline = readback_baseline(post, state["brief"])
         if baseline.get("status") == "measured":
             post.update(
@@ -531,6 +637,7 @@ def readback(run_id: str, body: Readback):
             }
         )
         runs.write_json(folder / "readback.json", history)
+        runs.progress("Analyzing creative patterns")
         runs.refresh_patterns(folder)
 
     return launch(folder, "Measure published variant", work)

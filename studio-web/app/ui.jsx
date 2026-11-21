@@ -149,7 +149,7 @@ export function Data({ value, level = 0 }) {
     </dl>
   );
 }
-export function Modal({ title, close, children }) {
+export function Modal({ title, close, children, drawer = false }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
@@ -159,6 +159,8 @@ export function Modal({ title, close, children }) {
   return (
     <dialog
       ref={ref}
+      className={drawer ? "studio-drawer" : undefined}
+      aria-label={title}
       onCancel={close}
       onClick={(e) => {
         if (e.target === e.currentTarget) close();

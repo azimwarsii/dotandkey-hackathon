@@ -132,6 +132,7 @@ def concepts(brief, patterns, run_dir=None):
             )
     payload = {
         "upstream_workflows": guides,
+        "market_signal_for_editorial_direction_only": brief.get("market_evidence"),
         "product": name,
         "facts": options,
         "hooks": HOOKS,
@@ -198,6 +199,7 @@ def concepts(brief, patterns, run_dir=None):
                     )
                 )[:280],
                 "insight_ref": fact["id"],
+                "market_evidence_id": (brief.get("market_evidence") or {}).get("id"),
                 "review_refs": [e["id"] for e in source],
                 "pattern_ref": pattern["id"],
                 "breakout_driver": pattern_title,

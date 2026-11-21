@@ -389,7 +389,7 @@ def segment(frame, audio, length, destination, movie=None, movie_start=0):
         f":s=44100:d={duration:.5f},afade=in:d=0.16,afade=out:st={max(0, duration - 0.28):.5f}:d=0.28[bed]"
     )
     audio_filter = (
-        f"[1:a]atempo={tempo:.6f},apad,atrim=duration={duration:.5f},loudnorm=I=-16:TP=-1.5:LRA=7[vo];"
+        f"[1:a]atempo={tempo:.6f},apad,atrim=duration={duration:.5f},loudnorm=I=-16:TP=-1.5:LRA=7,aresample=44100[vo];"
         f"{bed};[vo][bed]amix=inputs=2:normalize=0:duration=first[a]"
     )
     if movie:

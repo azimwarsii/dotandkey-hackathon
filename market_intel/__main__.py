@@ -2,13 +2,13 @@
 from __future__ import annotations
 
 import argparse
-from contextlib import closing
-from datetime import date, datetime
 import json
 import logging
 import os
-from pathlib import Path
 import sys
+from contextlib import closing
+from datetime import date, datetime
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -16,10 +16,16 @@ from .client import Client, SourceUnavailable
 from .store import Store
 
 
-def crawl(client, store, args):
+def crawl(client, store, args, progress=lambda stage: None):
     from .catalog import collect_catalog
     from .competitors import collect_signals, select_competitors
-    from .marketplaces import DOMAINS, collect_listings, discover, load_overrides, resolve_listing_conflicts
+    from .marketplaces import (
+        DOMAINS,
+        collect_listings,
+        discover,
+        load_overrides,
+        resolve_listing_conflicts,
+    )
     from .reviews import collect_judgeme, collect_reddit
 
     def attempt(operation, target, fn, *params):
@@ -33,6 +39,7 @@ def crawl(client, store, args):
         attempt("account permissions", "/account/endpoints", client.permissions)
     overrides = load_overrides(args.overrides) if args.overrides else None
     if args.stage in ("all", "first-party"):
+        progress('Refreshing Dot & Key catalog')
         store.save_catalog(collect_catalog(client))
     products = store.catalog()
     singles = [p for p in products if not p["is_combo"]]
@@ -46,6 +53,7 @@ def crawl(client, store, args):
         print(f"Collecting {category}", flush=True)
         own = [p for p in singles if p["category"] == category]
         if args.stage in ("all", "first-party"):
+            progress(f"Collecting {category} customer reviews")
             for p in own:
                 if args.judgeme_pages:
                     reviews = attempt("Judge.me", p["product_ref"], collect_judgeme, client, p, args.judgeme_pages)
@@ -53,6 +61,7 @@ def crawl(client, store, args):
         if args.stage == "first-party":
             continue
 
+        progress(f"Ranking {category} competitors")
         selected = attempt("competitor selection", category, select_competitors, client, category, own)
         if selected:
             store.save_selection(category, selected)
@@ -60,7 +69,8 @@ def crawl(client, store, args):
             store.log(category, "no_competitors_returned")
         targets = [(p, None) for p in own] + [(p, listing) for p, listing, _, _ in (selected or [])]
         listings = []
-        for p, matched in targets:
+        for number, (p, matched) in enumerate(targets, 1):
+            progress(f"Finding listings for product {number} of {len(targets)}")
             for market in DOMAINS:
                 if matched and matched["market"] == market:
                     row = matched
@@ -80,12 +90,14 @@ def crawl(client, store, args):
         for row in listings:
             store.save_listing(row)
         for i in range(0, len(listings), 10):
+            progress(f"Collecting marketplace observations {i + 1}–{min(i + 10, len(listings))} of {len(listings)}")
             batch = listings[i:i + 10]
             try:
                 for row, snapshot, reviews in collect_listings(client, batch, args.review_pages):
                     store.save_listing(row, snapshot, reviews)
             except SourceUnavailable as exc:
                 store.log(category, "batch_unavailable", detail=str(exc))
+        progress(f"Updating {category} brand signals")
         for p, _, _, _ in selected or []:
             brand = p["brand"]
             if brand.casefold() not in seen_brands:

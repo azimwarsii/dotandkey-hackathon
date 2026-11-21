@@ -1,3 +1,4 @@
+# ruff: noqa: UP045 -- FastAPI evaluates these annotations on Python 3.9.
 import os
 from datetime import date
 from typing import Optional
@@ -5,12 +6,15 @@ from typing import Optional
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 
+from .frontend_api.router import router as market_router
 from .insights import build_insights, opportunity_overview
 from .store import report_from
 from .studio.api import router as studio_router
+from .studio.throttle import GenerationThrottle
 
 load_dotenv()
 app = FastAPI(title="Dot & Key market intelligence", version="1")
+app.add_middleware(GenerationThrottle)
 
 
 @app.get("/category/{c}/report-data")
@@ -44,3 +48,5 @@ def opportunities(as_of: Optional[date] = None):
 
 
 app.include_router(studio_router)
+
+app.include_router(market_router)

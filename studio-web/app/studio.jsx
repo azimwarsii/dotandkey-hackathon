@@ -18,7 +18,12 @@ import {
 import { Swipe, Inspect, Patterns } from "./research";
 import { Concepts, Script, Video, Statics, Testing } from "./production";
 
+import { Workflow, Kit } from "./studio-workflow";
+
 const titles = {
+  kit: "Campaign kit",
+  aplus: "A+ content",
+  listings: "Marketplace listing",
   overview: "Campaign overview",
   swipe: "Swipe file",
   inspect: "Deconstruct",
@@ -31,6 +36,10 @@ const titles = {
   lineage: "Lineage",
 };
 async function api(path, options) {
+  if (options?.method === "POST" && !navigator.onLine)
+    throw Error(
+      "Reconnect to start this job. Saved outputs are available offline.",
+    );
   const response = await fetch("/studio-api" + path, options);
   if (!response.ok) {
     let d;
@@ -240,6 +249,12 @@ function Lineage({ s, inspect, go, enter }) {
   );
   return (
     <Section title="Trace each shot">
+      {b.market_evidence && (
+        <div className="lineage-row">
+          {node(b.market_evidence.title, b.market_evidence, "Market evidence")}
+          {node(b.product.title, b, "Product brief")}
+        </div>
+      )}
       {shots.length ? (
         shots.map((shot, i) => {
           const fact =
@@ -317,10 +332,18 @@ function Lineage({ s, inspect, go, enter }) {
     </Section>
   );
 }
-export default function Studio({ first, initialId, initialView }) {
+export default function Studio({
+  first,
+  initialId = "watermelon-demo",
+  initialView,
+  embedded = false,
+  onRoute,
+}) {
   const [s, setState] = useState(first),
     [run, setRun] = useState(initialId),
-    [view, setView] = useState(titles[initialView] ? initialView : "overview"),
+    [view, setView] = useState(
+      titles[initialView] ? initialView : embedded ? "swipe" : "overview",
+    ),
     [runList, setRuns] = useState([]),
     [products, setProducts] = useState([]),
     [item, setItem] = useState(null),
@@ -330,9 +353,13 @@ export default function Studio({ first, initialId, initialView }) {
     [postId, setPost] = useState(""),
     [sourceLink, setSourceLink] = useState(""),
     [handle, setHandle] = useState(""),
-    [pending, setPending] = useState(false);
+    [pending, setPending] = useState(false),
+    [stage, setStage] = useState("");
   const current = useRef(run);
   current.current = run;
+  useEffect(() => {
+    if (embedded) setView(titles[initialView] ? initialView : "swipe");
+  }, [initialView, embedded]);
   const refresh = useCallback(async () => {
     const id = current.current;
     const v = await api("/runs/" + id);
@@ -354,23 +381,39 @@ export default function Studio({ first, initialId, initialView }) {
   const job = s?.jobs?.[0],
     busy = pending || job?.status === "running";
   useEffect(() => {
-    if (!busy) return;
-    const t = setInterval(
-      () => refresh().catch((e) => setError(e.message)),
-      1500,
+    if (job?.status !== "running") return;
+    const events = new EventSource(
+      "/api/jobs/" +
+        encodeURIComponent(job.id) +
+        "/events?run=" +
+        encodeURIComponent(run),
     );
-    return () => clearInterval(t);
-  }, [busy, refresh]);
+    const finish = () => {
+      events.close();
+      refresh().catch((e) => setError(e.message));
+    };
+    events.onmessage = (message) => {
+      const updated = JSON.parse(message.data);
+      setStage(updated.stage || updated.action);
+      if (["complete", "failed", "interrupted"].includes(updated.status))
+        finish();
+    };
+    events.onerror = () => {
+      refresh().catch(() => {});
+    };
+    return () => events.close();
+  }, [job?.id, job?.status, run, refresh]);
   useEffect(() => {
     const pop = () => {
       const q = new URLSearchParams(location.search);
       setRun(q.get("run") || initialId);
-      setView(titles[q.get("view")] ? q.get("view") : "overview");
+      const choice = q.get("studioStep") || q.get("view");
+      setView(titles[choice] ? choice : embedded ? "swipe" : "overview");
     };
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
-  }, [initialId]);
-  const navigate = (v, id = run) => {
+  }, [initialId, embedded]);
+  const navigate = (v, id = run, category) => {
     setView(v);
     setMobile(false);
     setItem(null);
@@ -379,11 +422,21 @@ export default function Studio({ first, initialId, initialView }) {
       setState(null);
       setRun(id);
     }
-    window.history.pushState(
-      null,
-      "",
-      "?run=" + encodeURIComponent(id) + "&view=" + v,
-    );
+    if (embedded && onRoute) {
+      const campaign = runList.find((row) => row.id === id);
+      const chosen = products.find((row) => row.handle === campaign?.handle);
+      onRoute(
+        id,
+        v,
+        category || chosen?.category || s?.brief?.product?.category,
+      );
+      return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set("run", id);
+    url.searchParams.set("view", embedded ? "studio" : v);
+    if (embedded) url.searchParams.set("studioStep", v);
+    window.history.pushState(null, "", url);
     window.scrollTo({ top: 0 });
   };
   const enter = (id) => {
@@ -395,7 +448,19 @@ export default function Studio({ first, initialId, initialView }) {
     setPending(true);
     setError("");
     try {
-      await post("/runs/" + run + "/" + action, body);
+      setStage("");
+      const submitted = await post("/runs/" + run + "/" + action, body);
+      if (submitted.status === "running")
+        setState(
+          (old) =>
+            old && {
+              ...old,
+              jobs: [
+                submitted,
+                ...old.jobs.filter((j) => j.id !== submitted.id),
+              ],
+            },
+        );
       await refresh();
     } catch (e) {
       setError(e.message);
@@ -426,7 +491,11 @@ export default function Studio({ first, initialId, initialView }) {
     try {
       const res = await post("/runs", { handle });
       await lists();
-      navigate("overview", res.id);
+      navigate(
+        "overview",
+        res.id,
+        products.find((p) => p.handle === handle)?.category,
+      );
     } catch (e) {
       setError(e.message);
     } finally {
@@ -442,7 +511,10 @@ export default function Studio({ first, initialId, initialView }) {
     act,
     busy,
     enter,
-    inspect: setItem,
+    inspect: (value) => {
+      setDialog("");
+      setItem(value);
+    },
     go: navigate,
   };
   const loaders = {
@@ -462,20 +534,16 @@ export default function Studio({ first, initialId, initialView }) {
     patterns: () => <Patterns {...shared} />,
     concepts: () => <Concepts {...shared} />,
     script: () => <Script {...shared} />,
-    video: () => (
-      <Video
-        {...shared}
-        quote={async () => {
-          try {
-            return await api("/film-quote");
-          } catch (e) {
-            setError(e.message);
-            return null;
-          }
-        }}
-      />
-    ),
-    statics: () => <Statics {...shared} />,
+    video: () => <Video {...shared} />,
+    statics: () => <Statics {...shared} unified={embedded} />,
+    aplus: () => <Statics {...shared} unified initialTab="A+ content" />,
+    listings: () => <Statics {...shared} unified initialTab="Listing copy" />,
+    kit: () =>
+      s.creative.script ? (
+        <Kit {...shared} run={run} />
+      ) : (
+        <Empty>Produce a concept to assemble a campaign kit.</Empty>
+      ),
     testing: () => <Testing {...shared} />,
     lineage: () => <Lineage {...shared} />,
   };
@@ -497,25 +565,27 @@ export default function Studio({ first, initialId, initialView }) {
     </div>
   );
   return (
-    <div className="shell">
-      <aside className={"sidebar " + (mobile ? "open" : "")}>
-        <button
-          className="brand"
-          onClick={() => navigate("overview")}
-          aria-label="Dot & Key studio overview"
-        >
-          Dot <i>&</i> Key<span>Content Studio</span>
-        </button>
-        <div className="nav-wrap">
-          {group("Workspace", nav.slice(0, 1))}
-          {group("Research", nav.slice(1, 4))}
-          {group("Production", nav.slice(4, 8))}
-          {group("Performance", nav.slice(8))}
-        </div>
-        <button className="sidebar-foot" onClick={() => setDialog("runs")}>
-          <Icon name="folder" /> Switch campaign <Icon name="chevron" />
-        </button>
-      </aside>
+    <div className={embedded ? "studio-embedded" : "shell"}>
+      {!embedded && (
+        <aside className={"sidebar " + (mobile ? "open" : "")}>
+          <button
+            className="brand"
+            onClick={() => navigate("overview")}
+            aria-label="Dot & Key studio overview"
+          >
+            Dot <i>&</i> Key<span>Content Studio</span>
+          </button>
+          <div className="nav-wrap">
+            {group("Workspace", nav.slice(0, 1))}
+            {group("Research", nav.slice(1, 4))}
+            {group("Production", nav.slice(4, 8))}
+            {group("Performance", nav.slice(8))}
+          </div>
+          <button className="sidebar-foot" onClick={() => setDialog("runs")}>
+            <Icon name="folder" /> Switch campaign <Icon name="chevron" />
+          </button>
+        </aside>
+      )}
       {mobile && (
         <button
           className="scrim"
@@ -523,26 +593,30 @@ export default function Studio({ first, initialId, initialView }) {
           onClick={() => setMobile(false)}
         />
       )}
-      <main>
-        <header>
-          <div>
-            <button
-              className="mobile-toggle icon-btn"
-              onClick={() => setMobile(!mobile)}
-              aria-label="Open navigation"
-            >
-              <Icon name="menu" />
+      <div className="studio-main">
+        {embedded ? (
+          <Workflow {...{ s, view }} go={navigate} open={setDialog} />
+        ) : (
+          <header>
+            <div>
+              <button
+                className="mobile-toggle icon-btn"
+                onClick={() => setMobile(!mobile)}
+                aria-label="Open navigation"
+              >
+                <Icon name="menu" />
+              </button>
+              <span className="breadcrumb">Studio</span>
+              <span className="slash">/</span>
+              {titles[view]}
+            </div>
+            <button className="run-select" onClick={() => setDialog("runs")}>
+              <span className="live-dot" />
+              {s?.meta.title || s?.brief?.product?.category || "Campaign"}
+              <Icon name="chevron" size={14} />
             </button>
-            <span className="breadcrumb">Studio</span>
-            <span className="slash">/</span>
-            {titles[view]}
-          </div>
-          <button className="run-select" onClick={() => setDialog("runs")}>
-            <span className="live-dot" />
-            {s?.meta.title || s?.brief?.product?.category || "Campaign"}
-            <Icon name="chevron" size={14} />
-          </button>
-        </header>
+          </header>
+        )}
         <div className="content">
           <div className="page-heading">
             <h1>{titles[view]}</h1>
@@ -560,8 +634,16 @@ export default function Studio({ first, initialId, initialView }) {
           )}
           {job && job.status !== "complete" && (
             <div role="status" className="notice">
-              {job.action} · {job.status}
+              {job.action} ·{" "}
+              {job.status === "running" ? stage || job.status : job.status}
               {job.error && " · " + job.error}
+            </div>
+          )}
+          {view === "testing" && s?.creative.script && (
+            <div className="kit-actions">
+              <button className="primary" onClick={() => navigate("kit")}>
+                Open campaign kit <Icon name="arrow" />
+              </button>
             </div>
           )}
           {s ? (
@@ -579,9 +661,19 @@ export default function Studio({ first, initialId, initialView }) {
             <Empty>Loading campaign…</Empty>
           )}
         </div>
-      </main>
+      </div>
       {item && (
         <Inspector key={item.title} item={item} close={() => setItem(null)} />
+      )}
+      {dialog === "lineage" && s && (
+        <Modal title="Campaign lineage" drawer close={() => setDialog("")}>
+          <Lineage {...shared} />
+        </Modal>
+      )}
+      {dialog === "source" && s && (
+        <Modal title="Market evidence" close={() => setDialog("")}>
+          <Data value={s.brief.market_evidence} />
+        </Modal>
       )}
       {dialog === "runs" && (
         <Modal title="Campaigns" close={() => setDialog("")}>

@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import fcntl
+import hashlib
 import json
 import logging
 import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
+from contextvars import ContextVar
 from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -18,6 +20,22 @@ LOG = logging.getLogger(__name__)
 POOL = ThreadPoolExecutor(max_workers=3, thread_name_prefix="content-studio")
 ID = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,100}\Z")
 DEMO = "watermelon-demo"
+_STAGE_WRITER = ContextVar("studio_stage_writer", default=None)
+
+
+def progress(stage):
+    """Publish a worker's actual pipeline stage; ordinary CLI calls need no context."""
+    writer = _STAGE_WRITER.get()
+    if writer:
+        writer(stage)
+
+
+def record_stage(job, stage):
+    at = timestamp()
+    job.update(stage=stage, updated_at=at)
+    job.setdefault("stages", []).append(
+        {"stage": stage, "status": job["status"], "updated_at": at}
+    )
 
 
 def timestamp():
@@ -81,33 +99,68 @@ def _jobs(folder):
         try:
             with locked(folder):
                 for job in jobs:
+                    path = folder / "jobs" / (job["id"] + ".json")
+                    # The worker may have finished between our first read and locking.
+                    job.update(load(path))
                     if job["status"] == "running":
                         job.update(
                             status="interrupted",
                             error="The worker stopped before this operation finished.",
                         )
-                        write_json(folder / "jobs" / (job["id"] + ".json"), job)
+                        record_stage(job, "Interrupted")
+                        write_json(path, job)
         except Busy:
             pass
     return sorted(jobs, key=lambda j: j["created_at"], reverse=True)[:15]
 
 
-def submit(folder, action, operation):
+def fingerprint(*inputs):
+    value = json.dumps(inputs, sort_keys=True, ensure_ascii=False, default=str)
+    return hashlib.sha256(value.encode()).hexdigest()
+
+
+def cached_job(folder, signature, statuses):
+    if signature:
+        for path in (folder / "jobs").glob("*.json"):
+            job = load(path)
+            if job.get("signature") == signature and job["status"] in statuses:
+                return job
+    return None
+
+
+def submit(folder, action, operation, signature=None):
     # Keep the same advisory lock from admission through publication of the result.
     lock = locked(folder)
-    lock.__enter__()
+    try:
+        lock.__enter__()
+    except Busy:
+        previous = cached_job(folder, signature, {"running"})
+        if previous:
+            return previous
+        raise
+    previous = cached_job(folder, signature, {"complete"})
+    if previous:
+        lock.__exit__(None, None, None)
+        return previous
     job = {
         "id": uuid4().hex,
         "action": action,
         "status": "running",
         "created_at": timestamp(),
+        "signature": signature,
     }
     path = folder / "jobs" / (job["id"] + ".json")
 
+    def mark(stage):
+        record_stage(job, stage)
+        write_json(path, job)
+
     def work():
+        token = _STAGE_WRITER.set(mark)
         try:
             operation()
             job["status"] = "complete"
+            record_stage(job, "Complete")
         except Exception as exc:  # noqa: BLE001 - record failures at the worker boundary
             LOG.error(
                 "Studio %s failed for %s (%s)", action, folder.name, type(exc).__name__
@@ -123,7 +176,9 @@ def submit(folder, action, operation):
                 r"https?://\S+|(?:sk-|cd_)[A-Za-z0-9_-]+", "[source]", message
             )
             job["error"] = message[:240]
+            record_stage(job, "Failed")
         finally:
+            _STAGE_WRITER.reset(token)
             try:
                 job["finished_at"] = timestamp()
                 write_json(path, job)
@@ -131,12 +186,13 @@ def submit(folder, action, operation):
                 lock.__exit__(None, None, None)
 
     try:
-        write_json(path, job)
+        mark("Preparing " + action.lower())
+        initial = dict(job, stages=list(job["stages"]))
         POOL.submit(work)
     except BaseException:
         lock.__exit__(None, None, None)
         raise
-    return dict(job)
+    return initial
 
 
 def posts_in(folder):

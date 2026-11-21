@@ -350,10 +350,9 @@ export function Script({ s, media, inspect, act, busy }) {
     </>
   );
 }
-export function Video({ s, media, act, busy, inspect, quote }) {
+export function Video({ s, media, act, busy, inspect }) {
   const f = s.film,
-    [chosen, setChosen] = useState(""),
-    [cost, setCost] = useState(null);
+    [chosen, setChosen] = useState("");
   const rows = asList(f.variants || f.drafts);
   const pick = rows.find((r) => r.id === chosen) || rows[0];
   const movie = (x) =>
@@ -374,25 +373,11 @@ export function Video({ s, media, act, busy, inspect, quote }) {
         <button
           disabled={busy || !s.creative.script}
           className="secondary"
-          onClick={async () => setCost(await quote())}
+          onClick={() => act("film", { paid: true })}
         >
-          Quote hero film
+          Render hero film
         </button>
       </div>
-      {cost && (
-        <div className="notice">
-          Two eight-second shots · {cost.model} · USD {cost.estimated_usd}
-          <button
-            disabled={busy}
-            onClick={() => {
-              act("film", { paid: true, approved_usd: cost.estimated_usd });
-              setCost(null);
-            }}
-          >
-            Approve render
-          </button>
-        </div>
-      )}
       <Section
         title="Screening room"
         action={
@@ -544,19 +529,30 @@ export function Video({ s, media, act, busy, inspect, quote }) {
     </>
   );
 }
-export function Statics({ s, media, inspect, act, busy }) {
-  const [tab, setTab] = useState("Static ads");
+export function Statics({
+  s,
+  media,
+  inspect,
+  act,
+  busy,
+  initialTab,
+  unified = false,
+}) {
+  const [selection, setTab] = useState("Static ads");
+  const tab = initialTab || selection;
   const c = s.creative;
   const rows = tab === "Static ads" ? asList(c.statics) : asList(c.aplus);
   return (
     <>
-      <div className="tabs">
-        {["Static ads", "A+ content", "Listing copy"].map((t) => (
-          <button key={t} aria-pressed={t === tab} onClick={() => setTab(t)}>
-            {t}
-          </button>
-        ))}
-      </div>
+      {!unified && (
+        <div className="tabs">
+          {["Static ads", "A+ content", "Listing copy"].map((t) => (
+            <button key={t} aria-pressed={t === tab} onClick={() => setTab(t)}>
+              {t}
+            </button>
+          ))}
+        </div>
+      )}
       {tab === "Listing copy" ? (
         <Section title="Marketplace copy">
           {asList(c.listings).map((r, i) => (
