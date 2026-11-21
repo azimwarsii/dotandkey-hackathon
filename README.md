@@ -8,6 +8,10 @@ Built for the Vibe Coders Hackathon Ed. 3 brief ([problem-statement.pdf](problem
 - **Every number has a source.** Insights come from rules over scraped observations, not from a chatbot. Each card and answer links to the review, listing or catalog entry behind it.
 - **Installable.** It is a PWA that works on phone and desktop, keeps visited reports available offline, and starts with a guided tour.
 
+![Market overview with Lip Balm selected, showing its opportunity score, review share and three-month forecast](docs/screenshots/market-overview.webp)
+
+In the 21 November 2026 report, Lip Balm ranked first for opportunity. Dot & Key accounted for 19.8% of the reviews counted across the six tracked brands.
+
 ---
 
 ## Quick start
@@ -45,6 +49,10 @@ Deployment to Railway is one command: `.venv/bin/python deploy/railway.py`. See 
 
 Pick the **category** and the **reporting date** at the top. Use "compared to" to see change over time.
 
+![Sunscreen competitor rankings with Lakmé selected beside a radar chart comparing five review topics](docs/screenshots/sunscreen-competitors.webp)
+
+Select a competitor to compare its price and rating, then see how customers describe its fragrance, texture, packaging, sun protection and absorption alongside Dot & Key.
+
 ### Search or ask: ⌘K / Ctrl+K
 One box does both.
 
@@ -78,6 +86,10 @@ When the evidence doesn't support an answer, Ask says so instead of guessing.
    - Script and storyboard
    - Video: drafts, then a hero film exported for Reels, Shorts and Meta
 6. **Test:** check the QC gate (claim guard, technical QC, brand review), the variant matrix and the test plan. Then **download the campaign kit**.
+
+![Watermelon Sunscreen campaign kit with a playable hero film, Meta ads, display banners and a download button](docs/screenshots/watermelon-campaign-kit.webp)
+
+The saved Watermelon Sunscreen kit brings together 14 graphic assets, three marketplace listings and six test films. Use **Share campaign** to send a link or **Download kit** to get the files.
 
 ### Live demo
 A rehearsed 8-minute script with the exact commands and questions is in **[docs/demo-script.md](docs/demo-script.md)**.

@@ -1,0 +1,766 @@
+{
+  "id": "localization-hi-IN",
+  "path": "locales/hi-IN.json",
+  "language": "hi-IN",
+  "label": "Hindi",
+  "source_language": "en-IN",
+  "source_digest": "25f3e13b4d1540d476856b78d166bd7f69b6eec0c0f4ee958c5c6b9b67aae461",
+  "signature": {
+    "version": 1,
+    "mode": "formal",
+    "locale": "hi-IN",
+    "forward_model": "sarvam-translate:v1",
+    "reverse_model": "mayura:v1"
+  },
+  "status": "pending_bilingual_review",
+  "publishable": false,
+  "lines": [
+    {
+      "id": "shot-1.text",
+      "asset_id": "shot-1",
+      "field": "text",
+      "source": "What's on the label?",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "लेबल पर क्या है?",
+      "rejected_candidate": null,
+      "backtranslation": "What's on the label?",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_50e28964-f0d8-4b09-bc82-cba121cd7e8f",
+        "20261121_5d379ccb-d78b-4c7b-a1ba-60cb8f6e2471"
+      ]
+    },
+    {
+      "id": "shot-1.vo",
+      "asset_id": "shot-1",
+      "field": "vo",
+      "source": "What's on the label?",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "लेबल पर क्या है?",
+      "rejected_candidate": null,
+      "backtranslation": "What's on the label?",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_50e28964-f0d8-4b09-bc82-cba121cd7e8f",
+        "20261121_5d379ccb-d78b-4c7b-a1ba-60cb8f6e2471"
+      ]
+    },
+    {
+      "id": "shot-2.text",
+      "asset_id": "shot-2",
+      "field": "text",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+      "fact_refs": [
+        "fact-ee34226c0383"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज, हयालूरोनिक एसिड और यूवी फिल्टर से भरपूर",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, rich in hyaluronic acid and UV filter",
+      "flags": [],
+      "similarity": 0.5,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_8d6b17c1-0e09-4254-b290-b8cdedf810c6",
+        "20261121_dc02c75b-68c0-405d-b3a8-438833e7b502"
+      ]
+    },
+    {
+      "id": "shot-2.vo",
+      "asset_id": "shot-2",
+      "field": "vo",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+      "fact_refs": [
+        "fact-ee34226c0383"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज, हयालूरोनिक एसिड और यूवी फिल्टर से भरपूर",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, rich in hyaluronic acid and UV filter",
+      "flags": [],
+      "similarity": 0.5,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_8d6b17c1-0e09-4254-b290-b8cdedf810c6",
+        "20261121_dc02c75b-68c0-405d-b3a8-438833e7b502"
+      ]
+    },
+    {
+      "id": "shot-3.text",
+      "asset_id": "shot-3",
+      "field": "text",
+      "source": "zero white cast",
+      "fact_refs": [
+        "fact-526cc42cc340"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "शून्य श्वेत कास्ट",
+      "rejected_candidate": null,
+      "backtranslation": "Zero whiteness",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.25,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_a3445344-9ec7-4001-881d-49074df44f95",
+        "20261121_fd1abc8d-0dc7-4e8d-8264-f92a30029f7e"
+      ]
+    },
+    {
+      "id": "shot-3.vo",
+      "asset_id": "shot-3",
+      "field": "vo",
+      "source": "zero white cast",
+      "fact_refs": [
+        "fact-526cc42cc340"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "शून्य श्वेत कास्ट",
+      "rejected_candidate": null,
+      "backtranslation": "Zero whiteness",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.25,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_a3445344-9ec7-4001-881d-49074df44f95",
+        "20261121_fd1abc8d-0dc7-4e8d-8264-f92a30029f7e"
+      ]
+    },
+    {
+      "id": "shot-4.text",
+      "asset_id": "shot-4",
+      "field": "text",
+      "source": "Watermelon Sunscreen",
+      "fact_refs": [
+        "fact-6023bf869f65"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज सनस्क्रीन",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon sunscreen",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_cfd944e9-1278-44b1-a957-de073c23e1a7",
+        "20261121_817db5f3-3657-40ef-86aa-558a5b19c025"
+      ]
+    },
+    {
+      "id": "shot-4.vo",
+      "asset_id": "shot-4",
+      "field": "vo",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "चमकदार, धूप से सुरक्षित त्वचा के लिए तत्काल शीतलन सनस्क्रीन",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for radiant, sun-protected skin",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_0216f2e1-235f-4b48-b76d-e138973b9173",
+        "20261121_80620c36-82d0-4742-bbcd-07c8adc641ca"
+      ]
+    },
+    {
+      "id": "shot-5.text",
+      "asset_id": "shot-5",
+      "field": "text",
+      "source": "Explore the formula.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "सूत्र का अन्वेषण करें।",
+      "rejected_candidate": null,
+      "backtranslation": "Explore the formula.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_a5f79c42-1165-402a-992e-9290f84d7cac",
+        "20261121_d866280b-1114-49ee-803e-543b64edc2a1"
+      ]
+    },
+    {
+      "id": "shot-5.vo",
+      "asset_id": "shot-5",
+      "field": "vo",
+      "source": "Explore the formula.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "सूत्र का अन्वेषण करें।",
+      "rejected_candidate": null,
+      "backtranslation": "Explore the formula.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_a5f79c42-1165-402a-992e-9290f84d7cac",
+        "20261121_d866280b-1114-49ee-803e-543b64edc2a1"
+      ]
+    },
+    {
+      "id": "listing-amazon.title",
+      "asset_id": "listing-amazon",
+      "field": "title",
+      "source": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+      "fact_refs": [
+        "fact-34ddea1068f9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तैलीय त्वचा के लिए नए जमाने के यूवी फिल्टर के साथ तरबूज सनस्क्रीन एसपीएफ 50+ पीए++++",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon sunscreen SPF 50+ PA++++ with new era UV filter for oily skin",
+      "flags": [],
+      "similarity": 0.667,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_27e773e5-aa7a-4f64-bb6c-a8f40ae79aba",
+        "20261121_d129eb35-eeda-40ea-bfd3-619628aa71df"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-1",
+      "asset_id": "listing-amazon",
+      "field": "bullet-1",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn.",
+      "fact_refs": [
+        "fact-5eabdfbba88b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "टैनिंग और सनबर्न को रोकने के लिए यूवीए+यूवीबी+नीली रोशनी की किरणों को रोकता है।",
+      "rejected_candidate": null,
+      "backtranslation": "It blocks UVA+UVB+blue light rays to prevent tanning and sunburn.",
+      "flags": [],
+      "similarity": 0.583,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_4ede8c14-5953-45af-af63-de30b329c387",
+        "20261121_60251d50-875d-405b-921b-0f016d3bab76"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-2",
+      "asset_id": "listing-amazon",
+      "field": "bullet-2",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "यह त्वचा के असमान रंग को कम करते हुए तेल-मुक्त नमी प्रदान करता है।",
+      "rejected_candidate": null,
+      "backtranslation": "It provides oil-free moisture, without the dulling effect of skin-colourising.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.286,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_f210aa25-7cd1-4296-a1af-8dcc4777244f",
+        "20261121_b2c199e5-8990-4d7f-b4ba-ce5b44d62a03"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-3",
+      "asset_id": "listing-amazon",
+      "field": "bullet-3",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "एक्वा जेल और जल्दी सोखने वाला, यह बिना किसी सफेदी के आसानी से मिल जाता है।",
+      "rejected_candidate": null,
+      "backtranslation": "Aquagel and quick-absorbing, it comes in an easy-to-use package without any white residue.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.176,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_25fad7a6-2d63-42da-ac9f-744bdaa949ab",
+        "20261121_cfc67c7f-f052-47b7-9bfa-dfefdd9cc12f"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-4",
+      "asset_id": "listing-amazon",
+      "field": "bullet-4",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "चमकदार, धूप से सुरक्षित त्वचा के लिए तत्काल शीतलन सनस्क्रीन।",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for glowing, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_fa274693-729a-4205-a9b5-f37a7044624c",
+        "20261121_44c53673-064f-4d4f-a21e-2772a6f56663"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-5",
+      "asset_id": "listing-amazon",
+      "field": "bullet-5",
+      "source": "Use 15 minutes before stepping out.",
+      "fact_refs": [
+        "fact-3ee75b462885"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "बाहर निकलने से 15 मिनट पहले इस्तेमाल करें।",
+      "rejected_candidate": null,
+      "backtranslation": "Use within 15 minutes of taking it outside.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.286,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_7a4df5da-071f-4c24-9e70-beb7559db144",
+        "20261121_571d843b-880a-4758-a8d3-b809b7784842"
+      ]
+    },
+    {
+      "id": "listing-amazon.description",
+      "asset_id": "listing-amazon",
+      "field": "description",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters. Use it even when indoors, or out on a cloudy day.",
+      "fact_refs": [
+        "fact-ee34226c0383",
+        "fact-74040cf9be9b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज, हयालूरोनिक एसिड और यूवी फिल्टर से भरपूर। इसे घर के अंदर या बादल वाले दिन में भी इस्तेमाल करें।",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, rich in hyaluronic acid and UV filters. Use it inside the house or on a cloudy day.",
+      "flags": [],
+      "similarity": 0.529,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_e4cf4f8d-e3e6-4d4b-91e2-cf1fb82caecd",
+        "20261121_cecfc076-c99d-4b20-a56f-1f650a51b54d"
+      ]
+    },
+    {
+      "id": "listing-amazon.keywords",
+      "asset_id": "listing-amazon",
+      "field": "keywords",
+      "source": "sunscreen watermelon hyaluronic watermelon + aha oily combination dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "sunscreen watermelon hyaluronic watermelon + aha oily combination dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    },
+    {
+      "id": "listing-flipkart.title",
+      "asset_id": "listing-flipkart",
+      "field": "title",
+      "source": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+      "fact_refs": [
+        "fact-34ddea1068f9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तैलीय त्वचा के लिए नए जमाने के यूवी फिल्टर के साथ तरबूज सनस्क्रीन एसपीएफ 50+ पीए++++",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon sunscreen SPF 50+ PA++++ with new era UV filter for oily skin",
+      "flags": [],
+      "similarity": 0.667,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_27e773e5-aa7a-4f64-bb6c-a8f40ae79aba",
+        "20261121_d129eb35-eeda-40ea-bfd3-619628aa71df"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-1",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-1",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "चमकदार, धूप से सुरक्षित त्वचा के लिए तत्काल शीतलन सनस्क्रीन।",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for glowing, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_fa274693-729a-4205-a9b5-f37a7044624c",
+        "20261121_44c53673-064f-4d4f-a21e-2772a6f56663"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-2",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-2",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "एक्वा जेल और जल्दी सोखने वाला, यह बिना किसी सफेदी के आसानी से मिल जाता है।",
+      "rejected_candidate": null,
+      "backtranslation": "Aquagel and quick-absorbing, it comes in an easy-to-use package without any white residue.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.176,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_25fad7a6-2d63-42da-ac9f-744bdaa949ab",
+        "20261121_cfc67c7f-f052-47b7-9bfa-dfefdd9cc12f"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-3",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-3",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "यह त्वचा के असमान रंग को कम करते हुए तेल-मुक्त नमी प्रदान करता है।",
+      "rejected_candidate": null,
+      "backtranslation": "It provides oil-free moisture, without the dulling effect of skin-colourising.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.286,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_f210aa25-7cd1-4296-a1af-8dcc4777244f",
+        "20261121_b2c199e5-8990-4d7f-b4ba-ce5b44d62a03"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-4",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-4",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters.",
+      "fact_refs": [
+        "fact-ee34226c0383"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज, हाइलूरोनिक एसिड और यूवी फिल्टर से भरपूर।",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, rich in hyaluronic acid and UV filter.",
+      "flags": [],
+      "similarity": 0.5,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_7715fd55-dab5-410d-8282-c02539a9cda0",
+        "20261121_f73eceb0-e4e0-46f7-ba38-d2e1ba634deb"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-5",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-5",
+      "source": "Re-apply every 2-3 hours.",
+      "fact_refs": [
+        "fact-7e49162165b9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "हर 2-3 घंटे में फिर से लगाएँ।",
+      "rejected_candidate": null,
+      "backtranslation": "Apply every 2-3 hours.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_59b0fda3-fdab-4c1e-8314-d858279a8501",
+        "20261121_b53b9b7f-9a53-4728-8ea2-f5c46e594c96"
+      ]
+    },
+    {
+      "id": "listing-flipkart.description",
+      "asset_id": "listing-flipkart",
+      "field": "description",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn. Use it even when indoors, or out on a cloudy day.",
+      "fact_refs": [
+        "fact-5eabdfbba88b",
+        "fact-74040cf9be9b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "टैनिंग और सनबर्न को रोकने के लिए UVA+UVB+नीली रोशनी की किरणों को रोकता है। इसे घर के अंदर या बादल वाले दिन बाहर भी इस्तेमाल करें।",
+      "rejected_candidate": null,
+      "backtranslation": "It blocks UVA+UVB+ blue light rays to prevent tanning and sunburn. Use it indoors or outdoors on a cloudy day.",
+      "flags": [],
+      "similarity": 0.571,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_9363a940-ec9e-44bf-b4ba-77f77819ad42",
+        "20261121_c80a005f-58e6-407b-95b5-13b3aaece3d3"
+      ]
+    },
+    {
+      "id": "listing-flipkart.keywords",
+      "asset_id": "listing-flipkart",
+      "field": "keywords",
+      "source": "sunscreen watermelon hyaluronic oily combination watermelon + aha dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "sunscreen watermelon hyaluronic oily combination watermelon + aha dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    },
+    {
+      "id": "listing-nykaa.title",
+      "asset_id": "listing-nykaa",
+      "field": "title",
+      "source": "Watermelon Sunscreen",
+      "fact_refs": [
+        "fact-6023bf869f65"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज सनस्क्रीन",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon sunscreen",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_cfd944e9-1278-44b1-a957-de073c23e1a7",
+        "20261121_817db5f3-3657-40ef-86aa-558a5b19c025"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-1",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-1",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "एक्वा जेल और जल्दी सोखने वाला, यह बिना किसी सफेदी के आसानी से मिल जाता है।",
+      "rejected_candidate": null,
+      "backtranslation": "Aquagel and quick-absorbing, it comes in an easy-to-use package without any white residue.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.176,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_25fad7a6-2d63-42da-ac9f-744bdaa949ab",
+        "20261121_cfc67c7f-f052-47b7-9bfa-dfefdd9cc12f"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-2",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-2",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "चमकदार, धूप से सुरक्षित त्वचा के लिए तत्काल शीतलन सनस्क्रीन।",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for glowing, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_fa274693-729a-4205-a9b5-f37a7044624c",
+        "20261121_44c53673-064f-4d4f-a21e-2772a6f56663"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-3",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-3",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "यह त्वचा के असमान रंग को कम करते हुए तेल-मुक्त नमी प्रदान करता है।",
+      "rejected_candidate": null,
+      "backtranslation": "It provides oil-free moisture, without the dulling effect of skin-colourising.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.286,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_f210aa25-7cd1-4296-a1af-8dcc4777244f",
+        "20261121_b2c199e5-8990-4d7f-b4ba-ce5b44d62a03"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-4",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-4",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn.",
+      "fact_refs": [
+        "fact-5eabdfbba88b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "टैनिंग और सनबर्न को रोकने के लिए यूवीए+यूवीबी+नीली रोशनी की किरणों को रोकता है।",
+      "rejected_candidate": null,
+      "backtranslation": "It blocks UVA+UVB+blue light rays to prevent tanning and sunburn.",
+      "flags": [],
+      "similarity": 0.583,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_4ede8c14-5953-45af-af63-de30b329c387",
+        "20261121_60251d50-875d-405b-921b-0f016d3bab76"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-5",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-5",
+      "source": "Apply on face, neck & other body parts.",
+      "fact_refs": [
+        "fact-6a5cdc58a87c"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "चेहरे, गर्दन और शरीर के अन्य हिस्सों पर लगाएँ।",
+      "rejected_candidate": null,
+      "backtranslation": "Apply it to your face, neck, and other parts of your body.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_6eb4e09e-1d50-4355-81be-269ed4216310",
+        "20261121_e9f5f920-0a61-4b03-add0-fad2077ed8ee"
+      ]
+    },
+    {
+      "id": "listing-nykaa.description",
+      "asset_id": "listing-nykaa",
+      "field": "description",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters. Use 15 minutes before stepping out.",
+      "fact_refs": [
+        "fact-ee34226c0383",
+        "fact-3ee75b462885"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "तरबूज, हयालूरोनिक एसिड और यूवी फिल्टर से भरपूर। बाहर निकलने से 15 मिनट पहले इस्तेमाल करें।",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, rich in hyaluronic acid and UV filters. Use within 15 minutes of taking them outside.",
+      "flags": [],
+      "similarity": 0.467,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_ac01bf49-e79c-424a-8cfd-b7d56827f4a0",
+        "20261121_55b69e0a-4b63-48b2-88fb-902658487fd9"
+      ]
+    },
+    {
+      "id": "listing-nykaa.keywords",
+      "asset_id": "listing-nykaa",
+      "field": "keywords",
+      "source": "sunscreen watermelon watermelon + aha hyaluronic oily combination dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "sunscreen watermelon watermelon + aha hyaluronic oily combination dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    }
+  ],
+  "summary": {
+    "total": 34,
+    "unique_source_lines": 18,
+    "pending_review": 31,
+    "blocked": 0,
+    "unavailable": 0,
+    "source_preserved": 3,
+    "flagged": 9
+  },
+  "recipe": {
+    "provider": "Sarvam",
+    "source": "creative.json",
+    "models": [
+      "sarvam-translate:v1",
+      "mayura:v1"
+    ],
+    "mode": "formal",
+    "script": "Devanagari",
+    "documentation": "https://docs.sarvam.ai/api-reference/text/translate-text",
+    "checks": [
+      "English fact reference",
+      "numbers, percentages, SPF and PA",
+      "restricted claims in backtranslation",
+      "lexical drift"
+    ],
+    "release_gate": "Independent bilingual review required before use in public copy."
+  }
+}
