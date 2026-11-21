@@ -65,7 +65,8 @@ function normalRoute(input) {
     route.view = "studio";
   }
   if (!VIEWS.includes(route.view)) route.view = "overview";
-  if (!route.category) route.category = "Sunscreen";
+  if (!route.category)
+    route.category = route.view === "overview" ? "Lip Balm" : "Sunscreen";
   return route;
 }
 function routeFromLocation() {

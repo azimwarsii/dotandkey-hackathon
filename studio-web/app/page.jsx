@@ -7,7 +7,6 @@ export default async function Page({ searchParams }) {
   const params = Object.fromEntries(
     Object.entries(raw).filter(([, v]) => typeof v === "string"),
   );
-  const category = params.category || "Sunscreen";
   const backend = (
     process.env.STUDIO_BACKEND || "http://127.0.0.1:8000"
   ).replace(/\/$/, "");
@@ -21,7 +20,7 @@ export default async function Page({ searchParams }) {
     initialRun = null;
   const date = new Date().toISOString().slice(0, 10);
   if (!params.run && (!params.view || params.view === "overview")) {
-    const q = new URLSearchParams({ category });
+    const q = new URLSearchParams({ category: params.category || "Lip Balm" });
     if (params.as_of) q.set("as_of", params.as_of);
     if (params.compare) q.set("compare", params.compare);
     try {
