@@ -1,0 +1,3989 @@
+{
+  "script_hash": "e42f12f22943ace90b9fb5875747f9bcd05a6d438b21b54c5304afd189c63c8c",
+  "video": "film/hero/master.mp4",
+  "storyboard": "film/hero/storyboard.jpg",
+  "contact_sheet": "film/hero/contact.jpg",
+  "exports": {
+    "reels": "film/hero/reels.mp4",
+    "shorts": "film/hero/shorts.mp4",
+    "meta": "film/hero/meta.mp4"
+  },
+  "gate": {
+    "status": "warn",
+    "claim_guard": {
+      "id": "claim-guard",
+      "label": "Exact catalog wording and SPF",
+      "status": "pass",
+      "issues": []
+    },
+    "technical_qc": "pass",
+    "upstream": "warn",
+    "commercial_review": "Brand and talent clearance required before publication."
+  },
+  "qc": {
+    "status": "pass",
+    "checks": {
+      "decoded_with_audio": true,
+      "black_frames": true,
+      "usable_loudness": true,
+      "script_duration": true,
+      "hook_in_three_seconds": true,
+      "cta": true
+    },
+    "duration": 16.02,
+    "mean_dbfs": -17.2,
+    "peak_dbfs": -1.2,
+    "black_intervals_seconds": [],
+    "frame_times": [
+      0.35,
+      2.35,
+      5.85,
+      9.35,
+      13.35
+    ]
+  },
+  "variants": [
+    {
+      "id": "v1-presenter",
+      "title": "What's on the label? · talking head",
+      "format": "talking head",
+      "video": "film/v1-presenter/master.mp4",
+      "storyboard": "film/v1-presenter/storyboard.jpg",
+      "contact_sheet": "film/v1-presenter/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.14,
+          "voice_tempo": 1.103,
+          "planned_visual": "Presenter introduces the hook, then cuts to the pack.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-07.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "What's on the label?",
+          "text": "What's on the label?"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v1-presenter",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "9aa0b6b2-4110-4016-925e-ab96a7cc6611",
+        "script_id": "f5426c36-ce8d-4ad7-bcfd-a4e146a7ae37",
+        "judges": {
+          "verdicts": [
+            {
+              "judge": "pace",
+              "issues": [
+                {
+                  "shotId": 1,
+                  "issue": "\"What's on the label?\" - This hook is too generic and doesn't immediately grab attention.",
+                  "tier": "invariant"
+                },
+                {
+                  "shotId": 4,
+                  "issue": "\"Instant cooling sunscreen for luminous, sun protected skin\" - This sentence is too long and packed with information, making it hard to digest quickly.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 5,
+                  "issue": "\"Explore the formula.\" - This is a weak call to action and doesn't create intrigue.",
+                  "tier": "default"
+                }
+              ]
+            },
+            {
+              "judge": "voice",
+              "issues": [
+                {
+                  "shotId": 1,
+                  "issue": "\"What's on the label?\" - This sounds like a question from a quiz, not a natural spoken opening.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 2,
+                  "issue": "\"Supercharged with Watermelon, Hyaluronic Acid & UV Filters\" - This phrasing is a bit too formal and reads like marketing copy.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 4,
+                  "issue": "\"Instant cooling sunscreen for luminous, sun protected skin\" - This sentence is too polished and sounds like it was written, not spoken.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 5,
+                  "issue": "\"Explore the formula.\" - This is a very direct and somewhat stiff call to action.",
+                  "tier": "default"
+                }
+              ]
+            },
+            {
+              "judge": "idea",
+              "issues": [
+                {
+                  "shotId": 1,
+                  "issue": "\"What's on the label?\" - This is a very common and uninspired opening for product-focused videos.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 2,
+                  "issue": "Animated text callouts popping up over ingredients is a standard visual trope.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 4,
+                  "issue": "Holding the product to the camera against a backdrop is a very common product shot.",
+                  "tier": "default"
+                }
+              ]
+            },
+            {
+              "judge": "structure",
+              "issues": [
+                {
+                  "shotId": 1,
+                  "issue": "The opening hook \"What's on the label?\" doesn't effectively set up the rest of the video or create immediate suspense.",
+                  "tier": "invariant"
+                },
+                {
+                  "shotId": 4,
+                  "issue": "The sentence \"Instant cooling sunscreen for luminous, sun protected skin\" is too long and doesn't serve as a mid-point hook to keep viewers engaged.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 5,
+                  "issue": "\"Explore the formula.\" is a weak call to action and doesn't provide a satisfying conclusion or a clear next step.",
+                  "tier": "invariant"
+                },
+                {
+                  "shotId": 2,
+                  "issue": "Information density is low in this shot, with the focus solely on listing ingredients without a strong narrative push.",
+                  "tier": "default"
+                }
+              ]
+            },
+            {
+              "judge": "visual",
+              "issues": [
+                {
+                  "shotId": 1,
+                  "issue": "\"Presenter introduces the hook, then cuts to the pack.\" - This description is too vague. What is the presenter doing to introduce the hook? What kind of cut?",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 2,
+                  "issue": "\"Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.\" - This describes a visual effect, but not the action of the creator. The creator is pointing, but the description doesn't emphasize that action.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 3,
+                  "issue": "\"Callout text from the previous shot is echoed beside the hand.\" - This is a visual effect, not an action performed by the creator or a description of what is happening on screen in terms of the product's effect.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 4,
+                  "issue": "\"Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.\" - This describes the scene but doesn't explicitly state the creator's action beyond holding the pack. The push-in is a camera movement, not a creator action.",
+                  "tier": "default"
+                },
+                {
+                  "shotId": 5,
+                  "issue": "\"Creator gives a final point to the pack.\" - This is a good action, but the description of the CTA text is a functional description, not a visual one.",
+                  "tier": "default"
+                }
+              ]
+            }
+          ],
+          "rewrites": [
+            {
+              "shotId": 1,
+              "voiceover": "So, what's actually in this thing?",
+              "tier": "default"
+            },
+            {
+              "shotId": 2,
+              "voiceover": "It's packed with watermelon, hyaluronic acid, and UV filters.",
+              "tier": "default"
+            },
+            {
+              "shotId": 4,
+              "voiceover": "This is your instant cooling sunscreen for skin that looks bright and stays protected.",
+              "tier": "default"
+            },
+            {
+              "shotId": 5,
+              "voiceover": "Go check out the formula.",
+              "tier": "default"
+            }
+          ],
+          "descriptionRewrites": [],
+          "summary": "The video suffers from generic hooks, overly formal and written-sounding dialogue, uninspired visuals, and a lack of clear structural progression. The opening is weak, the mid-section lacks engaging hooks, and the conclusion is abrupt. Visual descriptions need to focus on observable actions rather than functional purposes."
+        },
+        "composition_id": "2a07e891-c485-403c-aa67-698358641136",
+        "video": "film/v1-presenter/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "2a07e891-c485-403c-aa67-698358641136",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.6 LUFS）",
+                "en": "Loudness OK (-13.6 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.6,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "9aa0b6b2-4110-4016-925e-ab96a7cc6611",
+          "compositionId": "2a07e891-c485-403c-aa67-698358641136",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 2 项风险提示",
+                  "en": "Script readiness check has 2 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v1-presenter/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "fae459c643453437949111aac8fbe0e73f68dedcc910cae7f83466e99fe8f14e",
+      "measured_preflight": {
+        "fingerprint": "a18aed3e605eb9b9353a75f56b3baf532ba5a22d62e594ffee33d07bac14f3fa",
+        "video": "film/v1-presenter/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v1-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": "Unconfirmed in sampled frames",
+            "status": "warn",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v1-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v1-presenter/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 67,
+        "measured": 6,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v1-presenter/measured/frame-0000000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY SUNSCREEN 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 0.25,
+            "path": "film/v1-presenter/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOTKEY DOT&KEY 5C+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 0.5,
+            "path": "film/v1-presenter/measured/frame-0000500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 1.0,
+            "path": "film/v1-presenter/measured/frame-0001000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 1.5,
+            "path": "film/v1-presenter/measured/frame-0001500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 2.0,
+            "path": "film/v1-presenter/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v1-presenter/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v1-presenter/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v1-presenter/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v1-presenter/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v1-presenter/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v1-presenter/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v1-presenter/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v1-demo",
+      "title": "What's on the label? · demo",
+      "format": "demo",
+      "video": "film/v1-demo/master.mp4",
+      "storyboard": "film/v1-demo/storyboard.jpg",
+      "contact_sheet": "film/v1-demo/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.14,
+          "voice_tempo": 1.103,
+          "planned_visual": "Open on the official packshot and cut to the texture.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-01.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "What's on the label?",
+          "text": "What's on the label?"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v1-demo",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "de578ad9-6cf9-45c4-a191-9819a4cc575e",
+        "script_id": "3d371868-071c-47f5-be0b-d60615841ac7",
+        "composition_id": "cefaabe1-6af3-4b2e-80f2-df094e13cb70",
+        "video": "film/v1-demo/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "cefaabe1-6af3-4b2e-80f2-df094e13cb70",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.6 LUFS）",
+                "en": "Loudness OK (-13.6 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.6,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "de578ad9-6cf9-45c4-a191-9819a4cc575e",
+          "compositionId": "cefaabe1-6af3-4b2e-80f2-df094e13cb70",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 2 项风险提示",
+                  "en": "Script readiness check has 2 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v1-demo/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "149920a0f3a7eb0dbd4629947be8e5e850750e0fd2bcbc9002698654d8d2b66a",
+      "measured_preflight": {
+        "fingerprint": "3307c346035fc2594df28c9022b873d00067810bb77900f3a20fc6b4a5acccd8",
+        "video": "film/v1-demo/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v1-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": "Unconfirmed in sampled frames",
+            "status": "warn",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v1-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v1-demo/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 67,
+        "measured": 6,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v1-demo/measured/frame-0000000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 0.25,
+            "path": "film/v1-demo/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 0.5,
+            "path": "film/v1-demo/measured/frame-0000500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 1.0,
+            "path": "film/v1-demo/measured/frame-0001000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gei 50+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 1.5,
+            "path": "film/v1-demo/measured/frame-0001500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-gel 5C+ DOT&KEY What's on the label?"
+          },
+          {
+            "time": 2.0,
+            "path": "film/v1-demo/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v1-demo/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v1-demo/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v1-demo/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v1-demo/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v1-demo/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v1-demo/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v1-demo/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-presenter",
+      "title": "Meet the formula. · talking head",
+      "format": "talking head",
+      "video": "film/v2-presenter/master.mp4",
+      "storyboard": "film/v2-presenter/storyboard.jpg",
+      "contact_sheet": "film/v2-presenter/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.14,
+          "voice_tempo": 1.103,
+          "planned_visual": "Presenter introduces the hook, then cuts to the pack.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-07.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Meet the formula.",
+          "text": "Meet the formula."
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v2-presenter",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "d51b4756-e018-4661-8a65-cc521f8bf9a6",
+        "script_id": "22a87592-c65d-4f53-9f2d-2671b1b641b1",
+        "composition_id": "cdda0829-b5f6-4db3-bd81-797b4c0c4a24",
+        "video": "film/v2-presenter/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "cdda0829-b5f6-4db3-bd81-797b4c0c4a24",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.5 LUFS）",
+                "en": "Loudness OK (-13.5 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.5,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "d51b4756-e018-4661-8a65-cc521f8bf9a6",
+          "compositionId": "cdda0829-b5f6-4db3-bd81-797b4c0c4a24",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 3 项风险提示",
+                  "en": "Script readiness check has 3 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "开场钩子偏平——加个疑问 / 痛点 / 数字会更抓人",
+                    "en": "Opening hook is flat — add a question / pain-point / number"
+                  },
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v2-presenter/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "74dfd4f17af92a1195172a22916fc4d936ce9f74b8cecd15c01bb636d91f4790",
+      "measured_preflight": {
+        "fingerprint": "4a676c8bf9a3cc2ef9860b0344c36f5ed9530df49859f95d7f262f8245edadd6",
+        "video": "film/v2-presenter/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v2-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": "Unconfirmed in sampled frames",
+            "status": "warn",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v2-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v2-presenter/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 67,
+        "measured": 6,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v2-presenter/measured/frame-0000000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY SUNSCREEN 50+ DOT&KEY Meet the formula."
+          },
+          {
+            "time": 0.25,
+            "path": "film/v2-presenter/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOTKEY DOT&KEY 50+ DOT&KEY Meet theformula."
+          },
+          {
+            "time": 0.5,
+            "path": "film/v2-presenter/measured/frame-0000500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY OLNG 50+ DOT&KEY Meettheformula."
+          },
+          {
+            "time": 1.0,
+            "path": "film/v2-presenter/measured/frame-0001000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 5C+ DOT&KEY Meettheformula."
+          },
+          {
+            "time": 1.5,
+            "path": "film/v2-presenter/measured/frame-0001500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY Meet the formula."
+          },
+          {
+            "time": 2.0,
+            "path": "film/v2-presenter/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v2-presenter/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v2-presenter/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v2-presenter/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v2-presenter/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v2-presenter/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v2-presenter/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v2-presenter/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-demo",
+      "title": "Meet the formula. · demo",
+      "format": "demo",
+      "video": "film/v2-demo/master.mp4",
+      "storyboard": "film/v2-demo/storyboard.jpg",
+      "contact_sheet": "film/v2-demo/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.2,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.14,
+          "voice_tempo": 1.103,
+          "planned_visual": "Open on the official packshot and cut to the texture.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-01.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Meet the formula.",
+          "text": "Meet the formula."
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v2-demo",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "a5d65758-ae77-4121-83cc-58014fcc7026",
+        "script_id": "7307942b-0d92-4156-8db7-ca073dbdf06c",
+        "composition_id": "cc0fb2ed-7046-4c80-91f5-c55b1e2d4931",
+        "video": "film/v2-demo/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "cc0fb2ed-7046-4c80-91f5-c55b1e2d4931",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.5 LUFS）",
+                "en": "Loudness OK (-13.5 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.5,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "a5d65758-ae77-4121-83cc-58014fcc7026",
+          "compositionId": "cc0fb2ed-7046-4c80-91f5-c55b1e2d4931",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 3 项风险提示",
+                  "en": "Script readiness check has 3 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "开场钩子偏平——加个疑问 / 痛点 / 数字会更抓人",
+                    "en": "Opening hook is flat — add a question / pain-point / number"
+                  },
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v2-demo/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "26c9c990f51dde5385760b1208a99343c3f51a3eb6cb8410efaeadc11a487439",
+      "measured_preflight": {
+        "fingerprint": "c1b8468aaf3b951abf4a3d2091e4d95fd994ed955c87f46f0a50b2a8d39ee1a1",
+        "video": "film/v2-demo/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v2-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v2-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v2-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v2-demo/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 71,
+        "measured": 7,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v2-demo/measured/frame-0000000.jpg",
+            "product_match": true,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 50+ DOT&KEY Meet the formula."
+          },
+          {
+            "time": 0.25,
+            "path": "film/v2-demo/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Meet the formula."
+          },
+          {
+            "time": 0.5,
+            "path": "film/v2-demo/measured/frame-0000500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 50+ DOT&KEY Meettheformula."
+          },
+          {
+            "time": 1.0,
+            "path": "film/v2-demo/measured/frame-0001000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-ge1 50+ WYALURONIC DOT&KEY Meettheformula."
+          },
+          {
+            "time": 1.5,
+            "path": "film/v2-demo/measured/frame-0001500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN 50+ DOT&KEY Meet the formula."
+          },
+          {
+            "time": 2.0,
+            "path": "film/v2-demo/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v2-demo/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v2-demo/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v2-demo/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v2-demo/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v2-demo/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v2-demo/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v2-demo/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v3-presenter",
+      "title": "One more look. · talking head",
+      "format": "talking head",
+      "video": "film/v3-presenter/master.mp4",
+      "storyboard": "film/v3-presenter/storyboard.jpg",
+      "contact_sheet": "film/v3-presenter/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.3,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.3,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.02,
+          "voice_tempo": 1.041,
+          "planned_visual": "Presenter introduces the hook, then cuts to the pack.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-07.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "One more look.",
+          "text": "One more look."
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v3-presenter",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "6ed29363-fbde-4c2f-937a-385a86c81024",
+        "script_id": "1a769e61-0a21-4bff-8ab9-372c0563245b",
+        "composition_id": "0ce546b8-425f-4d56-a4e7-97c398828f69",
+        "video": "film/v3-presenter/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "0ce546b8-425f-4d56-a4e7-97c398828f69",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.6 LUFS）",
+                "en": "Loudness OK (-13.6 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.6,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "6ed29363-fbde-4c2f-937a-385a86c81024",
+          "compositionId": "0ce546b8-425f-4d56-a4e7-97c398828f69",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 3 项风险提示",
+                  "en": "Script readiness check has 3 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "开场钩子偏平——加个疑问 / 痛点 / 数字会更抓人",
+                    "en": "Opening hook is flat — add a question / pain-point / number"
+                  },
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v3-presenter/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "00858602361bf79a2f319a7b311caec6e4234120607856a52748873f8c26c22e",
+      "measured_preflight": {
+        "fingerprint": "6eb9cea23a11ede56f58b982813df2621915e315e6cc9b33570930b24501eefe",
+        "video": "film/v3-presenter/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v3-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": "Unconfirmed in sampled frames",
+            "status": "warn",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v3-presenter/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v3-presenter/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 67,
+        "measured": 6,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v3-presenter/measured/frame-0000000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY SUNSCREEN 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 0.25,
+            "path": "film/v3-presenter/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOTKEY DOT&KEY 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 0.5,
+            "path": "film/v3-presenter/measured/frame-0000500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 1.0,
+            "path": "film/v3-presenter/measured/frame-0001000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 1.5,
+            "path": "film/v3-presenter/measured/frame-0001500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 2.0,
+            "path": "film/v3-presenter/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v3-presenter/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v3-presenter/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v3-presenter/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v3-presenter/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v3-presenter/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v3-presenter/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v3-presenter/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    },
+    {
+      "id": "v3-demo",
+      "title": "One more look. · demo",
+      "format": "demo",
+      "video": "film/v3-demo/master.mp4",
+      "storyboard": "film/v3-demo/storyboard.jpg",
+      "contact_sheet": "film/v3-demo/contact.jpg",
+      "exports": {},
+      "checks": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.3,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "qc": {
+        "status": "pass",
+        "checks": {
+          "decoded_with_audio": true,
+          "black_frames": true,
+          "usable_loudness": true,
+          "script_duration": true,
+          "hook_in_three_seconds": true,
+          "cta": true
+        },
+        "duration": 16.02,
+        "mean_dbfs": -17.3,
+        "peak_dbfs": -1.1,
+        "black_intervals_seconds": [],
+        "frame_times": [
+          0.35,
+          2.35,
+          5.85,
+          9.35,
+          13.35
+        ]
+      },
+      "gate": {
+        "status": "warn",
+        "claim_guard": {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": []
+        },
+        "technical_qc": "pass",
+        "upstream": "warn",
+        "commercial_review": "Brand and talent clearance required before publication."
+      },
+      "shots": [
+        {
+          "duration": 2.0,
+          "voice_seconds": 2.02,
+          "voice_tempo": 1.041,
+          "planned_visual": "Open on the official packshot and cut to the texture.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-01.jpg",
+          "visual_deviation": null,
+          "start": 0.0,
+          "shot_id": "shot-1",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "One more look.",
+          "text": "One more look."
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 5.4,
+          "voice_tempo": 1.57,
+          "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-03.jpg",
+          "visual_deviation": null,
+          "start": 2.0,
+          "shot_id": "shot-2",
+          "insight_ref": "fact-ee34226c0383",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+          "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+        },
+        {
+          "duration": 3.5,
+          "voice_seconds": 2.35,
+          "voice_tempo": 1,
+          "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-04.jpg",
+          "visual_deviation": null,
+          "start": 5.5,
+          "shot_id": "shot-3",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "zero white cast",
+          "text": "zero white cast"
+        },
+        {
+          "duration": 4.0,
+          "voice_seconds": 4.85,
+          "voice_tempo": 1.231,
+          "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-05.jpg",
+          "visual_deviation": null,
+          "start": 9.0,
+          "shot_id": "shot-4",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+          "text": "Watermelon Sunscreen"
+        },
+        {
+          "duration": 3.0,
+          "voice_seconds": 2.42,
+          "voice_tempo": 1,
+          "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+          "delivered_visual": "Catalog-photo draft animatic",
+          "visual_source": "inputs/product-06.jpg",
+          "visual_deviation": null,
+          "start": 13.0,
+          "shot_id": "shot-5",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "vo": "Explore the formula.",
+          "text": "Explore the formula."
+        }
+      ],
+      "duration": 16.02,
+      "inputs": {
+        "script_id": "script-v3-demo",
+        "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+        "product_photo": "inputs/cutout.png"
+      },
+      "recipe": {
+        "composition": "FFmpeg matched to approved shot timings",
+        "clipforge": "completed",
+        "narration": [
+          "Edge TTS / en-IN-NeerjaNeural"
+        ],
+        "soundtrack": "Original synthesized F-major underscore",
+        "visuals": "Animated catalog photo animatic",
+        "paid_video_usd": 0
+      },
+      "clipforge": {
+        "ingest": "verified catalog brief and uploaded local materials",
+        "project_id": "2fd31977-408e-4714-a264-165e04aba08f",
+        "script_id": "b3e81db8-20ff-40f8-8b76-83fbfdacf44d",
+        "composition_id": "62a44c31-4c8c-49e4-b42a-72f022f3ef63",
+        "video": "film/v3-demo/sidecar/clipforge.mp4",
+        "qc": {
+          "compositionId": "62a44c31-4c8c-49e4-b42a-72f022f3ef63",
+          "status": "ok",
+          "checks": [
+            {
+              "id": "video-stream",
+              "level": "ok",
+              "message": {
+                "zh": "视频流正常（1080×1920）",
+                "en": "Video stream OK (1080×1920)"
+              }
+            },
+            {
+              "id": "audio-stream",
+              "level": "ok",
+              "message": {
+                "zh": "音频流正常",
+                "en": "Audio stream OK"
+              }
+            },
+            {
+              "id": "duration",
+              "level": "ok",
+              "message": {
+                "zh": "时长 16.0 秒",
+                "en": "Duration 16.0s"
+              }
+            },
+            {
+              "id": "resolution",
+              "level": "ok",
+              "message": {
+                "zh": "分辨率符合预期",
+                "en": "Resolution matches"
+              }
+            },
+            {
+              "id": "black",
+              "level": "ok",
+              "message": {
+                "zh": "无黑屏",
+                "en": "No black frames"
+              }
+            },
+            {
+              "id": "silence",
+              "level": "ok",
+              "message": {
+                "zh": "无异常静音",
+                "en": "No abnormal silence"
+              }
+            },
+            {
+              "id": "loudness",
+              "level": "ok",
+              "message": {
+                "zh": "响度正常（-13.6 LUFS）",
+                "en": "Loudness OK (-13.6 LUFS)"
+              }
+            },
+            {
+              "id": "freeze",
+              "level": "ok",
+              "message": {
+                "zh": "画面无冻结",
+                "en": "No frozen picture"
+              }
+            }
+          ],
+          "probe": {
+            "hasVideo": true,
+            "hasAudio": true,
+            "width": 1080,
+            "height": 1920,
+            "duration": 16
+          },
+          "signals": {
+            "black": [],
+            "silence": [],
+            "freeze": [],
+            "loudness": -13.6,
+            "truePeak": null
+          }
+        },
+        "gate": {
+          "projectId": "2fd31977-408e-4714-a264-165e04aba08f",
+          "compositionId": "62a44c31-4c8c-49e4-b42a-72f022f3ef63",
+          "report": {
+            "status": "warn",
+            "items": [
+              {
+                "id": "readiness",
+                "status": "warn",
+                "message": {
+                  "zh": "脚本发布就绪检查有 3 项风险提示",
+                  "en": "Script readiness check has 3 risk warning(s)"
+                },
+                "problems": [
+                  {
+                    "zh": "开场钩子偏平——加个疑问 / 痛点 / 数字会更抓人",
+                    "en": "Opening hook is flat — add a question / pain-point / number"
+                  },
+                  {
+                    "zh": "总时长 10s 偏短——信息可能不足以促单",
+                    "en": "Total 10s is short — may not be enough to drive a purchase"
+                  },
+                  {
+                    "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                    "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                  }
+                ]
+              },
+              {
+                "id": "qc",
+                "status": "pass",
+                "message": {
+                  "zh": "成片质检通过",
+                  "en": "Video QC passed"
+                },
+                "problems": []
+              },
+              {
+                "id": "quality",
+                "status": "pass",
+                "message": {
+                  "zh": "没有需要语义验收的 AI 生成镜头",
+                  "en": "No AI-generated shots require semantic review"
+                },
+                "problems": []
+              },
+              {
+                "id": "credits",
+                "status": "pass",
+                "message": {
+                  "zh": "素材授权可商用，无需署名",
+                  "en": "Assets are commercial-safe, no attribution required"
+                },
+                "problems": []
+              },
+              {
+                "id": "aiPolicy",
+                "status": "pass",
+                "message": {
+                  "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                  "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+                },
+                "problems": []
+              },
+              {
+                "id": "realMix",
+                "status": "pass",
+                "message": {
+                  "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                  "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+                },
+                "problems": []
+              }
+            ],
+            "summary": {
+              "pass": 5,
+              "warn": 1,
+              "fail": 0
+            },
+            "verdict": {
+              "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+              "en": "Conditionally passed — review the flagged risks before publishing"
+            }
+          }
+        },
+        "contact_sheet": "film/v3-demo/sidecar/clipforge-contact.jpg",
+        "status": "completed"
+      },
+      "fingerprint": "262dd090569d6d6db51772bc1103e092cb2edc121ee2311002cdd4e87e3e83da",
+      "measured_preflight": {
+        "fingerprint": "08d2f93763273c0320e07142ee06aaabd5c11017a20e917283b2ee58b1ddd63e",
+        "video": "film/v3-demo/master.mp4",
+        "pattern_id": "pattern-40a352e665e0c3d7",
+        "checks": [
+          {
+            "id": "hook",
+            "label": "Opening hook visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v3-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "product",
+            "label": "Catalog pack visible",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v3-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "overlay",
+            "label": "Opening overlay readable",
+            "value": 0,
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": "film/v3-demo/measured/frame-0000000.jpg"
+          },
+          {
+            "id": "duration",
+            "label": "Runtime within reference IQR",
+            "value": 16.0,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "pace",
+            "label": "Measured cut rate within 25% of reference",
+            "value": 0.125,
+            "status": "fail",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          },
+          {
+            "id": "cta",
+            "label": "Closing CTA visible",
+            "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+            "status": "pass",
+            "shot_ref": "shot-5",
+            "time": 15.5,
+            "frame": "film/v3-demo/measured/frame-0015500.jpg"
+          },
+          {
+            "id": "claims",
+            "label": "Scripted overlays and VO passed claim guard",
+            "value": "pass",
+            "status": "pass",
+            "shot_ref": "shot-1",
+            "time": 0,
+            "frame": null
+          }
+        ],
+        "score": 71,
+        "measured": 7,
+        "total": 7,
+        "cuts": [
+          0.0,
+          2.023,
+          5.523
+        ],
+        "reference_spec": {
+          "hook_max_s": 1.5,
+          "product_by_s": 3,
+          "text_by_s": 1,
+          "length_iqr": [
+            24.75,
+            24.75
+          ],
+          "duration_median_s": 24.75,
+          "cuts_per_second_median": 0.687,
+          "observed_first_text_median_s": 0.0,
+          "observed_face_in_first_second_share": 1.0,
+          "measurement_n": 1,
+          "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+        },
+        "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+        "samples": [
+          {
+            "time": 0,
+            "path": "film/v3-demo/measured/frame-0000000.jpg",
+            "product_match": true,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-g+) 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 0.25,
+            "path": "film/v3-demo/measured/frame-0000250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 0.5,
+            "path": "film/v3-demo/measured/frame-0000500.jpg",
+            "product_match": true,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY One more look."
+          },
+          {
+            "time": 1.0,
+            "path": "film/v3-demo/measured/frame-0001000.jpg",
+            "product_match": true,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gei 50+ DOT&KEY One more look."
+          },
+          {
+            "time": 1.5,
+            "path": "film/v3-demo/measured/frame-0001500.jpg",
+            "product_match": true,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-gel 5C+ DOT&KEY One more look."
+          },
+          {
+            "time": 2.0,
+            "path": "film/v3-demo/measured/frame-0002000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.25,
+            "path": "film/v3-demo/measured/frame-0002250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 2.5,
+            "path": "film/v3-demo/measured/frame-0002500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+          },
+          {
+            "time": 3.0,
+            "path": "film/v3-demo/measured/frame-0003000.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+          },
+          {
+            "time": 5.75,
+            "path": "film/v3-demo/measured/frame-0005750.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+          },
+          {
+            "time": 9.25,
+            "path": "film/v3-demo/measured/frame-0009250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+          },
+          {
+            "time": 13.25,
+            "path": "film/v3-demo/measured/frame-0013250.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+          },
+          {
+            "time": 15.5,
+            "path": "film/v3-demo/measured/frame-0015500.jpg",
+            "product_match": false,
+            "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+          }
+        ]
+      }
+    }
+  ],
+  "hero": {
+    "id": "hero",
+    "title": "Campaign film",
+    "format": "demo",
+    "video": "film/hero/master.mp4",
+    "storyboard": "film/hero/storyboard.jpg",
+    "contact_sheet": "film/hero/contact.jpg",
+    "exports": {
+      "reels": "film/hero/reels.mp4",
+      "shorts": "film/hero/shorts.mp4",
+      "meta": "film/hero/meta.mp4"
+    },
+    "checks": {
+      "status": "pass",
+      "checks": {
+        "decoded_with_audio": true,
+        "black_frames": true,
+        "usable_loudness": true,
+        "script_duration": true,
+        "hook_in_three_seconds": true,
+        "cta": true
+      },
+      "duration": 16.02,
+      "mean_dbfs": -17.2,
+      "peak_dbfs": -1.2,
+      "black_intervals_seconds": [],
+      "frame_times": [
+        0.35,
+        2.35,
+        5.85,
+        9.35,
+        13.35
+      ]
+    },
+    "qc": {
+      "status": "pass",
+      "checks": {
+        "decoded_with_audio": true,
+        "black_frames": true,
+        "usable_loudness": true,
+        "script_duration": true,
+        "hook_in_three_seconds": true,
+        "cta": true
+      },
+      "duration": 16.02,
+      "mean_dbfs": -17.2,
+      "peak_dbfs": -1.2,
+      "black_intervals_seconds": [],
+      "frame_times": [
+        0.35,
+        2.35,
+        5.85,
+        9.35,
+        13.35
+      ]
+    },
+    "gate": {
+      "status": "warn",
+      "claim_guard": {
+        "id": "claim-guard",
+        "label": "Exact catalog wording and SPF",
+        "status": "pass",
+        "issues": []
+      },
+      "technical_qc": "pass",
+      "upstream": "warn",
+      "commercial_review": "Brand and talent clearance required before publication."
+    },
+    "shots": [
+      {
+        "duration": 2.0,
+        "voice_seconds": 1.02,
+        "voice_tempo": 1,
+        "planned_visual": "2.0s. Vertical selfie-style frame. Creator turns the tube to the ingredient panel and frames it tight to camera.",
+        "delivered_visual": "Verified product packshot",
+        "visual_source": "inputs/cutout.png",
+        "visual_deviation": null,
+        "start": 0.0,
+        "shot_id": "shot-1",
+        "insight_ref": "fact-ee34226c0383",
+        "pattern_ref": "pattern-40a352e665e0c3d7",
+        "vo": "What's on the label?",
+        "text": "What's on the label?"
+      },
+      {
+        "duration": 3.5,
+        "voice_seconds": 4.35,
+        "voice_tempo": 1.265,
+        "planned_visual": "3.5s. Tight on the ingredient panel. Creator points a finger at each ingredient in turn. Animated text callouts pop up over the watermelon, hyaluronic acid and UV filter lines.",
+        "delivered_visual": "Verified product packshot",
+        "visual_source": "inputs/cutout.png",
+        "visual_deviation": null,
+        "start": 2.0,
+        "shot_id": "shot-2",
+        "insight_ref": "fact-ee34226c0383",
+        "pattern_ref": "pattern-40a352e665e0c3d7",
+        "vo": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+        "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+      },
+      {
+        "duration": 3.5,
+        "voice_seconds": 1.19,
+        "voice_tempo": 1,
+        "planned_visual": "3.5s. Cut to a macro shot of the creator squeezing the gel onto the back of the hand and blending it in. Callout text from the previous shot is echoed beside the hand.",
+        "delivered_visual": "Macro crop of the actual formula from the product page",
+        "visual_source": "inputs/detail-texture.jpg",
+        "visual_deviation": "The still shows the texture. The cap opening, dispensing and finger motion were not filmed.",
+        "start": 5.5,
+        "shot_id": "shot-3",
+        "insight_ref": "fact-526cc42cc340",
+        "pattern_ref": "pattern-40a352e665e0c3d7",
+        "vo": "zero white cast",
+        "text": "zero white cast"
+      },
+      {
+        "duration": 4.0,
+        "voice_seconds": 3.75,
+        "voice_tempo": 1,
+        "planned_visual": "4.0s. Creator holds the front of the pack to camera against a soft watermelon-toned backdrop, with the full product name clearly legible. Slow push-in.",
+        "delivered_visual": "Verified product packshot",
+        "visual_source": "inputs/cutout.png",
+        "visual_deviation": null,
+        "start": 9.0,
+        "shot_id": "shot-4",
+        "insight_ref": "fact-6023bf869f65",
+        "pattern_ref": "pattern-40a352e665e0c3d7",
+        "vo": "Instant cooling sunscreen for luminous, sun protected skin",
+        "text": "Watermelon Sunscreen"
+      },
+      {
+        "duration": 3.0,
+        "voice_seconds": 1.19,
+        "voice_tempo": 1,
+        "planned_visual": "3.0s. Hold on the pack front against the watermelon-toned backdrop. Creator gives a final point to the pack. CTA text sits in the lower third.",
+        "delivered_visual": "Verified product packshot",
+        "visual_source": "inputs/cutout.png",
+        "visual_deviation": null,
+        "start": 13.0,
+        "shot_id": "shot-5",
+        "insight_ref": "fact-092e2ba7ba1a",
+        "pattern_ref": "pattern-40a352e665e0c3d7",
+        "vo": "Explore the formula.",
+        "text": "Explore the formula."
+      }
+    ],
+    "duration": 16.02,
+    "inputs": {
+      "script_id": "script-concept-2",
+      "product_url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+      "product_photo": "inputs/cutout.png"
+    },
+    "recipe": {
+      "composition": "FFmpeg matched to approved shot timings",
+      "clipforge": "completed",
+      "narration": [
+        "Sarvam Bulbul v3"
+      ],
+      "soundtrack": "Original synthesized F-major underscore",
+      "visuals": "Veo 3.1 Lite moving background with original Shopify pack composited on every frame",
+      "paid_video_usd": 0.48
+    },
+    "clipforge": {
+      "ingest": "verified catalog brief and uploaded local materials",
+      "project_id": "460b3dbd-78c0-4d74-b6b2-6a89490957af",
+      "script_id": "c36951b0-3468-41d1-9f6f-13f236aa7c2e",
+      "composition_id": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+      "video": "film/hero/sidecar/clipforge.mp4",
+      "qc": {
+        "compositionId": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+        "status": "ok",
+        "checks": [
+          {
+            "id": "video-stream",
+            "level": "ok",
+            "message": {
+              "zh": "视频流正常（1080×1920）",
+              "en": "Video stream OK (1080×1920)"
+            }
+          },
+          {
+            "id": "audio-stream",
+            "level": "ok",
+            "message": {
+              "zh": "音频流正常",
+              "en": "Audio stream OK"
+            }
+          },
+          {
+            "id": "duration",
+            "level": "ok",
+            "message": {
+              "zh": "时长 16.0 秒",
+              "en": "Duration 16.0s"
+            }
+          },
+          {
+            "id": "resolution",
+            "level": "ok",
+            "message": {
+              "zh": "分辨率符合预期",
+              "en": "Resolution matches"
+            }
+          },
+          {
+            "id": "black",
+            "level": "ok",
+            "message": {
+              "zh": "无黑屏",
+              "en": "No black frames"
+            }
+          },
+          {
+            "id": "silence",
+            "level": "ok",
+            "message": {
+              "zh": "无异常静音",
+              "en": "No abnormal silence"
+            }
+          },
+          {
+            "id": "loudness",
+            "level": "ok",
+            "message": {
+              "zh": "响度正常（-13.9 LUFS）",
+              "en": "Loudness OK (-13.9 LUFS)"
+            }
+          },
+          {
+            "id": "freeze",
+            "level": "ok",
+            "message": {
+              "zh": "画面无冻结",
+              "en": "No frozen picture"
+            }
+          }
+        ],
+        "probe": {
+          "hasVideo": true,
+          "hasAudio": true,
+          "width": 1080,
+          "height": 1920,
+          "duration": 16
+        },
+        "signals": {
+          "black": [],
+          "silence": [],
+          "freeze": [],
+          "loudness": -13.9,
+          "truePeak": null
+        }
+      },
+      "gate": {
+        "projectId": "460b3dbd-78c0-4d74-b6b2-6a89490957af",
+        "compositionId": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+        "report": {
+          "status": "warn",
+          "items": [
+            {
+              "id": "readiness",
+              "status": "warn",
+              "message": {
+                "zh": "脚本发布就绪检查有 2 项风险提示",
+                "en": "Script readiness check has 2 risk warning(s)"
+              },
+              "problems": [
+                {
+                  "zh": "总时长 10s 偏短——信息可能不足以促单",
+                  "en": "Total 10s is short — may not be enough to drive a purchase"
+                },
+                {
+                  "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                  "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+                }
+              ]
+            },
+            {
+              "id": "qc",
+              "status": "pass",
+              "message": {
+                "zh": "成片质检通过",
+                "en": "Video QC passed"
+              },
+              "problems": []
+            },
+            {
+              "id": "quality",
+              "status": "pass",
+              "message": {
+                "zh": "没有需要语义验收的 AI 生成镜头",
+                "en": "No AI-generated shots require semantic review"
+              },
+              "problems": []
+            },
+            {
+              "id": "credits",
+              "status": "pass",
+              "message": {
+                "zh": "素材授权可商用，无需署名",
+                "en": "Assets are commercial-safe, no attribution required"
+              },
+              "problems": []
+            },
+            {
+              "id": "aiPolicy",
+              "status": "pass",
+              "message": {
+                "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+                "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+              },
+              "problems": []
+            },
+            {
+              "id": "realMix",
+              "status": "pass",
+              "message": {
+                "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+                "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+              },
+              "problems": []
+            }
+          ],
+          "summary": {
+            "pass": 5,
+            "warn": 1,
+            "fail": 0
+          },
+          "verdict": {
+            "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+            "en": "Conditionally passed — review the flagged risks before publishing"
+          }
+        }
+      },
+      "contact_sheet": "film/hero/sidecar/clipforge-contact.jpg",
+      "exports": {
+        "reels": "film/hero/sidecar/reels.mp4",
+        "shorts": "film/hero/sidecar/shorts.mp4"
+      },
+      "status": "completed"
+    },
+    "fingerprint": "accef50d2300fb2040c1b0043850d81eaa684c9d5cdeb478dd5ae0b2306c88e9",
+    "measured_preflight": {
+      "fingerprint": "05c2c765edfdaf92d1023746da0076000a7598f5d41b57bad698d744c29af4cc",
+      "video": "film/hero/master.mp4",
+      "pattern_id": "pattern-40a352e665e0c3d7",
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Opening hook visible",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": "film/hero/measured/frame-0000000.jpg"
+        },
+        {
+          "id": "product",
+          "label": "Catalog pack visible",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": "film/hero/measured/frame-0000000.jpg"
+        },
+        {
+          "id": "overlay",
+          "label": "Opening overlay readable",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": "film/hero/measured/frame-0000000.jpg"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": null
+        },
+        {
+          "id": "pace",
+          "label": "Measured cut rate within 25% of reference",
+          "value": 0.0,
+          "status": "fail",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": null
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA visible",
+          "value": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKY 5C* DOT&KEY Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5",
+          "time": 15.5,
+          "frame": "film/hero/measured/frame-0015500.jpg"
+        },
+        {
+          "id": "claims",
+          "label": "Scripted overlays and VO passed claim guard",
+          "value": "pass",
+          "status": "pass",
+          "shot_ref": "shot-1",
+          "time": 0,
+          "frame": null
+        }
+      ],
+      "score": 71,
+      "measured": 7,
+      "total": 7,
+      "cuts": [
+        0.0
+      ],
+      "reference_spec": {
+        "hook_max_s": 1.5,
+        "product_by_s": 3,
+        "text_by_s": 1,
+        "length_iqr": [
+          24.75,
+          24.75
+        ],
+        "duration_median_s": 24.75,
+        "cuts_per_second_median": 0.687,
+        "observed_first_text_median_s": 0.0,
+        "observed_face_in_first_second_share": 1.0,
+        "measurement_n": 1,
+        "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+      },
+      "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+      "samples": [
+        {
+          "time": 0,
+          "path": "film/hero/measured/frame-0000000.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKE 5C* DOT&KEY What's on the label?"
+        },
+        {
+          "time": 0.25,
+          "path": "film/hero/measured/frame-0000250.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY What's on the label?"
+        },
+        {
+          "time": 0.5,
+          "path": "film/hero/measured/frame-0000500.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY What's on the label?"
+        },
+        {
+          "time": 1.0,
+          "path": "film/hero/measured/frame-0001000.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY What's on the label?"
+        },
+        {
+          "time": 1.5,
+          "path": "film/hero/measured/frame-0001500.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY What's on the label?"
+        },
+        {
+          "time": 2.0,
+          "path": "film/hero/measured/frame-0002000.jpg",
+          "product_match": false,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+        },
+        {
+          "time": 2.25,
+          "path": "film/hero/measured/frame-0002250.jpg",
+          "product_match": false,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+        },
+        {
+          "time": 2.5,
+          "path": "film/hero/measured/frame-0002500.jpg",
+          "product_match": false,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POTKEY 5C* DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+        },
+        {
+          "time": 3.0,
+          "path": "film/hero/measured/frame-0003000.jpg",
+          "product_match": false,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel SPF 50+ WITH HYALURONIC 80ml POT'KEY 5C* DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+        },
+        {
+          "time": 5.75,
+          "path": "film/hero/measured/frame-0005750.jpg",
+          "product_match": false,
+          "ocr": "Al-generated DOTKEY 5C+ DOT&KEY zero white cast"
+        },
+        {
+          "time": 9.25,
+          "path": "film/hero/measured/frame-0009250.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKY 5C* DOT&KEY Watermelon Sunscreen"
+        },
+        {
+          "time": 13.25,
+          "path": "film/hero/measured/frame-0013250.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKY 5C* DOT&KEY Explore the formula."
+        },
+        {
+          "time": 15.5,
+          "path": "film/hero/measured/frame-0015500.jpg",
+          "product_match": true,
+          "ocr": "Al-generated WATERMELON COOLING SUNSCREEN aqua-gel 50+ SPF WITH HYALURONIC 80ml POTKY 5C* DOT&KEY Explore the formula."
+        }
+      ]
+    }
+  },
+  "recipe": {
+    "composition": "FFmpeg matched to approved shot timings",
+    "clipforge": "completed",
+    "narration": [
+      "Sarvam Bulbul v3"
+    ],
+    "soundtrack": "Original synthesized F-major underscore",
+    "visuals": "Veo 3.1 Lite moving background with original Shopify pack composited on every frame",
+    "paid_video_usd": 0.48
+  },
+  "clipforge": {
+    "ingest": "verified catalog brief and uploaded local materials",
+    "project_id": "460b3dbd-78c0-4d74-b6b2-6a89490957af",
+    "script_id": "c36951b0-3468-41d1-9f6f-13f236aa7c2e",
+    "composition_id": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+    "video": "film/hero/sidecar/clipforge.mp4",
+    "qc": {
+      "compositionId": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+      "status": "ok",
+      "checks": [
+        {
+          "id": "video-stream",
+          "level": "ok",
+          "message": {
+            "zh": "视频流正常（1080×1920）",
+            "en": "Video stream OK (1080×1920)"
+          }
+        },
+        {
+          "id": "audio-stream",
+          "level": "ok",
+          "message": {
+            "zh": "音频流正常",
+            "en": "Audio stream OK"
+          }
+        },
+        {
+          "id": "duration",
+          "level": "ok",
+          "message": {
+            "zh": "时长 16.0 秒",
+            "en": "Duration 16.0s"
+          }
+        },
+        {
+          "id": "resolution",
+          "level": "ok",
+          "message": {
+            "zh": "分辨率符合预期",
+            "en": "Resolution matches"
+          }
+        },
+        {
+          "id": "black",
+          "level": "ok",
+          "message": {
+            "zh": "无黑屏",
+            "en": "No black frames"
+          }
+        },
+        {
+          "id": "silence",
+          "level": "ok",
+          "message": {
+            "zh": "无异常静音",
+            "en": "No abnormal silence"
+          }
+        },
+        {
+          "id": "loudness",
+          "level": "ok",
+          "message": {
+            "zh": "响度正常（-13.9 LUFS）",
+            "en": "Loudness OK (-13.9 LUFS)"
+          }
+        },
+        {
+          "id": "freeze",
+          "level": "ok",
+          "message": {
+            "zh": "画面无冻结",
+            "en": "No frozen picture"
+          }
+        }
+      ],
+      "probe": {
+        "hasVideo": true,
+        "hasAudio": true,
+        "width": 1080,
+        "height": 1920,
+        "duration": 16
+      },
+      "signals": {
+        "black": [],
+        "silence": [],
+        "freeze": [],
+        "loudness": -13.9,
+        "truePeak": null
+      }
+    },
+    "gate": {
+      "projectId": "460b3dbd-78c0-4d74-b6b2-6a89490957af",
+      "compositionId": "05c24633-90b1-4e2d-b7bf-d898ccf8ee76",
+      "report": {
+        "status": "warn",
+        "items": [
+          {
+            "id": "readiness",
+            "status": "warn",
+            "message": {
+              "zh": "脚本发布就绪检查有 2 项风险提示",
+              "en": "Script readiness check has 2 risk warning(s)"
+            },
+            "problems": [
+              {
+                "zh": "总时长 10s 偏短——信息可能不足以促单",
+                "en": "Total 10s is short — may not be enough to drive a purchase"
+              },
+              {
+                "zh": "第 2、4 镜字幕过密、读不完——精简文案或加时长",
+                "en": "Shot(s) 2, 4 have too-dense subtitles to read — trim copy or add time"
+              }
+            ]
+          },
+          {
+            "id": "qc",
+            "status": "pass",
+            "message": {
+              "zh": "成片质检通过",
+              "en": "Video QC passed"
+            },
+            "problems": []
+          },
+          {
+            "id": "quality",
+            "status": "pass",
+            "message": {
+              "zh": "没有需要语义验收的 AI 生成镜头",
+              "en": "No AI-generated shots require semantic review"
+            },
+            "problems": []
+          },
+          {
+            "id": "credits",
+            "status": "pass",
+            "message": {
+              "zh": "素材授权可商用，无需署名",
+              "en": "Assets are commercial-safe, no attribution required"
+            },
+            "problems": []
+          },
+          {
+            "id": "aiPolicy",
+            "status": "pass",
+            "message": {
+              "zh": "AI 带货平台规则检查通过（测评形态/数字人类目/亲测宣称）",
+              "en": "AI-commerce platform-policy checks passed (review form / digital-human category / testimony claims)"
+            },
+            "problems": []
+          },
+          {
+            "id": "realMix",
+            "status": "pass",
+            "message": {
+              "zh": "实拍/自有素材占比约 100%（时长加权）——AI+真人混合达标，抖音对混合内容有流量倾斜优势",
+              "en": "Real/own footage ≈100% (duration-weighted) — hybrid threshold met; Douyin tilts traffic toward mixed content"
+            },
+            "problems": []
+          }
+        ],
+        "summary": {
+          "pass": 5,
+          "warn": 1,
+          "fail": 0
+        },
+        "verdict": {
+          "zh": "有条件通过——存在需人工确认的风险项，确认后再发布",
+          "en": "Conditionally passed — review the flagged risks before publishing"
+        }
+      }
+    },
+    "contact_sheet": "film/hero/sidecar/clipforge-contact.jpg",
+    "exports": {
+      "reels": "film/hero/sidecar/reels.mp4",
+      "shorts": "film/hero/sidecar/shorts.mp4"
+    },
+    "status": "completed"
+  },
+  "quote": {
+    "model": "google/veo-3.1-lite",
+    "resolution": "720p",
+    "audio": false,
+    "shot_seconds": [
+      8,
+      8
+    ],
+    "usd_per_second": 0.03,
+    "estimated_usd": 0.48,
+    "price_source": "https://openrouter.ai/api/v1/videos/models",
+    "voice_provider": "Sarvam Bulbul v3"
+  },
+  "director": {
+    "project_id": "9527a30b-e315-41a5-86a6-1bfcdeb2c209",
+    "script_id": "a141fb99-39f3-4ac7-8237-8c2f125d74f4",
+    "model": "local verified storyboard import",
+    "source": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+    "image": "film/director/storyboard.png",
+    "cells": 5,
+    "status": "generated",
+    "master_fingerprint": "accef50d2300fb2040c1b0043850d81eaa684c9d5cdeb478dd5ae0b2306c88e9"
+  },
+  "social": {
+    "project_id": "460b3dbd-78c0-4d74-b6b2-6a89490957af",
+    "cover": "film/hero/cover.png",
+    "carousel": [
+      "film/hero/carousel-01.png",
+      "film/hero/carousel-02.png",
+      "film/hero/carousel-03.png",
+      "film/hero/carousel-04.png",
+      "film/hero/carousel-05.png",
+      "film/hero/carousel-06.png"
+    ]
+  }
+}

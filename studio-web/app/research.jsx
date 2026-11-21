@@ -85,7 +85,7 @@ export function Swipe({ s, asset, act, enter, upload, busy, sourceLink }) {
             onChange={(e) => setUrl(e.target.value)}
           />
           <button className="primary" disabled={busy}>
-            Deconstruct <Icon name="arrow" />
+            Analyze reference <Icon name="arrow" />
           </button>
           <button
             type="button"
@@ -152,7 +152,7 @@ export function Swipe({ s, asset, act, enter, upload, busy, sourceLink }) {
         </details>
       </Section>
       <Section
-        title="Swipe file"
+        title="Analyzed references"
         action={
           <button
             className="secondary"
@@ -299,7 +299,8 @@ export function Inspect({ s, postId, setPost, asset, inspect, attach }) {
   if (!p)
     return (
       <Empty>
-        Add a source in the swipe file to inspect its frames and transcript.
+        Add a source in the research library to inspect its frames and
+        transcript.
       </Empty>
     );
   const frames = asList(p.frames),
@@ -410,6 +411,18 @@ export function Inspect({ s, postId, setPost, asset, inspect, attach }) {
           {p.status && <p className="muted">{nice(p.status)}</p>}
         </div>
       </div>
+      {p.status === "ready" && <Section title="Reference at a glance">
+        <div className="panel research-summary">
+          {semantic.some((r) => r.field === "hook") && <>
+            <h3>How it opens</h3>
+            <p>{textOf(semantic.find((r) => r.field === "hook").value)}</p>
+          </>}
+          {p.duration > 0 && <p>{asList(p.shots).length} recorded shots in {Math.round(p.duration)} seconds.
+            {p.first_text_at != null && <> First on-screen text at <button className="link" onClick={() => jump(p.first_text_at)}>{p.first_text_at}s</button>.</>}
+          </p>}
+          {p.outlier_ratio != null && <p>{Number(p.outlier_ratio).toFixed(1)}× the creator’s typical views, measured against {p.baseline_n || "the available"} reference posts.</p>}
+        </div>
+      </Section>}
       <Section title="Hook & shot frames">
         {frames.length ? (
           <div className="filmstrip">
@@ -558,7 +571,7 @@ export function Inspect({ s, postId, setPost, asset, inspect, attach }) {
               )}
             </div>
           ))}
-          {!semantic.length && <p>Semantic read unavailable.</p>}
+          {!semantic.length && <p>No visual interpretation was saved for this reference.</p>}
         </div>
       </Section>
       <Section title="Cuts & audio">
@@ -643,7 +656,7 @@ export function Patterns({ s, asset, enter, inspect }) {
           </article>
         ))
       ) : (
-        <Empty>Deconstruct a source to build a pattern board.</Empty>
+        <Empty>Analyze a reference in the research library to see its creative patterns.</Empty>
       )}
     </Section>
   );

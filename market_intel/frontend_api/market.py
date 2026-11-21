@@ -110,6 +110,18 @@ def _overview(name, day, compare, database_signature):
     ]
     reviews, launches = weekly_series(report, day)
     all_cards = list(cards(report))
+    recommendation = next(iter(report["recommendations"]), None)
+    priority = None
+    if recommendation:
+        triggers = recommendation.get("trigger_ids", [])
+        signal = next((r for r in all_cards if r["id"] in triggers), None)
+        priority = {
+            "id": recommendation["id"],
+            "title": recommendation["action"],
+            "source": {k: signal[k] for k in ("id", "view", "title")}
+            if signal
+            else None,
+        }
     picks = []
     for kinds in [
         ("strength",),
@@ -133,6 +145,7 @@ def _overview(name, day, compare, database_signature):
         "as_of": str(day),
         "compare": str(compare),
         "categories": summary,
+        "priority": priority,
         "review_share": {
             "value": value,
             "previous": previous,
@@ -148,6 +161,7 @@ def _overview(name, day, compare, database_signature):
             "projection": forecast["projection"],
             "forecast_growth": forecast["forecast_growth"],
             "status": forecast["status"],
+            "observations": forecast["n"],
             "source": forecast["source"],
         },
         "review_velocity": reviews,

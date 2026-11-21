@@ -134,13 +134,13 @@ export function Opportunity({ rows = [], category, onSelect }) {
       method="The score combines forecast growth, Dot & Key’s share of observed reviews and the number of distinct gaps. A dash indicates insufficient evidence."
     >
       <div className="mk-metric">
-        <Count value={chosen?.opportunity_score} digits={3} />
+        {chosen?.opportunity_score == null ? <span className="metric-unavailable">Unranked</span> : <Count value={chosen.opportunity_score} digits={3} />}
         {chosen?.opportunity_score != null && (
           <span className="mk-tag lime">Rank {ranked.indexOf(chosen) + 1}</span>
         )}
       </div>
       <p className="mk-caption">
-        Opportunity score <span>·</span> {category}
+        {chosen?.opportunity_score != null ? "Opportunity score" : chosen?.forecast_growth == null ? "More review history needed" : "More brand coverage needed"} <span>·</span> {category}
       </p>
       <div className="mk-bars-wrap">
         <svg
@@ -492,7 +492,7 @@ export function Demand({ data = {} }) {
       method="Monthly activity in dated marketplace reviews, indexed to the category baseline. Dashed steps show the forecast."
     >
       <div className="mk-metric">
-        <Count value={observed?.index} digits={1} />
+        {observed ? <Count value={observed.index} digits={1} /> : <span className="metric-unavailable">Awaiting data</span>}
         {data.forecast_growth != null && (
           <span className="mk-tag pink">
             {percent(data.forecast_growth, true)}
@@ -502,9 +502,11 @@ export function Demand({ data = {} }) {
       <p className="mk-caption">
         {observed
           ? shortMonth(observed.month) + " review activity"
-          : "Monthly review activity"}
+          : "More dated observations are needed for a demand index."}
       </p>
-      <StepChart {...data} />
+      {observed || data.projection?.length ? <StepChart {...data} /> : <p className="mk-forecast-note">
+        A projection needs at least six observed months and 30 observations, including activity in each of the latest three complete months.{data.observations != null && " This sample has " + number(data.observations) + " observations."}
+      </p>}
       <div className="mk-card-foot">
         <Legend color="#ed549e">Observed</Legend>
         <span className="mk-dash-key" />
@@ -759,19 +761,50 @@ export function Insight({ items = [], create, busy }) {
     </section>
   );
 }
-export function Overview({ data, select, create, busy }) {
+export function Overview({ data, select, create, busy, navigate }) {
   return (
-    <div className="mk-dashboard">
-      <Opportunity
-        rows={data.categories}
-        category={data.category}
-        onSelect={select}
-      />
-      <ReviewShare data={data.review_share} />
-      <Demand data={data.demand} />
-      <Activity rows={data.review_velocity} />
-      <Activity rows={data.launch_velocity} launch />
-      <Insight items={data.insights} create={create} busy={busy} />
-    </div>
+    <>
+      {data.priority && (
+        <section className="market-priority" aria-label="Recommended next step">
+          <div>
+            <span className="mk-overline">
+              Recommended next step · {data.category}
+            </span>
+            <h2>{data.priority.title}</h2>
+            {data.priority.source && (
+              <button
+                className="mk-text-btn"
+                onClick={() =>
+                  navigate(data.priority.source.view, {
+                    card: data.priority.source.id,
+                  })
+                }
+              >
+                {data.priority.source.title} <Mark name="external" size={13} />
+              </button>
+            )}
+          </div>
+          <button
+            className="mk-button mk-dark"
+            disabled={busy}
+            onClick={() => create(data.priority)}
+          >
+            Build a campaign <Mark name="arrow" size={15} />
+          </button>
+        </section>
+      )}
+      <div className="mk-dashboard">
+        <Opportunity
+          rows={data.categories}
+          category={data.category}
+          onSelect={select}
+        />
+        <ReviewShare data={data.review_share} />
+        <Demand data={data.demand} />
+        <Activity rows={data.review_velocity} />
+        <Activity rows={data.launch_velocity} launch />
+        <Insight items={data.insights} create={create} busy={busy} />
+      </div>
+    </>
   );
 }

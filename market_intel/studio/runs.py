@@ -23,18 +23,21 @@ DEMO = "watermelon-demo"
 _STAGE_WRITER = ContextVar("studio_stage_writer", default=None)
 
 
-def progress(stage):
+def progress(stage, *, phase=None, completed=None, total=None, unit=None):
     """Publish a worker's actual pipeline stage; ordinary CLI calls need no context."""
     writer = _STAGE_WRITER.get()
     if writer:
-        writer(stage)
+        work = {"phase": phase} if phase else {}
+        if total is not None:
+            work.update(completed=completed, total=total, unit=unit)
+        writer(stage, work)
 
 
-def record_stage(job, stage):
+def record_stage(job, stage, work=None):
     at = timestamp()
-    job.update(stage=stage, updated_at=at)
+    job.update(stage=stage, updated_at=at, work=work or {})
     job.setdefault("stages", []).append(
-        {"stage": stage, "status": job["status"], "updated_at": at}
+        {"stage": stage, "status": job["status"], "updated_at": at, "work": job["work"]}
     )
 
 
@@ -151,8 +154,8 @@ def submit(folder, action, operation, signature=None):
     }
     path = folder / "jobs" / (job["id"] + ".json")
 
-    def mark(stage):
-        record_stage(job, stage)
+    def mark(stage, work=None):
+        record_stage(job, stage, work)
         write_json(path, job)
 
     def work():

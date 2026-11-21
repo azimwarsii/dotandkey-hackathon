@@ -1,0 +1,20 @@
+{
+  "fingerprint": "076bb266d20b7b60b5d1bbb2f04b1b1ee00fdd1e8f029d349e83f74a6fa9f06c",
+  "prompt": "A premium studio product film, gentle continuous dolly inward. Use this exact photographed package as the fixed subject. Soft sunlight and gentle shadows drift over the blush background. Preserve the exact bottle and label. No new typography, ingredients, hands or graphic overlays.",
+  "input_frame": "reference-1.jpg",
+  "quote": {
+    "model": "google/veo-3.1-lite",
+    "resolution": "720p",
+    "audio": false,
+    "shot_seconds": [
+      8,
+      8
+    ],
+    "usd_per_second": 0.03,
+    "estimated_usd": 0.48,
+    "price_source": "https://openrouter.ai/api/v1/videos/models",
+    "voice_provider": "Sarvam Bulbul v3"
+  },
+  "id": "gen-vid-1795254465-BkH02AimgTOyx0HVP0i9",
+  "status": "completed"
+}

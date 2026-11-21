@@ -12,6 +12,8 @@ from uuid import uuid4
 
 import httpx
 
+from market_intel.studio.runs import progress
+
 OPENROUTER = "https://openrouter.ai/api/v1"
 VEO = "google/veo-3.1-lite"
 
@@ -91,6 +93,17 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
     folder.mkdir(parents=True, exist_ok=True)
     outputs = []
     for i, (frame, prompt) in enumerate(zip(frames, prompts)):
+
+        def report_motion(message, count=i):
+            progress(
+                f"Motion clip {i + 1} of {len(frames)} · {message}",
+                phase="motion",
+                completed=count,
+                total=len(frames),
+                unit="clips ready",
+            )
+
+        report_motion("checking saved render")
         field = {
             "type": "image_url",
             "frame_type": "first_frame",
@@ -132,6 +145,7 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
             }
             with record.open("x") as stream:
                 json.dump(job, stream)
+            report_motion("submitting to the video provider")
             if adapter:
                 response = adapter.post(
                     "/videos",
@@ -158,7 +172,16 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
                 else:
                     response = request("openrouter", "GET", path)
                 data = response.json()
-                job["status"] = data.get("status")
+                status = data.get("status")
+                if status != job.get("status"):
+                    report_motion(
+                        {
+                            "queued": "waiting in the provider queue",
+                            "in_progress": "generating motion",
+                            "completed": "downloading the finished clip",
+                        }.get(status, "waiting for the video provider")
+                    )
+                job["status"] = status
                 save_json(record, job)
                 if job["status"] == "completed":
                     if adapter:
@@ -183,4 +206,5 @@ def create_hero_clips(folder, frames, prompts, max_cost_usd, *, adapter=None):
                     "Video is still processing. Resume this run to poll the saved job."
                 )
         outputs.append(destination)
+        report_motion("ready", i + 1)
     return quote, outputs

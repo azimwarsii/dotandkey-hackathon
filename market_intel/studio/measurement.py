@@ -160,7 +160,17 @@ def measure(run, result, script, pattern, brief):
 
 def measure_campaign(run, film, creative, patterns, brief):
     scripts = {v["id"]: v["script"] for v in creative["variants"]}
-    for variant in [*film["variants"], *([film["hero"]] if film.get("hero") else [])]:
+    from .runs import progress
+
+    variants = [*film["variants"], *([film["hero"]] if film.get("hero") else [])]
+    for i, variant in enumerate(variants):
+        progress(
+            "Reviewing the finished frames · " + variant.get("title", variant["id"]),
+            phase="checks",
+            completed=i,
+            total=len(variants),
+            unit="videos checked",
+        )
         script = scripts.get(variant["id"], creative["script"])
         pattern_id = script["shots"][0].get("pattern_ref")
         pattern = next((p for p in patterns if p["id"] == pattern_id), None)

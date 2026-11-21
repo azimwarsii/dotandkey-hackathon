@@ -45,7 +45,7 @@ const tour = [
     "overview",
     "ask",
     "Ask the market",
-    "Open the prompt and explore a question or slash command.",
+    "Find a product, a campaign or an answer backed by market evidence.",
   ],
   [
     "overview",

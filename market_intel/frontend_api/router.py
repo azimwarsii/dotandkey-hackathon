@@ -11,7 +11,7 @@ from fastapi import APIRouter, Header, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from . import ask, cache, catalog, jobs, market
+from . import ask, cache, catalog, jobs, market, search
 
 router = APIRouter(prefix="/api", tags=["market studio"])
 STREAM_HEADERS = {"Cache-Control": "no-cache, no-transform", "X-Accel-Buffering": "no"}
@@ -85,6 +85,16 @@ def launches(category: str = "Sunscreen", as_of: Optional[date] = None):
     }
 
 
+@router.get("/search")
+def workspace_search(
+    q: str = Query(min_length=2, max_length=180),
+    category: str = "Sunscreen",
+    as_of: Optional[date] = None,
+):
+    names, rows = search.retrieve(q.strip(), category, checked(as_of), workspace=True)
+    return {"categories": names, "results": rows[:12]}
+
+
 class Question(BaseModel):
     category: str = Field(default="Sunscreen", min_length=1, max_length=100)
     question: str = Field(min_length=1, max_length=1500)
@@ -95,9 +105,10 @@ class Question(BaseModel):
 def answer(body: Question):
     if not body.question.strip():
         raise HTTPException(422, "Enter a market question")
-    report = cache.report_for(body.category, checked(body.as_of))
+    category = cache.category_name(body.category)
+    day = checked(body.as_of)
     return StreamingResponse(
-        ask.answer(body.question, report),
+        ask.answer(body.question, category, day),
         media_type="text/event-stream",
         headers=STREAM_HEADERS,
     )

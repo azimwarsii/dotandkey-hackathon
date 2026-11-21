@@ -77,11 +77,13 @@ def product_detail(handle, day):
             "SELECT data FROM listing WHERE product_ref=? ORDER BY market,external_id",
             ref,
         )
-        reviews = records(
-            db,
-            "SELECT data FROM review WHERE product_ref=? ORDER BY julianday(date) DESC,body_hash",
-            ref,
-        )
+        reviews = [
+            {**json.loads(row["data"]), "search_id": "review-" + row["body_hash"]}
+            for row in db.execute(
+                "SELECT data, body_hash FROM review WHERE product_ref=? ORDER BY julianday(date) DESC,body_hash",
+                ref,
+            )
+        ]
     latest = {(s["market"], s["external_id"]): s for s in snapshots}
     listings = [
         {**r, **latest.get((r["market"], r["external_id"]), {})}

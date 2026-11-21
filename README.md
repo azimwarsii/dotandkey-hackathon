@@ -1,124 +1,174 @@
-# Dot & Key market intelligence
+# Dot & Key Market Studio
 
-The [Part 1 collector](docs/plan-part1-market-intel.md) stores catalog, marketplace and review observations in SQLite. The [Part 2 pipeline](docs/plan-part2-insights-deterministic.md) turns those observations into evidence-linked SWOT findings, market gaps, launch signals, three-month demand projections and recommendations. Both APIs work offline against the included databases. Start with the [Sunscreen insights](data/sunscreen-insights.json) or the [ten-category opportunity ranking](data/part2-opportunities.json).
+Market intelligence to marketing content in one app. Market Studio monitors Dot & Key and its top competitors across Shopify storefronts, Amazon India, Flipkart and Nykaa. It reads the reviews and turns them into evidence-backed SWOT findings, market gaps, launch alerts, demand forecasts and go-to-market actions. It then carries any insight into a Studio that researches winning reels, writes the script and produces checked ads, A+ content, listings and video.
 
-## Content Studio (Part 3)
+Built for the Vibe Coders Hackathon Ed. 3 brief ([problem-statement.pdf](problem-statement.pdf)).
 
-The [Content Studio](studio-web) connects the per-product brief to reference research, concepts, scripts, storyboard frames, video exports, ads, marketplace listings and test results. The included [Watermelon Sunscreen campaign](data/studio/runs/watermelon-demo) opens with saved artifacts. [Setup, demo walkthrough and refresh commands](docs/content-studio.md)
+- **Everything is open.** No login, access code or payment step. Judges can use every feature.
+- **Every number has a source.** Insights come from rules over scraped observations, not from a chatbot. Each card and answer links to the review, listing or catalog entry behind it.
+- **Installable.** It is a PWA that works on phone and desktop, keeps visited reports available offline, and starts with a guided tour.
 
-## Market Studio (Part 4)
+---
 
-The dashboard brings Overview, Products, Competitors, Customers, Strategy and Studio into one installable app. Choose a category and reporting date to explore the observations. Open a source card and select **Create content** to carry the dated evidence into a new campaign. The included Watermelon demo has a downloadable kit with film exports, artwork, scripts, listing copy and testing materials.
-
-Start the stack with `docker compose up --build` and open [Market Studio](http://localhost:3000). The first visit includes a guided tour. Once opened online, visited reports and campaign outputs can be revisited offline. [Local setup, verification and Railway deployment](docs/market-studio-deployment.md)
-
-## Included crawl
-
-The 21 November 2026 dataset contains 66 single Dot & Key products, 55 linked combos and 50 ranked competitors across ten categories. All 66 singles have a matched marketplace listing and a timestamped observation. There are 248 listings across Amazon India (74), Flipkart (85) and Nykaa (89), and 257 marketplace observations. The 6,133 deduplicated review records comprise 3,606 Judge.me reviews, 1,629 Flipkart reviews, 582 Amazon reviews, 306 Nykaa reviews and 10 indexed Reddit excerpts. Nykaa covers 59 of 66 Dot & Key singles and 30 of 50 selected peers.
-
-The database includes 33 verified Crustdata company records, 160 dated company-news articles and 11 dated public storefront signals. Twenty-two records identify the brand directly. The other 11 identify a parent, brand family or US profile and are excluded from Indian brand momentum comparisons. Independent source citations named 16 of the 50 selected marketplace competitors across seven categories.
-
-Crustdata retrieved usable Nykaa data in both fetch modes and ten variant-labelled reviews from the Flipkart review page. Its Amazon fetch returned a challenge page, so the Amazon figures come from the public crawl. The ten Reddit excerpts came from indexed Reddit posts or comments and retain their permalinks and date precision. See the [authenticated probe](data/crustdata-spike.json).
-
-## Read the data
-
-From the repository root, using Python 3.9 or later:
+## Quick start
 
 ```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python -m market_intel report Sunscreen --output data/sunscreen.json
-.venv/bin/uvicorn market_intel.api:app
+docker compose up --build        # web, API and ClipForge
+open http://localhost:3000
 ```
 
-Open [the Sunscreen JSON report](http://127.0.0.1:8000/category/Sunscreen/report-data) or [the interactive API documentation](http://127.0.0.1:8000/docs). Category names are case-insensitive. Use URL encoding for names with spaces, such as `/category/Face%20Wash/report-data`. An unknown category returns 404.
+The included data (crawled 21 Nov 2026) and the **Watermelon Sunscreen** demo campaign work without any API keys. To run new crawls, research or generation, copy `.env.example` to `.env` and add the keys in [Keys and services](docs/keys-and-services.md). Then run `docker compose up -d` again.
 
-One report contains `products`, `listings`, `listing_snapshots`, `reviews`, `competitor_set`, `brand_signals` and `news_items`. Join records by `product_ref` and listings by `(product_ref, market, external_id)`. Snapshot timestamps record when the source was observed. Marketplace reviews use ISO dates when the source gives a calendar date. A relative date such as “six months ago” stays in `date_text` alongside the observation timestamp. A review can include its original marketplace shade or size when a product page groups variants. Empty collections and missing values indicate gaps in the observed data. The `crawl_log` table records upstream responses, errors and reported credit usage. The catalog retains all Shopify variants. Marketplace discovery compares the primary available variant and supports SKU-specific overrides for differences between store and marketplace labels.
-
-## Read the insights
+To run without Docker:
 
 ```sh
-.venv/bin/python -m market_intel insights Sunscreen --as-of 2026-11-21 --output data/sunscreen-insights.json
-.venv/bin/python -m market_intel opportunities --as-of 2026-11-21 --output data/part2-opportunities.json
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/uvicorn market_intel.api:app --port 8000            # API
+npm --prefix studio-web ci && npm --prefix studio-web run dev # web on :3000
 ```
 
-With the API running, open the [Sunscreen insights endpoint](http://127.0.0.1:8000/category/Sunscreen/insights) or the [category ranking endpoint](http://127.0.0.1:8000/insights/opportunities). Both accept an optional `as_of=YYYY-MM-DD`. By default a category uses its latest stored listing or competitor catalog observation. Historical windows use the stored Part 1 product metadata and peer selection. The reports expose the observations and denominators behind each comparison.
+Deployment to Railway is one command: `.venv/bin/python deploy/railway.py`. See [deployment](docs/market-studio-deployment.md).
 
-| Report field | What it contains |
+---
+
+## Using the app
+
+### The six screens
+| Screen | What you see | Use it to |
+|---|---|---|
+| **Overview** | Category opportunity bars, D&K review share, demand index with forecast, review velocity, competitor launches, top insights carousel | Decide where to focus. Click a bar to switch category. |
+| **Products** | D&K catalog. Open a product to see its marketplace listings, observed prices, ratings and reviews. | Check how one SKU performs on each marketplace |
+| **Competitors** | Top 5 competitors per category, an aspect comparison radar (D&K against peers), competitor launches, brand momentum (traffic, hiring, followers) | See who is gaining and what they just launched |
+| **Customers** | Customer sentiment per aspect (white cast, greasy, irritation…), customer requests, quotes "in customers' words" | Hear what buyers love and complain about |
+| **Strategy** | SWOT, market gaps (whitespace), trend signals, demand forecast, go-to-market recommendations | Get the actions, each traced to its trigger |
+| **Studio ✦** | Six steps: Research → Deconstruct → Patterns → Concepts → Create → Test | Turn an insight into a tested campaign kit |
+
+Pick the **category** and the **reporting date** at the top. Use "compared to" to see change over time.
+
+### Search or ask: ⌘K / Ctrl+K
+One box does both.
+
+- **Jump:** type a product, category, campaign or view, then press Enter, or type `/` to jump straight away.
+  - `/lip balm`, `/sunscreen`
+  - `/competitors`, `/swot`
+  - `/product watermelon`
+  - `/campaign kit`, `/video production`
+- **Ask:** type a question (starting with *what, who, how, which…* or ending in `?`) and press Enter. The answer quotes up to three evidence cards. Click a numbered source to open the card behind it. Questions that work well:
+  - `What do customers complain about?`
+  - `What are the biggest gaps?`
+  - `Who launched new sunscreens recently?`
+  - `What are the threats?` / `What are our weaknesses?` / `What are our strengths?`
+  - `Who scores higher at a lower price?`
+  - `What is our review share?`
+  - `How does demand look for the next 3 months?` (only for categories with a forecast)
+  - `Why is lip balm our biggest opportunity?`
+  - `What should we do next quarter?`
+
+When the evidence doesn't support an answer, Ask says so instead of guessing.
+
+### From insight to campaign
+1. On any gap, threat or recommendation card, click **Create content from this**. The Studio opens a campaign brief with that evidence attached.
+2. **Research:** browse the swipe file of competitor and creator posts, ranked by outlier ratio (views ÷ the account's median). Or paste any Reel, Short or post URL, or upload a video.
+3. **Deconstruct:** step through the frames, cuts, on-screen text, transcript, hook timing and beats. Click any finding to jump to that moment in the video.
+4. **Patterns → Concepts:** choose a winning pattern (for example "show the demonstration early"), then pick one of three creative concepts.
+5. **Create:**
+   - Statics: Meta, Amazon, Flipkart, Nykaa and display sizes
+   - A+ content modules
+   - Marketplace listings, with Hindi or Hinglish via **Localize**
+   - Script and storyboard
+   - Video: drafts, then a hero film exported for Reels, Shorts and Meta
+6. **Test:** check the QC gate (claim guard, technical QC, brand review), the variant matrix and the test plan. Then **download the campaign kit**.
+
+### Live demo
+A rehearsed 8-minute script with the exact commands and questions is in **[docs/demo-script.md](docs/demo-script.md)**.
+
+### Walkthrough and install
+On the first visit, a welcome sheet and a 7-step spotlight tour appear. Reopen them any time from **Help** (?). On a phone, use the browser's **Install** / **Add to Home Screen** to install the app.
+
+---
+
+## How it works
+
+```mermaid
+flowchart LR
+  subgraph Sources
+    S1[dotandkey.com<br/>Shopify + Judge.me]
+    S2[9 competitor<br/>Shopify stores]
+    S3[Amazon · Flipkart · Nykaa]
+    S4[Crustdata<br/>search · fetch · company · news]
+    S5[Reddit · Google News RSS]
+  end
+  S1 & S2 & S3 & S4 & S5 --> C[Part 1 collector<br/>market_intel]
+  C --> DB[(SQLite<br/>market-intel ·<br/>competitor-catalogs)]
+  DB --> I[Part 2 deterministic insights<br/>metrics · SWOT · gaps · trends ·<br/>forecast · recommendations]
+  I --> K[Versioned insight cache<br/>+ evidence cards]
+  K --> API[FastAPI /api]
+  API --> W[Next.js PWA<br/>dashboard]
+  W -->|Create content| ST[Studio API /studio]
+  ST --> R[Research<br/>ScrapeCreators · YouTube · yt-dlp<br/>Gemini video read · Sarvam STT]
+  ST --> G[Creative<br/>Claude copy · Seedream images ·<br/>Veo video · Sarvam voice and translate]
+  G --> CF[ClipForge sidecar<br/>edit · QC · exports]
+```
+
+1. **Collect (Part 1).** Shopify `products.json` gives the full catalogs of D&K and 9 competitors at no cost. Judge.me gives D&K's own reviews. Crustdata finds and fetches the marketplace listings and their reviews, then adds competitor company signals and news. Every observation is timestamped in SQLite, so prices and ratings build up a history.
+2. **Analyse (Part 2): no AI needed.**
+   - A frozen aspect lexicon tags review sentences. Its precision is validated in [validation/](validation/README.md).
+   - Bayesian ratings, Wilson intervals and complaint lift give the metrics.
+   - A rule table turns the metrics into SWOT findings.
+   - Attribute whitespace finds the gaps, and cross-source term growth finds the trends.
+   - Day-over-day Shopify diffs detect launches.
+   - A monthly projection gives the forecast, and recommendation templates are each linked to the finding that triggered them.
+
+   The same input always gives the same output.
+3. **Serve.** Reports are built once per category and date, cached atomically, and split into small dashboard payloads and stable **evidence cards**. Ask and Search rank those cards. A small model may only *choose card IDs*, so no model-written claim reaches the screen.
+4. **Create (Parts 3 and 4).**
+   - The Studio stores each campaign as an inspectable folder of JSON and media.
+   - Research uses real posts and their measured outlier ratios.
+   - Copy is claim-guarded against the catalog wording.
+   - Ads are rendered from HTML templates around a cut-out of the real packshot.
+   - Video is edited in the unmodified ClipForge sidecar, connected to our providers through a small compatibility shim.
+
+The full under-the-hood walkthrough covers modules, data flow, models, jobs, caching, the PWA and the deployment topology. It is in **[docs/architecture.md](docs/architecture.md)**.
+
+---
+
+## Documentation
+
+| Doc | Read it for |
 |---|---|
-| `metrics` | Product, brand and category ratings, aspect mentions, complaint lift, Wilson intervals, review activity, comparable unit prices and observed discounts |
-| `swot` | Up to five findings per quadrant, ranked by effect size × log(sample size), with thresholds and review quotes or source listings |
-| `gaps` | Attribute combinations with sparse supply and nearby demand, category-wide complaints, and recurring requests with their original wording |
-| `trends` | Per-term growth across dated catalog creations and reviews, qualifying terms, recent launch candidates, and observed price changes |
-| `forecast` | A three-month relative review-activity index, monthly observations, model assumptions and opportunity score factors |
-| `recommendations` | Rule-based actions whose `trigger_ids` identify the underlying claims or gaps |
+| [docs/architecture.md](docs/architecture.md) | How everything works under the hood |
+| [docs/demo-script.md](docs/demo-script.md) | Live demo: commands and questions to use in front of the client |
+| [docs/keys-and-services.md](docs/keys-and-services.md) | Every external service and model, what it is used for, and the env vars |
+| [docs/market-intelligence.md](docs/market-intelligence.md) | Part 1 and 2 CLI: crawling, insight exports, competitor selection, the included dataset |
+| [docs/content-studio.md](docs/content-studio.md) | Studio setup, the included campaign and creating new campaigns |
+| [docs/market-studio-deployment.md](docs/market-studio-deployment.md) | Docker Compose, Railway deployment and CI checks |
+| [docs/local-minilm.md](docs/local-minilm.md) | Optional local embedding model for customer-request clustering |
+| [validation/README.md](validation/README.md) | Aspect tagger precision evaluation |
+| `docs/plan-part1…4-*.md` | The original design plans (historical; architecture.md describes what was built) |
 
-The forecast fits observed months only. It requires six months of coverage, observations in each of the latest three complete months, and at least 30 observations. A score also requires review-volume evidence for Dot & Key and all five selected competitors. A missing score includes the reason. The underlying marketplace review sample and product coverage vary by brand. Nykaa can attach a parent rating to multiple sizes or shades. The SKU analysis retains each observed child price and excludes explicitly pooled parent ratings and counts.
+## Repository map
 
-On 21 November, six categories met the projection requirements. Lip Balm ranked first on the opportunity score (0.695). None of the 124 tracked terms had sufficient growth on both catalog and review evidence.
-
-The frozen aspect evaluation used 150 source-linked sentences. Six of 18 aspects passed the release gate of ≥70% exact aspect-and-polarity precision with at least five predictions. Sentiment comparisons also require 30 directional mentions. The annotations were model-reviewed and await independent human review. See the [precision table and reproduction steps](validation/README.md) and [editable demo slide](validation/aspect-validation.pptx).
-
-The supplied exports use pinned local MiniLM weights and seeded clustering for uncategorized wish clauses. The lightweight installation uses deterministic token overlap if the local model is unavailable. To reproduce the semantic run from a fresh checkout, follow the [local model setup](docs/local-minilm.md) before exporting.
-
-## Daily competitor catalog
-
-The first observation on 21 November 2026 covers 3,102 Shopify product IDs across nine stores and 564 Amazon search observations across ten categories. Products created within 90 days qualify as baseline launch candidates. Later snapshots compare product identities, Amazon results and the same price variants across dates. Each candidate identifies its evidence and any independent corroboration. The baseline identified 59 recent catalog launch candidates. Price changes and new Amazon search appearances require a later observation.
-
-```sh
-.venv/bin/python -m market_intel catalog-snapshot
 ```
-
-The command safely resumes partial days and stores each brand’s complete daily catalog in `data/competitor-catalogs.sqlite3`. Set `COMPETITOR_CATALOG_DB` or the global `--catalog-db` option to change its location. For a checkout at `/srv/dotandkey-hackathon`, this cron entry schedules collection at 03:15 in the host’s time zone.
-
-```cron
-15 3 * * * cd /srv/dotandkey-hackathon && .venv/bin/python -m market_intel catalog-snapshot
+market_intel/            Python backend (FastAPI + CLI: python -m market_intel)
+  catalog.py …           Part 1 collection: Shopify, marketplaces, reviews, competitors, Crustdata client
+  metrics.py swot.py …   Part 2 deterministic insights
+  frontend_api/          /api for the dashboard: overview, products, search, ask, refresh jobs
+  studio/                /studio API: campaign runs, jobs, throttle, kit export
+  studio_research/       post discovery, paste-link resolution, frame/OCR/transcript analysis, patterns
+  studio_creative/       brief, concepts, scripts, ads, A+, listings, localization
+  studio_film/           film rendering, ClipForge sidecar client, provider shim
+studio-web/              Next.js 16 PWA (dashboard + Studio)
+clipforge/               how to run the pinned upstream ClipForge
+vendor/creator-breakout-kit/   pinned upstream research skills (MIT)
+lexicons/aspects.yaml    the aspect dictionary used for sentiment
+data/                    SQLite databases, insight exports, demo campaign
+deploy/                  Railway deploy, API start-up seeding, nightly job, smoke and Lighthouse checks
+tests/ validation/       pytest suite and aspect-precision evaluation
 ```
-
-## Refresh collection
-
-```sh
-# Public catalog and up to two Judge.me pages per single product
-.venv/bin/python -m market_intel crawl --stage first-party
-
-# Collect a deeper first-party sample, including reviews buried in shared widgets
-.venv/bin/python -m market_intel crawl --stage first-party --judgeme-pages 10
-
-# Refresh one category end to end, including its competitors and reviews
-.venv/bin/python -m market_intel crawl --category Sunscreen --refresh
-
-# Run every category, prioritizing Sunscreen
-.venv/bin/python -m market_intel crawl
-```
-
-Public mode uses Shopify and Judge.me, direct marketplace pages and public news RSS. For supported competitor storefronts, brand signals include dated Shopify product publications from a sample of up to 50 products. Crustdata supplies company traffic, hiring, funding and follower metrics when the key has access. Amazon and Flipkart coverage depends on the search results, matching size or variant, and the fields visible on the listing. Nykaa collection uses Crustdata. An arrival in a marketplace's newest-sort results has an unknown launch date unless a dated news source also reports the launch.
-
-Copy `.env.example` to `.env` to configure the providers. `CRUSTDATA_API_KEY` enables marketplace and social search, batched page retrieval, browser-like retrieval via the provider, news, AI competitor checks and company enrichment. Provider requests consume credits. Set `OPENROUTER_API_KEY` to extract missing catalog and listing fields using `anthropic/claude-haiku-5.5`. Override the model with `OPENROUTER_MODEL`. Catalog additions record a matching source excerpt and URL. Direct Anthropic access remains available with `ANTHROPIC_API_KEY` when OpenRouter is unconfigured. Part 2 report generation runs locally. Credentials are optional for the included database and public crawl.
-
-```sh
-# With a Crustdata key, record account permissions and the search and fetch spike
-.venv/bin/python -m market_intel spike --output data/crustdata-spike.json
-
-# Backfill exact Nykaa child listings, prices, parent-rating scope and attributable reviews
-.venv/bin/python -m market_intel.nykaa
-
-# Reuse the stored catalog and refresh marketplace coverage only
-.venv/bin/python -m market_intel crawl --stage market --category Sunscreen
-```
-
-The [public probe](data/public-spike.json) records direct HTTP results for the same representative pages. Reproduce it with `python -m market_intel spike --public --output data/public-spike.json`.
-
-Raw responses are cached under `data/cache` for 24 hours. Use `--refresh` to fetch fresh observations. `--judgeme-pages`, `--review-pages` (0–5 for Flipkart) and `--reddit-threads` control collection depth. Use `--overrides path/to/listings.csv` for verified product mappings with columns `product_ref,market,url`. The packaged overrides are in [listing_overrides.csv](market_intel/listing_overrides.csv). `MARKET_INTEL_DB` sets the database path for both the service and CLI. The CLI also accepts `--db` and `--cache` before the subcommand.
-
-## Competitor selection
-
-Categories cover Sunscreen, Moisturiser, Serum, Face Wash, Lip Balm, Toner, Mask, Eye, Body and Hair. The collector searches two marketplace result pages per category, excludes bundles and Dot & Key, and scores observed products. The score weights log rating count normalized by the category maximum (35%), discounted search position (25%), overlap with the observed Dot & Key price range (20%) and ingredient or claim overlap with the closest Dot & Key product (20%). Missing dimensions contribute zero. It retains at most five distinct brands. The report includes source URLs, raw values, score components and validation evidence. Company enrichment stores the sections returned for a matched brand domain. A repeated brand is enriched once per run.
 
 ## Verify
 
 ```sh
-.venv/bin/pip install pytest
-.venv/bin/python -m pytest -q
+.venv/bin/pip install pytest && .venv/bin/python -m pytest -q
+npm --prefix studio-web run build
 ```
-
-The tests cover collection, snapshot history, frozen tagger precision, metrics, gaps, trend and SWOT thresholds, demand projections, recommendation traceability, API responses and CLI exports.

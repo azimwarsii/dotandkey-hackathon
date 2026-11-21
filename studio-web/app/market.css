@@ -187,7 +187,7 @@
 .mk-intro h1,
 .mk-kit h1 {
   font:
-    500 clamp(36px, 3.3vw, 55px)/1.1 Poppins,
+    500 clamp(36px, 3.3vw, 55px) / 1.1 Poppins,
     sans-serif;
   letter-spacing: -0.068em;
   margin: 0;
@@ -357,7 +357,7 @@
   align-items: baseline;
   gap: 0;
   font:
-    400 clamp(37px, 3.1vw, 54px)/1.06 Poppins,
+    400 clamp(37px, 3.1vw, 54px) / 1.06 Poppins,
     sans-serif;
   letter-spacing: -0.073em;
   font-variant-numeric: tabular-nums;
@@ -646,7 +646,7 @@
 }
 .mk-story-content h3 {
   font:
-    500 clamp(18px, 1.65vw, 28px)/1.19 Poppins,
+    500 clamp(18px, 1.65vw, 28px) / 1.19 Poppins,
     sans-serif;
   letter-spacing: -0.054em;
   max-width: 96%;
@@ -1969,3 +1969,55 @@
     backdrop-filter: none;
   }
 }
+.mk-search-context {
+  color: #595e50;
+  font-size: 12px;
+}
+.mk-ask-action {
+  background: #f1f5e8;
+  margin-top: 12px;
+}
+.mk-ask-action span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.mk-command-options button small {
+  flex: 0 0 auto;
+  max-width: 28%;
+}
+.picker-source {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 12px 0 4px;
+}
+.mk-dialog .product-picker {
+  margin-top: 16px;
+}
+.market-priority {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-bottom: 16px;
+  padding: 20px 24px;
+  background: #eaf1dd;
+  border: 1px solid #d7e1c8;
+  border-radius: 20px;
+}
+.market-priority > div {
+  flex: 1 1 440px;
+}
+.market-priority h2 {
+  font-size: clamp(17px, 1.5vw, 23px);
+  font-weight: 550;
+  line-height: 1.28;
+  margin: 6px 0;
+}
+.market-priority .mk-text-btn {
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.metric-unavailable { font-size: clamp(20px, 2vw, 30px); letter-spacing: -0.045em; }
+.mk-forecast-note { font-size: 13px; line-height: 1.5; color: #54594d; margin: 10px 0; }

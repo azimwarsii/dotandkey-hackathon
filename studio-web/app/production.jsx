@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   asList,
   Badge,
@@ -34,12 +34,12 @@ export function Concepts({ s, act, busy, inspect }) {
             value={reference}
             onChange={(e) => setReference(e.target.value)}
           >
-            <option value="">Use concept pacing</option>
+            <option value="">Use concept pacing (16 seconds)</option>
             {s.posts
               .filter((p) => p.duration > 0)
               .map((p) => (
                 <option key={p.id} value={p.id}>
-                  {p.title}
+                  {p.title} · {Math.round(p.duration)}s reference
                 </option>
               ))}
           </select>
@@ -350,9 +350,29 @@ export function Script({ s, media, inspect, act, busy }) {
     </>
   );
 }
-export function Video({ s, media, act, busy, inspect }) {
+export function Video({ s, media, act, busy, inspect, go }) {
   const f = s.film,
     [chosen, setChosen] = useState("");
+  const [quote, setQuote] = useState(null);
+  const [quoteError, setQuoteError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    if (!s.creative.script || f.hero) return;
+    const controller = new AbortController();
+    setQuoteError(false);
+    fetch("/studio-api/film-quote", { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw Error();
+        return r.json();
+      })
+      .then((d) => {
+        if (!controller.signal.aborted) setQuote(d);
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setQuoteError(true);
+      });
+    return () => controller.abort();
+  }, [s.creative.script?.id, !!f.hero, attempt]);
   const rows = asList(f.variants || f.drafts);
   const pick = rows.find((r) => r.id === chosen) || rows[0];
   const movie = (x) =>
@@ -360,6 +380,16 @@ export function Video({ s, media, act, busy, inspect }) {
   const player = useRef(null);
   const selected = chosen === "hero" || (!chosen && f.hero) ? f.hero : pick;
   const file = movie(selected) || movie(f.video);
+  const gate = selected?.gate || f.gate;
+  if (!s.creative.script)
+    return (
+      <Empty>
+        Choose a creative direction and produce its script first.{" "}
+        <button className="link" onClick={() => go("concepts")}>
+          Open creative directions <Icon name="arrow" />
+        </button>
+      </Empty>
+    );
   return (
     <>
       <div className="action-row">
@@ -370,14 +400,37 @@ export function Video({ s, media, act, busy, inspect }) {
         >
           <Icon name="film" /> Render free drafts
         </button>
-        <button
-          disabled={busy || !s.creative.script}
-          className="secondary"
-          onClick={() => act("film", { paid: true })}
-        >
-          Render hero film
-        </button>
+        {!f.hero && (
+          <button
+            disabled={busy || !quote}
+            className="secondary"
+            onClick={() =>
+              act("film", { paid: true, approved_usd: quote.estimated_usd })
+            }
+          >
+            {quote
+              ? "Generate hero · US$" +
+                Number(quote.estimated_usd).toFixed(2) +
+                " motion"
+              : "Generate hero film"}
+          </button>
+        )}
       </div>
+      {!f.hero && (
+        <p className="video-cost">
+          Drafts animate catalog photos. The hero adds generated motion and
+          separately billed narration.
+          {quoteError && (
+            <>
+              {" "}
+              Motion pricing unavailable.{" "}
+              <button className="link" onClick={() => setAttempt((n) => n + 1)}>
+                Retry estimate
+              </button>
+            </>
+          )}
+        </p>
+      )}
       <Section
         title="Screening room"
         action={
@@ -479,7 +532,29 @@ export function Video({ s, media, act, busy, inspect }) {
       )}
       <Section title="Quality gate">
         <div className="panel">
-          <Data value={selected?.gate || f.gate || f.qc} />
+          {gate ? (
+            <>
+              <h3>
+                {gate.status === "pass"
+                  ? "Passed production checks"
+                  : gate.status === "warn"
+                    ? "Ready for team review"
+                    : "Review required"}
+              </h3>
+              <p>
+                Technical checks · {nice(gate.technical_qc)}
+                <br />
+                Product claims · {nice(gate.claim_guard?.status)}
+              </p>
+              {gate.commercial_review && <p>{gate.commercial_review}</p>}
+              <details>
+                <summary>Production checks</summary>
+                <Data value={gate} />
+              </details>
+            </>
+          ) : (
+            <p>Render a video to see its checks.</p>
+          )}
         </div>
       </Section>
       {f.social?.cover && (
@@ -516,6 +591,10 @@ export function Video({ s, media, act, busy, inspect }) {
       )}
       <Section title="Platform exports">
         <div className="filters">
+          {file &&
+            !Object.keys(selected?.exports || f.exports || {}).length && (
+              <p>Use Download film above for this version.</p>
+            )}
           {Object.entries(selected?.exports || f.exports || {}).map(([k, v]) =>
             movie(v) ? (
               <a className="secondary" key={k} href={media(movie(v))} download>

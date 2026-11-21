@@ -6,7 +6,7 @@ import {
   Sheet,
   label,
   withQuery,
-  loadJSON,
+  dateLabel,
   onlineForAction,
 } from "./market-shared";
 
@@ -30,21 +30,20 @@ function readRecent() {
   }
 }
 export default function MarketCommand({
-  mode: initialMode,
   categories,
   category,
   asOf,
+  run,
   navigate,
   close,
 }) {
-  const [mode, setMode] = useState(initialMode),
-    [query, setQuery] = useState(""),
+  const [query, setQuery] = useState(""),
     [answer, setAnswer] = useState(""),
     [cites, setCites] = useState([]),
     [pending, setPending] = useState(false),
     [err, setErr] = useState(""),
-    [hits, setHits] = useState([]),
-    [active, setActive] = useState(0),
+    [matches, setMatches] = useState(null),
+    [active, setActive] = useState(-1),
     [recent, setRecent] = useState([]),
     [asked, setAsked] = useState(false);
   const abort = useRef(null),
@@ -59,24 +58,46 @@ export default function MarketCommand({
     q = query.replace(/^\s*\//, "").trim(),
     psearch = q.replace(/^product\s+/i, "");
   useEffect(() => {
-    setActive(0);
-    setHits([]);
-    let live = true;
     if (psearch.length < 2) return;
-    const timer = setTimeout(
-      () =>
-        loadJSON(withQuery("/api/products", { q: psearch }))
-          .then((d) => {
-            if (live) setHits((d.products || []).slice(0, 8));
-          })
-          .catch(() => {}),
-      160,
-    );
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          withQuery("/api/search", {
+            q: psearch.slice(0, 180),
+            category,
+            as_of: asOf,
+          }),
+          { signal: controller.signal },
+        );
+        if (!response.ok) throw Error();
+        const data = await response.json();
+        if (!controller.signal.aborted) setMatches({ ...data, query: psearch });
+      } catch {
+        if (!controller.signal.aborted)
+          setMatches({ error: true, query: psearch });
+      }
+    }, 180);
     return () => {
-      live = false;
       clearTimeout(timer);
+      controller.abort();
     };
-  }, [psearch]);
+  }, [psearch, category, asOf]);
+  const found = matches?.query === psearch ? matches : null;
+  function fromLink(row) {
+    const url = new URL(row.href, location.origin);
+    const { view, ...args } = Object.fromEntries(url.searchParams);
+    if (url.hash) args.card = decodeURIComponent(url.hash.slice(1));
+    return {
+      name: row.title,
+      icon: view,
+      view,
+      args,
+      section: [row.type ? label(row.type) : "Source", args.category]
+        .filter(Boolean)
+        .join(" · "),
+    };
+  }
   const actions = [
     ...VIEWS.map((v) => ({
       name: label(v),
@@ -91,6 +112,22 @@ export default function MarketCommand({
       view: "strategy",
       args: { card: "swot" },
     },
+    ...[
+      ["video", "Video production"],
+      ["swipe", "Research library"],
+      ["script", "Script and storyboard"],
+      ["kit", "Campaign kit"],
+    ].map(([step, name]) => ({
+      name,
+      icon: "studio",
+      section: "Studio",
+      view: "studio",
+      args: {
+        studioStep: step,
+        run: run || "watermelon-demo",
+        category: run ? category : "Sunscreen",
+      },
+    })),
     ...categories.map((c) => ({
       name: c,
       icon: "stack",
@@ -108,22 +145,17 @@ export default function MarketCommand({
             ["products", "competitors", "strategy"].includes(a.view) && !a.args,
         ),
       ];
-  options = [
-    ...options,
-    ...hits.map((p) => ({
-      name: p.title,
-      icon: "products",
-      section: p.category,
-      view: "products",
-      args: { category: p.category, product: p.handle },
-    })),
-  ]
+  options = [...options, ...(found?.results || []).map(fromLink)]
     .filter(
       (a, i, arr) =>
-        arr.findIndex((b) => a.name === b.name && a.section === b.section) ===
-        i,
+        arr.findIndex(
+          (b) =>
+            a.name === b.name &&
+            JSON.stringify(a.args) === JSON.stringify(b.args) &&
+            a.view === b.view,
+        ) === i,
     )
-    .slice(0, 9);
+    .slice(0, 12);
   function go(item) {
     try {
       localStorage.setItem(
@@ -136,8 +168,8 @@ export default function MarketCommand({
     close();
     navigate(item.view, item.args || {});
   }
-  async function ask() {
-    if (pending || !query.trim() || !onlineForAction()) return;
+  async function ask(question = query.trim()) {
+    if (!question || !onlineForAction()) return;
     abort.current?.abort();
     const controller = new AbortController();
     abort.current = controller;
@@ -156,7 +188,7 @@ export default function MarketCommand({
         body: JSON.stringify({
           category,
           as_of: asOf || undefined,
-          question: query.trim(),
+          question,
         }),
         signal: controller.signal,
       });
@@ -167,6 +199,7 @@ export default function MarketCommand({
       let buffer = "",
         doneEvent = false;
       function process(block) {
+        if (controller.signal.aborted) return;
         const raw = block
           .split(/\r?\n/)
           .filter((l) => l.startsWith("data:"))
@@ -201,87 +234,54 @@ export default function MarketCommand({
       if (!controller.signal.aborted) setPending(false);
     }
   }
+  const isQuestion =
+    !command &&
+    (/^(what|why|how|who|which|when|where|is|are|does|do|can|should|compare|tell me)\b/i.test(
+      q,
+    ) ||
+      q.endsWith("?"));
+  const loading = psearch.length >= 2 && !found;
+  const opensResult = active >= 0 || (!isQuestion && options.length > 0);
   function submit(e) {
     e.preventDefault();
-    if (mode === "ask" && !command) {
-      ask();
-      return;
-    }
-    if (options[active]) go(options[active]);
-    else if (command && /^product\s+/i.test(q)) {
-      close();
-      navigate("products", { q: psearch });
-    }
+    if (pending) return;
+    if (opensResult) go(options[active] || options[0]);
+    else if (q && !command && (!loading || isQuestion)) ask();
   }
-  function citation(c) {
-    const u = new URL(c.href || "/", location.origin);
-    const view =
-      u.searchParams.get("view") || u.pathname.replace(/^\//, "") || "strategy";
-    close();
-    navigate(view, {
-      category: u.searchParams.get("category") || category,
-      as_of: u.searchParams.get("as_of") || asOf,
-      card: c.id || decodeURIComponent(u.hash.slice(1)),
-    });
-  }
-  function change(m) {
+  function edit(value) {
     abort.current?.abort();
-    setMode(m);
     setPending(false);
+    setQuery(value);
     setAsked(false);
     setErr("");
-    input.current?.focus();
+    setActive(-1);
   }
-  const searching = mode === "search" || command;
   return (
-    <Sheet
-      title={mode === "ask" ? "Ask the market" : "Search the workspace"}
-      close={close}
-    >
+    <Sheet title="Search or ask the market" close={close}>
       <div className="mk-command">
-        <div className="mk-command-tabs">
-          <button
-            aria-pressed={mode === "search"}
-            onClick={() => change("search")}
-          >
-            <Mark name="search" size={14} />
-            Search
-          </button>
-          <button aria-pressed={mode === "ask"} onClick={() => change("ask")}>
-            <Mark name="studio" size={14} />
-            Ask the market
-          </button>
-        </div>
         <form onSubmit={submit} className="mk-command-input">
+          <Mark name="search" size={16} />
           <input
             ref={input}
             autoComplete="off"
-            aria-label={
-              mode === "ask"
-                ? "Market question"
-                : "Search views, categories and products"
-            }
-            placeholder={
-              mode === "ask"
-                ? "Ask about " + category.toLowerCase() + "…"
-                : "Search a product, category or view…"
-            }
+            maxLength={1500}
+            aria-label="Search the workspace or ask a question"
+            placeholder="Try a product, a campaign or a question…"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setAsked(false);
-              setErr("");
-            }}
+            onChange={(e) => edit(e.target.value)}
             onKeyDown={(e) => {
               if (
-                searching &&
+                !asked &&
                 options.length &&
                 ["ArrowUp", "ArrowDown"].includes(e.key)
               ) {
                 e.preventDefault();
                 const next =
-                  (active + (e.key === "ArrowDown" ? 1 : -1) + options.length) %
-                  options.length;
+                  e.key === "ArrowDown"
+                    ? (active + 1) % options.length
+                    : active <= 0
+                      ? options.length - 1
+                      : active - 1;
                 setActive(next);
                 list.current?.children[next]?.scrollIntoView({
                   block: "nearest",
@@ -290,48 +290,33 @@ export default function MarketCommand({
             }}
           />
           <button
-            disabled={pending}
-            aria-label={searching ? "Open result" : "Ask question"}
+            disabled={
+              pending ||
+              (!opensResult && (!q || command || (loading && !isQuestion)))
+            }
+            aria-label={opensResult ? "Open result" : "Ask question"}
           >
             <Mark name="arrow" />
           </button>
         </form>
-        {searching ? (
-          <>
-            <div className="mk-command-label">
-              {q
-                ? "Results"
-                : recent.length
-                  ? "Recent and suggested"
-                  : "Suggested views"}
-            </div>
-            <div ref={list} className="mk-command-options">
-              {options.map((o, i) => (
-                <button
-                  className={active === i ? "active" : ""}
-                  onMouseEnter={() => setActive(i)}
-                  key={o.name + o.section}
-                  onClick={() => go(o)}
-                >
-                  <Mark name={o.icon} size={16} />
-                  <span>{o.name}</span>
-                  <small>{o.section}</small>
-                </button>
-              ))}
-              {!options.length && <p>No matching view, category or product.</p>}
-            </div>
-          </>
-        ) : asked ? (
+        <p className="mk-search-context">
+          {asked ? "Answer context" : "Search all saved data"} ·{" "}
+          {asked
+            ? (found?.categories || [category]).join(" and ")
+            : category + " first"}{" "}
+          · {dateLabel(asOf)}
+        </p>
+        {asked ? (
           <div className="mk-answer" aria-live="polite">
             <p>
               {answer ||
-                (!err && pending ? "Reading the category evidence…" : "")}
+                (!err && pending ? "Looking through the saved evidence…" : "")}
             </p>
             {cites.length > 0 && (
               <div className="mk-citations">
                 <h3>Sources</h3>
                 {cites.map((c, i) => (
-                  <button key={c.id} onClick={() => citation(c)}>
+                  <button key={c.href} onClick={() => go(fromLink(c))}>
                     <b>{i + 1}</b>
                     {c.title}
                     <Mark name="external" size={13} />
@@ -339,41 +324,94 @@ export default function MarketCommand({
                 ))}
               </div>
             )}
-            {err && <p role="alert">{err}</p>}
-          </div>
-        ) : (
-          <>
-            <div className="mk-command-label">Explore {category}</div>
-            {[
-              "What are the biggest gaps?",
-              "How does demand look?",
-              "What do customers complain about?",
-            ].map((t) => (
+            {err && (
+              <p role="alert">
+                {err}{" "}
+                <button className="mk-text-btn" onClick={() => ask()}>
+                  Try again
+                </button>
+              </p>
+            )}
+            {!pending && (
               <button
-                key={t}
-                className="mk-prompt"
+                className="mk-text-btn"
                 onClick={() => {
-                  setQuery(t);
+                  setAsked(false);
                   input.current?.focus();
                 }}
               >
-                {t}
-                <Mark name="up" size={15} />
+                See search results
               </button>
-            ))}
-            <div className="mk-shortcuts">
-              {["/competitors", "/swot", "/product watermelon"].map((t) => (
+            )}
+          </div>
+        ) : (
+          <>
+            {q && !command && (
+              <button className="mk-prompt mk-ask-action" onClick={() => ask()}>
+                <Mark name="message" size={16} />
+                <span>Answer “{q}” using saved evidence</span>
+                <Mark name="arrow" size={14} />
+              </button>
+            )}
+            <div className="mk-command-label">
+              {q
+                ? "Matching results"
+                : recent.length
+                  ? "Recent and suggested"
+                  : "Jump to a view"}
+            </div>
+            <div ref={list} className="mk-command-options">
+              {options.map((o, i) => (
                 <button
-                  key={t}
-                  onClick={() => {
-                    setQuery(t);
-                    input.current?.focus();
-                  }}
+                  key={o.view + JSON.stringify(o.args) + o.name}
+                  className={
+                    active === i || (active < 0 && !isQuestion && i === 0)
+                      ? "active"
+                      : ""
+                  }
+                  onClick={() => go(o)}
                 >
-                  {t}
+                  <Mark name={o.icon} size={16} />
+                  <span>{o.name}</span>
+                  <small>{o.section}</small>
                 </button>
               ))}
             </div>
+            {loading && <p role="status">Searching saved data…</p>}
+            {found?.error && (
+              <p role="status">
+                Saved data search is unavailable. You can still open views and
+                categories.
+              </p>
+            )}
+            {!loading && !found?.error && !options.length && (
+              <p>
+                No matches. Try a shorter product name or a customer’s exact
+                wording.
+              </p>
+            )}
+            {!q && (
+              <>
+                <div className="mk-command-label">Ask a question</div>
+                {[
+                  "What do customers complain about?",
+                  "What should we do in " + category + "?",
+                  "How does demand look for lip balm?",
+                ].map((t) => (
+                  <button
+                    key={t}
+                    className="mk-prompt"
+                    onClick={() => {
+                      edit(t);
+                      ask(t);
+                    }}
+                  >
+                    {t}
+                    <Mark name="arrow" size={14} />
+                  </button>
+                ))}
+              </>
+            )}
           </>
         )}
       </div>

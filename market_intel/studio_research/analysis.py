@@ -454,6 +454,8 @@ def _file_hash(path):
 
 
 def deconstruct(run_dir, *, url=None, paths=None, product_image=None):
+    from market_intel.studio.runs import progress
+
     root = Path(run_dir).resolve()
     paths = [Path(p) for p in (paths or [])]
     if not url and not paths:
@@ -515,6 +517,7 @@ def deconstruct(run_dir, *, url=None, paths=None, product_image=None):
         }
         with tempfile.TemporaryDirectory() as tmp:
             if not paths:
+                progress("Retrieving the reference video or images")
                 paths, meta = _resolve(platform, url, Path(tmp))
                 for k, v in meta.items():
                     if v is not None and k not in candidate:
@@ -552,6 +555,7 @@ def deconstruct(run_dir, *, url=None, paths=None, product_image=None):
                     raise ValueError("Provide MP4, MOV, WebM, AVI or image slides.")
                 dest = directory / "reference.mp4"
                 try:
+                    progress("Reading video length and detecting scene changes")
                     normalize_video(paths[0], dest)
                     duration, _ = video_info(dest)
                     cuts = shot_times(dest, duration)
@@ -563,9 +567,11 @@ def deconstruct(run_dir, *, url=None, paths=None, product_image=None):
                         "A readable video up to three minutes is required."
                     ) from exc
                 normalized = [dest]
+            progress("Reading on-screen text and inspecting sampled frames")
             frames = frame_analysis(
                 normalized, directory, rel, product_image, duration, cuts, image_post
             )
+            progress("Checking audio and transcribing speech")
             audio, lines = (
                 ({"present": False}, [])
                 if image_post
@@ -613,6 +619,7 @@ def deconstruct(run_dir, *, url=None, paths=None, product_image=None):
                     "timing": "First observed sample; slides use zero-based slide indices.",
                 },
             )
+            progress("Identifying the opening hook and creative patterns")
             report["semantic"], report["semantic_recipe"] = _semantic(
                 report, root, normalized, report["warnings"]
             )

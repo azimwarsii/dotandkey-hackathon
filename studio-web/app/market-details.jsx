@@ -99,7 +99,7 @@ function CTA({ item, create, busy }) {
 }
 function Quote({ row }) {
   return (
-    <blockquote className="mk-quote">
+    <blockquote className="mk-quote" id={row.search_id}>
       <p>“{row.quote || row.body}”</p>
       <footer>
         {[
@@ -290,13 +290,20 @@ export function Products({ data, navigate, query = "" }) {
     </div>
   );
 }
-export function ProductDetail({ data, navigate, create, busy }) {
+export function ProductDetail({ data, navigate, create, busy, card }) {
   const [tab, setTab] = useState("Listings"),
     [limit, setLimit] = useState(12),
     p = data.product || {},
     snaps = data.snapshots || [],
     reviews = data.reviews || [],
     listings = data.listings || [];
+  useEffect(() => {
+    const index = data.reviews?.findIndex((r) => r.search_id === card) ?? -1;
+    if (index >= 0) {
+      setTab("Reviews");
+      setLimit(Math.max(12, index + 1));
+    }
+  }, [data, card]);
   return (
     <div className="mk-detail-view">
       <button className="mk-text-btn" onClick={() => navigate("products")}>

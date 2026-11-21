@@ -10,7 +10,7 @@ export default {
       // Nightly maintenance stays on the private API. Only job reads cross this proxy.
       { source: "/api/jobs/:id([a-f0-9]{32})/events", destination: backend + "/api/jobs/:id/events" },
       { source: "/api/jobs/:id([a-f0-9]{32})", destination: backend + "/api/jobs/:id" },
-      { source: "/api/:section(health|version|overview|products|competitors|launches|ask|refresh|category)/:path*", destination: backend + "/api/:section/:path*" },
+      { source: "/api/:section(health|version|overview|products|competitors|launches|ask|search|refresh|category)/:path*", destination: backend + "/api/:section/:path*" },
       { source: "/studio-api/:path*", destination: backend + "/studio/:path*" },
     ];
   },

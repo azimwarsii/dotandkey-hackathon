@@ -83,7 +83,10 @@ def cards(report):
             f"{name} has an opportunity score of {f['opportunity_score']:.3f}.",
             "opportunity_score",
             "overview",
-            description=f["method"].get("score_formula"),
+            description=(
+                f"The score combines {f['forecast_growth']:+.1%} projected review activity growth, "
+                f"{share:.1%} Dot & Key review share and {f['score_factors']['gap_count']} distinct market gaps."
+            ),
         )
     growth = f["forecast_growth"]
     title = (
@@ -130,6 +133,10 @@ def competitor_cards(report):
         desc = (
             f"Rank {r['rank']} in the sampled competitor set for {report['category']}."
         )
+        if r["price"] is not None:
+            desc += f" Median observed listing price ₹{r['price']:g}."
+        if r["rating"] is not None:
+            desc += f" Observed rating {r['rating']:.1f} out of 5."
         yield {
             "id": ident,
             "title": r["title"],

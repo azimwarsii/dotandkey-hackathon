@@ -523,12 +523,21 @@ def qc(video, script, output):
 
 
 def platform_exports(video, directory):
+    from market_intel.studio.runs import progress
+
     outputs = {}
     for label, size in [
         ("reels", "1080:1920"),
         ("shorts", "1080:1920"),
         ("meta", "1080:1350"),
     ]:
+        progress(
+            f"Exporting {label.title()} at {size.replace(':', ' × ')}",
+            phase="exports",
+            completed=len(outputs),
+            total=3,
+            unit="platform files ready",
+        )
         target = directory / (label + ".mp4")
         if label == "shorts":
             shutil.copyfile(directory / "reels.mp4", target)

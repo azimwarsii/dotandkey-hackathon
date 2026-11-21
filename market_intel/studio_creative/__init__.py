@@ -10,13 +10,19 @@ __all__ = ["build_brief", "concepts", "generate"]
 
 
 def generate(run_dir, brief, patterns, concept, reference=None):
+    from market_intel.studio.runs import progress
+
     root = Path(run_dir)
+    progress("Writing the voiceover and on-screen copy")
     script = build_script(brief, patterns, concept, reference, root=root)
+    progress("Preparing the script variants and checking product claims")
     variants = variants_for(script, concept, brief)
     pattern = next((p for p in patterns if p["id"] == concept["pattern_ref"]), {})
     for v in variants:
         v["preflight"] = preflight(v["script"], pattern, brief)
+    progress("Rendering ads and marketplace artwork")
     ads, modules = visuals(root, brief, concept)
+    progress("Writing copy for Amazon, Flipkart and Nykaa")
     listings = listing_copies(root, brief)
     data = {
         "concept_id": concept["id"],

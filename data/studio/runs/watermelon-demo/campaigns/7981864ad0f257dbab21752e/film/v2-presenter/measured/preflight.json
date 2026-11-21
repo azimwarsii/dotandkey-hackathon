@@ -1,0 +1,174 @@
+{
+  "fingerprint": "4a676c8bf9a3cc2ef9860b0344c36f5ed9530df49859f95d7f262f8245edadd6",
+  "video": "film/v2-presenter/master.mp4",
+  "pattern_id": "pattern-40a352e665e0c3d7",
+  "checks": [
+    {
+      "id": "hook",
+      "label": "Opening hook visible",
+      "value": 0,
+      "status": "pass",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": "film/v2-presenter/measured/frame-0000000.jpg"
+    },
+    {
+      "id": "product",
+      "label": "Catalog pack visible",
+      "value": "Unconfirmed in sampled frames",
+      "status": "warn",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": null
+    },
+    {
+      "id": "overlay",
+      "label": "Opening overlay readable",
+      "value": 0,
+      "status": "pass",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": "film/v2-presenter/measured/frame-0000000.jpg"
+    },
+    {
+      "id": "duration",
+      "label": "Runtime within reference IQR",
+      "value": 16.0,
+      "status": "fail",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": null
+    },
+    {
+      "id": "pace",
+      "label": "Measured cut rate within 25% of reference",
+      "value": 0.125,
+      "status": "fail",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": null
+    },
+    {
+      "id": "cta",
+      "label": "Closing CTA visible",
+      "value": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula.",
+      "status": "pass",
+      "shot_ref": "shot-5",
+      "time": 15.5,
+      "frame": "film/v2-presenter/measured/frame-0015500.jpg"
+    },
+    {
+      "id": "claims",
+      "label": "Scripted overlays and VO passed claim guard",
+      "value": "pass",
+      "status": "pass",
+      "shot_ref": "shot-1",
+      "time": 0,
+      "frame": null
+    }
+  ],
+  "score": 67,
+  "measured": 6,
+  "total": 7,
+  "cuts": [
+    0.0,
+    2.023,
+    5.523
+  ],
+  "reference_spec": {
+    "hook_max_s": 1.5,
+    "product_by_s": 3,
+    "text_by_s": 1,
+    "length_iqr": [
+      24.75,
+      24.75
+    ],
+    "duration_median_s": 24.75,
+    "cuts_per_second_median": 0.687,
+    "observed_first_text_median_s": 0.0,
+    "observed_face_in_first_second_share": 1.0,
+    "measurement_n": 1,
+    "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+  },
+  "method": "OCR for scripted overlays and CTA; ORB catalog pack matching; FFmpeg scene differences above 0.30. Unconfirmed readings are marked for review.",
+  "samples": [
+    {
+      "time": 0,
+      "path": "film/v2-presenter/measured/frame-0000000.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY DOT&KEY SUNSCREEN 50+ DOT&KEY Meet the formula."
+    },
+    {
+      "time": 0.25,
+      "path": "film/v2-presenter/measured/frame-0000250.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOTKEY DOT&KEY 50+ DOT&KEY Meet theformula."
+    },
+    {
+      "time": 0.5,
+      "path": "film/v2-presenter/measured/frame-0000500.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY DOT&KEY OLNG 50+ DOT&KEY Meettheformula."
+    },
+    {
+      "time": 1.0,
+      "path": "film/v2-presenter/measured/frame-0001000.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY DOT&KEY 5C+ DOT&KEY Meettheformula."
+    },
+    {
+      "time": 1.5,
+      "path": "film/v2-presenter/measured/frame-0001500.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY DOT&KEY 50+ DOT&KEY Meet the formula."
+    },
+    {
+      "time": 2.0,
+      "path": "film/v2-presenter/measured/frame-0002000.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+    },
+    {
+      "time": 2.25,
+      "path": "film/v2-presenter/measured/frame-0002250.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+    },
+    {
+      "time": 2.5,
+      "path": "film/v2-presenter/measured/frame-0002500.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY SUNT 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid&UVFilters"
+    },
+    {
+      "time": 3.0,
+      "path": "film/v2-presenter/measured/frame-0003000.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY NATER DNITOO 50+ DOT&KEY Supercharged with Watermelon, Hyaluronic Acid &UVFilters"
+    },
+    {
+      "time": 5.75,
+      "path": "film/v2-presenter/measured/frame-0005750.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY SUNSCREEN 50+ DOT&KEY zero white cast"
+    },
+    {
+      "time": 9.25,
+      "path": "film/v2-presenter/measured/frame-0009250.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY 50+ DOT&KEY Watermelon Sunscreen"
+    },
+    {
+      "time": 13.25,
+      "path": "film/v2-presenter/measured/frame-0013250.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqua-gel 5C+ DOT&KEY Explore the formula."
+    },
+    {
+      "time": 15.5,
+      "path": "film/v2-presenter/measured/frame-0015500.jpg",
+      "product_match": false,
+      "ocr": "Al-generated DOT&KEY WATERMELON COOLING SUNSCREEN aqva-ge1 5C+ DOT&KEY Explore the formula."
+    }
+  ]
+}

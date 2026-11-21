@@ -8,6 +8,8 @@ from pathlib import Path
 
 import httpx
 
+from market_intel.studio.runs import progress
+
 from .compose import (
     combine,
     platform_exports,
@@ -93,7 +95,15 @@ def _render(
     sources = []
     duration = sum(float(s["duration"]) for s in shots)
     pos = 0.0
+    phase = "hero" if movies else "drafts"
     for idx, shot in enumerate(shots):
+        progress(
+            f"{title} · adding picture and narration to shot {idx + 1} of {len(shots)}",
+            phase=phase,
+            completed=idx,
+            total=len(shots),
+            unit="shots assembled",
+        )
         frame = folder / f"shot-{idx + 1:02}.jpg"
         shot_card(run, brief, shot, idx, fmt, frame)
         frames.append(frame)
@@ -142,12 +152,22 @@ def _render(
         sources.append(provider)
         pos += shot["duration"]
     master = folder / "master.mp4"
+    progress(
+        f"{title} · joining shots and checking sound",
+        phase=phase,
+        completed=len(shots),
+        total=len(shots),
+        unit="shots assembled",
+    )
     combine(paths, master)
     board = folder / "storyboard.jpg"
     storyboard(frames, board)
     sidecar = {"status": "unconfigured"}
     if upstream:
         try:
+            progress(
+                f"{title} · composing the alternate edit in ClipForge", phase=phase
+            )
             sidecar = render_sidecar(
                 upstream,
                 brief,
@@ -179,6 +199,7 @@ def _render(
     rel = lambda p: p.relative_to(run).as_posix()
     # ClipForge's alternate is supplied alongside the timed master. Validate the exact exposed file.
     sheet = folder / "contact.jpg"
+    progress(f"{title} · checking video, audio and captions", phase=phase)
     checks = qc(master, script, sheet)
     if movies:
         board.write_bytes(sheet.read_bytes())
@@ -303,6 +324,13 @@ def render_film(
         upstream = None
     drafts = []
     for index, var in enumerate(variants):
+        progress(
+            f"Preparing draft {index + 1} of {len(variants)} · {var['title']}",
+            phase="drafts",
+            completed=index,
+            total=len(variants),
+            unit="drafts ready",
+        )
         drafts.append(
             _render(
                 run,
@@ -317,6 +345,13 @@ def render_film(
         )
     if not drafts:
         raise ValueError("Select at least one variant")
+    progress(
+        "Draft videos are ready",
+        phase="drafts",
+        completed=len(drafts),
+        total=len(drafts),
+        unit="drafts ready",
+    )
     hero = None
     quote = None
     if paid:
@@ -355,6 +390,7 @@ def render_film(
         "quote": quote,
     }
     if hero and upstream:
+        progress("Preparing the storyboard from the finished film", phase="exports")
         try:
             result["director"] = import_verified_board(
                 run, brief, script, upstream, hero
@@ -363,6 +399,7 @@ def render_film(
             result["director"] = {"status": "unavailable", "reason": str(error)[:240]}
     if hero and upstream and hero.get("clipforge", {}).get("project_id"):
         try:
+            progress("Creating the film cover and carousel", phase="exports")
             result["social"] = cover_and_carousel(upstream, run, hero, script)
         except (httpx.HTTPError, OSError, ValueError, KeyError) as error:
             result["social"] = {"status": "unavailable", "reason": str(error)[:240]}

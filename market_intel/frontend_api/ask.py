@@ -4,11 +4,10 @@ from __future__ import annotations
 
 import json
 import os
-import re
 
 import httpx
 
-from .evidence import cards, competitor_cards
+from . import cache, search
 
 
 def event(payload):
@@ -19,76 +18,17 @@ def event(payload):
     )
 
 
-STOP = {
-    "a",
-    "an",
-    "and",
-    "are",
-    "as",
-    "at",
-    "be",
-    "by",
-    "can",
-    "do",
-    "does",
-    "for",
-    "from",
-    "how",
-    "i",
-    "in",
-    "is",
-    "it",
-    "me",
-    "of",
-    "on",
-    "or",
-    "our",
-    "the",
-    "to",
-    "we",
-    "what",
-    "which",
-    "with",
-}
-TOPICS = {
-    "review_share": {"share", "volume"},
-    "opportunity_score": {"opportunity", "score"},
-    "recommendation": {
-        "should",
-        "recommend",
-        "recommendations",
-        "actions",
-        "strategy",
-        "improve",
-    },
-    "strength": {"swot", "strengths", "strength", "best"},
-    "weakness": {"swot", "weaknesses", "weakness", "complaints", "issues"},
-    "aspect": {"sentiment", "feel", "customers", "complaints", "reviews"},
-    "whitespace": {"gaps", "gap", "whitespace", "opportunities", "missing"},
-    "launch": {"new", "launches", "launched", "launch"},
-    "competitor": {"competitors", "peers", "rivals", "competitor"},
-    "forecast": {"growth", "forecast", "demand", "projection", "future"},
-}
-
-
-def rank(question, candidates):
-    tokens = set(re.findall(r"[\w]+", question.casefold())) - STOP
-
-    def score(r):
-        words = set(re.findall(r"[\w]+", r["title"].casefold()))
-        return len(tokens & words) + 3 * len(tokens & TOPICS.get(r["type"], set()))
-
-    ordered = sorted(candidates, key=score, reverse=True)
-    return [r for r in ordered if score(r)][:18]
-
-
 def select_with_model(question, candidates, category):
     key = os.getenv("OPENROUTER_API_KEY")
     if not key:
         return None
     # The provider may select IDs only. No model-produced assertions or URLs reach the client.
     evidence = [
-        {k: c[k] for k in ("id", "title", "type", "description")} for c in candidates
+        {
+            "id": str(i),
+            **{k: c[k] for k in ("category", "title", "type", "description")},
+        }
+        for i, c in enumerate(candidates)
     ]
     payload = {
         "model": os.getenv("MARKET_ASK_MODEL", "openai/gpt-4o-mini"),
@@ -121,34 +61,58 @@ def select_with_model(question, candidates, category):
         ids = json.loads(response.json()["choices"][0]["message"]["content"])["ids"]
         if not isinstance(ids, list):
             return None
-        valid = {r["id"]: r for r in candidates}
+        valid = {str(i): r for i, r in enumerate(candidates)}
         return [
             valid[k]
-            for k in dict.fromkeys(i for i in ids if isinstance(i, str))
+            for k in dict.fromkeys(str(i) for i in ids if isinstance(i, (str, int)))
             if k in valid
         ][:3]
     except (ValueError, KeyError, IndexError, TypeError, httpx.HTTPError):
         return None
 
 
-def answer(question, report):
+def answer(question, category, day):
     yield ": reading market evidence\n\n"
-    source = [*cards(report), *competitor_cards(report)]
-    ranked = rank(question, source)
-    selected = select_with_model(question, ranked or source[:18], report["category"])
+    names, ranked = search.retrieve(question, category, day)
+    candidates = ranked[:20]
+    if not ranked and os.getenv("OPENROUTER_API_KEY"):
+        # Let semantic selection handle paraphrases without shared keywords.
+        for name in names:
+            rows = search.market_index(
+                name, day or cache.latest_day(), tuple(cache.signature())
+            )
+            candidates.extend(row for row in rows if row["type"] != "tracked_term")
+    selected = (
+        select_with_model(question, candidates[:120], ", ".join(names))
+        if candidates
+        else []
+    )
     if selected is None:
         selected = ranked[:3]
     if not selected:
         yield event(
             {
                 "type": "token",
-                "text": "This category report has insufficient evidence to answer that question.",
+                "text": "I couldn’t find enough saved evidence to answer that. Try a product name, a customer concern or a category.",
             }
         )
     for i, row in enumerate(selected, 1):
         summary = row["title"]
-        if row["type"] in {"launch", "competitor"} and row.get("description"):
-            summary += ". " + row["description"]
+        if len(names) > 1:
+            summary = row["category"] + " · " + summary
+        if row["type"] in {
+            "launch",
+            "competitor",
+            "product",
+            "reference",
+            "video",
+            "kit",
+            "review",
+            "tracked_term",
+            "trend",
+            "opportunity_score",
+        } and row.get("description"):
+            summary = summary.rstrip(".") + ". " + row["description"]
         yield event(
             {
                 "type": "token",

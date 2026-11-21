@@ -1,0 +1,174 @@
+[
+  {
+    "id": "pattern-40a352e665e0c3d7",
+    "name": "Show the demonstration early",
+    "title": "Show the demonstration early",
+    "post_ids": [
+      "40a352e665e0c3d7"
+    ],
+    "thumbnails": [
+      "research/40a352e665e0c3d7/frame-0000000.jpg"
+    ],
+    "urls": [
+      "https://www.instagram.com/reel/DY1Ln6bzPh7/"
+    ],
+    "repeatability": 1,
+    "n": 1,
+    "breakout_post_count": 1,
+    "median_outlier_ratio": 168.617,
+    "signature": [
+      "demonstration",
+      "documentary",
+      "15–35s",
+      "fast",
+      "immediate text"
+    ],
+    "evidence": "single-account breakout",
+    "brand_fit": "Test the filming mechanic using claims from the selected product brief.",
+    "winning_spec": {
+      "hook_max_s": 1.5,
+      "product_by_s": 3,
+      "text_by_s": 1,
+      "length_iqr": [
+        24.75,
+        24.75
+      ],
+      "duration_median_s": 24.75,
+      "cuts_per_second_median": 0.687,
+      "observed_first_text_median_s": 0.0,
+      "observed_face_in_first_second_share": 1.0,
+      "measurement_n": 1,
+      "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+    },
+    "recipe": "creator-breakout-kit breakout-pattern-research. Deterministic grouping on hook, visual format, length, pacing and text timing."
+  },
+  {
+    "id": "pattern-f084f2c3c80a5413",
+    "name": "Open with a personal experience",
+    "title": "Open with a personal experience",
+    "post_ids": [
+      "f084f2c3c80a5413"
+    ],
+    "thumbnails": [
+      "research/f084f2c3c80a5413/frame-0000000.jpg"
+    ],
+    "urls": [
+      "https://www.instagram.com/reel/DdZBIe-zUvi/"
+    ],
+    "repeatability": 1,
+    "n": 1,
+    "breakout_post_count": 1,
+    "median_outlier_ratio": 22.831,
+    "signature": [
+      "first-person opener",
+      "presenter",
+      ">35s",
+      "measured",
+      "later or absent text"
+    ],
+    "evidence": "single-account breakout",
+    "brand_fit": "Test the filming mechanic using claims from the selected product brief.",
+    "winning_spec": {
+      "hook_max_s": 1.5,
+      "product_by_s": 3,
+      "text_by_s": 1,
+      "length_iqr": [
+        87.58,
+        87.58
+      ],
+      "duration_median_s": 87.583,
+      "cuts_per_second_median": 0.228,
+      "observed_first_text_median_s": 1.458,
+      "observed_face_in_first_second_share": 1.0,
+      "measurement_n": 1,
+      "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+    },
+    "recipe": "creator-breakout-kit breakout-pattern-research. Deterministic grouping on hook, visual format, length, pacing and text timing."
+  },
+  {
+    "id": "pattern-796eac2b8717189f",
+    "name": "Animate the ingredient reveal",
+    "title": "Animate the ingredient reveal",
+    "post_ids": [
+      "796eac2b8717189f"
+    ],
+    "thumbnails": [
+      "research/796eac2b8717189f/frame-0000000.jpg"
+    ],
+    "urls": [
+      "https://www.instagram.com/reel/Da4vFz3xkBQ/"
+    ],
+    "repeatability": 1,
+    "n": 1,
+    "breakout_post_count": 1,
+    "median_outlier_ratio": 19.252,
+    "signature": [
+      "animated reveal",
+      "graphic",
+      "≤15s",
+      "continuous",
+      "immediate text"
+    ],
+    "evidence": "single-account breakout",
+    "brand_fit": "Test the filming mechanic using claims from the selected product brief.",
+    "winning_spec": {
+      "hook_max_s": 1.5,
+      "product_by_s": 3,
+      "text_by_s": 1,
+      "length_iqr": [
+        10.08,
+        10.08
+      ],
+      "duration_median_s": 10.083,
+      "cuts_per_second_median": 0.0,
+      "observed_first_text_median_s": 0.0,
+      "observed_face_in_first_second_share": 1.0,
+      "measurement_n": 1,
+      "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+    },
+    "recipe": "creator-breakout-kit breakout-pattern-research. Deterministic grouping on hook, visual format, length, pacing and text timing."
+  },
+  {
+    "id": "pattern-9c2a45b1ef28bb0c",
+    "name": "Match concerns to a visual guide",
+    "title": "Match concerns to a visual guide",
+    "post_ids": [
+      "9c2a45b1ef28bb0c"
+    ],
+    "thumbnails": [
+      "research/9c2a45b1ef28bb0c/frame-0000000.jpg"
+    ],
+    "urls": [
+      "https://www.instagram.com/reel/DV8dYCgPlD7/"
+    ],
+    "repeatability": 1,
+    "n": 1,
+    "breakout_post_count": 0,
+    "median_outlier_ratio": 2.46,
+    "signature": [
+      "visual guide",
+      "graphic",
+      "≤15s",
+      "continuous",
+      "immediate text"
+    ],
+    "evidence": "curated hypothesis",
+    "brand_fit": "Test the filming mechanic using claims from the selected product brief.",
+    "winning_spec": {
+      "hook_max_s": 1.5,
+      "product_by_s": 3,
+      "text_by_s": 1,
+      "length_iqr": [
+        14.04,
+        14.04
+      ],
+      "duration_median_s": 14.042,
+      "cuts_per_second_median": 0.0,
+      "observed_first_text_median_s": 0.0,
+      "observed_face_in_first_second_share": 0.0,
+      "measurement_n": 1,
+      "target_basis": "Hook, product and overlay deadlines are studio pre-flight targets. IQR and pacing are measured on cited references."
+    },
+    "recipe": "creator-breakout-kit breakout-pattern-research. Deterministic grouping on hook, visual format, length, pacing and text timing."
+  }
+]

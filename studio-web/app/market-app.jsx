@@ -16,6 +16,7 @@ import {
   dateLabel,
 } from "./market-shared";
 import { Overview } from "./market-charts";
+import ProductPicker from "./product-picker";
 import AppExperience from "./experience";
 import "./market.css";
 
@@ -162,6 +163,7 @@ export default function MarketApp({
     [version, setVersion] = useState(0),
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false),
+    [source, setSource] = useState(null),
     [refreshing, setRefreshing] = useState(""),
     job = useRef(null);
   const { view, category, product, card } = route,
@@ -186,6 +188,13 @@ export default function MarketApp({
   const categories = summary?.categories?.map((c) => c.category) || CATEGORIES,
     asOf = route.as_of || summary?.as_of || initialDate,
     compare = route.compare || summary?.compare || dayOffset(asOf, -30);
+  const picker = useMarketData(
+    sheet === "pick-product"
+      ? withQuery("/api/products", { category, as_of: asOf })
+      : null,
+    null,
+    version,
+  );
   const navigate = useCallback((v, args = {}) => {
     const prev = routeFromLocation(),
       next = normalRoute({
@@ -269,10 +278,16 @@ export default function MarketApp({
   };
   async function create(item) {
     if (busy || !onlineForAction()) return;
+    if (item.id && !item.handle) {
+      setSource(item);
+      setSheet("pick-product");
+      return;
+    }
     setBusy(true);
     try {
       const payload = {
-        ...(item.handle ? { handle: item.handle } : {}),
+        handle: item.handle,
+        as_of: asOf,
         ...(item.id
           ? { evidence: { id: item.id, category, as_of: asOf } }
           : {}),
@@ -289,7 +304,7 @@ export default function MarketApp({
             ? result.detail
             : "Unable to create a Studio brief.",
         );
-      navigate("studio", { category, run: result.id, studioStep: "swipe" });
+      navigate("studio", { category, run: result.id, studioStep: "overview" });
     } catch (e) {
       setNotice(e.message || "Unable to open Studio.");
     } finally {
@@ -455,46 +470,48 @@ export default function MarketApp({
                 </h1>
                 {subtitles[view] && <p>{subtitles[view]}</p>}
               </div>
-              <div className="mk-controls">
-                <button
-                  className="mk-control mk-category"
-                  data-tour="category"
-                  aria-label={"Change category, " + category}
-                  onClick={() => setSheet("category")}
-                >
-                  <Mark
-                    name={category === "Sunscreen" ? "sun" : "stack"}
-                    size={16}
-                  />
-                  {category}
-                  <Mark name="chevron" size={14} />
-                </button>
-                <button
-                  className="mk-control mk-date"
-                  aria-label={
-                    "Reporting dates, " + asOf + " compared to " + compare
-                  }
-                  onClick={() => setSheet("dates")}
-                >
-                  <Mark name="date" size={16} />
-                  <span>
-                    {dateLabel(asOf)}
-                    <small>vs {dateLabel(compare)}</small>
-                  </span>
-                  <Mark name="chevron" size={14} />
-                </button>
-                {view === "overview" && (
+              {view !== "studio" && (
+                <div className="mk-controls">
                   <button
-                    className="mk-control mk-refresh"
-                    onClick={refresh}
-                    disabled={!!refreshing}
-                    aria-label={refreshing || "Refresh data"}
+                    className="mk-control mk-category"
+                    data-tour="category"
+                    aria-label={"Change category, " + category}
+                    onClick={() => setSheet("category")}
                   >
-                    <Mark name="refresh" size={16} />
-                    <span>{refreshing || "Refresh data"}</span>
+                    <Mark
+                      name={category === "Sunscreen" ? "sun" : "stack"}
+                      size={16}
+                    />
+                    {category}
+                    <Mark name="chevron" size={14} />
                   </button>
-                )}
-              </div>
+                  <button
+                    className="mk-control mk-date"
+                    aria-label={
+                      "Reporting dates, " + asOf + " compared to " + compare
+                    }
+                    onClick={() => setSheet("dates")}
+                  >
+                    <Mark name="date" size={16} />
+                    <span>
+                      {dateLabel(asOf)}
+                      <small>vs {dateLabel(compare)}</small>
+                    </span>
+                    <Mark name="chevron" size={14} />
+                  </button>
+                  {view === "overview" && (
+                    <button
+                      className="mk-control mk-refresh"
+                      onClick={refresh}
+                      disabled={!!refreshing}
+                      aria-label={refreshing || "Refresh data"}
+                    >
+                      <Mark name="refresh" size={16} />
+                      <span>{refreshing || "Refresh data"}</span>
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
             {["customers", "strategy"].includes(view) && (
               <div className="mk-mobile-research">
@@ -517,10 +534,11 @@ export default function MarketApp({
                 <Studio
                   key={route.run || "watermelon-demo"}
                   embedded={true}
-                  onRoute={(run, studioStep, cat) =>
+                  onRoute={(run, studioStep, cat, reference) =>
                     navigate("studio", {
                       run,
                       studioStep,
+                      reference,
                       category: cat || category,
                     })
                   }
@@ -531,6 +549,7 @@ export default function MarketApp({
                   }
                   initialId={route.run || "watermelon-demo"}
                   initialView={route.studioStep}
+                  initialReference={route.reference}
                   product={product}
                 />
               ) : state.error || !state.data ? (
@@ -539,6 +558,7 @@ export default function MarketApp({
                 <Overview
                   data={state.data}
                   select={(c) => navigate("overview", { category: c })}
+                  navigate={navigate}
                   create={create}
                   busy={busy}
                 />
@@ -546,6 +566,7 @@ export default function MarketApp({
                 product ? (
                   <ProductDetail
                     data={state.data}
+                    card={card}
                     navigate={navigate}
                     create={create}
                     busy={busy}
@@ -589,11 +610,11 @@ export default function MarketApp({
               <span className="mk-dock-icon">
                 <Mark name="studio" size={21} />
               </span>
-              <strong>Ask the market</strong>
+              <strong>Search or ask</strong>
               <span className="mk-dock-question">
-                What would you like to explore next?
+                Find a product, customer comment or campaign…
               </span>
-              <span className="mk-slash">/command</span>
+              <kbd className="mk-slash">⌘ / Ctrl K</kbd>
               <span className="mk-dock-go">
                 <Mark name="arrow" size={16} />
               </span>
@@ -607,6 +628,27 @@ export default function MarketApp({
         </div>
       </div>
 
+      {sheet === "pick-product" && source && (
+        <Sheet
+          title="Choose the product for this campaign"
+          close={() => setSheet(null)}
+        >
+          {notice && <p role="alert">{notice}</p>}
+          <p className="picker-source">{source.title}</p>
+          <p className="mk-search-context">
+            {category} · {dateLabel(asOf)}
+          </p>
+          {picker.data ? (
+            <ProductPicker
+              products={picker.data.products}
+              busy={busy}
+              choose={(handle) => create({ ...source, handle })}
+            />
+          ) : (
+            <Status error={picker.error} retry={retry} />
+          )}
+        </Sheet>
+      )}
       {sheet === "category" && (
         <Sheet title="Choose category" close={() => setSheet(null)}>
           <div className="mk-categories">
@@ -662,9 +704,9 @@ export default function MarketApp({
       )}
       {["search", "ask"].includes(sheet) && (
         <MarketCommand
-          mode={sheet}
           category={category}
           categories={categories}
+          run={route.run}
           asOf={asOf}
           navigate={navigate}
           close={() => setSheet(null)}

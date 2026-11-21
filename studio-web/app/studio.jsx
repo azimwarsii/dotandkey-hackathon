@@ -2,8 +2,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Badge,
-  Card,
-  Data,
   Empty,
   Icon,
   Inspector,
@@ -12,28 +10,31 @@ import {
   asList,
   nav,
   nice,
-  textOf,
   urlFor,
 } from "./ui";
 import { Swipe, Inspect, Patterns } from "./research";
 import { Concepts, Script, Video, Statics, Testing } from "./production";
 
-import { Workflow, Kit } from "./studio-workflow";
+import ProductPicker from "./product-picker";
+import CampaignBrief, { MarketSource } from "./campaign-brief";
+import { dateLabel } from "./market-shared";
+import { JobProgress } from "./studio-progress";
+import { Workflow, StepGuide, Kit } from "./studio-workflow";
 
 const titles = {
   kit: "Campaign kit",
   aplus: "A+ content",
   listings: "Marketplace listing",
-  overview: "Campaign overview",
-  swipe: "Swipe file",
-  inspect: "Deconstruct",
+  overview: "Campaign brief",
+  swipe: "Research library",
+  inspect: "Reference breakdown",
   patterns: "Pattern board",
   concepts: "Concept slate",
   script: "Script & storyboard",
   video: "Video production",
   statics: "Ads & listings",
   testing: "Testing",
-  lineage: "Lineage",
+  lineage: "Sources and production history",
 };
 async function api(path, options) {
   if (options?.method === "POST" && !navigator.onLine)
@@ -60,7 +61,7 @@ const post = (path, body = {}) =>
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-function Overview({ s, asset, media, go, enter, inspect }) {
+function Overview({ s, asset, go, enter }) {
   const b = s.brief,
     p = b.product || {},
     photos = asList(p.local_images),
@@ -69,6 +70,13 @@ function Overview({ s, asset, media, go, enter, inspect }) {
     b.claim_sources?.find((f) => f.kind === "short_name")?.text ||
     p.title ||
     s.meta.handle;
+  let next = ["swipe", "Add a research reference"];
+  if (s.film.video) next = ["video", "Review campaign video"];
+  else if (cre.script) next = ["video", "Generate campaign video"];
+  else if (s.concepts.length)
+    next = ["concepts", "Choose a creative direction"];
+  else if (s.posts.some((row) => row.status === "ready"))
+    next = ["concepts", "Develop creative directions"];
   return (
     <>
       <article className="hero">
@@ -82,33 +90,14 @@ function Overview({ s, asset, media, go, enter, inspect }) {
               .filter(Boolean)
               .join("  ·  ")}
           </p>
-          <button
-            className="primary"
-            onClick={() =>
-              inspect({
-                title: "Product brief",
-                inputs: { product: p.url, as_of: b.as_of },
-                recipe: {
-                  source: "Part 1 catalog and Part 2 findings",
-                  scope: b.scope,
-                },
-                output: {
-                  allowed_claims: b.allowed_claims,
-                  audience: b.audience,
-                  strengths: b.strengths,
-                },
-                checks: {
-                  locked_claims: b.allowed_claims?.length,
-                  source_links: asList(b.claim_sources).map((x) => ({
-                    claim: x.text,
-                    source: x.url,
-                  })),
-                },
-              })
-            }
-          >
-            Open product brief <Icon name="arrow" />
+          <button className="primary" onClick={() => go(next[0])}>
+            {next[1]} <Icon name="arrow" />
           </button>
+          {cre.script && (
+            <button className="link brief-kit" onClick={() => go("kit")}>
+              Open campaign kit <Icon name="download" size={14} />
+            </button>
+          )}
         </div>
         <div className="hero-art">
           {photos.length > 0 && (
@@ -137,64 +126,13 @@ function Overview({ s, asset, media, go, enter, inspect }) {
           </button>
         ))}
       </div>
-      <Section title="Campaign workspace">
-        <div className="workspace-grid">
-          {[
-            [
-              "swipe",
-              "stack",
-              "Research library",
-              s.posts[0]?.thumbnail
-                ? asset(s.posts[0].thumbnail)
-                : asset(photos[6]),
-              "Browse references",
-            ],
-            [
-              "script",
-              "film",
-              "Production board",
-              media(
-                typeof s.film.storyboard === "string"
-                  ? s.film.storyboard
-                  : s.film.storyboard?.path,
-              ) || asset(photos[4]),
-              "Review shots",
-            ],
-            [
-              "statics",
-              "image",
-              "Creative assets",
-              media(asList(cre.statics)[0]?.path) || asset(photos[5]),
-              "View artwork",
-            ],
-          ].map(([to, icon, title, img, action]) => (
-            <button
-              key={to}
-              className={"workspace-card " + to}
-              onClick={() => go(to)}
-            >
-              <div className="workspace-image">
-                {img && <img alt="" src={img} />}
-                <span>
-                  <Icon name={icon} />
-                </span>
-              </div>
-              <div>
-                <h3>{title}</h3>
-                <span>
-                  {action} <Icon name="arrow" size={14} />
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </Section>
+      {p.title && <CampaignBrief brief={b} />}
       {s.posts.length > 0 && (
         <Section
           title="Research references"
           action={
             <button className="link" onClick={() => go("swipe")}>
-              View swipe file <Icon name="arrow" />
+              Open research library <Icon name="arrow" />
             </button>
           }
         >
@@ -336,30 +274,33 @@ export default function Studio({
   first,
   initialId = "watermelon-demo",
   initialView,
+  initialReference,
   embedded = false,
   onRoute,
 }) {
   const [s, setState] = useState(first),
     [run, setRun] = useState(initialId),
-    [view, setView] = useState(
-      titles[initialView] ? initialView : embedded ? "swipe" : "overview",
-    ),
+    [view, setView] = useState(titles[initialView] ? initialView : "overview"),
     [runList, setRuns] = useState([]),
     [products, setProducts] = useState([]),
     [item, setItem] = useState(null),
     [dialog, setDialog] = useState(""),
     [error, setError] = useState(""),
     [mobile, setMobile] = useState(false),
-    [postId, setPost] = useState(""),
+    [postId, setPost] = useState(initialReference || ""),
     [sourceLink, setSourceLink] = useState(""),
-    [handle, setHandle] = useState(""),
     [pending, setPending] = useState(false),
-    [stage, setStage] = useState("");
+    [liveJob, setLiveJob] = useState(null),
+    [connectionLost, setConnectionLost] = useState(false),
+    [submitting, setSubmitting] = useState("");
   const current = useRef(run);
   current.current = run;
   useEffect(() => {
-    if (embedded) setView(titles[initialView] ? initialView : "swipe");
+    if (embedded) setView(titles[initialView] ? initialView : "overview");
   }, [initialView, embedded]);
+  useEffect(() => {
+    if (initialReference) setPost(initialReference);
+  }, [initialReference]);
   const refresh = useCallback(async () => {
     const id = current.current;
     const v = await api("/runs/" + id);
@@ -382,38 +323,51 @@ export default function Studio({
     busy = pending || job?.status === "running";
   useEffect(() => {
     if (job?.status !== "running") return;
-    const events = new EventSource(
-      "/api/jobs/" +
-        encodeURIComponent(job.id) +
-        "/events?run=" +
-        encodeURIComponent(run),
-    );
-    const finish = () => {
-      events.close();
-      refresh().catch((e) => setError(e.message));
+    const path = "/api/jobs/" + encodeURIComponent(job.id);
+    let closed = false, polling = false;
+    const controller = new AbortController();
+    const events = new EventSource(path + "/events?run=" + encodeURIComponent(run));
+    setConnectionLost(false);
+    const apply = (update) => {
+      if (closed) return;
+      setLiveJob((old) => {
+        if (old?.id === update.id && old.updated_at > update.updated_at) return old;
+        const stages = old?.id === update.id ? old.stages || [] : job.stages || [];
+        const newer = !stages.length || update.updated_at > stages.at(-1).updated_at;
+        return { ...update, stages: update.stages || (newer ? [...stages, {stage:update.stage, updated_at:update.updated_at}] : stages) };
+      });
+      if (["complete", "failed", "interrupted"].includes(update.status)) {
+        refresh().then(() => { if (!closed) events.close(); }).catch(() => { if (!closed) setConnectionLost(true); });
+      }
     };
-    events.onmessage = (message) => {
-      const updated = JSON.parse(message.data);
-      setStage(updated.stage || updated.action);
-      if (["complete", "failed", "interrupted"].includes(updated.status))
-        finish();
+    const poll = async () => {
+      if (closed || polling) return;
+      polling = true;
+      try {
+        const response = await fetch(path, { cache: "no-store", signal: controller.signal });
+        if (!response.ok) throw Error();
+        const next = await response.json();
+        if (!closed) { apply(next); setConnectionLost(false); }
+      } catch { if (!closed) setConnectionLost(true); }
+      finally { polling = false; }
     };
-    events.onerror = () => {
-      refresh().catch(() => {});
-    };
-    return () => events.close();
+    events.onmessage = (message) => { setConnectionLost(false); apply(JSON.parse(message.data)); };
+    events.onerror = () => { if (!closed) { setConnectionLost(true); poll(); } };
+    const timer = setInterval(poll, 6500);
+    return () => { closed = true; controller.abort(); clearInterval(timer); events.close(); };
   }, [job?.id, job?.status, run, refresh]);
   useEffect(() => {
     const pop = () => {
       const q = new URLSearchParams(location.search);
       setRun(q.get("run") || initialId);
       const choice = q.get("studioStep") || q.get("view");
-      setView(titles[choice] ? choice : embedded ? "swipe" : "overview");
+      setView(titles[choice] ? choice : "overview");
     };
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, [initialId, embedded]);
-  const navigate = (v, id = run, category) => {
+  const navigate = (v, id = run, category, reference) => {
+    setError("");
     setView(v);
     setMobile(false);
     setItem(null);
@@ -429,6 +383,7 @@ export default function Studio({
         id,
         v,
         category || chosen?.category || s?.brief?.product?.category,
+        reference,
       );
       return;
     }
@@ -441,14 +396,14 @@ export default function Studio({
   };
   const enter = (id) => {
     setPost(id);
-    navigate("inspect");
+    navigate("inspect", run, undefined, id);
   };
   const act = async (action, body = {}) => {
     if (busy) return;
     setPending(true);
+    setSubmitting("Starting " + ({film: "video production", generate: "campaign production", deconstruct: "reference analysis", concepts: "concept development"}[action] || action) + "…");
     setError("");
     try {
-      setStage("");
       const submitted = await post("/runs/" + run + "/" + action, body);
       if (submitted.status === "running")
         setState(
@@ -466,12 +421,14 @@ export default function Studio({
       setError(e.message);
     } finally {
       setPending(false);
+      setSubmitting("");
     }
   };
   const upload = async (files, extra = {}) => {
     try {
       const ids = [];
-      for (const f of files) {
+      for (const [index, f] of files.entries()) {
+        setSubmitting("Uploading file " + (index + 1) + " of " + files.length + "…");
         if (files.length > 10 || f.size > 48 * 1024 ** 2)
           throw Error("Select up to ten files of 48 MiB each.");
         const r = await api(
@@ -483,10 +440,9 @@ export default function Studio({
       await act("deconstruct", { uploads: ids, ...extra });
     } catch (e) {
       setError(e.message);
-    }
+    } finally { setSubmitting(""); }
   };
-  const create = async (e) => {
-    e.preventDefault();
+  const create = async (handle) => {
     setPending(true);
     try {
       const res = await post("/runs", { handle });
@@ -509,7 +465,7 @@ export default function Studio({
     asset,
     media,
     act,
-    busy,
+    busy: busy || !!submitting,
     enter,
     inspect: (value) => {
       setDialog("");
@@ -524,7 +480,7 @@ export default function Studio({
       <Inspect
         {...shared}
         postId={postId}
-        setPost={setPost}
+        setPost={enter}
         attach={(url) => {
           setSourceLink(url);
           navigate("swipe");
@@ -620,7 +576,7 @@ export default function Studio({
         <div className="content">
           <div className="page-heading">
             <h1>{titles[view]}</h1>
-            {view === "overview" && (
+            {view === "overview" && !embedded && (
               <button className="secondary" onClick={() => setDialog("new")}>
                 <Icon name="plus" /> New campaign
               </button>
@@ -632,22 +588,13 @@ export default function Studio({
               <button onClick={() => setError("")}>Dismiss</button>
             </div>
           )}
-          {job && job.status !== "complete" && (
-            <div role="status" className="notice">
-              {job.action} ·{" "}
-              {job.status === "running" ? stage || job.status : job.status}
-              {job.error && " · " + job.error}
-            </div>
-          )}
-          {view === "testing" && s?.creative.script && (
-            <div className="kit-actions">
-              <button className="primary" onClick={() => navigate("kit")}>
-                Open campaign kit <Icon name="arrow" />
-              </button>
-            </div>
-          )}
+          <JobProgress job={liveJob?.id === job?.id && liveJob?.updated_at >= job?.updated_at ? liveJob : job}
+            submitting={submitting} disconnected={connectionLost} view={view} go={navigate} />
+          <StepGuide {...shared}/>
           {s ? (
-            !s.brief?.product && !busy && view === "overview" ? (
+            !s.brief?.product && busy ? (
+              <Empty>{job?.stage || "Preparing the product brief…"}</Empty>
+            ) : !s.brief?.product && view === "overview" ? (
               <Empty>
                 Product brief unavailable.{" "}
                 <button className="link" onClick={() => act("brief")}>
@@ -658,7 +605,7 @@ export default function Studio({
               loaders[view]()
             )
           ) : (
-            <Empty>Loading campaign…</Empty>
+            <div className="job-progress" role="status"><i className="studio-spinner"/> Loading campaign brief and saved outputs…</div>
           )}
         </div>
       </div>
@@ -666,13 +613,17 @@ export default function Studio({
         <Inspector key={item.title} item={item} close={() => setItem(null)} />
       )}
       {dialog === "lineage" && s && (
-        <Modal title="Campaign lineage" drawer close={() => setDialog("")}>
+        <Modal
+          title="Sources and production history"
+          drawer
+          close={() => setDialog("")}
+        >
           <Lineage {...shared} />
         </Modal>
       )}
-      {dialog === "source" && s && (
+      {dialog === "source" && s?.brief.market_evidence && (
         <Modal title="Market evidence" close={() => setDialog("")}>
-          <Data value={s.brief.market_evidence} />
+          <MarketSource source={s.brief.market_evidence} />
         </Modal>
       )}
       {dialog === "runs" && (
@@ -682,8 +633,13 @@ export default function Studio({
               <button key={r.id} onClick={() => navigate("overview", r.id)}>
                 <Icon name="folder" />
                 <span>
-                  {r.title || nice(r.handle)}
-                  <small>{r.id}</small>
+                  {r.title ||
+                    products.find((p) => p.handle === r.handle)?.title ||
+                    nice(r.handle)}
+                  <small>
+                    {dateLabel(r.created_at)}
+                    {r.evidence?.category && " · " + r.evidence.category}
+                  </small>
                 </span>
                 <Icon name="arrow" />
               </button>
@@ -696,26 +652,8 @@ export default function Studio({
       )}
       {dialog === "new" && (
         <Modal title="New campaign" close={() => setDialog("")}>
-          <form onSubmit={create}>
-            <label>
-              Catalog product
-              <select
-                required
-                value={handle}
-                onChange={(e) => setHandle(e.target.value)}
-              >
-                <option value="">Select a product</option>
-                {products.map((p) => (
-                  <option value={p.handle} key={p.handle}>
-                    {p.title}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button disabled={pending || !handle} className="primary">
-              Create product brief <Icon name="arrow" />
-            </button>
-          </form>
+          {error && <p role="alert">{error}</p>}
+          <ProductPicker products={products} choose={create} busy={pending} />
         </Modal>
       )}
     </div>

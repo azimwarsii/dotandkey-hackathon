@@ -64,6 +64,7 @@ PLATFORMS = {
 
 
 class NewRun(BaseModel):
+    as_of: Optional[date] = None
     handle: Optional[str] = Field(default=None, min_length=1, max_length=180)
     evidence: Optional["Evidence"] = None
 
@@ -221,16 +222,21 @@ def new_run(body: NewRun):
         catalog = [
             p for p in catalog if p["category"].casefold() == ref.category.casefold()
         ]
-        if source.get("as_of"):
-            from market_intel.metrics import utc_date
+    day = (
+        date.fromisoformat(source["as_of"])
+        if source and source.get("as_of")
+        else body.as_of
+    )
+    if day:
+        from market_intel.metrics import utc_date
 
-            day = date.fromisoformat(source["as_of"])
-            catalog = [
-                p
-                for p in catalog
-                if not utc_date(p.get("published_at"))
-                or utc_date(p["published_at"]) <= day
-            ]
+        if not 1900 <= day.year <= 9998:
+            raise HTTPException(422, "Analysis date is outside the supported range")
+        catalog = [
+            p
+            for p in catalog
+            if not utc_date(p.get("published_at")) or utc_date(p["published_at"]) <= day
+        ]
     if not body.handle and not source:
         raise HTTPException(422, "Choose a product or market insight.")
     handle = body.handle or (catalog[0]["handle"] if catalog else None)
@@ -244,6 +250,7 @@ def new_run(body: NewRun):
         {
             "id": run_id,
             "handle": handle,
+            "as_of": day.isoformat() if day else None,
             "created_at": runs.timestamp(),
             "evidence": source,
         },
@@ -288,7 +295,7 @@ def build_brief(run_id: str):
 
         meta = runs.load(folder / "run.json")
         runs.progress("Fetching catalog and insight evidence")
-        day = (meta.get("evidence") or {}).get("as_of")
+        day = (meta.get("evidence") or {}).get("as_of") or meta.get("as_of")
         brief = build(
             meta["handle"],
             *runs.db_paths(),
