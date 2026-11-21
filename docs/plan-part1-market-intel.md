@@ -53,7 +53,7 @@ Required headers on every call: `authorization: Bearer $CRUSTDATA_API_KEY`, `con
 - Page through `products.json` until it returns empty. Strip HTML from `body_html`.
 - Normalize into a `Product` record: id, handle, title, category (derived from `product_type`), concerns and ingredients (parsed from `fltr_` tags), size (parsed from title or variant), price, MRP, images, `published_at`, is_new.
 - Drop `Free`. Keep `Combo` but link it to its component SKUs and exclude it from competitor analysis.
-- Use `claude-haiku-5-5` to fill gaps such as hero ingredient, SPF, skin type and size when tags are missing. This is cheap, structured output.
+- Use a cheap model via **OpenRouter** (Gemini Flash or Claude Haiku) to fill gaps such as hero ingredient, SPF, skin type and size when tags are missing. This is cheap, structured output.
 
 ### S2: Marketplace listing discovery
 - For each single SKU and each marketplace (Amazon.in, Flipkart, Nykaa, plus optionally Myntra, Purplle and Tira), run `/web/search/live` with query `"Dot & Key <title> <size>"` and `site=<marketplace>`.
@@ -66,7 +66,7 @@ Required headers on every call: `authorization: Bearer $CRUSTDATA_API_KEY`, `con
   - **Amazon:** price, MRP, rating, rating count, BSR and category rank, "Customers say" summary and aspect chips, and the top ~8–10 reviews on the PDP.
   - **Flipkart:** price, MRP, rating, rating and review counts, rating histogram, and highlights.
   - **Nykaa:** the embedded preloaded-state JSON, if `human_mode` returns it.
-- **LLM fallback:** when a selector breaks, send the cleaned text to Haiku with a fixed JSON schema. This keeps the demo alive if a marketplace changes its HTML.
+- **LLM fallback:** when a selector breaks, send the cleaned text to a cheap OpenRouter model with a fixed JSON schema. This keeps the demo alive if a marketplace changes its HTML.
 - Save every snapshot with a timestamp (`listing_snapshot`). This gives us price and rating history for the "monitoring" and "trends" claims.
 
 ### S4: Reviews

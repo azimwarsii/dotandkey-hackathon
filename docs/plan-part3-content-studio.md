@@ -15,7 +15,7 @@ Built on two open-source projects (read on 21 Nov):
 
 | Requirement | Source |
 |---|---|
-| Find videos and posts that are working in the niche | Breakout kit: Virlo outliers. **Plus ours:** competitor-account outliers through ScrapeCreators, YouTube Data API search, and Crustdata `social` search |
+| Find videos and posts that are working in the niche | Breakout kit outlier logic (views ÷ account median), fed by competitor-account posts (ScrapeCreators free tier), YouTube Data API search (free) and Crustdata `social` search. Virlo, which is paid, is dropped. |
 | **Paste a link to deconstruct** | **Ours.** A URL resolver feeds the breakout kit's `video_intelligence.py` flow and our own deterministic breakdown (§2) |
 | Break down what's working | Breakout kit prompt schema (hook, beats, visual format, audio, "portable bricks") plus our frame, OCR and cut analysis, so every claim is visible |
 | Patterns → concepts → test plan | Breakout kit skills: `breakout-pattern-research`, `creator-archetype-mapper`, `creator-concept-generator`, and the "First 3 tests" and "What we would NOT do" sections |
@@ -62,9 +62,9 @@ Ranked by reliability:
    - Compute `outlier_ratio = views / median(views of that account's last 50 posts)`, as in the breakout kit, plus engagement, comment and share rates.
    - Anything ≥ 3× its own baseline is a "breakout".
 2. **Keyword or niche search:**
-   - YouTube Data API (free quota) for `sunscreen review india`, `#skincareroutine` Shorts, with view and like counts
-   - Virlo comets (paid; the breakout kit's default) for cross-platform outliers
-   - Crustdata `/web/search/live` with `sources: ["social"]` or `site: instagram.com/reel`, used as a URL finder
+   - YouTube Data API (free, 10k units a day, about 100 searches) for `sunscreen review india`, `#skincareroutine` Shorts, with view and like counts
+   - Crustdata `/web/search/live` with `sources: ["social"]`, or `site: instagram.com/reel` / `site: youtube.com/shorts`, used as a URL finder. Each URL is then resolved through §2b.
+   - The breakout kit's Virlo step (paid) is **skipped**. Its outlier maths runs on the data above instead.
 3. **Static ad research:** competitor pages in the Meta Ad Library, through a pasted link or screenshot. Ads running ≥ 30 days are a proxy for winners.
 
 > TikTok is banned in India, so **Reels and Shorts are the target platforms**. TikTok stays usable only as a pattern reference.
@@ -88,14 +88,14 @@ URL ─► detect platform (IG reel/post/carousel, YT Shorts/video, TikTok, FB, 
 |---|---|---|
 | Shots and pacing | ffmpeg scene detect (the same detector as ClipForge `contact_sheet`) | **Contact sheet with cut markers**, shot lengths, cuts per second |
 | Keyframes | first frame, plus 1 per shot, plus frames at 0–3 s | Filmstrip; the **hook frames** get a highlight |
-| Speech | faster-whisper, local and free; handles Hindi and Hinglish | Timestamped transcript aligned under the filmstrip |
+| Speech | **Sarvam Saaras** STT (built for Hindi, Hinglish and Indian English; about ₹0.25 per 30 s reel). **faster-whisper** runs locally as the free fallback. | Timestamped transcript aligned under the filmstrip |
 | On-screen text | OCR (PaddleOCR or Tesseract) on keyframes | Text overlays with timestamps, and seconds until the first text appears |
 | Audio | loudness and VAD: speech ratio, music presence, silence | Waveform with speech and music bands |
 | Faces and product | OpenCV or mediapipe face detection; product on screen by matching against catalog images | "Face in first second?", "Product visible at t=" |
 | Image posts and carousels | OCR, colour palette (k-means), text density, layout grid, face and product presence | Annotated slide strip |
-| **Semantic read (1 model call)** | **Claude with the same keyframes, transcript and OCR the user sees.** Uses the breakout kit's JSON schema: hook type, story beats, format, emotion, primary driver, portable bricks | Card where each field **links to the frame or line it came from** |
+| **Semantic read (1 model call)** | **Gemini Flash via OpenRouter** (`video_url` content as base64 mp4). This is the breakout kit's own `video_intelligence.py` path, which already uses OpenRouter. The prompt includes our cut timestamps, transcript and OCR. Uses the breakout kit's JSON schema: hook type, story beats, format, emotion, primary driver, portable bricks. | Card where each field **links to the frame or line it came from** |
 
-The model only sees evidence that is also on screen. A field it cannot ground is marked "inferred" (the kit's evidence rule).
+**Every field must cite a timestamp, and the UI jumps to that frame.** Fields without a citation are marked "inferred" (the kit's evidence rule). For image posts, the same call gets the slides as images.
 
 ### 2d. Pattern board
 - Cluster the deconstructed posts by hook type, format, length band, pacing band and text-overlay style. The clustering is deterministic.
@@ -122,8 +122,9 @@ The model only sees evidence that is also on screen. A field it cannot ground is
 ```
 clipforge_ingest_product(url=dotandkey.com/products/<handle>)   # real product images, fidelity-locked
 clipforge_import_script(projectId, script)                       # our judged script → shots
-[Director mode] storyboard grid → AI film (Seedance / Kling / Veo via Atlas key)   # paid; price shown before generating
-        or  free path: stock B-roll + Edge TTS (en-IN / hi-IN voices) + compose     # $0 drafts
+[Director mode] storyboard grid → AI film (Veo 3.1 Lite / Seedance 2.0 mini via OpenRouter, through the compat shim)   # paid; price shown before generating
+        or  free path: D&K's own Shopify images (local material library) + keyless stock + Edge TTS (en-IN / hi-IN) + compose     # $0 drafts
+voice-over for finals: Sarvam Bulbul (Hindi / Hinglish / Indian English) via the compat shim
 clipforge_contact_sheet → clipforge_qc → clipforge_gate          # visual + technical verification
 clipforge_cover / clipforge_carousel / clipforge_export_platform(Reels 9:16, Shorts, Meta 4:5)
 ```
@@ -142,7 +143,7 @@ clipforge_cover / clipforge_carousel / clipforge_export_platform(Reels 9:16, Sho
 | Product description, title, 5 bullets, backend keywords | Per marketplace | Claude with the fact sheet, then validators |
 
 **Image approach:**
-- An image model (GPT Image or Gemini, through the same Atlas key or directly) makes **backgrounds and scenes only**.
+- An image model makes **backgrounds and scenes only**. It uses OpenRouter `POST /api/v1/images`: `bytedance-seed/seedream-4.5` at about $0.05 an image, or `google/gemini-2.5-flash-image`. The product photo goes in `input_references`, so the scene's lighting and placement match the product.
 - The **real Shopify product photo** is cut out with `rembg` (local, free) and composited.
 - **Headline and claim text are HTML**: exact brand fonts and colours, never garbled AI text.
 - The result is product-accurate and on-brand.
@@ -194,21 +195,33 @@ The screens:
 - Next.js UI (ClipForge is Next.js too)
 - Python FastAPI backend: Parts 1–2 plus the research module, with the breakout-kit scripts copied in
 - ClipForge in Docker (`ghcr.io/xixihhhh/clipforge`), driven over MCP
+- **Compat shim**, a small FastAPI service. It lets unmodified ClipForge use our keys by translating its OpenAI-compatible provider calls:
+  - `/audio/speech` → Sarvam Bulbul
+  - `/images/generations` and `/images/edits` → OpenRouter `/api/v1/images`
+  - `/videos` → OpenRouter `/api/v1/videos`, mapping `pending` to ClipForge's statuses and `/content?index=0` to its download
+  - ClipForge's LLM setting points at OpenRouter directly, which is a built-in preset.
 - Run folders on disk, one per run (breakout-kit style), so every intermediate JSON and image can be inspected
 
 ---
 
-## 6. Keys and services
+## 6. Keys and services: our three keys first, then free, then paid only if needed
 
-| Service | Used for | Needed? |
+See [keys-and-services.md](keys-and-services.md) for the full mapping across Parts 1–3. In short:
+
+| Need | Use | Instead of |
 |---|---|---|
-| Anthropic (Claude) | Semantic deconstruct from frames, concepts, scripts, copy | Yes |
-| ScrapeCreators | IG and TikTok post and profile fetch, competitor-account outliers, paste-link resolve | Strongly recommended |
-| YouTube Data API | Shorts search and stats | Free; recommended |
-| Atlas Cloud (one key in ClipForge) | Image and video models (Seedance, Kling, Veo, GPT Image) | Only for paid hero renders |
-| Virlo | Cross-platform niche outlier discovery | Optional (paid) |
-| Crustdata | Social and URL discovery fallback | Already have it |
-| Local and free | ffmpeg, faster-whisper, OCR, rembg, Playwright, yt-dlp, Edge TTS | Yes |
+| LLM (concepts, scripts, copy, judges) | **OpenRouter**: Claude Sonnet for final copy, a cheap model (Gemini Flash or Haiku) for bulk | Anthropic direct |
+| Video understanding | **OpenRouter** Gemini Flash with video input | Breakout kit default (same thing) |
+| Image generation and editing | **OpenRouter** `/api/v1/images` (Seedream 4.5, Gemini Flash Image) | Atlas Cloud |
+| Video generation | **OpenRouter** `/api/v1/videos` (Veo 3.1 Lite at about $0.03–0.05/s at 720p; Seedance 2.0 mini) | Atlas Cloud |
+| Voice-over | **Sarvam Bulbul** (Indian voices, Hindi and Hinglish). **Edge TTS** (free) for drafts. | MiniMax or OpenAI TTS |
+| Transcripts | **Sarvam Saaras**, with **faster-whisper** (free, local) as fallback | — |
+| Hindi or regional versions of copy and VO | **Sarvam** translate | — |
+| Post and URL discovery | **Crustdata** web search (`social`, `site:`) | Virlo |
+| Instagram and TikTok post fetch and profile stats | **ScrapeCreators free tier** (about 100 credits plus claimable extras), then yt-dlp | Paid ScrapeCreators |
+| YouTube search and stats | **YouTube Data API** (free) plus yt-dlp | — |
+| B-roll | **D&K's own Shopify images** (712), plus ClipForge keyless stock, plus optional Pixabay | Pexels (not available) |
+| Everything else | ffmpeg, OCR, rembg, Playwright, OpenCV: **local and free** | — |
 
 ---
 
@@ -236,6 +249,8 @@ The screens:
 | Risk | Mitigation |
 |---|---|
 | Instagram blocks fetching | ScrapeCreators first, then yt-dlp, then manual upload (always available) |
+| ScrapeCreators free credits run out | Use them only for Instagram. YouTube goes through the free API plus yt-dlp, and pasted links are cached so each is fetched once. |
+| Compat shim mismatches ClipForge's expected response shape | Fallback: generate shots and images ourselves through OpenRouter, upload them to the ClipForge **local material library**, assign them to shots, then compose |
 | AI video generation is slow or costly at demo time | Pre-render the hero film; render live only on the free path |
 | ClipForge's China-centric defaults (AIGC badge, ad-law list) | Configure in settings before the demo, and run our India claim guard as the last gate |
 | AGPL obligations | Don't modify ClipForge; call it only over MCP or HTTP. If we patch it, publish the patched fork. |
