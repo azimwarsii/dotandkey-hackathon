@@ -1,0 +1,14 @@
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+data/*
+!data/market-intel.sqlite3
+!data/public-spike.json
+!data/crustdata-spike.json
+!data/competitor-catalogs.sqlite3
+!data/part2-opportunities.json
+!data/sunscreen-insights.json
+.ruff_cache/

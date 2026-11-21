@@ -1,0 +1,62 @@
+# Version 1, frozen before the held-out evaluation. Words and phrases match token boundaries.
+white_cast:
+  pos: [no white cast, zero white cast, no whitecast, without a white cast, no cast, without white cast, "doesn't leave a white cast", invisible finish]
+  neg: [white cast, whitecast, white layer, chalky cast, ashy, leaves white marks]
+greasy_sticky:
+  pos: [lightweight, light weight, lightweight feel, non greasy, oil free finish, non sticky, non oily, matte finish, feels light, oil control, controls oil]
+  neg: [greasy, sticky, chipchipa, heavy on skin, feels heavy, heavy feel, makes my skin oily, makes skin oily, face oily, feels oily, too oily, very oily]
+breakouts:
+  pos: [no breakouts, acne safe, cleared my acne, reduces acne, helped my acne, calmed my acne, reduced acne, fewer breakouts, prevents acne, controls acne, keeps acne at bay, cleared my pimples]
+  neg: [breakout, breakouts, broke me out, break me out, clogged my pores, clogged pores, caused acne, causes acne, caused pimples, new pimples, acne flared, gave me pimples]
+irritation:
+  pos: [soothes irritation, soothes my skin, soothing, gentle on my skin, gentle on skin, calms redness, reduced redness, irritation free]
+  neg: [stinging, stings, itchy, itching, rash, redness, burning sensation, burnt my skin, irritated my skin, irritates, irritation]
+fragrance:
+  pos: [fragrance free, unscented, smells good, smells nice, smell is good, lovely scent, smells amazing, smells great, smells so good, pleasant fragrance, pleasant scent, refreshing scent, mild fragrance]
+  neg: [strong fragrance, strong smell, overpowering, too perfumed, smells bad, bad smell, unpleasant smell]
+  neutral: [smell, fragrance, scent, perfume]
+hydration:
+  pos: [hydrating, hydrated, moisturising, moisturizing, moisturized, moisturised, plump, nourished, hydration, soft and supple, softens skin, keeps my skin soft, keeps lips soft]
+  neg: [dries out, dried out, drying, dries my skin, made my skin dry, feels tight, still dry, made my lips dry]
+glow_results:
+  pos: [glowing, glow, glowy, radiant, brighter, brightening, faded my dark spots, reduced pigmentation, even toned, reduced my tan, glowing skin, dark spots faded]
+  neg: [no visible results, duller, dull looking, made me look dark, darkened my skin, no improvement in pigmentation]
+texture:
+  pos: [smooth texture, silky texture, texture is good, lovely texture, spreads easily, blends easily, easy to blend, blends well, creamy texture, smooth application]
+  neg: [pills, pilling, patchy, grainy, gritty, too runny, difficult to blend, cakey, clumpy]
+  neutral: [texture, consistency]
+packaging:
+  pos: [leak proof, sturdy packaging, packaging is good, travel friendly, well packaged, well packed, good packaging, secure packaging]
+  neg: [leaked, leaky, leaking, pump broke, broken pump, pump stopped working, cap broke, damaged packaging, poor packaging, broken cap]
+  neutral: [packaging, dispenser, pump]
+value_price:
+  pos: [worth it, worth the price, worth the money, value for money, affordable, budget friendly, reasonably priced, good value]
+  neg: [overpriced, pricey, expensive, not worth, waste of money, money waste, too little for the price]
+  neutral: [price, cost]
+authenticity:
+  pos: [genuine product, authentic product, original product, sealed properly]
+  neg: [fake, counterfeit, duplicate product, expired, seal broken, broken seal, tampered]
+spf_protection:
+  pos: [sun protection, protects from sun, protects my skin from the sun, prevented tanning, prevents tanning, protects against uv, protected from sunburn]
+  neg: [got sunburnt, sunburned, sunburnt, tanned anyway, still tanned, got tanned, no sun protection]
+longevity:
+  pos: [lasts all day, lasts for hours, long lasting, stays all day, stays for hours, stays on for long]
+  neg: [wears off, doesn't last, need to reapply often, have to reapply often, fades quickly]
+under_makeup:
+  pos: [good under makeup, great under makeup, works under makeup, sits well under makeup, perfect base for makeup, good makeup base]
+  neg: [pills under makeup, cakey under makeup, ruins my makeup, makeup separates]
+  neutral: [under makeup, under foundation]
+absorption:
+  pos: [absorbs quickly, absorbs fast, absorbs easily, easily absorbed, gets absorbed, fast absorbing, quickly absorbed, sinks in, absorbs instantly, absorbs well]
+  neg: [takes forever to absorb, doesn't absorb, does not absorb, sits on top of my skin]
+cleansing:
+  pos: [cleanses well, cleans well, removes makeup, removes dirt, deep cleans, feels clean, squeaky clean]
+  neg: [leaves residue, leaves a residue, doesn't cleanse, doesn't clean, fails to remove makeup]
+barrier_repair:
+  pos: [repaired my barrier, helped my skin barrier, strengthens my skin barrier, restores skin barrier, repaired my skin barrier, strengthened my barrier]
+  neg: [damaged my barrier, damaged my skin barrier, weakened my barrier]
+  neutral: [skin barrier]
+pigmentation:
+  pos: [reduced dark spots, faded dark spots, spots faded, lightened my spots, reduced my pigmentation, reduced pigmentation, fades pigmentation, evened out my skin tone, evened my skin tone]
+  neg: [dark spots got worse, dark spots got darker, no change in dark spots]
+  neutral: [dark spots, pigmentation, uneven skin tone]

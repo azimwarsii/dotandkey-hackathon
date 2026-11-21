@@ -1,0 +1,196 @@
+{
+  "sentences": 150,
+  "annotator": "Model-reviewed, pending independent human validation",
+  "sampling": "Up to 6 cases per broad topic plus a deterministic unfiltered background sample; counts are conditional on this sample.",
+  "method": "Exact aspect and sentence polarity, including mixed/neutral. Review rating is hidden from annotation. No holdout tuning.",
+  "minimum_predicted_n": 5,
+  "minimum_precision": 0.7,
+  "lexicon_sha256": "7beefd6e228795931798fbd02c6a5b35b82e8ffd491bdf9447c15f0212eb4247",
+  "tagger_sha256": "b30d35b7e77684759c280e86e9a57442a37d56ab7fd33dfa37b660402b65b1e8",
+  "fixture_sha256": "638aa785b3dcda496566ebd905203156cf8fb108ef5200fd5214a24f3e41dceb",
+  "strata": {
+    "absorption": 6,
+    "authenticity": 6,
+    "background": 42,
+    "barrier_repair": 6,
+    "breakouts": 6,
+    "cleansing": 6,
+    "fragrance": 6,
+    "glow_results": 6,
+    "greasy_sticky": 6,
+    "hydration": 6,
+    "irritation": 6,
+    "longevity": 6,
+    "packaging": 6,
+    "pigmentation": 6,
+    "spf_protection": 6,
+    "texture": 6,
+    "under_makeup": 6,
+    "value_price": 6,
+    "white_cast": 6
+  },
+  "aspects": {
+    "white_cast": {
+      "predicted_n": 6,
+      "gold_n": 6,
+      "aspect_correct": 6,
+      "polarity_correct": 3,
+      "aspect_precision": 1.0,
+      "precision": 0.5,
+      "enabled": false
+    },
+    "greasy_sticky": {
+      "predicted_n": 19,
+      "gold_n": 28,
+      "aspect_correct": 19,
+      "polarity_correct": 17,
+      "aspect_precision": 1.0,
+      "precision": 0.8947368421052632,
+      "enabled": true
+    },
+    "breakouts": {
+      "predicted_n": 2,
+      "gold_n": 7,
+      "aspect_correct": 2,
+      "polarity_correct": 1,
+      "aspect_precision": 1.0,
+      "precision": 0.5,
+      "enabled": false
+    },
+    "irritation": {
+      "predicted_n": 4,
+      "gold_n": 10,
+      "aspect_correct": 4,
+      "polarity_correct": 3,
+      "aspect_precision": 1.0,
+      "precision": 0.75,
+      "enabled": false
+    },
+    "fragrance": {
+      "predicted_n": 8,
+      "gold_n": 10,
+      "aspect_correct": 8,
+      "polarity_correct": 8,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": true
+    },
+    "hydration": {
+      "predicted_n": 10,
+      "gold_n": 23,
+      "aspect_correct": 9,
+      "polarity_correct": 9,
+      "aspect_precision": 0.9,
+      "precision": 0.9,
+      "enabled": true
+    },
+    "glow_results": {
+      "predicted_n": 11,
+      "gold_n": 20,
+      "aspect_correct": 11,
+      "polarity_correct": 10,
+      "aspect_precision": 1.0,
+      "precision": 0.9090909090909091,
+      "enabled": true
+    },
+    "texture": {
+      "predicted_n": 13,
+      "gold_n": 16,
+      "aspect_correct": 11,
+      "polarity_correct": 9,
+      "aspect_precision": 0.8461538461538461,
+      "precision": 0.6923076923076923,
+      "enabled": false
+    },
+    "packaging": {
+      "predicted_n": 2,
+      "gold_n": 6,
+      "aspect_correct": 2,
+      "polarity_correct": 2,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": false
+    },
+    "value_price": {
+      "predicted_n": 7,
+      "gold_n": 8,
+      "aspect_correct": 7,
+      "polarity_correct": 6,
+      "aspect_precision": 1.0,
+      "precision": 0.8571428571428571,
+      "enabled": true
+    },
+    "authenticity": {
+      "predicted_n": 0,
+      "gold_n": 2,
+      "aspect_correct": 0,
+      "polarity_correct": 0,
+      "aspect_precision": null,
+      "precision": null,
+      "enabled": false
+    },
+    "spf_protection": {
+      "predicted_n": 2,
+      "gold_n": 8,
+      "aspect_correct": 2,
+      "polarity_correct": 2,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": false
+    },
+    "longevity": {
+      "predicted_n": 4,
+      "gold_n": 9,
+      "aspect_correct": 4,
+      "polarity_correct": 4,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": false
+    },
+    "under_makeup": {
+      "predicted_n": 1,
+      "gold_n": 6,
+      "aspect_correct": 1,
+      "polarity_correct": 1,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": false
+    },
+    "absorption": {
+      "predicted_n": 9,
+      "gold_n": 11,
+      "aspect_correct": 9,
+      "polarity_correct": 9,
+      "aspect_precision": 1.0,
+      "precision": 1.0,
+      "enabled": true
+    },
+    "cleansing": {
+      "predicted_n": 0,
+      "gold_n": 7,
+      "aspect_correct": 0,
+      "polarity_correct": 0,
+      "aspect_precision": null,
+      "precision": null,
+      "enabled": false
+    },
+    "barrier_repair": {
+      "predicted_n": 4,
+      "gold_n": 6,
+      "aspect_correct": 3,
+      "polarity_correct": 3,
+      "aspect_precision": 0.75,
+      "precision": 0.75,
+      "enabled": false
+    },
+    "pigmentation": {
+      "predicted_n": 7,
+      "gold_n": 8,
+      "aspect_correct": 6,
+      "polarity_correct": 4,
+      "aspect_precision": 0.8571428571428571,
+      "precision": 0.5714285714285714,
+      "enabled": false
+    }
+  }
+}

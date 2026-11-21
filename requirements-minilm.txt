@@ -1,0 +1,5 @@
+# Optional CPU-only path tested with the project's Python 3.9 environment.
+onnxruntime==1.19.2
+tokenizers==0.20.3
+scikit-learn==1.6.1
+numpy==1.26.4

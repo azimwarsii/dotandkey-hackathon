@@ -1,0 +1,1157 @@
+{
+  "categories": [
+    {
+      "category": "Lip Balm",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.69533,
+      "forecast_growth": 0.21681,
+      "score_factors": {
+        "dk_share": 0.19822,
+        "dk_review_volume": 3705,
+        "top_six_review_volume": 18691,
+        "review_volume_by_brand": {
+          "Chemist at Play": 1066,
+          "Deconstruct": 3976,
+          "Dermatouch": 1778,
+          "Dot & Key": 3705,
+          "Fixderma": 923,
+          "WishCare": 7243
+        },
+        "share_source": "listing_review_counts",
+        "share_scope": "Cumulative explicitly reported review counts at the latest eligible PDP observation.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:lip-balm:flipkart:LPBGMNHDG2UGJWCN",
+            "market": "flipkart",
+            "volume": 3976,
+            "url": "https://www.flipkart.com/deconstruct-brightening-lip-balm-spf-50-brightens-dark-lips-moisturizes-non-tinted/p/itm4a968efaac4ec?pid=LPBGMNHDG2UGJWCN",
+            "captured_at": "2026-11-21T06:31:13.228667+00:00"
+          },
+          {
+            "product_ref": "competitor:lip-balm:flipkart:LPBGVGFJ28YF65HR",
+            "market": "flipkart",
+            "volume": 7243,
+            "url": "https://www.flipkart.com/wishcare-tinted-lip-balm-spf50-pa-women-brightening-hydrating-in-vivo-tested-watermelon/p/itm81b80042cfa68?pid=LPBGVGFJ28YF65HR",
+            "captured_at": "2026-11-21T06:34:51.470512+00:00"
+          },
+          {
+            "product_ref": "competitor:lip-balm:flipkart:LPBH9HYZFZ2ZR3T5",
+            "market": "flipkart",
+            "volume": 923,
+            "url": "https://www.flipkart.com/fixderma-spf-50-lip-balm-pa-4-kojic-acid-brightening-1-alpha-arbutin-coconut/p/itm698023675b7a7?pid=LPBH9HYZFZ2ZR3T5",
+            "captured_at": "2026-11-21T06:34:59.167978+00:00"
+          },
+          {
+            "product_ref": "competitor:lip-balm:flipkart:LPBHDJ5PKHUZDT6D",
+            "market": "flipkart",
+            "volume": 1066,
+            "url": "https://www.flipkart.com/chemist-play-cherry-lip-balm-repairs-chapped-lips-brightens-dark-1-kojic-acid/p/itm5785aaca54ff3?pid=LPBHDJ5PKHUZDT6D",
+            "captured_at": "2026-11-21T06:34:50.484330+00:00"
+          },
+          {
+            "product_ref": "competitor:lip-balm:flipkart:LPBHJD9DNKJPDUA7",
+            "market": "flipkart",
+            "volume": 1778,
+            "url": "https://www.flipkart.com/dermatouch-kojic-acid-ceramide-spf-50-pa-light-rosy-lip-balm-pigmented-dry-lips-tinted-pink/p/itmc4b871df75ccf?pid=LPBHJD9DNKJPDUA7",
+            "captured_at": "2026-11-21T06:34:53.434653+00:00"
+          },
+          {
+            "product_ref": "dk:10777148063909",
+            "market": "flipkart",
+            "volume": 25,
+            "url": "https://www.flipkart.com/dot-key-plushie-jelly-lip-balm-in-vivo-tested-spf-50-pa-toffee-melt/p/itmf6255515900d4?pid=LPBHR8T4MGQURK3R",
+            "captured_at": "2026-11-21T06:37:26.322238+00:00"
+          },
+          {
+            "product_ref": "dk:8244058718373",
+            "market": "flipkart",
+            "volume": 1645,
+            "url": "https://www.flipkart.com/dot-key-spf-50-lip-balm-moisturization-soft-naturally-pink-lips-strawberry-strawberry/p/itm57da39cc5bdac?pid=LPBGHET7DYUUFFHP",
+            "captured_at": "2026-11-21T06:43:01.061911+00:00"
+          },
+          {
+            "product_ref": "dk:8257680933029",
+            "market": "flipkart",
+            "volume": 369,
+            "url": "https://www.flipkart.com/dot-key-ceramide-peptide-barrier-repair-lip-balm-spf-pa-warm-nude-caramel/p/itmd3cc169e1152b?pid=LPBGTRYFRNHEPHMX",
+            "captured_at": "2026-11-21T06:37:22.460708+00:00"
+          },
+          {
+            "product_ref": "dk:8802935832741",
+            "market": "flipkart",
+            "volume": 938,
+            "url": "https://www.flipkart.com/dot-key-barrier-repair-hydrating-lip-balm-spf-50-strawberry-red-soft-tinted-chapstick/p/itm22c3d5ee5e860?pid=LPBH39G2YCRDVFMN",
+            "captured_at": "2026-11-21T06:42:21.410519+00:00"
+          },
+          {
+            "product_ref": "dk:9204633043109",
+            "market": "flipkart",
+            "volume": 728,
+            "url": "https://www.flipkart.com/dot-key-meltie-lip-balm-spf-50-pa-cocoa-creme-chocolate/p/itmfa46c7f9f0afc?pid=LPBHF56FP7GZANME",
+            "captured_at": "2026-11-21T06:37:24.946386+00:00"
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 4,
+        "gap_concepts": [
+          "cell:space-09d73f7347d873",
+          "cell:space-3f1358e115e626",
+          "cell:space-50ae0c2c56511f",
+          "cell:space-e2e1144ba66363"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Chemist at Play": 4,
+          "Deconstruct": 0,
+          "Dermatouch": 6,
+          "Dot & Key": 22,
+          "Fixderma": 1,
+          "WishCare": 0
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 33,
+      "reason": null,
+      "swot_claims": {
+        "strength": 2,
+        "weakness": 0,
+        "opportunity": 4,
+        "threat": 5
+      },
+      "recent_catalog_launches": 5,
+      "qualified_trends": 0,
+      "insights_path": "/category/Lip%20Balm/insights"
+    },
+    {
+      "category": "Body",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.57696,
+      "forecast_growth": 0.13148,
+      "score_factors": {
+        "dk_share": 0.60106,
+        "dk_review_volume": 113,
+        "top_six_review_volume": 188,
+        "review_volume_by_brand": {
+          "Dot & Key": 113,
+          "Joy": 19,
+          "Mamaearth": 8,
+          "NIVEA": 10,
+          "Parachute Advansed": 20,
+          "mCaffeine": 18
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:body:amazon:B07VKM2HR5",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:body:amazon:B0H65F539G",
+            "market": "amazon",
+            "volume": 8
+          },
+          {
+            "product_ref": "competitor:body:flipkart:MSCFM4559ATEGDHZ",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "competitor:body:flipkart:MSCG5QZWH4FKHD6C",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:body:flipkart:MSCH6ZWCGRG5V3SP",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "dk:8233835888805",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "dk:8233943498917",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8233944318117",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8246565961893",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "dk:8246572712101",
+            "market": "flipkart",
+            "volume": 17
+          },
+          {
+            "product_ref": "dk:8585627205797",
+            "market": "flipkart",
+            "volume": 20
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 11,
+        "gap_concepts": [
+          "cell:space-033929692f6686",
+          "cell:space-2ef7c83cac8b44",
+          "cell:space-338eeecbb99204",
+          "cell:space-36840cf1a305ca",
+          "cell:space-7d5f18677b58bf",
+          "cell:space-a2d023edf388fc",
+          "cell:space-c7453c35606c7d",
+          "cell:space-cb7f6af86d4e41",
+          "cell:space-d0a089f6c434c4",
+          "cell:space-e12795b4ab51d6",
+          "cell:space-f526d2caba229b"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Dot & Key": 39,
+          "Joy": 7,
+          "Mamaearth": 3,
+          "NIVEA": 6,
+          "Parachute Advansed": 0,
+          "mCaffeine": 7
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 62,
+      "reason": null,
+      "swot_claims": {
+        "strength": 0,
+        "weakness": 1,
+        "opportunity": 5,
+        "threat": 5
+      },
+      "recent_catalog_launches": 16,
+      "qualified_trends": 0,
+      "insights_path": "/category/Body/insights"
+    },
+    {
+      "category": "Sunscreen",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.39868,
+      "forecast_growth": 0.30909,
+      "score_factors": {
+        "dk_share": 0.67754,
+        "dk_review_volume": 187,
+        "top_six_review_volume": 276,
+        "review_volume_by_brand": {
+          "Deconstruct": 20,
+          "DermDoc": 19,
+          "Dot & Key": 187,
+          "Dr. Sheth’s": 20,
+          "Neutrogena": 10,
+          "The Derma Co": 20
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:sunscreen:amazon:B082PFY9S7",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:sunscreen:amazon:B0C6M3KHXV",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:sunscreen:flipkart:SNRGF4B8KQGFEJHU",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:sunscreen:flipkart:SNRHQ83FMNZTZCBZ",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:10449879597221",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:10500151443621",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8112528687269",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:8152049385637",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:8232676196517",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:8352993312933",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:8388780851365",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8502449406117",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "dk:8522147692709",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8760969887909",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:8938344841381",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8938370695333",
+            "market": "flipkart",
+            "volume": 19
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 4,
+        "gap_concepts": [
+          "cell:space-31fb2bf567a5a1",
+          "cell:space-5587561d7afc80",
+          "cell:space-56fd57b23da115",
+          "cell:space-ce230d1b37533e"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Deconstruct": 8,
+          "DermDoc": 3,
+          "Dot & Key": 88,
+          "Dr. Sheth’s": 1,
+          "Neutrogena": 8,
+          "The Derma Co": 6
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 114,
+      "reason": null,
+      "swot_claims": {
+        "strength": 1,
+        "weakness": 1,
+        "opportunity": 4,
+        "threat": 4
+      },
+      "recent_catalog_launches": 6,
+      "qualified_trends": 0,
+      "insights_path": "/category/Sunscreen/insights"
+    },
+    {
+      "category": "Moisturiser",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.39531,
+      "forecast_growth": 0.16725,
+      "score_factors": {
+        "dk_share": 0.70455,
+        "dk_review_volume": 186,
+        "top_six_review_volume": 264,
+        "review_volume_by_brand": {
+          "Cetaphil": 10,
+          "Dot & Key": 186,
+          "Mamaearth": 18,
+          "Minimalist": 10,
+          "POND's": 20,
+          "Re'equil": 20
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:moisturiser:amazon:B09Q3MWP2S",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:moisturiser:amazon:B0GHXYQ318",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:moisturiser:flipkart:MSCFAMQ3MHBPNSDG",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:moisturiser:flipkart:MSCGEMVHA2ZCUGR7",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "competitor:moisturiser:flipkart:MSCHR23JH83P5UYW",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:10724605067429",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:4849621237892",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:6132180484261",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:7046979780773",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:7091551699109",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:7998466719909",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8004803133605",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8137230778533",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "dk:8817927159973",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8837100208293",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "dk:8969556689061",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "dk:9184204554405",
+            "market": "flipkart",
+            "volume": 20
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 8,
+        "gap_concepts": [
+          "cell:space-27799d339a71d6",
+          "cell:space-6442f91996728f",
+          "cell:space-648f55e60bd4c8",
+          "cell:space-9dbc07301cd676",
+          "cell:space-b0533118437136",
+          "cell:space-ca80dde0bf223a",
+          "cell:space-d6830bb0463f77",
+          "cell:space-da8dbe0ba19fe5"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Cetaphil": 8,
+          "Dot & Key": 77,
+          "Mamaearth": 4,
+          "Minimalist": 10,
+          "POND's": 6,
+          "Re'equil": 0
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 105,
+      "reason": null,
+      "swot_claims": {
+        "strength": 1,
+        "weakness": 1,
+        "opportunity": 5,
+        "threat": 5
+      },
+      "recent_catalog_launches": 15,
+      "qualified_trends": 0,
+      "insights_path": "/category/Moisturiser/insights"
+    },
+    {
+      "category": "Mask",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.38912,
+      "forecast_growth": 0.271,
+      "score_factors": {
+        "dk_share": 0.52137,
+        "dk_review_volume": 61,
+        "top_six_review_volume": 117,
+        "review_volume_by_brand": {
+          "ClayCo.": 20,
+          "Dot & Key": 61,
+          "Foxtale": 10,
+          "Plum": 8,
+          "RENEE": 8,
+          "The Derma Co": 10
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:mask:amazon:B00OCJ5SW0",
+            "market": "amazon",
+            "volume": 8
+          },
+          {
+            "product_ref": "competitor:mask:amazon:B08VGBD2NM",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:mask:amazon:B0D2RQMS7Q",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:mask:amazon:B0FLXJGNH5",
+            "market": "amazon",
+            "volume": 8
+          },
+          {
+            "product_ref": "competitor:mask:flipkart:FCPHHHFVUB4FKFYZ",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:10496892960933",
+            "market": "flipkart",
+            "volume": 15
+          },
+          {
+            "product_ref": "dk:4691400360068",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "dk:4796515942532",
+            "market": "flipkart",
+            "volume": 18
+          },
+          {
+            "product_ref": "dk:8738011119781",
+            "market": "flipkart",
+            "volume": 19
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 3,
+        "gap_concepts": [
+          "cell:space-80ae2a87b3dea6",
+          "cell:space-8a17abc686a8bd",
+          "cell:space-c4d5cec543a84d"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "ClayCo.": 3,
+          "Dot & Key": 22,
+          "Foxtale": 9,
+          "Plum": 0,
+          "RENEE": 9,
+          "The Derma Co": 5
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 48,
+      "reason": null,
+      "swot_claims": {
+        "strength": 1,
+        "weakness": 2,
+        "opportunity": 3,
+        "threat": 2
+      },
+      "recent_catalog_launches": 0,
+      "qualified_trends": 0,
+      "insights_path": "/category/Mask/insights"
+    },
+    {
+      "category": "Face Wash",
+      "as_of": "2026-11-21",
+      "opportunity_score": 0.0,
+      "forecast_growth": 0.28147,
+      "score_factors": {
+        "dk_share": 0.6616,
+        "dk_review_volume": 174,
+        "top_six_review_volume": 263,
+        "review_volume_by_brand": {
+          "Cetaphil": 20,
+          "Chemist at Play": 20,
+          "Dot & Key": 174,
+          "Garnier Men": 20,
+          "Lakmé": 19,
+          "Minimalist": 10
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:face-wash:amazon:B096PJMGPL",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:face-wash:flipkart:CNRFPNR7MFKQ43KV",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:face-wash:flipkart:FCWDZCPTF4KNCJU3",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "competitor:face-wash:flipkart:FCWGQYYRTVH3GMRD",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:face-wash:flipkart:FCWHDG7EYSHVYBKV",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:10499206807717",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:10592116637861",
+            "market": "flipkart",
+            "volume": 6
+          },
+          {
+            "product_ref": "dk:6887708786853",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:7531538219173",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "dk:7862036562085",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:7982826389669",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8232674066597",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8308834336933",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:8429168296101",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8739284844709",
+            "market": "flipkart",
+            "volume": 20
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 0,
+        "gap_concepts": [],
+        "sampled_marketplace_reviews_by_brand": {
+          "Cetaphil": 3,
+          "Chemist at Play": 0,
+          "Dot & Key": 78,
+          "Garnier Men": 1,
+          "Lakmé": 0,
+          "Minimalist": 4
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 86,
+      "reason": null,
+      "swot_claims": {
+        "strength": 1,
+        "weakness": 2,
+        "opportunity": 0,
+        "threat": 3
+      },
+      "recent_catalog_launches": 4,
+      "qualified_trends": 0,
+      "insights_path": "/category/Face%20Wash/insights"
+    },
+    {
+      "category": "Eye",
+      "as_of": "2026-11-21",
+      "opportunity_score": null,
+      "forecast_growth": null,
+      "score_factors": {
+        "dk_share": 0.35088,
+        "dk_review_volume": 40,
+        "top_six_review_volume": 114,
+        "review_volume_by_brand": {
+          "Dot & Key": 40,
+          "DrVeda": 20,
+          "L'Oreal Paris": 5,
+          "Minimalist": 20,
+          "The Derma Co": 9,
+          "mCaffeine": 20
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:eye:amazon:B008CT12G2",
+            "market": "amazon",
+            "volume": 5
+          },
+          {
+            "product_ref": "competitor:eye:amazon:B08TTW5RJG",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "competitor:eye:flipkart:ECMGHQR8YUZHNGHX",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:eye:flipkart:ECMGUNKEFBP9SX4G",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:eye:flipkart:ECMHGCKSAMABQHZC",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8196673634469",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8200966963365",
+            "market": "flipkart",
+            "volume": 20
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 5,
+        "gap_concepts": [
+          "cell:space-097e82334159c6",
+          "cell:space-0d2939bf63fba2",
+          "cell:space-56b7edf342edfe",
+          "cell:space-6681b09ce087da",
+          "cell:space-b8a5d0f756575b"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Dot & Key": 13,
+          "DrVeda": 3,
+          "L'Oreal Paris": 3,
+          "Minimalist": 3,
+          "The Derma Co": 6,
+          "mCaffeine": 0
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 28,
+      "reason": "Available month and volume coverage falls below the fit threshold.",
+      "swot_claims": {
+        "strength": 3,
+        "weakness": 0,
+        "opportunity": 5,
+        "threat": 1
+      },
+      "recent_catalog_launches": 0,
+      "qualified_trends": 0,
+      "insights_path": "/category/Eye/insights"
+    },
+    {
+      "category": "Hair",
+      "as_of": "2026-11-21",
+      "opportunity_score": null,
+      "forecast_growth": null,
+      "score_factors": {
+        "dk_share": 0.40625,
+        "dk_review_volume": 39,
+        "top_six_review_volume": 96,
+        "review_volume_by_brand": {
+          "BARE ANATOMY": 20,
+          "Dot & Key": 39,
+          "Dove": 10,
+          "L'Oreal Paris": 9,
+          "TRESemmé": 10,
+          "TRue FRoG": 8
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:hair:amazon:B005TPGVO0",
+            "market": "amazon",
+            "volume": 9
+          },
+          {
+            "product_ref": "competitor:hair:amazon:B01NBYEC2W",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:hair:amazon:B08M3P1B1N",
+            "market": "amazon",
+            "volume": 8
+          },
+          {
+            "product_ref": "competitor:hair:amazon:B0CV5366CG",
+            "market": "amazon",
+            "volume": 10
+          },
+          {
+            "product_ref": "competitor:hair:flipkart:CNDGWYH5TTZHFJ8D",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:7417266372773",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:8099141353637",
+            "market": "flipkart",
+            "volume": 20
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 1,
+        "gap_concepts": [
+          "cell:space-fb756fa902f1cc"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "BARE ANATOMY": 0,
+          "Dot & Key": 2,
+          "Dove": 8,
+          "L'Oreal Paris": 6,
+          "TRESemmé": 6,
+          "TRue FRoG": 2
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 24,
+      "reason": "Available month and volume coverage falls below the fit threshold.",
+      "swot_claims": {
+        "strength": 0,
+        "weakness": 1,
+        "opportunity": 1,
+        "threat": 5
+      },
+      "recent_catalog_launches": 7,
+      "qualified_trends": 0,
+      "insights_path": "/category/Hair/insights"
+    },
+    {
+      "category": "Serum",
+      "as_of": "2026-11-21",
+      "opportunity_score": null,
+      "forecast_growth": null,
+      "score_factors": {
+        "dk_share": 0.68447,
+        "dk_review_volume": 141,
+        "top_six_review_volume": 206,
+        "review_volume_by_brand": {
+          "Chemist at Play": 20,
+          "Dot & Key": 141,
+          "Pilgrim": 1,
+          "Plum": 19,
+          "The Derma Co": 20,
+          "The Ordinary": 5
+        },
+        "share_source": "one_marketplace_per_product_sample",
+        "share_scope": "All eligible collected texts through 2026-11-21; one marketplace per product in fixed priority Flipkart, Amazon, Nykaa, Myntra, Purplle, Tira. Marketplaces must cover the focal brand and peers. Collection depths and the number of catalog products per brand differ.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:serum:amazon:B01MDTVZTZ",
+            "market": "nykaa",
+            "volume": 5
+          },
+          {
+            "product_ref": "competitor:serum:amazon:B0D5DBMKMC",
+            "market": "nykaa",
+            "volume": 1
+          },
+          {
+            "product_ref": "competitor:serum:flipkart:FRNG2G24MGNPBDGU",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "competitor:serum:flipkart:KMTH5Z49VSFHMAKG",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "competitor:serum:flipkart:KMTH89D4ZVZMESB7",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:4837066702980",
+            "market": "nykaa",
+            "volume": 3
+          },
+          {
+            "product_ref": "dk:7966520934565",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:7982268711077",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:7989617229989",
+            "market": "flipkart",
+            "volume": 19
+          },
+          {
+            "product_ref": "dk:7996063285413",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8873178300581",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:8918508404901",
+            "market": "flipkart",
+            "volume": 20
+          },
+          {
+            "product_ref": "dk:9107827622053",
+            "market": "flipkart",
+            "volume": 19
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 4,
+        "gap_concepts": [
+          "cell:space-4a361f29ad6493",
+          "cell:space-95064e642b9fbb",
+          "cell:space-a308642531eea6",
+          "cell:space-afbcc8bae8b54e"
+        ],
+        "sampled_marketplace_reviews_by_brand": {
+          "Chemist at Play": 3,
+          "Dot & Key": 2,
+          "Pilgrim": 0,
+          "Plum": 0,
+          "The Derma Co": 0,
+          "The Ordinary": 2
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 7,
+      "reason": "Available month and volume coverage falls below the fit threshold.",
+      "swot_claims": {
+        "strength": 0,
+        "weakness": 1,
+        "opportunity": 4,
+        "threat": 3
+      },
+      "recent_catalog_launches": 5,
+      "qualified_trends": 0,
+      "insights_path": "/category/Serum/insights"
+    },
+    {
+      "category": "Toner",
+      "as_of": "2026-11-21",
+      "opportunity_score": null,
+      "forecast_growth": null,
+      "score_factors": {
+        "dk_share": 0.30892,
+        "dk_review_volume": 1215,
+        "top_six_review_volume": 3933,
+        "review_volume_by_brand": {
+          "Chemist at Play": 163,
+          "Dot & Key": 1215,
+          "Foxtale": 109,
+          "Minimalist": 488,
+          "Plum": 1738,
+          "The Plant Fix Plix": 220
+        },
+        "share_source": "listing_review_counts",
+        "share_scope": "Cumulative explicitly reported review counts at the latest eligible PDP observation.",
+        "share_observations": [
+          {
+            "product_ref": "competitor:toner:flipkart:TNRGAES4PZRFZYHG",
+            "market": "flipkart",
+            "volume": 1738,
+            "url": "https://www.flipkart.com/plum-3-niacinamide-rice-water-alcohol-free-toner-tightens-pores-brightens-skin-men-women/p/itm9cda56d23d988?pid=TNRGAES4PZRFZYHG",
+            "captured_at": "2026-11-21T06:39:58.334159+00:00"
+          },
+          {
+            "product_ref": "competitor:toner:flipkart:TNRGFUZHNW3YRJKR",
+            "market": "flipkart",
+            "volume": 488,
+            "url": "https://www.flipkart.com/minimalist-3-pha-alcohol-free-face-toner-women-men-oily-skin/p/itm370e7bdc4c208?pid=TNRGFUZHNW3YRJKR",
+            "captured_at": "2026-11-21T06:39:59.280856+00:00"
+          },
+          {
+            "product_ref": "competitor:toner:flipkart:TNRGXYYYKQGYZPVX",
+            "market": "flipkart",
+            "volume": 220,
+            "url": "https://www.flipkart.com/plant-fix-plix-jamun-clarifying-fruity-toner-alcohol-free-niacinamide-extract-men-women/p/itm2a03207db290a?pid=TNRGXYYYKQGYZPVX",
+            "captured_at": "2026-11-21T06:39:18.399090+00:00"
+          },
+          {
+            "product_ref": "competitor:toner:flipkart:TNRHFPSXFHF5DXAT",
+            "market": "flipkart",
+            "volume": 109,
+            "url": "https://www.flipkart.com/foxtale-glow-toner-makeup-setting-spray-niacinamide-vit-c-dewy-look-men-women/p/itmd22a1b6d73eb8?pid=TNRHFPSXFHF5DXAT",
+            "captured_at": "2026-11-21T06:40:01.050350+00:00"
+          },
+          {
+            "product_ref": "competitor:toner:flipkart:TNRHFYKPYNMESZSD",
+            "market": "flipkart",
+            "volume": 163,
+            "url": "https://www.flipkart.com/chemist-play-gentle-exfoliating-face-toner-glycolic-mandelic-acid-niacinamide-kombucha-men-women/p/itm51f69d8457751?pid=TNRHFYKPYNMESZSD",
+            "captured_at": "2026-11-21T06:40:00.041225+00:00"
+          },
+          {
+            "product_ref": "dk:7531758518437",
+            "market": "flipkart",
+            "volume": 329,
+            "url": "https://www.flipkart.com/dot-key-cica-calming-skin-clarifying-toner-green-tea-niacinamide-for-acneprone-men-women/p/itm90b4c5c2f3819?pid=TNRGBQ5WSEZUAFJN",
+            "captured_at": "2026-11-21T06:39:56.270807+00:00"
+          },
+          {
+            "product_ref": "dk:7572740767909",
+            "market": "flipkart",
+            "volume": 319,
+            "url": "https://www.flipkart.com/dot-key-rice-water-hydrating-men-women/p/itm7c68e195d8db0?pid=TNRGBCT5UAY4GVGR",
+            "captured_at": "2026-11-21T06:43:00.040457+00:00"
+          },
+          {
+            "product_ref": "dk:7717895831717",
+            "market": "flipkart",
+            "volume": 476,
+            "url": "https://www.flipkart.com/dot-key-watermelon-superglow-pore-tightening-toner-for-glowing-skin-for-pores-women/p/itm5a964d835b92a?pid=TNRGD5GFVZFHGRYM",
+            "captured_at": "2026-11-21T06:39:57.301532+00:00"
+          },
+          {
+            "product_ref": "dk:9156818862245",
+            "market": "flipkart",
+            "volume": 91,
+            "url": "https://www.flipkart.com/dot-key-blueberry-hydrate-barrier-repair-milky-toner-essence-men-women/p/itm53d0ee32a94bd?pid=TNRHCRG7RHBCP6EM",
+            "captured_at": "2026-11-21T06:39:55.212733+00:00"
+          }
+        ],
+        "brands_represented": 6,
+        "gap_count": 0,
+        "gap_concepts": [],
+        "sampled_marketplace_reviews_by_brand": {
+          "Chemist at Play": 3,
+          "Dot & Key": 5,
+          "Foxtale": 1,
+          "Minimalist": 0,
+          "Plum": 1,
+          "The Plant Fix Plix": 0
+        },
+        "review_window": [
+          "2025-11",
+          "2026-10"
+        ]
+      },
+      "n": 10,
+      "reason": "Available month and volume coverage falls below the fit threshold.",
+      "swot_claims": {
+        "strength": 0,
+        "weakness": 0,
+        "opportunity": 0,
+        "threat": 2
+      },
+      "recent_catalog_launches": 1,
+      "qualified_trends": 0,
+      "insights_path": "/category/Toner/insights"
+    }
+  ],
+  "score_definition": "Forecast growth × (1 − Dot & Key share of observed review volume) × distinct gap count",
+  "term_opportunities": []
+}

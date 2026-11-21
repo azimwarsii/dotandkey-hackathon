@@ -1,0 +1,51 @@
+{
+  "provider": "public",
+  "pages": {
+    "amazon-standard": {
+      "url": "https://www.amazon.in/dp/B0DVLMD36J",
+      "bytes": 2420227,
+      "parsed_fields": [
+        "aspect_chips",
+        "bsr",
+        "category_ranks",
+        "customers_say",
+        "mrp",
+        "price",
+        "rating",
+        "rating_count"
+      ],
+      "reviews": 8,
+      "observed_at": "2026-11-21T06:36:21.622808+00:00"
+    },
+    "flipkart-standard": {
+      "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-watermelon-cooling-sunscreen-in-vivo-tested-hyaluronic/p/itm1aa93a315ff03?pid=SNRGWTFHWCT8GHCK",
+      "bytes": 1526626,
+      "parsed_fields": [
+        "highlights",
+        "mrp",
+        "price",
+        "rating",
+        "rating_count",
+        "rating_histogram",
+        "review_count"
+      ],
+      "reviews": 3,
+      "observed_at": "2026-11-21T06:36:22.421344+00:00"
+    },
+    "nykaa-standard": {
+      "url": "https://www.nykaa.com/dot-key-watermelon-hyaluronic-cooling-sunscreen-spf-50-pa/p/14072071?skuId=8938307",
+      "error": "www.nykaa.com/dot-key-watermelon-hyaluronic-cooling-sunscreen-spf-50-pa/p/14072071: HTTP 403"
+    },
+    "flipkart_reviews-standard": {
+      "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-watermelon-cooling-sunscreen-in-vivo-tested-hyaluronic/product-reviews/itm1aa93a315ff03?pid=SNRGWTFHWCT8GHCK",
+      "bytes": 726909,
+      "parsed_fields": [],
+      "reviews": 10,
+      "observed_at": "2026-11-21T06:36:23.019623+00:00"
+    }
+  },
+  "amazon_search": {
+    "result_count": 58,
+    "url": "https://www.amazon.in/s?k=Dot+%26+Key+sunscreen"
+  }
+}
