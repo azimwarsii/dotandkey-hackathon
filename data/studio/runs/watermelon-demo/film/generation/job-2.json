@@ -1,0 +1,20 @@
+{
+  "fingerprint": "b2cae2b457d1b76410496175d4070867d09adc7a611439d179a64a8cb2325a13",
+  "prompt": "A premium beauty tabletop film based on this exact product frame. Camera holds the package steady while a subtle warm reflection passes over the coral backdrop. Preserve the real pack proportions and printed label. No added objects, text or graphics.",
+  "input_frame": "reference-2.jpg",
+  "quote": {
+    "model": "google/veo-3.1-lite",
+    "resolution": "720p",
+    "audio": false,
+    "shot_seconds": [
+      8,
+      8
+    ],
+    "usd_per_second": 0.03,
+    "estimated_usd": 0.48,
+    "price_source": "https://openrouter.ai/api/v1/videos/models",
+    "voice_provider": "Sarvam Bulbul v3"
+  },
+  "id": "gen-vid-1795248301-8zxP2wKhUPZOKhcuHItN",
+  "status": "completed"
+}

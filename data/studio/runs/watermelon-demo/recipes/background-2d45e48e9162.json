@@ -1,0 +1,9 @@
+{
+  "model": "bytedance-seed/seedream-4.5",
+  "prompt": "Create a photorealistic editorial still-life BACKGROUND PLATE only. No packaging, containers, bottles, tubes, people, typography, logo or lettering. Use the supplied reference solely to coordinate the lighting and colour. A softly lit sculptural plinth and strong diagonal sunshine, gentle shadows, fine stone grain. Palette #ff84cd, #ffbddd, #ffd4df, inspired by Watermelon. Keep the left side quiet for a typography overlay. Reserve clear space on the right for the real packshot. Broad, uncluttered horizontal composition.",
+  "reference": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/80ml.jpg?v=1793277172",
+  "provider": "OpenRouter",
+  "cost_usd": 0.04,
+  "status": "generated",
+  "path": "assets/background-2d45e48e9162.jpg"
+}

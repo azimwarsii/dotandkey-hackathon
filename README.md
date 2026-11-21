@@ -2,6 +2,10 @@
 
 The [Part 1 collector](docs/plan-part1-market-intel.md) stores catalog, marketplace and review observations in SQLite. The [Part 2 pipeline](docs/plan-part2-insights-deterministic.md) turns those observations into evidence-linked SWOT findings, market gaps, launch signals, three-month demand projections and recommendations. Both APIs work offline against the included databases. Start with the [Sunscreen insights](data/sunscreen-insights.json) or the [ten-category opportunity ranking](data/part2-opportunities.json).
 
+## Content Studio (Part 3)
+
+The [Content Studio](studio-web) connects the per-product brief to reference research, concepts, scripts, storyboard frames, video exports, ads, marketplace listings and test results. The included [Watermelon Sunscreen campaign](data/studio/runs/watermelon-demo) opens with saved artifacts. [Setup, demo walkthrough and refresh commands](docs/content-studio.md)
+
 ## Included crawl
 
 The 21 November 2026 dataset contains 66 single Dot & Key products, 55 linked combos and 50 ranked competitors across ten categories. All 66 singles have a matched marketplace listing and a timestamped observation. There are 248 listings across Amazon India (74), Flipkart (85) and Nykaa (89), and 257 marketplace observations. The 6,133 deduplicated review records comprise 3,606 Judge.me reviews, 1,629 Flipkart reviews, 582 Amazon reviews, 306 Nykaa reviews and 10 indexed Reddit excerpts. Nykaa covers 59 of 66 Dot & Key singles and 30 of 50 selected peers.

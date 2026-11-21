@@ -1,0 +1,4 @@
+-r requirements.txt
+-r requirements-studio-research.txt
+-r requirements-studio-creative.txt
+-r requirements-studio-film.txt

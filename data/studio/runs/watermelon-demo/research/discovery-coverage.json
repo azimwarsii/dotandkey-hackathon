@@ -1,0 +1,108 @@
+{
+  "signature": "449f0c0224b95c40",
+  "observed_at": "2026-11-21T08:04:54+00:00",
+  "accounts": [
+    {
+      "source": "Instagram",
+      "name": "Deconstruct",
+      "count": 50
+    },
+    {
+      "source": "Instagram",
+      "name": "DermDoc",
+      "count": 49
+    },
+    {
+      "source": "Instagram",
+      "name": "Dr. Sheth’s",
+      "count": 50
+    },
+    {
+      "source": "Instagram",
+      "name": "Neutrogena",
+      "count": 0
+    },
+    {
+      "source": "Instagram",
+      "name": "The Derma Co",
+      "count": 50
+    },
+    {
+      "source": "YouTube brand",
+      "name": "Neutrogena",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "DrAanchalMD",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "DrManasiSkin",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "Corallista",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "ZolieSkinClinic",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "DrNiveditaDadu",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCj4nEnx8t_HJ5wpL1YPxHaw",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UChEKxjma_JAhmACyNjsJSHQ",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCe0K4yVkiHa7DORscY7fk5A",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCcjwEAaBGu1yc89QE3DC1Tw",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCH_RhBu7gVUDictmhfL6DTg",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCc34FvrsixVdHuvaipikMxA",
+      "count": 50
+    },
+    {
+      "source": "YouTube",
+      "name": "UCdSDwWRfuK3ITxCpCve3blg",
+      "count": 50
+    },
+    {
+      "source": "YouTube search",
+      "name": "Sunscreen",
+      "count": 12
+    },
+    {
+      "source": "Crustdata social",
+      "name": "Sunscreen",
+      "count": 0
+    }
+  ],
+  "window": "Up to 50 latest account uploads; Instagram excludes pinned and collaborator-owned posts. At least five observed view counts and nonzero median required.",
+  "breakout_ratio": 3
+}

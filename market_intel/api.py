@@ -7,6 +7,7 @@ from fastapi import FastAPI, HTTPException
 
 from .insights import build_insights, opportunity_overview
 from .store import report_from
+from .studio.api import router as studio_router
 
 load_dotenv()
 app = FastAPI(title="Dot & Key market intelligence", version="1")
@@ -40,3 +41,6 @@ def opportunities(as_of: Optional[date] = None):
         os.getenv("COMPETITOR_CATALOG_DB", "data/competitor-catalogs.sqlite3"),
         as_of,
     )
+
+
+app.include_router(studio_router)

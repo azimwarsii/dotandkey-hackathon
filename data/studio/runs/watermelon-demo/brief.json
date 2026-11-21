@@ -1,0 +1,852 @@
+{
+  "id": "brief-watermelon-cooling-spf-50-face-sunscreen",
+  "product": {
+    "product_ref": "dk:8152049385637",
+    "handle": "watermelon-cooling-spf-50-face-sunscreen",
+    "title": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+    "price": 595.0,
+    "currency": "INR",
+    "size": "80 ml",
+    "ingredients": [
+      "Hyaluronic",
+      "Watermelon + AHA"
+    ],
+    "hero_ingredient": "Watermelon",
+    "spf": "50+",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/80ml.jpg?v=1793277172",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/50ml.jpg?v=1793277172",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/2_a8521746-0b46-4f84-a16f-a126dc3efeb8.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/3_b39450b2-9445-4f24-87b2-36e3f30e711a.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/4_f9e709ad-1f32-4963-b48f-854b21de7069.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/5_c0b7da4f-267f-44b6-85f1-121af646f32b.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/6_40cc0366-fecd-4d93-9b7b-58f07a2a4fdb.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/7_99737c8c-14f4-4b0d-a950-c2bfac92371d.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/8_96897347-ad64-46ff-aaa4-ad38e4239422.jpg?v=1793277138",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/Listing-1080x1080_ea994ac0-b6a5-4678-9e96-270139659448.jpg?v=1776077076",
+      "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/9_5ee50694-9e93-4032-bff8-68c6ea8e6b7c.jpg?v=1793277138"
+    ],
+    "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+    "category": "Sunscreen",
+    "skin_type": [
+      "Combination",
+      "Dry",
+      "Normal",
+      "Oily"
+    ],
+    "brand": "Dot & Key",
+    "local_images": [
+      "inputs/product-01.jpg",
+      "inputs/product-02.jpg",
+      "inputs/product-03.jpg",
+      "inputs/product-04.jpg",
+      "inputs/product-05.jpg",
+      "inputs/product-06.jpg",
+      "inputs/product-07.jpg",
+      "inputs/product-08.jpg",
+      "inputs/product-09.jpg",
+      "inputs/product-10.jpg",
+      "inputs/product-11.jpg"
+    ],
+    "image_sources": [
+      {
+        "path": "inputs/product-01.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/80ml.jpg?v=1793277172"
+      },
+      {
+        "path": "inputs/product-02.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/50ml.jpg?v=1793277172"
+      },
+      {
+        "path": "inputs/product-03.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/2_a8521746-0b46-4f84-a16f-a126dc3efeb8.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-04.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/3_b39450b2-9445-4f24-87b2-36e3f30e711a.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-05.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/4_f9e709ad-1f32-4963-b48f-854b21de7069.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-06.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/5_c0b7da4f-267f-44b6-85f1-121af646f32b.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-07.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/6_40cc0366-fecd-4d93-9b7b-58f07a2a4fdb.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-08.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/7_99737c8c-14f4-4b0d-a950-c2bfac92371d.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-09.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/8_96897347-ad64-46ff-aaa4-ad38e4239422.jpg?v=1793277138"
+      },
+      {
+        "path": "inputs/product-10.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/Listing-1080x1080_ea994ac0-b6a5-4678-9e96-270139659448.jpg?v=1776077076"
+      },
+      {
+        "path": "inputs/product-11.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0361/8553/8692/files/9_5ee50694-9e93-4032-bff8-68c6ea8e6b7c.jpg?v=1793277138"
+      }
+    ],
+    "cutout": "inputs/cutout.png",
+    "cutout_recipe": {
+      "status": "cutout",
+      "method": "Verified product silhouette from the original Shopify packshot",
+      "source": "inputs/product-01.jpg"
+    }
+  },
+  "allowed_claims": [
+    "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+    "Watermelon Sunscreen",
+    "SPF 50+",
+    "80 ml",
+    "Watermelon",
+    "Hyaluronic",
+    "Watermelon + AHA",
+    "Instant cooling sunscreen for luminous, sun protected skin",
+    "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+    "Provides oil-free hydration while reducing uneven skin tone",
+    "Blocks UVA+UVB+blue light rays to check tanning & sun burn",
+    "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast",
+    "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon",
+    "Instant cooling",
+    "oil-free hydration",
+    "zero white cast",
+    "Non-Oily Finish",
+    "Aqua gel",
+    "Lightweight",
+    "quick-absorbing",
+    "Hyaluronic Acid",
+    "Use 15 minutes before stepping out",
+    "Apply on face, neck & other body parts",
+    "Re-apply every 2-3 hours",
+    "Use it even when indoors, or out on a cloudy day"
+  ],
+  "claim_sources": [
+    {
+      "id": "fact-34ddea1068f9",
+      "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+      "field": "title",
+      "kind": "name",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-6023bf869f65",
+      "text": "Watermelon Sunscreen",
+      "field": "title",
+      "kind": "short_name",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-7ab604500123",
+      "text": "SPF 50+",
+      "field": "spf",
+      "kind": "spf",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-3abba0416ebc",
+      "text": "80 ml",
+      "field": "size",
+      "kind": "size",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-9ee4663503f7",
+      "text": "Watermelon",
+      "field": "hero_ingredient",
+      "kind": "ingredient",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-4a98e118ebeb",
+      "text": "Hyaluronic",
+      "field": "ingredients",
+      "kind": "ingredient",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-2450029f51e3",
+      "text": "Watermelon + AHA",
+      "field": "ingredients",
+      "kind": "ingredient",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-0b4b0b26c560",
+      "text": "Instant cooling sunscreen for luminous, sun protected skin",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-ee34226c0383",
+      "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-1a896fca7bd0",
+      "text": "Provides oil-free hydration while reducing uneven skin tone",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-5eabdfbba88b",
+      "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-7bef85722221",
+      "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-815342935d21",
+      "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon",
+      "field": "description",
+      "kind": "benefit",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-a62d2a7b6e7b",
+      "text": "Instant cooling",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-2a28a2f9de0c",
+      "text": "oil-free hydration",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-526cc42cc340",
+      "text": "zero white cast",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-092e2ba7ba1a",
+      "text": "Non-Oily Finish",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-b5154122d733",
+      "text": "Aqua gel",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-0b2ba952799b",
+      "text": "Lightweight",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-e0e785d2fbcc",
+      "text": "quick-absorbing",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-6fdb2bd1ee5f",
+      "text": "Hyaluronic Acid",
+      "field": "description",
+      "kind": "feature",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-3ee75b462885",
+      "text": "Use 15 minutes before stepping out",
+      "field": "description",
+      "kind": "direction",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-6a5cdc58a87c",
+      "text": "Apply on face, neck & other body parts",
+      "field": "description",
+      "kind": "direction",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-7e49162165b9",
+      "text": "Re-apply every 2-3 hours",
+      "field": "description",
+      "kind": "direction",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    },
+    {
+      "id": "fact-74040cf9be9b",
+      "text": "Use it even when indoors, or out on a cloudy day",
+      "field": "description",
+      "kind": "direction",
+      "url": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+    }
+  ],
+  "audience": {
+    "skin_types": [
+      "Combination",
+      "Dry",
+      "Normal",
+      "Oily"
+    ],
+    "age_band": null,
+    "language": [
+      "en",
+      "hinglish"
+    ],
+    "top_desires": [
+      {
+        "id": "review-87765da6ccf0",
+        "quote": "great",
+        "rating": 5.0,
+        "source": "https://www.amazon.in/dp/B0CRHFHJ9X",
+        "product_ref": "dk:8152049385637",
+        "scope": "selected product",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-a128a35ca1b5",
+        "quote": "Good 👍🏻 not feeling sticky",
+        "rating": 5.0,
+        "source": "https://www.amazon.in/dp/B0CRHFHJ9X",
+        "product_ref": "dk:8152049385637",
+        "scope": "selected product",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-60033b9c967d",
+        "quote": "Amazing",
+        "rating": 5.0,
+        "source": "https://www.amazon.in/dp/B0CRHFHJ9X",
+        "product_ref": "dk:8152049385637",
+        "scope": "selected product",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-557574a75d27",
+        "quote": "Best sunscreen for golden-brown girls with combination skin. Definitely the best sunscreen for sun protection. It also does not leave a white cast after use. It can be used by brown girls too",
+        "rating": 4.0,
+        "source": "https://www.amazon.in/dp/B0CRHFHJ9X",
+        "product_ref": "dk:8152049385637",
+        "scope": "selected product",
+        "platform": "amazon"
+      }
+    ],
+    "top_objections": [],
+    "category_objections": [
+      {
+        "id": "review-5735ede52cd1",
+        "quote": "does not protect your skin whatsoever.",
+        "rating": 1.0,
+        "source": "https://www.amazon.in/dp/B0CZNV8PLK",
+        "product_ref": "dk:8502449406117",
+        "scope": "category research",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-ed40c5e8fddd",
+        "quote": "Does not give sun protection, always got tanned even after applying it, starts coming off with sweat, leaves white cast that takes 10 15 mins to settle down, not that easy to spread",
+        "rating": 2.0,
+        "source": "https://www.amazon.in/dp/B0GF1H58HB",
+        "product_ref": "dk:10449879597221",
+        "scope": "category research",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-6c0603a414ec",
+        "quote": "Most disgusting product ever leaves white cast please please don't buy it. It doesn't even absorb",
+        "rating": 1.0,
+        "source": "https://www.amazon.in/dp/B0GF1H58HB",
+        "product_ref": "dk:10449879597221",
+        "scope": "category research",
+        "platform": "amazon"
+      },
+      {
+        "id": "review-59a7960e67a9",
+        "quote": "Broken seal and empty bottle delivered. Product was leaked. Shame, seal was glued with a tape.",
+        "rating": 1.0,
+        "source": "https://www.amazon.in/dp/B0CZNV8PLK",
+        "product_ref": "dk:8502449406117",
+        "scope": "category research",
+        "platform": "amazon"
+      }
+    ]
+  },
+  "strengths": [
+    {
+      "id": "top_rating-427955fd523322",
+      "rule": "top_rating",
+      "quadrant": "strength",
+      "subject": "Dot & Key",
+      "title": "Dot & Key ranks 2 of 6 on Bayesian rating",
+      "metric_values": {
+        "rank": 2,
+        "bayesian_rating": 4.256537618968374,
+        "peer_ratings": {
+          "The Derma Co": 4.1208098686271795,
+          "DermDoc": 4.299687707613122,
+          "Neutrogena": 4.1999687788791125,
+          "Dr. Sheth’s": 4.200516063263027,
+          "Deconstruct": 4.199996978509705
+        },
+        "ties_share_rank": true
+      },
+      "threshold": "Rank 1 or 2 across all six brands",
+      "n": 76084,
+      "effect_size": 0.056541,
+      "rank_score": 0.635494,
+      "evidence_quotes": [],
+      "evidence_sources": [
+        "https://www.amazon.in/dp/B082PFY9S7",
+        "https://www.amazon.in/dp/B0B45RB1RV",
+        "https://www.amazon.in/dp/B0C6M3KHXV",
+        "https://www.amazon.in/dp/B0CRH642BP",
+        "https://www.amazon.in/dp/B0CRHFHJ9X",
+        "https://www.amazon.in/dp/B0CTT91H5J",
+        "https://www.amazon.in/dp/B0CX1HF45F",
+        "https://www.amazon.in/dp/B0CZNV8PLK",
+        "https://www.amazon.in/dp/B0D7VFJCZK",
+        "https://www.amazon.in/dp/B0DSW7NTMY",
+        "https://www.amazon.in/dp/B0DVLMD36J",
+        "https://www.amazon.in/dp/B0GF1H58HB",
+        "https://www.amazon.in/dp/B0GR8NWMCZ",
+        "https://www.flipkart.com/deconstruct-sunscreen-spf-50-pa-lightweight-gel-in-vivo-tested-non-greasy-men-women/p/itm5f0007953439e?pid=SNRGFA6Y2FNDGHHH",
+        "https://www.flipkart.com/derma-co-sunscreen-spf-50-pa-1-hyaluronic-aqua-gel-lightweight-no-white-cast-broad-spectrum/p/itm8e67efaf505cd?pid=SNRGQFP2SH37HH58",
+        "https://www.flipkart.com/dermdoc-sunscreen-spf-50-pa-ultra-violet-purple-brightening-4-niacinamide/p/itm56ba69ff5c656?pid=SNRHQ83FMNZTZCBZ",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-dragon-fruit-bounce-sunscreen-invivo-tested/p/itm930b603f09c6d?pid=SNRHH2GCXB4G2ZJT",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-mango-detan-gel-in-vivo-tested-oil-free-controls-tanning-brightens-skin-tone/p/itm2c1722b47c188?pid=SNRH8J9NWCQBSXEX",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-mist-50-pa-all-skin-types/p/itm7cf5fe3d7f7db?pid=SNRH8BPJV5PNVSB3",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-stick-in-vivo-tested-makeup-friendly-air-light-texture-non-greasy/p/itm136450e3ec831?pid=SNRGS2FZHHPJSMUC",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-tinted-in-vivo-tested-peony-daily-wear-brightens-skin/p/itm05e305f1e012b?pid=SNRHKBWZYZVSGDAY",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-vitamin-c-e-100-mineral-pa-all-skin-types/p/itm41fdfbb6e156c?pid=SNRHJGG9ZPEYUYCY",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-pa-lime-rush-swim-sports-in-vivo-tested-180-minutes-water-sweat-resistant/p/itm458a219856940?pid=SNRGXQDNMK79VZPX",
+        "https://www.flipkart.com/dr-sheths-sunscreen-spf-50-pa-ceramide-vitamin-c-spf-50-pa-all-skin-types/p/itm5a20d778dfe4f?pid=SNRGF4B8KQGFEJHU",
+        "https://www.nykaa.com/deconstruct-lightweight-gel-sunscreen-spf-55-pa/p/6183938?skuId=6183938",
+        "https://www.nykaa.com/dot-key-mango-detan-gel-sunscreen/p/18815135?skuId=18815134",
+        "https://www.nykaa.com/dot-key-strawberry-dew-spf-50-sunscreen-stick-on-the-go/p/11940883",
+        "https://www.nykaa.com/dot-key-strawberry-dew-sunscreen-mist-spf-50-pa-80ml/p/18806293",
+        "https://www.nykaa.com/dot-key-strawberry-dew-tinted-sunscreen-spf-50-pa/p/14558391?skuId=25431338",
+        "https://www.nykaa.com/dot-key-vitamin-c-e-100percent-mineral-sunscreen-spf-50-pa/p/24846622",
+        "https://www.nykaa.com/dot-key-watermelon-cooling-sunscreen-body-spray-with-spf-40-pa/p/15096732",
+        "https://www.nykaa.com/dot-key-watermelon-hyaluronic-cooling-sunscreen-spf-50-pa/p/14072071?skuId=13862994",
+        "https://www.nykaa.com/dr-sheth-s-ceramide-vitamin-c-long-lasting-sunscreen/p/14988814",
+        "https://www.nykaa.com/neutrogena-ultrasheer-dry-touch-sunblock-spf-50-88ml/p/76006?skuId=76006"
+      ],
+      "related_ids": []
+    }
+  ],
+  "weaknesses_to_avoid_in_messaging": [
+    {
+      "id": "channel_gap-2c177aeb4c2a36",
+      "rule": "channel_gap",
+      "quadrant": "weakness",
+      "subject": "dk:10449879597221/DK_VCEMS",
+      "title": "Vitamin C + E 100% Mineral Sunscreen IN-VIVO tested SPF 50+, PA++++ rates lower on amazon",
+      "metric_values": {
+        "product_ref": "dk:10449879597221",
+        "variant_sku": "DK_VCEMS",
+        "lower_market": "amazon",
+        "higher_market": "flipkart",
+        "rating_gap": 0.7,
+        "ratings": {
+          "amazon": 3.8,
+          "flipkart": 4.5,
+          "nykaa": 4.0
+        }
+      },
+      "threshold": "Same SKU differs by ≥ 0.3 stars",
+      "n": 481,
+      "effect_size": 0.7,
+      "rank_score": 4.323107,
+      "evidence_quotes": [],
+      "evidence_sources": [
+        "https://www.amazon.in/dp/B0GF1H58HB",
+        "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-vitamin-c-e-100-mineral-pa-all-skin-types/p/itm41fdfbb6e156c?pid=SNRHJGG9ZPEYUYCY",
+        "https://www.nykaa.com/dot-key-vitamin-c-e-100percent-mineral-sunscreen-spf-50-pa/p/24846622"
+      ],
+      "related_ids": []
+    }
+  ],
+  "competitor_weaknesses": [],
+  "competitors": [
+    "Deconstruct",
+    "DermDoc",
+    "Dr. Sheth’s",
+    "Neutrogena",
+    "The Derma Co"
+  ],
+  "trends": [],
+  "gaps": [
+    {
+      "id": "space-31fb2bf567a5a1",
+      "title": "mist · SPF 50 · under ₹500 has 0 observed products",
+      "category": "Sunscreen",
+      "attributes": {
+        "formats": "mist",
+        "spf": 50,
+        "price_band": "under ₹500"
+      },
+      "n": 249,
+      "evidence": [
+        {
+          "product_ref": "dk:8938370695333",
+          "review_id": "1f330d54a538c0015afa",
+          "quote": "Absolutely love this sunscreen! It provides excellent sun protection with SPF 50 PA and leaves my skin with a beautiful dewy glow. The lightweight, non greasy formula blends seamlessly, giving a natural, even toned finish without any white cast. Perfect for da",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-mist-50-pa-all-skin-types/product-reviews/itm7cf5fe3d7f7db?pid=SNRH8BPJV5PNVSB3&page=1",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "dk:10500151443621",
+          "review_id": "91ac473fbd0eb5723eb2",
+          "quote": "A great product for skin protection. It helps protect from sun . It also is lightweight . I liked it.",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-dragon-fruit-bounce-sunscreen-invivo-tested/product-reviews/itm930b603f09c6d?pid=SNRHH2GCXB4G2ZJT&page=2",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "review_id": "e409dc35eb00c178cb8e",
+          "quote": "Effective nice",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/deconstruct-sunscreen-spf-50-pa-lightweight-gel-in-vivo-tested-non-greasy-men-women/product-reviews/itm5f0007953439e?pid=SNRGFA6Y2FNDGHHH&page=2",
+          "rating": 4.0,
+          "date": null
+        }
+      ],
+      "metric_values": {
+        "suppliers": 0,
+        "supplier_refs": [],
+        "possible_suppliers_with_unknown_attributes": 5,
+        "neighbor_reviews": 249,
+        "neighbor_products": [
+          "competitor:sunscreen:amazon:B0C6M3KHXV",
+          "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "dk:10500151443621",
+          "dk:8938370695333"
+        ],
+        "neighbor_brands": [
+          "Deconstruct",
+          "Dot & Key",
+          "The Derma Co"
+        ],
+        "matching_wishes": 0
+      },
+      "threshold": "≤1 observed supplier and ≥73 adjacent sampled reviews from ≥2 products and brands on ≥2 adjacent axes, or ≥2 explicit customer requests for this cell.",
+      "related_cells": [
+        {
+          "formats": "mist",
+          "price_band": "under ₹500"
+        }
+      ]
+    },
+    {
+      "id": "space-5587561d7afc80",
+      "title": "stick · SPF 50 · under ₹500 has 0 observed products",
+      "category": "Sunscreen",
+      "attributes": {
+        "formats": "stick",
+        "spf": 50,
+        "price_band": "under ₹500"
+      },
+      "n": 239,
+      "evidence": [
+        {
+          "product_ref": "dk:10500151443621",
+          "review_id": "91ac473fbd0eb5723eb2",
+          "quote": "A great product for skin protection. It helps protect from sun . It also is lightweight . I liked it.",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-dragon-fruit-bounce-sunscreen-invivo-tested/product-reviews/itm930b603f09c6d?pid=SNRHH2GCXB4G2ZJT&page=2",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "dk:8232676196517",
+          "review_id": "74cd740b5763ef96ba80",
+          "quote": "Good",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-stick-in-vivo-tested-makeup-friendly-air-light-texture-non-greasy/product-reviews/itm136450e3ec831?pid=SNRGS2FZHHPJSMUC&page=1",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "review_id": "e409dc35eb00c178cb8e",
+          "quote": "Effective nice",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/deconstruct-sunscreen-spf-50-pa-lightweight-gel-in-vivo-tested-non-greasy-men-women/product-reviews/itm5f0007953439e?pid=SNRGFA6Y2FNDGHHH&page=2",
+          "rating": 4.0,
+          "date": null
+        }
+      ],
+      "metric_values": {
+        "suppliers": 0,
+        "supplier_refs": [],
+        "possible_suppliers_with_unknown_attributes": 5,
+        "neighbor_reviews": 239,
+        "neighbor_products": [
+          "competitor:sunscreen:amazon:B0C6M3KHXV",
+          "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "dk:10500151443621",
+          "dk:8232676196517"
+        ],
+        "neighbor_brands": [
+          "Deconstruct",
+          "Dot & Key",
+          "The Derma Co"
+        ],
+        "matching_wishes": 0
+      },
+      "threshold": "≤1 observed supplier and ≥73 adjacent sampled reviews from ≥2 products and brands on ≥2 adjacent axes, or ≥2 explicit customer requests for this cell.",
+      "related_cells": [
+        {
+          "formats": "stick",
+          "price_band": "under ₹500"
+        }
+      ]
+    },
+    {
+      "id": "space-ce230d1b37533e",
+      "title": "tinted · SPF 50 · under ₹500 has 0 observed products",
+      "category": "Sunscreen",
+      "attributes": {
+        "formats": "tinted",
+        "spf": 50,
+        "price_band": "under ₹500"
+      },
+      "n": 236,
+      "evidence": [
+        {
+          "product_ref": "dk:10500151443621",
+          "review_id": "91ac473fbd0eb5723eb2",
+          "quote": "A great product for skin protection. It helps protect from sun . It also is lightweight . I liked it.",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-dragon-fruit-bounce-sunscreen-invivo-tested/product-reviews/itm930b603f09c6d?pid=SNRHH2GCXB4G2ZJT&page=2",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "dk:8522147692709",
+          "review_id": "a2077068923433d892b8",
+          "quote": "Amazing sunscreen. I really love the watery consistency and the way it easily absorbs in the skin without leaving any white cast. Also love the instant glow it gives.",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-strawberry-dew-tinted-in-vivo-tested-peony-daily-wear-brightens-skin/product-reviews/itm05e305f1e012b?pid=SNRHKBWZYZVSGDAY&page=1",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "review_id": "e409dc35eb00c178cb8e",
+          "quote": "Effective nice",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/deconstruct-sunscreen-spf-50-pa-lightweight-gel-in-vivo-tested-non-greasy-men-women/product-reviews/itm5f0007953439e?pid=SNRGFA6Y2FNDGHHH&page=2",
+          "rating": 4.0,
+          "date": null
+        }
+      ],
+      "metric_values": {
+        "suppliers": 0,
+        "supplier_refs": [],
+        "possible_suppliers_with_unknown_attributes": 5,
+        "neighbor_reviews": 236,
+        "neighbor_products": [
+          "competitor:sunscreen:amazon:B0C6M3KHXV",
+          "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "dk:10500151443621",
+          "dk:8522147692709"
+        ],
+        "neighbor_brands": [
+          "Deconstruct",
+          "Dot & Key",
+          "The Derma Co"
+        ],
+        "matching_wishes": 0
+      },
+      "threshold": "≤1 observed supplier and ≥73 adjacent sampled reviews from ≥2 products and brands on ≥2 adjacent axes, or ≥2 explicit customer requests for this cell.",
+      "related_cells": [
+        {
+          "formats": "tinted",
+          "price_band": "under ₹500"
+        }
+      ]
+    },
+    {
+      "id": "space-56fd57b23da115",
+      "title": "spray · SPF 50 · under ₹500 has 1 observed product",
+      "category": "Sunscreen",
+      "attributes": {
+        "formats": "spray",
+        "spf": 50,
+        "price_band": "under ₹500"
+      },
+      "n": 228,
+      "evidence": [
+        {
+          "product_ref": "dk:10500151443621",
+          "review_id": "91ac473fbd0eb5723eb2",
+          "quote": "A great product for skin protection. It helps protect from sun . It also is lightweight . I liked it.",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/dot-key-sunscreen-spf-50-pa-dragon-fruit-bounce-sunscreen-invivo-tested/product-reviews/itm930b603f09c6d?pid=SNRHH2GCXB4G2ZJT&page=2",
+          "rating": 5.0,
+          "date": null
+        },
+        {
+          "product_ref": "dk:8502449406117",
+          "review_id": "53408647",
+          "quote": "First time purchased , happy with product. Works perfect well with my skin. I have combination skin nd sensitive too. Hydra based sunscreen good for my skin. Spray bottle useful to cover all areas of body. The cooling effect after you apply is amazing. You mus",
+          "source": "nykaa",
+          "url": "https://www.nykaa.com/dot-key-watermelon-cooling-sunscreen-body-spray-with-spf-40-pa/p/15096732",
+          "rating": 5.0,
+          "date": "2024-09-17"
+        },
+        {
+          "product_ref": "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "review_id": "e409dc35eb00c178cb8e",
+          "quote": "Effective nice",
+          "source": "flipkart",
+          "url": "https://www.flipkart.com/deconstruct-sunscreen-spf-50-pa-lightweight-gel-in-vivo-tested-non-greasy-men-women/product-reviews/itm5f0007953439e?pid=SNRGFA6Y2FNDGHHH&page=2",
+          "rating": 4.0,
+          "date": null
+        }
+      ],
+      "metric_values": {
+        "suppliers": 1,
+        "supplier_refs": [
+          "shopify:thedeconstruct.in:10224637772057"
+        ],
+        "possible_suppliers_with_unknown_attributes": 5,
+        "neighbor_reviews": 228,
+        "neighbor_products": [
+          "competitor:sunscreen:amazon:B0C6M3KHXV",
+          "competitor:sunscreen:flipkart:SNRGFA6Y2FNDGHHH",
+          "dk:10500151443621",
+          "dk:8502449406117"
+        ],
+        "neighbor_brands": [
+          "Deconstruct",
+          "Dot & Key",
+          "The Derma Co"
+        ],
+        "matching_wishes": 0
+      },
+      "threshold": "≤1 observed supplier and ≥73 adjacent sampled reviews from ≥2 products and brands on ≥2 adjacent axes, or ≥2 explicit customer requests for this cell.",
+      "related_cells": [
+        {
+          "formats": "spray",
+          "price_band": "under ₹500"
+        }
+      ]
+    }
+  ],
+  "search_terms": [
+    "Sunscreen",
+    "Watermelon"
+  ],
+  "range": [
+    {
+      "handle": "barrier-repair-sunscreen",
+      "title": "Barrier Repair Sunscreen, In-Vivo Tested SPF 50 PA++++",
+      "size": "80 ml",
+      "spf": "50",
+      "url": "https://www.dotandkey.com/products/barrier-repair-sunscreen",
+      "price": 595.0
+    },
+    {
+      "handle": "cica-calming-mattifying-sunscreen-spf-50-pa",
+      "title": "Cica + Niacinamide Sunscreen, In-Vivo Tested SPF 50+ PA++++",
+      "size": "80 ml",
+      "spf": "50+",
+      "url": "https://www.dotandkey.com/products/cica-calming-mattifying-sunscreen-spf-50-pa",
+      "price": 595.0
+    },
+    {
+      "handle": "dot-key-dragon-fruit-bounce-sunscreen-in-vivo-tested-spf-50-pa-50g",
+      "title": "Dragon Fruit Bounce Gel Sunscreen SPF 50+ PA++++, With New-Age UV Filters",
+      "size": "50 g",
+      "spf": "50+",
+      "url": "https://www.dotandkey.com/products/dot-key-dragon-fruit-bounce-sunscreen-in-vivo-tested-spf-50-pa-50g",
+      "price": 445.0
+    }
+  ],
+  "brand_kit": {
+    "colors": [
+      "#ff84cd",
+      "#ffbddd",
+      "#ffd4df",
+      "#0a0a0a",
+      "#ffffff"
+    ],
+    "fonts": [
+      "Poppins"
+    ],
+    "font_files": [
+      {
+        "path": "inputs/Poppins-Bold.woff2",
+        "url": "https://www.dotandkey.com/cdn/shop/t/2264/assets/Poppins-Bold.woff2?v=132186691875499433561785749550",
+        "weight": 700
+      },
+      {
+        "path": "inputs/Poppins-Medium.woff",
+        "url": "https://www.dotandkey.com/cdn/shop/t/2264/assets/Poppins-Medium.woff?v=30115654013337502361785749551",
+        "weight": 500
+      },
+      {
+        "path": "inputs/Poppins-Regular.woff",
+        "url": "https://www.dotandkey.com/cdn/shop/t/2264/assets/Poppins-Regular.woff?v=158294767279374299791785749552",
+        "weight": 400
+      }
+    ],
+    "logo": "inputs/logo.svg",
+    "tone_words": [
+      "cooling",
+      "glow",
+      "lightweight"
+    ],
+    "do_not_say": [
+      "fairness",
+      "whitening",
+      "chemical-free",
+      "100% safe",
+      "No.1",
+      "dermatologist recommended"
+    ],
+    "source": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+    "status": "observed",
+    "palette_evidence": {
+      "--color-primary": "#0a0a0a",
+      "--color-foreground": "#0a0a0a",
+      "--color-background": "#ffffff",
+      "--pdp-primary-color": "#ff84cd",
+      "--pdp-third-color": "#ffd4df",
+      "--pdp-second-color": "#ffbddd"
+    },
+    "logo_source": "https://www.dotandkey.com/cdn/shop/files/Vector_5_82ac85a9-0738-4b93-84b9-96c402c5dc72.svg?v=1774603712&width=200"
+  },
+  "as_of": "2026-11-21",
+  "scope": "Catalog facts authorize external copy. Review excerpts and category comparisons are internal creative inputs."
+}

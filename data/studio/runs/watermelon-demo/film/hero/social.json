@@ -1,0 +1,12 @@
+{
+  "project_id": "06d3f84d-c14a-490a-b493-89ffe1460b9f",
+  "cover": "film/hero/cover.png",
+  "carousel": [
+    "film/hero/carousel-01.png",
+    "film/hero/carousel-02.png",
+    "film/hero/carousel-03.png",
+    "film/hero/carousel-04.png",
+    "film/hero/carousel-05.png",
+    "film/hero/carousel-06.png"
+  ]
+}

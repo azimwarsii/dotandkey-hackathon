@@ -1,0 +1,264 @@
+{
+  "reference_id": "40a352e665e0c3d7",
+  "url": "https://www.instagram.com/reel/DY1Ln6bzPh7/",
+  "media": "research/40a352e665e0c3d7/reference.mp4",
+  "source": "ClipForge replicate/analyze",
+  "shots": [
+    {
+      "index": 1,
+      "start": 0,
+      "duration": 2.4
+    },
+    {
+      "index": 2,
+      "start": 2.4,
+      "duration": 2.5
+    },
+    {
+      "index": 3,
+      "start": 5,
+      "duration": 2.3
+    },
+    {
+      "index": 4,
+      "start": 7.3,
+      "duration": 2
+    },
+    {
+      "index": 5,
+      "start": 9.3,
+      "duration": 2
+    },
+    {
+      "index": 6,
+      "start": 11.3,
+      "duration": 2
+    },
+    {
+      "index": 7,
+      "start": 13.2,
+      "duration": 2.8
+    },
+    {
+      "index": 8,
+      "start": 16,
+      "duration": 1.2
+    },
+    {
+      "index": 9,
+      "start": 17.2,
+      "duration": 1.7
+    },
+    {
+      "index": 10,
+      "start": 18.9,
+      "duration": 1.8
+    },
+    {
+      "index": 11,
+      "start": 20.7,
+      "duration": 2.3
+    },
+    {
+      "index": 12,
+      "start": 23,
+      "duration": 1.7
+    }
+  ],
+  "saved_shots": [
+    {
+      "start": 0.0,
+      "end": 2.417,
+      "duration": 2.417
+    },
+    {
+      "start": 2.417,
+      "end": 4.958,
+      "duration": 2.541
+    },
+    {
+      "start": 4.958,
+      "end": 5.958,
+      "duration": 1.0
+    },
+    {
+      "start": 5.958,
+      "end": 7.25,
+      "duration": 1.292
+    },
+    {
+      "start": 7.25,
+      "end": 8.083,
+      "duration": 0.833
+    },
+    {
+      "start": 8.083,
+      "end": 9.25,
+      "duration": 1.167
+    },
+    {
+      "start": 9.25,
+      "end": 11.25,
+      "duration": 2.0
+    },
+    {
+      "start": 11.25,
+      "end": 13.208,
+      "duration": 1.958
+    },
+    {
+      "start": 13.208,
+      "end": 14.333,
+      "duration": 1.125
+    },
+    {
+      "start": 14.333,
+      "end": 16.042,
+      "duration": 1.709
+    },
+    {
+      "start": 16.042,
+      "end": 17.208,
+      "duration": 1.166
+    },
+    {
+      "start": 17.208,
+      "end": 17.917,
+      "duration": 0.709
+    },
+    {
+      "start": 17.917,
+      "end": 18.458,
+      "duration": 0.541
+    },
+    {
+      "start": 18.458,
+      "end": 19.667,
+      "duration": 1.209
+    },
+    {
+      "start": 19.667,
+      "end": 20.708,
+      "duration": 1.041
+    },
+    {
+      "start": 20.708,
+      "end": 21.625,
+      "duration": 0.917
+    },
+    {
+      "start": 21.625,
+      "end": 23.042,
+      "duration": 1.417
+    },
+    {
+      "start": 23.042,
+      "end": 24.75,
+      "duration": 1.708
+    }
+  ],
+  "source_cuts": [
+    {
+      "index": 1,
+      "start": 0,
+      "duration": 2.41667
+    },
+    {
+      "index": 2,
+      "start": 2.41667,
+      "duration": 2.5416600000000003
+    },
+    {
+      "index": 3,
+      "start": 4.95833,
+      "duration": 1
+    },
+    {
+      "index": 4,
+      "start": 5.95833,
+      "duration": 1.2916699999999999
+    },
+    {
+      "index": 5,
+      "start": 7.25,
+      "duration": 0.8333300000000001
+    },
+    {
+      "index": 6,
+      "start": 8.08333,
+      "duration": 1.1666699999999999
+    },
+    {
+      "index": 7,
+      "start": 9.25,
+      "duration": 2
+    },
+    {
+      "index": 8,
+      "start": 11.25,
+      "duration": 1.9582999999999995
+    },
+    {
+      "index": 9,
+      "start": 13.2083,
+      "duration": 1.125
+    },
+    {
+      "index": 10,
+      "start": 14.3333,
+      "duration": 1.7083999999999993
+    },
+    {
+      "index": 11,
+      "start": 16.0417,
+      "duration": 1.1666000000000025
+    },
+    {
+      "index": 12,
+      "start": 17.2083,
+      "duration": 0.7083999999999975
+    },
+    {
+      "index": 13,
+      "start": 17.9167,
+      "duration": 0.5416000000000025
+    },
+    {
+      "index": 14,
+      "start": 18.4583,
+      "duration": 0.4583999999999975
+    },
+    {
+      "index": 15,
+      "start": 18.9167,
+      "duration": 0.75
+    },
+    {
+      "index": 16,
+      "start": 19.6667,
+      "duration": 1.0416000000000025
+    },
+    {
+      "index": 17,
+      "start": 20.7083,
+      "duration": 0.9166999999999987
+    },
+    {
+      "index": 18,
+      "start": 21.625,
+      "duration": 1.4166999999999987
+    },
+    {
+      "index": 19,
+      "start": 23.0417,
+      "duration": 1.6666000000000025
+    },
+    {
+      "index": 20,
+      "start": 24.7083,
+      "duration": 0.04169999999999874
+    }
+  ],
+  "duration": 24.75,
+  "sidecar_media": "/api/files/replicate/ref-0fb35526-1049-4943-902a-df174377ab6b.mp4"
+}

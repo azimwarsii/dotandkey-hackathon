@@ -1,0 +1,12 @@
+services:
+  clipforge:
+    build:
+      context: https://github.com/xixihhhh/clipforge.git#bded6ceaa46649068e8da5882d7c29fd8c977a3b
+    ports:
+      - "127.0.0.1:3039:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - clipforge-data:/data
+volumes:
+  clipforge-data:

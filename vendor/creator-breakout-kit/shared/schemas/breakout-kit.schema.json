@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreatorBreakoutKit",
+  "type": "object",
+  "required": [
+    "brand",
+    "research",
+    "breakout_patterns",
+    "creator_archetypes",
+    "concepts",
+    "first_test"
+  ],
+  "properties": {
+    "research": {
+      "type": "object",
+      "required": ["mode", "confidence", "brand_discovery", "virlo"],
+      "properties": {
+        "mode": { "type": "string" },
+        "confidence": { "type": "string" },
+        "evidence_limitations": { "type": "array", "items": { "type": "string" } },
+        "video_intelligence": { "type": "object" },
+        "brand_discovery": {
+          "type": "object",
+          "properties": {
+            "founder_positioning": { "type": "string" },
+            "hero_products": { "type": "array", "items": { "type": "string" } },
+            "price_points": { "type": "array", "items": { "type": "string" } },
+            "suspicious_price_points": { "type": "array", "items": { "type": "string" } },
+            "raw_price_points": { "type": "array", "items": { "type": "string" } },
+            "source_coverage_notes": { "type": "array", "items": { "type": "string" } },
+            "verbatim_language": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "virlo": {
+          "type": "object",
+          "required": ["comet_id", "status_note", "videos", "outliers"],
+          "properties": {
+            "comet_id": { "type": "string" },
+            "status_note": { "type": "string" },
+            "videos": { "type": "array", "items": { "type": "object" } },
+            "outliers": { "type": "array", "items": { "type": "object" } },
+            "promoted_source_posts": { "type": "array", "items": { "type": "object" } },
+            "audience_signals": { "type": "object" },
+            "evidence_cards": { "type": "array", "items": { "type": "object" } }
+          }
+        }
+      }
+    },
+    "strategy_stage": { "type": "string" },
+    "brand": {
+      "type": "object",
+      "required": ["name", "audience", "primary_desire", "primary_objections", "platform_focus"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "product_offer": { "type": "string" },
+        "audience": { "type": "string" },
+        "primary_desire": { "type": "string" },
+        "primary_objections": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "platform_focus": { "type": "string" }
+      }
+    },
+    "breakout_patterns": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["name", "why_it_works", "hook_style", "outlier_evidence", "score"],
+        "properties": {
+          "name": { "type": "string" },
+          "why_it_works": { "type": "string" },
+          "hook_style": { "type": "string" },
+          "outlier_evidence": { "type": "string" },
+          "score": { "type": "number", "minimum": 1, "maximum": 5 },
+          "evidence_posts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "post_url": { "type": "string" },
+                "platform": { "type": "string" },
+                "outlier_ratio": { "type": "number" }
+              }
+            }
+          },
+          "confidence_score": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "creator_archetypes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["name", "fit_reason", "best_content_style", "best_for"],
+        "properties": {
+          "name": { "type": "string" },
+          "fit_reason": { "type": "string" },
+          "best_content_style": { "type": "string" },
+          "best_for": { "type": "string" },
+          "evidence_basis": { "type": "string" },
+          "reference_creators": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["name", "angle", "mapped_objection_or_desire", "recommended_archetype", "hooks", "filming_beats", "why_it_could_break_out"],
+        "properties": {
+          "name": { "type": "string" },
+          "angle": { "type": "string" },
+          "mapped_objection_or_desire": { "type": "string" },
+          "recommended_archetype": { "type": "string" },
+          "product_focus": { "type": "string" },
+          "opening_visual": { "type": "string" },
+          "proof_moment": { "type": "string" },
+          "creator_selection_criteria": { "type": "string" },
+          "cta": { "type": "string" },
+          "hooks": {
+            "type": "array",
+            "minItems": 3,
+            "items": { "type": "string" }
+          },
+          "filming_beats": {
+            "type": "array",
+            "minItems": 3,
+            "items": { "type": "string" }
+          },
+          "why_it_could_break_out": { "type": "string" }
+        }
+      }
+    },
+    "first_test": {
+      "type": "object",
+      "required": ["primary_concept", "primary_archetype", "goal", "why_first", "test_structure"],
+      "properties": {
+        "primary_concept": { "type": "string" },
+        "primary_archetype": { "type": "string" },
+        "goal": { "type": "string" },
+        "why_first": { "type": "string" },
+        "test_structure": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

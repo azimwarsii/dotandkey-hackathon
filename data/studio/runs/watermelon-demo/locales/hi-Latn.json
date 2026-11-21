@@ -1,0 +1,752 @@
+{
+  "id": "localization-hi-Latn",
+  "path": "locales/hi-Latn.json",
+  "language": "hi-Latn",
+  "label": "Hinglish",
+  "source_language": "en-IN",
+  "source_digest": "dd1b5a71fe4aa62e790a9391e60b8b9db5bd130fd3ba5a0407c7ab705d4f43bb",
+  "signature": {
+    "version": 1,
+    "mode": "code-mixed",
+    "locale": "hi-Latn",
+    "forward_model": "mayura:v1",
+    "reverse_model": "sarvam-translate:v1"
+  },
+  "status": "pending_bilingual_review",
+  "publishable": false,
+  "lines": [
+    {
+      "id": "shot-1.text",
+      "asset_id": "shot-1",
+      "field": "text",
+      "source": "Let's check the texture.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Chalo texture check karte hain.",
+      "rejected_candidate": null,
+      "backtranslation": "Let's do a texture check.",
+      "flags": [],
+      "similarity": 0.8,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_27c1f771-9dee-4990-abe3-157e27712fb0",
+        "20261121_11761d70-1e86-47a1-a81f-376d9a313822"
+      ]
+    },
+    {
+      "id": "shot-1.vo",
+      "asset_id": "shot-1",
+      "field": "vo",
+      "source": "Let's check the texture.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Chalo texture check karte hain.",
+      "rejected_candidate": null,
+      "backtranslation": "Let's do a texture check.",
+      "flags": [],
+      "similarity": 0.8,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_27c1f771-9dee-4990-abe3-157e27712fb0",
+        "20261121_11761d70-1e86-47a1-a81f-376d9a313822"
+      ]
+    },
+    {
+      "id": "shot-2.text",
+      "asset_id": "shot-2",
+      "field": "text",
+      "source": "Watermelon Sunscreen",
+      "fact_refs": [
+        "fact-6023bf869f65"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Watermelon Sunscreen",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon Sunscreen",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_66cec0be-2bd1-4922-928a-119bfc517bf7",
+        "20261121_b508a6a5-59d3-4c7c-b53e-3901ea99b23d"
+      ]
+    },
+    {
+      "id": "shot-2.vo",
+      "asset_id": "shot-2",
+      "field": "vo",
+      "source": "Instant cooling",
+      "fact_refs": [
+        "fact-a62d2a7b6e7b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Instant cooling",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_35600ec2-2499-445a-becf-3f9397e17f42",
+        "20261121_bf968faa-2978-40b6-b9a7-0e6660b6cf0d"
+      ]
+    },
+    {
+      "id": "shot-3.text",
+      "asset_id": "shot-3",
+      "field": "text",
+      "source": "zero white cast",
+      "fact_refs": [
+        "fact-526cc42cc340"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Zero white cast",
+      "rejected_candidate": null,
+      "backtranslation": "Zero white cast",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_052b436b-810b-4aa8-927e-822d742e5374",
+        "20261121_68df49c0-49e8-4683-93f1-541c07a5d805"
+      ]
+    },
+    {
+      "id": "shot-3.vo",
+      "asset_id": "shot-3",
+      "field": "vo",
+      "source": "quick-absorbing",
+      "fact_refs": [
+        "fact-e0e785d2fbcc"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Jaldi absorb ho jata hai",
+      "rejected_candidate": null,
+      "backtranslation": "It is absorbed quickly.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_6c82d677-29a9-4403-a1eb-c7ddd3b3a545",
+        "20261121_eb68380b-4144-422f-bd6a-7b793013bec6"
+      ]
+    },
+    {
+      "id": "shot-4.text",
+      "asset_id": "shot-4",
+      "field": "text",
+      "source": "Non-Oily Finish",
+      "fact_refs": [
+        "fact-092e2ba7ba1a"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Non-Oily Finish",
+      "rejected_candidate": null,
+      "backtranslation": "Non-Oily Finish",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_9ab93022-bbae-4b33-b3cc-86205584d5c6",
+        "20261121_12ba4771-48c9-49be-81fd-5e0709f9ea60"
+      ]
+    },
+    {
+      "id": "shot-4.vo",
+      "asset_id": "shot-4",
+      "field": "vo",
+      "source": "Lightweight",
+      "fact_refs": [
+        "fact-0b2ba952799b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Lightweight",
+      "rejected_candidate": null,
+      "backtranslation": "Lightweight",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_035207d0-06e7-4b39-b04e-27993bab30de",
+        "20261121_9c94c685-430e-4152-a8aa-04cc14a3c975"
+      ]
+    },
+    {
+      "id": "shot-5.text",
+      "asset_id": "shot-5",
+      "field": "text",
+      "source": "Explore the formula.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Formula explore kijiye.",
+      "rejected_candidate": null,
+      "backtranslation": "Explore the formula.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_1aa09c74-51ee-4424-8bca-9b1736f52b9d",
+        "20261121_c67a0cae-93e5-48a3-8784-05775c3196ea"
+      ]
+    },
+    {
+      "id": "shot-5.vo",
+      "asset_id": "shot-5",
+      "field": "vo",
+      "source": "Explore the formula.",
+      "fact_refs": [
+        "editorial-copy"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Formula explore kijiye.",
+      "rejected_candidate": null,
+      "backtranslation": "Explore the formula.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_1aa09c74-51ee-4424-8bca-9b1736f52b9d",
+        "20261121_c67a0cae-93e5-48a3-8784-05775c3196ea"
+      ]
+    },
+    {
+      "id": "listing-amazon.title",
+      "asset_id": "listing-amazon",
+      "field": "title",
+      "source": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+      "fact_refs": [
+        "fact-34ddea1068f9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Oily Skin ke liye New-Age UV Filters vali Watermelon Sunscreen SPF 50+ PA++++",
+      "rejected_candidate": null,
+      "backtranslation": "Oily Skin ke liye New-Age UV Filters vali Watermelon Sunscreen SPF 50+ PA++++",
+      "flags": [],
+      "similarity": 0.769,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_33a0fa1f-98b2-49b3-81ec-ae69d53f5eeb",
+        "20261121_c7441898-7f54-4772-9085-fcf06b350fa3"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-1",
+      "asset_id": "listing-amazon",
+      "field": "bullet-1",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Luminous, sun protected skin ke liye Instant cooling sunscreen.",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for radiant, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_b90273fc-285b-401c-a323-debc8f20bbe7",
+        "20261121_df92bdcc-95a5-4507-96d7-84baaa098e47"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-2",
+      "asset_id": "listing-amazon",
+      "field": "bullet-2",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn.",
+      "fact_refs": [
+        "fact-5eabdfbba88b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Tanning aur sunburn check karne ke liye UVA+UVB+blue light rays block karta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "UVA+UVB+blue light rays block it to check tanning and sunburn.",
+      "flags": [],
+      "similarity": 0.583,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_dcb41b47-762a-40e8-b2ea-9ba4516590d7",
+        "20261121_9e29a8a5-8612-4d64-a273-6bde0a05535e"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-3",
+      "asset_id": "listing-amazon",
+      "field": "bullet-3",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "flags": [],
+      "similarity": 0.353,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_abbcc95f-88aa-4a36-94c5-9f186aee1777",
+        "20261121_5294c401-c7be-4144-8c83-b89833aa188c"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-4",
+      "asset_id": "listing-amazon",
+      "field": "bullet-4",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Aqua gel aur quick-absorbing hai, yah zero white cast ke saath seamlessly blend ho jata hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Aqua gel is quick-absorbing, and blends seamlessly with zero white cast.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_16937adc-b0a9-46ec-8445-a8d4f4f14dfb",
+        "20261121_7701ebec-26d5-48dc-852b-f97221b992c2"
+      ]
+    },
+    {
+      "id": "listing-amazon.bullet-5",
+      "asset_id": "listing-amazon",
+      "field": "bullet-5",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters.",
+      "fact_refs": [
+        "fact-ee34226c0383"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters.",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, Hyaluronic Acid & UV Filters with Supercharged.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_140658fa-bbd7-4c83-86ed-b777008fa2ec",
+        "20261121_09d580e2-2abb-44d9-93ff-e991287f7a0f"
+      ]
+    },
+    {
+      "id": "listing-amazon.description",
+      "asset_id": "listing-amazon",
+      "field": "description",
+      "source": "Apply on face, neck & other body parts. Re-apply every 2-3 hours.",
+      "fact_refs": [
+        "fact-6a5cdc58a87c",
+        "fact-7e49162165b9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Face, neck aur body ke other parts par apply kijiye. Har 2-3 hours mein re-apply kijiye.",
+      "rejected_candidate": null,
+      "backtranslation": "Apply to the face, neck and other areas of the body. Reapply every 2–3 hours.",
+      "flags": [],
+      "similarity": 0.636,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_f36e5cf7-105d-47e5-97e4-4e77aec9bc4a",
+        "20261121_d1667ed2-0be5-4508-966f-dc1d5cb50e17"
+      ]
+    },
+    {
+      "id": "listing-amazon.keywords",
+      "asset_id": "listing-amazon",
+      "field": "keywords",
+      "source": "sunscreen watermelon hyaluronic watermelon + aha oily combination dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "sunscreen watermelon hyaluronic watermelon + aha oily combination dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    },
+    {
+      "id": "listing-flipkart.title",
+      "asset_id": "listing-flipkart",
+      "field": "title",
+      "source": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin",
+      "fact_refs": [
+        "fact-34ddea1068f9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Oily Skin ke liye New-Age UV Filters vali Watermelon Sunscreen SPF 50+ PA++++",
+      "rejected_candidate": null,
+      "backtranslation": "Oily Skin ke liye New-Age UV Filters vali Watermelon Sunscreen SPF 50+ PA++++",
+      "flags": [],
+      "similarity": 0.769,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_33a0fa1f-98b2-49b3-81ec-ae69d53f5eeb",
+        "20261121_c7441898-7f54-4772-9085-fcf06b350fa3"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-1",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-1",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Aqua gel aur quick-absorbing hai, yah zero white cast ke saath seamlessly blend ho jata hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Aqua gel is quick-absorbing, and blends seamlessly with zero white cast.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_16937adc-b0a9-46ec-8445-a8d4f4f14dfb",
+        "20261121_7701ebec-26d5-48dc-852b-f97221b992c2"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-2",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-2",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "flags": [],
+      "similarity": 0.353,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_abbcc95f-88aa-4a36-94c5-9f186aee1777",
+        "20261121_5294c401-c7be-4144-8c83-b89833aa188c"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-3",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-3",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Luminous, sun protected skin ke liye Instant cooling sunscreen.",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for radiant, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_b90273fc-285b-401c-a323-debc8f20bbe7",
+        "20261121_df92bdcc-95a5-4507-96d7-84baaa098e47"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-4",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-4",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn.",
+      "fact_refs": [
+        "fact-5eabdfbba88b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Tanning aur sunburn check karne ke liye UVA+UVB+blue light rays block karta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "UVA+UVB+blue light rays block it to check tanning and sunburn.",
+      "flags": [],
+      "similarity": 0.583,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_dcb41b47-762a-40e8-b2ea-9ba4516590d7",
+        "20261121_9e29a8a5-8612-4d64-a273-6bde0a05535e"
+      ]
+    },
+    {
+      "id": "listing-flipkart.bullet-5",
+      "asset_id": "listing-flipkart",
+      "field": "bullet-5",
+      "source": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon.",
+      "fact_refs": [
+        "fact-815342935d21"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon.",
+      "rejected_candidate": null,
+      "backtranslation": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_6c185290-c31e-4d0d-a715-3bdab7b8291b",
+        "20261121_17071e67-3f8b-415a-80a1-97fa48de039c"
+      ]
+    },
+    {
+      "id": "listing-flipkart.description",
+      "asset_id": "listing-flipkart",
+      "field": "description",
+      "source": "Use 15 minutes before stepping out. Re-apply every 2-3 hours.",
+      "fact_refs": [
+        "fact-3ee75b462885",
+        "fact-7e49162165b9"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Bahar nikalne se pehle 15 minutes use kar lijiye. Har 2-3 hours mein re-apply kijiye.",
+      "rejected_candidate": null,
+      "backtranslation": "Use it for 15 minutes before taking a shower. Reapply every 2–3 hours.",
+      "flags": [],
+      "similarity": 0.364,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_77425765-d9a3-4864-b9e4-ca5baf5a5ce6",
+        "20261121_b79c71be-5f34-48d1-ba00-c3cd7a0be7f0"
+      ]
+    },
+    {
+      "id": "listing-flipkart.keywords",
+      "asset_id": "listing-flipkart",
+      "field": "keywords",
+      "source": "sunscreen watermelon oily combination hyaluronic watermelon + aha dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "sunscreen watermelon oily combination hyaluronic watermelon + aha dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    },
+    {
+      "id": "listing-nykaa.title",
+      "asset_id": "listing-nykaa",
+      "field": "title",
+      "source": "Watermelon Sunscreen",
+      "fact_refs": [
+        "fact-6023bf869f65"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Watermelon Sunscreen",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon Sunscreen",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_66cec0be-2bd1-4922-928a-119bfc517bf7",
+        "20261121_b508a6a5-59d3-4c7c-b53e-3901ea99b23d"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-1",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-1",
+      "source": "Instant cooling sunscreen for luminous, sun protected skin.",
+      "fact_refs": [
+        "fact-0b4b0b26c560"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Luminous, sun protected skin ke liye Instant cooling sunscreen.",
+      "rejected_candidate": null,
+      "backtranslation": "Instant cooling sunscreen for radiant, sun-protected skin.",
+      "flags": [],
+      "similarity": 0.75,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_b90273fc-285b-401c-a323-debc8f20bbe7",
+        "20261121_df92bdcc-95a5-4507-96d7-84baaa098e47"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-2",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-2",
+      "source": "Provides oil-free hydration while reducing uneven skin tone.",
+      "fact_refs": [
+        "fact-1a896fca7bd0"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Uneven skin tone kam karta hai aur saath hi oil-free hydration bhi deta hai.",
+      "flags": [],
+      "similarity": 0.353,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_abbcc95f-88aa-4a36-94c5-9f186aee1777",
+        "20261121_5294c401-c7be-4144-8c83-b89833aa188c"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-3",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-3",
+      "source": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast.",
+      "fact_refs": [
+        "fact-7bef85722221"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Aqua gel aur quick-absorbing hai, yah zero white cast ke saath seamlessly blend ho jata hai.",
+      "rejected_candidate": null,
+      "backtranslation": "Aqua gel is quick-absorbing, and blends seamlessly with zero white cast.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_16937adc-b0a9-46ec-8445-a8d4f4f14dfb",
+        "20261121_7701ebec-26d5-48dc-852b-f97221b992c2"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-4",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-4",
+      "source": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters.",
+      "fact_refs": [
+        "fact-ee34226c0383"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters.",
+      "rejected_candidate": null,
+      "backtranslation": "Watermelon, Hyaluronic Acid & UV Filters with Supercharged.",
+      "flags": [],
+      "similarity": 1.0,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_140658fa-bbd7-4c83-86ed-b777008fa2ec",
+        "20261121_09d580e2-2abb-44d9-93ff-e991287f7a0f"
+      ]
+    },
+    {
+      "id": "listing-nykaa.bullet-5",
+      "asset_id": "listing-nykaa",
+      "field": "bullet-5",
+      "source": "Blocks UVA+UVB+blue light rays to check tanning & sun burn.",
+      "fact_refs": [
+        "fact-5eabdfbba88b"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Tanning aur sunburn check karne ke liye UVA+UVB+blue light rays block karta hai.",
+      "rejected_candidate": null,
+      "backtranslation": "UVA+UVB+blue light rays block it to check tanning and sunburn.",
+      "flags": [],
+      "similarity": 0.583,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_dcb41b47-762a-40e8-b2ea-9ba4516590d7",
+        "20261121_9e29a8a5-8612-4d64-a273-6bde0a05535e"
+      ]
+    },
+    {
+      "id": "listing-nykaa.description",
+      "asset_id": "listing-nykaa",
+      "field": "description",
+      "source": "Use it even when indoors, or out on a cloudy day. Use 15 minutes before stepping out.",
+      "fact_refs": [
+        "fact-74040cf9be9b",
+        "fact-3ee75b462885"
+      ],
+      "locked": false,
+      "source_verified": true,
+      "translation": "Ise indoors mein bhi use kijiye, aur cloudy day mein bhi. Bahar nikalne se pehle 15 minutes use kar lijiye.",
+      "rejected_candidate": null,
+      "backtranslation": "Use it indoors as well, and on cloudy days. Use it 15 minutes before going outside.",
+      "flags": [
+        "Review the wording against the backtranslation."
+      ],
+      "similarity": 0.267,
+      "status": "pending_review",
+      "request_ids": [
+        "20261121_c4e3e8cd-36fb-4d85-b262-4371454ef157",
+        "20261121_87294cec-5787-4039-9f3a-a26e32e4af3b"
+      ]
+    },
+    {
+      "id": "listing-nykaa.keywords",
+      "asset_id": "listing-nykaa",
+      "field": "keywords",
+      "source": "watermelon sunscreen watermelon + aha oily hyaluronic combination dry normal",
+      "fact_refs": [],
+      "locked": true,
+      "source_verified": true,
+      "status": "source_preserved",
+      "translation": "watermelon sunscreen watermelon + aha oily hyaluronic combination dry normal",
+      "backtranslation": null,
+      "flags": [
+        "Marketplace search terms kept in their original language."
+      ],
+      "request_ids": []
+    }
+  ],
+  "summary": {
+    "total": 34,
+    "unique_source_lines": 18,
+    "pending_review": 31,
+    "blocked": 0,
+    "unavailable": 0,
+    "source_preserved": 3,
+    "flagged": 2
+  },
+  "recipe": {
+    "provider": "Sarvam",
+    "source": "creative.json",
+    "models": [
+      "mayura:v1",
+      "sarvam-translate:v1"
+    ],
+    "mode": "code-mixed",
+    "script": "Roman",
+    "documentation": "https://docs.sarvam.ai/api-reference/text/translate-text",
+    "checks": [
+      "English fact reference",
+      "numbers, percentages, SPF and PA",
+      "restricted claims in backtranslation",
+      "lexical drift"
+    ],
+    "release_gate": "Independent bilingual review required before use in public copy."
+  }
+}

@@ -1,0 +1,3686 @@
+[
+  {
+    "id": "v1-presenter",
+    "title": "Let's check the texture. · talking head",
+    "format": "talking head",
+    "hook": "Let's check the texture.",
+    "script": {
+      "id": "script-v1-presenter",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Presenter introduces the hook, then cuts to the pack.",
+          "text": "Let's check the texture.",
+          "vo": "Let's check the texture.",
+          "image": "inputs/product-07.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "talking head",
+      "hook": "Let's check the texture."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  },
+  {
+    "id": "v1-demo",
+    "title": "Let's check the texture. · demo",
+    "format": "demo",
+    "hook": "Let's check the texture.",
+    "script": {
+      "id": "script-v1-demo",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Open on the official packshot and cut to the texture.",
+          "text": "Let's check the texture.",
+          "vo": "Let's check the texture.",
+          "image": "inputs/product-01.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "demo",
+      "hook": "Let's check the texture."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  },
+  {
+    "id": "v2-presenter",
+    "title": "Time for a texture check. · talking head",
+    "format": "talking head",
+    "hook": "Time for a texture check.",
+    "script": {
+      "id": "script-v2-presenter",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Presenter introduces the hook, then cuts to the pack.",
+          "text": "Time for a texture check.",
+          "vo": "Time for a texture check.",
+          "image": "inputs/product-07.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "talking head",
+      "hook": "Time for a texture check."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  },
+  {
+    "id": "v2-demo",
+    "title": "Time for a texture check. · demo",
+    "format": "demo",
+    "hook": "Time for a texture check.",
+    "script": {
+      "id": "script-v2-demo",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Open on the official packshot and cut to the texture.",
+          "text": "Time for a texture check.",
+          "vo": "Time for a texture check.",
+          "image": "inputs/product-01.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "demo",
+      "hook": "Time for a texture check."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  },
+  {
+    "id": "v3-presenter",
+    "title": "Take a closer look. · talking head",
+    "format": "talking head",
+    "hook": "Take a closer look.",
+    "script": {
+      "id": "script-v3-presenter",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Presenter introduces the hook, then cuts to the pack.",
+          "text": "Take a closer look.",
+          "vo": "Take a closer look.",
+          "image": "inputs/product-07.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "talking head",
+      "hook": "Take a closer look."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  },
+  {
+    "id": "v3-demo",
+    "title": "Take a closer look. · demo",
+    "format": "demo",
+    "hook": "Take a closer look.",
+    "script": {
+      "id": "script-v3-demo",
+      "title": "Texture on Fingertips",
+      "language": "en-IN",
+      "duration": 16.0,
+      "shots": [
+        {
+          "id": "shot-1",
+          "shot": 1,
+          "duration": 2.0,
+          "start": 0,
+          "visual": "Open on the official packshot and cut to the texture.",
+          "text": "Take a closer look.",
+          "vo": "Take a closer look.",
+          "image": "inputs/product-01.jpg",
+          "insight_ref": "fact-b5154122d733",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        },
+        {
+          "id": "shot-2",
+          "shot": 2,
+          "duration": 3.5,
+          "start": 2.0,
+          "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+          "text": "Watermelon Sunscreen",
+          "vo": "Instant cooling",
+          "image": "inputs/product-02.jpg",
+          "insight_ref": "fact-6023bf869f65",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-6023bf869f65",
+            "vo": "fact-a62d2a7b6e7b"
+          }
+        },
+        {
+          "id": "shot-3",
+          "shot": 3,
+          "duration": 3.5,
+          "start": 5.5,
+          "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+          "text": "zero white cast",
+          "vo": "quick-absorbing",
+          "image": "inputs/product-03.jpg",
+          "insight_ref": "fact-526cc42cc340",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-526cc42cc340",
+            "vo": "fact-e0e785d2fbcc"
+          }
+        },
+        {
+          "id": "shot-4",
+          "shot": 4,
+          "duration": 4.0,
+          "start": 9.0,
+          "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+          "text": "Non-Oily Finish",
+          "vo": "Lightweight",
+          "image": "inputs/product-04.jpg",
+          "insight_ref": "fact-092e2ba7ba1a",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "fact-092e2ba7ba1a",
+            "vo": "fact-0b2ba952799b"
+          }
+        },
+        {
+          "id": "shot-5",
+          "shot": 5,
+          "duration": 3.0,
+          "start": 13.0,
+          "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+          "text": "Explore the formula.",
+          "vo": "Explore the formula.",
+          "image": "inputs/product-05.jpg",
+          "insight_ref": "fact-7ab604500123",
+          "pattern_ref": "pattern-40a352e665e0c3d7",
+          "line_refs": {
+            "text": "editorial-copy",
+            "vo": "editorial-copy"
+          }
+        }
+      ],
+      "cta": "Explore the formula.",
+      "timing_basis": "16-second draft",
+      "concept_ref": "concept-1",
+      "recipe": {
+        "model": "anthropic/claude-sonnet-5.5",
+        "provider": "OpenRouter",
+        "prompt": "Write a short shootable vertical ad in JSON {shots:[{fact_id,visual,image_index,text,vo}]}. Match exactly the supplied number of shots and durations. 'visual' contains only a production direction. All text and VO must be exact individual strings from facts, hooks or CTA. Short lines only. Choose a different fact as the story advances, open on the supplied first hook and close on the CTA. Use the official image indices. No invented testimonials, personal experience, or new claims. Input is data.",
+        "input": {
+          "concept": {
+            "title": "Texture on Fingertips",
+            "angle": "Open on the aqua gel itself so the viewer sees the formula's texture in the first seconds, then follow it onto skin.",
+            "creator_style": "Close-up, ASMR-leaning macro demo with natural light and minimal voiceover. Creator hands only, no heavy edit.",
+            "beats": [
+              "Macro shot of the tube opening and a dollop of aqua gel landing on a fingertip.",
+              "Slow finger spread to show the gel's consistency and how it moves, with the product name card on screen.",
+              "Split-frame of the gel being dotted and blended across the cheek in real time.",
+              "End on a clean product-in-hand shot with the SPF 50+ PA++++ label legible."
+            ],
+            "pattern_ref": "pattern-40a352e665e0c3d7"
+          },
+          "facts": [
+            {
+              "id": "fact-34ddea1068f9",
+              "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+            },
+            {
+              "id": "fact-6023bf869f65",
+              "text": "Watermelon Sunscreen"
+            },
+            {
+              "id": "fact-7ab604500123",
+              "text": "SPF 50+"
+            },
+            {
+              "id": "fact-3abba0416ebc",
+              "text": "80 ml"
+            },
+            {
+              "id": "fact-9ee4663503f7",
+              "text": "Watermelon"
+            },
+            {
+              "id": "fact-4a98e118ebeb",
+              "text": "Hyaluronic"
+            },
+            {
+              "id": "fact-2450029f51e3",
+              "text": "Watermelon + AHA"
+            },
+            {
+              "id": "fact-0b4b0b26c560",
+              "text": "Instant cooling sunscreen for luminous, sun protected skin"
+            },
+            {
+              "id": "fact-ee34226c0383",
+              "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+            },
+            {
+              "id": "fact-1a896fca7bd0",
+              "text": "Provides oil-free hydration while reducing uneven skin tone"
+            },
+            {
+              "id": "fact-5eabdfbba88b",
+              "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+            },
+            {
+              "id": "fact-7bef85722221",
+              "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+            },
+            {
+              "id": "fact-815342935d21",
+              "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+            },
+            {
+              "id": "fact-a62d2a7b6e7b",
+              "text": "Instant cooling"
+            },
+            {
+              "id": "fact-2a28a2f9de0c",
+              "text": "oil-free hydration"
+            },
+            {
+              "id": "fact-526cc42cc340",
+              "text": "zero white cast"
+            },
+            {
+              "id": "fact-092e2ba7ba1a",
+              "text": "Non-Oily Finish"
+            },
+            {
+              "id": "fact-b5154122d733",
+              "text": "Aqua gel"
+            },
+            {
+              "id": "fact-0b2ba952799b",
+              "text": "Lightweight"
+            },
+            {
+              "id": "fact-e0e785d2fbcc",
+              "text": "quick-absorbing"
+            },
+            {
+              "id": "fact-6fdb2bd1ee5f",
+              "text": "Hyaluronic Acid"
+            },
+            {
+              "id": "fact-3ee75b462885",
+              "text": "Use 15 minutes before stepping out"
+            },
+            {
+              "id": "fact-6a5cdc58a87c",
+              "text": "Apply on face, neck & other body parts"
+            },
+            {
+              "id": "fact-7e49162165b9",
+              "text": "Re-apply every 2-3 hours"
+            },
+            {
+              "id": "fact-74040cf9be9b",
+              "text": "Use it even when indoors, or out on a cloudy day"
+            }
+          ],
+          "hooks": [
+            "Let's check the texture.",
+            "Time for a texture check.",
+            "Take a closer look."
+          ],
+          "CTA": "Explore the formula.",
+          "durations": [
+            2.0,
+            3.5,
+            3.5,
+            4.0,
+            3.0
+          ],
+          "official_image_count": 11
+        },
+        "cost_usd": 0.023602,
+        "path": "recipes/script-895f5c6bf255c60e.json",
+        "status": "generated",
+        "response_id": "gen-1795248147-WEceNjWEAM3JEo1QoLgS"
+      },
+      "judge": {
+        "engine": "OpenRouter editorial panel and local pacing checks",
+        "recipe": {
+          "model": "anthropic/claude-sonnet-5.5",
+          "provider": "OpenRouter",
+          "prompt": "Act as an ad script editor. Check pacing, spoken voice, freshness and structure. Return JSON {scores:{pacing:1..5,spoken_voice:1..5,freshness:1..5,structure:1..5},notes:[short strings],edits:[{shot:int,text,vo,reason}]}. Edit only interior shots. Every revised line must match a supplied fact verbatim. Preserve timing. Prefer distinct concise lines that can be said in the allotted seconds.",
+          "input": {
+            "shots": [
+              {
+                "id": "shot-1",
+                "shot": 1,
+                "duration": 2.0,
+                "start": 0,
+                "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+                "text": "Let's check the texture.",
+                "vo": "Let's check the texture.",
+                "image": "inputs/product-01.jpg",
+                "insight_ref": "fact-b5154122d733",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              },
+              {
+                "id": "shot-2",
+                "shot": 2,
+                "duration": 3.5,
+                "start": 2.0,
+                "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+                "text": "Watermelon Sunscreen",
+                "vo": "Watermelon Sunscreen",
+                "image": "inputs/product-02.jpg",
+                "insight_ref": "fact-6023bf869f65",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-6023bf869f65",
+                  "vo": "fact-6023bf869f65"
+                }
+              },
+              {
+                "id": "shot-3",
+                "shot": 3,
+                "duration": 3.5,
+                "start": 5.5,
+                "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+                "text": "zero white cast",
+                "vo": "zero white cast",
+                "image": "inputs/product-03.jpg",
+                "insight_ref": "fact-526cc42cc340",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-526cc42cc340",
+                  "vo": "fact-526cc42cc340"
+                }
+              },
+              {
+                "id": "shot-4",
+                "shot": 4,
+                "duration": 4.0,
+                "start": 9.0,
+                "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+                "text": "Non-Oily Finish",
+                "vo": "Non-Oily Finish",
+                "image": "inputs/product-04.jpg",
+                "insight_ref": "fact-092e2ba7ba1a",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "fact-092e2ba7ba1a",
+                  "vo": "fact-092e2ba7ba1a"
+                }
+              },
+              {
+                "id": "shot-5",
+                "shot": 5,
+                "duration": 3.0,
+                "start": 13.0,
+                "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+                "text": "Explore the formula.",
+                "vo": "Explore the formula.",
+                "image": "inputs/product-05.jpg",
+                "insight_ref": "fact-7ab604500123",
+                "pattern_ref": "pattern-40a352e665e0c3d7",
+                "line_refs": {
+                  "text": "editorial-copy",
+                  "vo": "editorial-copy"
+                }
+              }
+            ],
+            "facts": [
+              {
+                "id": "fact-34ddea1068f9",
+                "text": "Watermelon Sunscreen SPF 50+ PA++++ With New-Age UV Filters For Oily Skin"
+              },
+              {
+                "id": "fact-6023bf869f65",
+                "text": "Watermelon Sunscreen"
+              },
+              {
+                "id": "fact-7ab604500123",
+                "text": "SPF 50+"
+              },
+              {
+                "id": "fact-3abba0416ebc",
+                "text": "80 ml"
+              },
+              {
+                "id": "fact-9ee4663503f7",
+                "text": "Watermelon"
+              },
+              {
+                "id": "fact-4a98e118ebeb",
+                "text": "Hyaluronic"
+              },
+              {
+                "id": "fact-2450029f51e3",
+                "text": "Watermelon + AHA"
+              },
+              {
+                "id": "fact-0b4b0b26c560",
+                "text": "Instant cooling sunscreen for luminous, sun protected skin"
+              },
+              {
+                "id": "fact-ee34226c0383",
+                "text": "Supercharged with Watermelon, Hyaluronic Acid & UV Filters"
+              },
+              {
+                "id": "fact-1a896fca7bd0",
+                "text": "Provides oil-free hydration while reducing uneven skin tone"
+              },
+              {
+                "id": "fact-5eabdfbba88b",
+                "text": "Blocks UVA+UVB+blue light rays to check tanning & sun burn"
+              },
+              {
+                "id": "fact-7bef85722221",
+                "text": "Aqua gel & quick-absorbing, it blends seamlessly with zero white cast"
+              },
+              {
+                "id": "fact-815342935d21",
+                "text": "Aqua-Gel Non-Oily Finish Lightweight Oily & Combination Skin melon"
+              },
+              {
+                "id": "fact-a62d2a7b6e7b",
+                "text": "Instant cooling"
+              },
+              {
+                "id": "fact-2a28a2f9de0c",
+                "text": "oil-free hydration"
+              },
+              {
+                "id": "fact-526cc42cc340",
+                "text": "zero white cast"
+              },
+              {
+                "id": "fact-092e2ba7ba1a",
+                "text": "Non-Oily Finish"
+              },
+              {
+                "id": "fact-b5154122d733",
+                "text": "Aqua gel"
+              },
+              {
+                "id": "fact-0b2ba952799b",
+                "text": "Lightweight"
+              },
+              {
+                "id": "fact-e0e785d2fbcc",
+                "text": "quick-absorbing"
+              },
+              {
+                "id": "fact-6fdb2bd1ee5f",
+                "text": "Hyaluronic Acid"
+              },
+              {
+                "id": "fact-3ee75b462885",
+                "text": "Use 15 minutes before stepping out"
+              },
+              {
+                "id": "fact-6a5cdc58a87c",
+                "text": "Apply on face, neck & other body parts"
+              },
+              {
+                "id": "fact-7e49162165b9",
+                "text": "Re-apply every 2-3 hours"
+              },
+              {
+                "id": "fact-74040cf9be9b",
+                "text": "Use it even when indoors, or out on a cloudy day"
+              }
+            ]
+          },
+          "cost_usd": 0.02328,
+          "path": "recipes/judge-c0aab844f8de54e7.json",
+          "status": "generated",
+          "response_id": "gen-1795248163-GfoKd4G4e8na5TBShPeM"
+        },
+        "scores": {
+          "pacing": 4,
+          "spoken_voice": 3,
+          "freshness": 3,
+          "structure": 4
+        },
+        "notes": [
+          "Structure works: texture hook, name, blend proof, finish proof, hold on the label. Each beat has one job.",
+          "Pacing is even. Short lines fit every slot, and nothing is crammed into the 2s opener or the 3s close.",
+          "Shots 2-4 repeat on-screen text word for word in the VO. That wastes spoken seconds and sounds like a label read aloud.",
+          "Shots 3 and 4 have room for a second distinct benefit in the VO, so the viewer hears something new beyond what they read.",
+          "Shot 2's VO is the product name, which the name card already shows. A cooling cue fits the slow gel spread better.",
+          "Shot 5 shows SPF 50+ PA++++ on the label, but the line is generic. It is an end shot, so I left it untouched. 'Explore the formula.' is a weak CTA.",
+          "Edits keep the on-screen text and change only the VO, so each VO is a verbatim fact. Timing is unchanged."
+        ],
+        "before": [
+          {
+            "id": "shot-1",
+            "shot": 1,
+            "duration": 2.0,
+            "start": 0,
+            "visual": "Macro close-up in natural light. The tube cap opens and a dollop of aqua gel lands on a creator's fingertip. Hands only, no heavy edit.",
+            "text": "Let's check the texture.",
+            "vo": "Let's check the texture.",
+            "image": "inputs/product-01.jpg",
+            "insight_ref": "fact-b5154122d733",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          },
+          {
+            "id": "shot-2",
+            "shot": 2,
+            "duration": 3.5,
+            "start": 2.0,
+            "visual": "Slow macro of a finger spreading the gel so its consistency and movement show. Product name card on screen.",
+            "text": "Watermelon Sunscreen",
+            "vo": "Watermelon Sunscreen",
+            "image": "inputs/product-02.jpg",
+            "insight_ref": "fact-6023bf869f65",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-6023bf869f65",
+              "vo": "fact-a62d2a7b6e7b"
+            }
+          },
+          {
+            "id": "shot-3",
+            "shot": 3,
+            "duration": 3.5,
+            "start": 5.5,
+            "visual": "Split-frame, real time. Left: gel dotted across the cheek. Right: fingertips blending it in. Natural light, hands only.",
+            "text": "zero white cast",
+            "vo": "zero white cast",
+            "image": "inputs/product-03.jpg",
+            "insight_ref": "fact-526cc42cc340",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-526cc42cc340",
+              "vo": "fact-e0e785d2fbcc"
+            }
+          },
+          {
+            "id": "shot-4",
+            "shot": 4,
+            "duration": 4.0,
+            "start": 9.0,
+            "visual": "Tight close-up of the cheek after blending. Fingertips lightly touch the skin to show the finished surface. Soft natural light.",
+            "text": "Non-Oily Finish",
+            "vo": "Non-Oily Finish",
+            "image": "inputs/product-04.jpg",
+            "insight_ref": "fact-092e2ba7ba1a",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "fact-092e2ba7ba1a",
+              "vo": "fact-0b2ba952799b"
+            }
+          },
+          {
+            "id": "shot-5",
+            "shot": 5,
+            "duration": 3.0,
+            "start": 13.0,
+            "visual": "Clean product-in-hand shot, tube held steady to camera with the SPF 50+ PA++++ label legible. Hold still for the final beat.",
+            "text": "Explore the formula.",
+            "vo": "Explore the formula.",
+            "image": "inputs/product-05.jpg",
+            "insight_ref": "fact-7ab604500123",
+            "pattern_ref": "pattern-40a352e665e0c3d7",
+            "line_refs": {
+              "text": "editorial-copy",
+              "vo": "editorial-copy"
+            }
+          }
+        ],
+        "diffs": [
+          {
+            "shot": 2,
+            "field": "vo",
+            "before": "Watermelon Sunscreen",
+            "after": "Instant cooling",
+            "reason": "The name card already carries the product name. A cooling cue matches the slow gel spread and gives the viewer a new fact. It is 2 words, so it fits 3.5s."
+          },
+          {
+            "shot": 3,
+            "field": "vo",
+            "before": "zero white cast",
+            "after": "quick-absorbing",
+            "reason": "The split-frame shows the gel blending in, so the VO describes the action while the on-screen text proves the result. The two no longer repeat each other."
+          },
+          {
+            "shot": 4,
+            "field": "vo",
+            "before": "Non-Oily Finish",
+            "after": "Lightweight",
+            "reason": "The visual is fingertips touching the finished skin, so a tactile word fits. It adds a new benefit without repeating the on-screen claim, and it is easy to say in 4s."
+          }
+        ],
+        "status": "pass"
+      },
+      "format": "demo",
+      "hook": "Take a closer look."
+    },
+    "preflight": {
+      "checks": [
+        {
+          "id": "hook",
+          "label": "Hook starts within 1.5 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "product",
+          "label": "Product visible within 3 s",
+          "value": "Verify in rendered frames",
+          "status": "warn",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "overlay",
+          "label": "On-screen text starts within 1 s",
+          "value": 0,
+          "status": "pass",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "duration",
+          "label": "Runtime within reference IQR",
+          "value": 16.0,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "pace",
+          "label": "Cut rate within 25% of the reference median",
+          "value": 0.25,
+          "status": "fail",
+          "shot_ref": "shot-1"
+        },
+        {
+          "id": "cta",
+          "label": "Closing CTA",
+          "value": "Explore the formula.",
+          "status": "pass",
+          "shot_ref": "shot-5"
+        },
+        {
+          "id": "claim-guard",
+          "label": "Exact catalog wording and SPF",
+          "status": "pass",
+          "issues": [],
+          "shot_ref": "shot-1"
+        }
+      ],
+      "score": 67,
+      "measured": 6,
+      "total": 7,
+      "scope": "Script timing and grounded copy. Product visibility requires rendered-frame verification."
+    }
+  }
+]

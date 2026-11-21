@@ -1,0 +1,8 @@
+{
+  "project_id": "3a7a8f33-4bb4-4718-97d2-80782d5280d8",
+  "script_id": "5147b46d-46ed-4cb2-accc-552d70057404",
+  "model": "bytedance-seed/seedream-4.5",
+  "source": "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen",
+  "status": "provider_timeout_unconfirmed",
+  "note": "The upstream storyboard request exceeded ClipForge’s timeout. No remote image was returned and billing is unconfirmed."
+}
