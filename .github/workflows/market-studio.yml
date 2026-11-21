@@ -39,10 +39,16 @@ jobs:
           python -m playwright install --with-deps chromium
           python deploy/smoke.py
       - name: Audit mobile performance and accessibility
+        env:
+          STUDIO_TEST_RESULTS: ${{ runner.temp }}/market-studio-results
         run: |
-          npx --yes lighthouse@13.6.0 http://localhost:3000 --quiet --chrome-flags="--headless --no-sandbox" \
-              --only-categories=performance,accessibility --output=json --output-path="$RUNNER_TEMP/market-studio-results/lighthouse.json"
-          jq -e '.categories.performance.score >= 0.90 and .categories.accessibility.score >= 0.90' "$RUNNER_TEMP/market-studio-results/lighthouse.json"
+          {
+            nproc
+            uptime
+            free -h
+            docker stats --no-stream --format '{{.Name}} {{.CPUPerc}} {{.MemUsage}}'
+          } > "$STUDIO_TEST_RESULTS/runner-before-audit.txt"
+          python deploy/audit_web.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

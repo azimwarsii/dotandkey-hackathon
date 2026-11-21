@@ -1,6 +1,5 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LayoutGroup, motion, MotionConfig } from "motion/react";
 import dynamic from "next/dynamic";
 import {
   Mark,
@@ -17,18 +16,31 @@ import {
   dateLabel,
 } from "./market-shared";
 import { Overview } from "./market-charts";
-import {
-  Competitors,
-  Products,
-  ProductDetail,
-  Strategy,
-  Customers,
-} from "./market-details";
-import MarketCommand from "./market-command";
 import AppExperience from "./experience";
 import "./market.css";
 
 const Studio = dynamic(() => import("./studio"), { loading: () => <Status /> });
+const MarketCommand = dynamic(() => import("./market-command"));
+const Competitors = dynamic(
+  () => import("./market-details").then((m) => m.Competitors),
+  { loading: Status },
+);
+const Products = dynamic(
+  () => import("./market-details").then((m) => m.Products),
+  { loading: Status },
+);
+const ProductDetail = dynamic(
+  () => import("./market-details").then((m) => m.ProductDetail),
+  { loading: Status },
+);
+const Strategy = dynamic(
+  () => import("./market-details").then((m) => m.Strategy),
+  { loading: Status },
+);
+const Customers = dynamic(
+  () => import("./market-details").then((m) => m.Customers),
+  { loading: Status },
+);
 const headings = {
   overview: "Market overview",
   products: "Products",
@@ -143,6 +155,7 @@ export default function MarketApp({
   initialData = null,
   initialRun = null,
   initialDate,
+  initialWelcome,
 }) {
   const [route, setRoute] = useState(() => normalRoute(initialRoute)),
     [sheet, setSheet] = useState(null),
@@ -164,11 +177,12 @@ export default function MarketApp({
     as_of: route.as_of,
     compare: route.compare,
   });
-  const summary = useMarketData(
-    summaryURL,
-    initialPath === summaryURL ? initialData : null,
+  const otherSummary = useMarketData(
+    path === summaryURL ? null : summaryURL,
+    path !== summaryURL && initialPath === summaryURL ? initialData : null,
     version,
   ).data;
+  const summary = path === summaryURL ? state.data : otherSummary;
   const categories = summary?.categories?.map((c) => c.category) || CATEGORIES,
     asOf = route.as_of || summary?.as_of || initialDate,
     compare = route.compare || summary?.compare || dayOffset(asOf, -30);
@@ -193,7 +207,10 @@ export default function MarketApp({
   }, []);
   useEffect(() => {
     const back = () => {
-      setRoute(routeFromLocation());
+      const next = routeFromLocation();
+      setRoute((prev) =>
+        JSON.stringify(prev) === JSON.stringify(next) ? prev : next,
+      );
       setSheet(null);
     };
     back();
@@ -339,15 +356,35 @@ export default function MarketApp({
           if (p && v !== "customers" && v !== "strategy")
             loadJSON(p).catch(() => {});
         }}
-        onClick={() => navigate(v)}
+        onClick={(event) => {
+          const button = event.currentTarget,
+            old = button.parentElement.querySelector(".current");
+          const shift =
+            old &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? old.offsetLeft - button.offsetLeft
+              : 0;
+          navigate(v);
+          if (shift)
+            import("motion/mini")
+              .then(({ animate }) => {
+                const pill = button.querySelector(".mk-nav-highlight");
+                if (pill)
+                  animate(
+                    pill,
+                    {
+                      transform: [
+                        "translateX(" + shift + "px)",
+                        "translateX(0px)",
+                      ],
+                    },
+                    { duration: 0.2, ease: "easeOut" },
+                  );
+              })
+              .catch(() => {});
+        }}
       >
-        {active && (
-          <motion.span
-            className="mk-nav-highlight"
-            layoutId={mobile ? "bottom-active" : "active"}
-            transition={{ type: "spring", stiffness: 430, damping: 38 }}
-          />
-        )}
+        {active && <span className="mk-nav-highlight" />}
         {(mobile || v === "studio") && (
           <Mark name={v} size={mobile ? 17 : 14} />
         )}
@@ -356,221 +393,220 @@ export default function MarketApp({
     );
   }
   return (
-    <MotionConfig reducedMotion="user">
-      <LayoutGroup>
-        <div className="mk-canvas">
-          <div className="mk-frame">
-            <header className="mk-topbar">
+    <>
+      <div className="mk-canvas">
+        <div className="mk-frame">
+          <header className="mk-topbar">
+            <button
+              className="mk-brand"
+              onClick={() => navigate("overview")}
+              aria-label="Dot and Key, market overview"
+            >
+              <img
+                src="/brand/logo.svg"
+                width="278"
+                height="65"
+                alt="Dot & Key"
+              />
+              <span>
+                Market
+                <br />
+                Studio
+              </span>
+            </button>
+            <nav className="mk-nav" aria-label="Main navigation">
+              {VIEWS.map((v) => navItem(v))}
+            </nav>
+            <div className="mk-tools">
               <button
-                className="mk-brand"
-                onClick={() => navigate("overview")}
-                aria-label="Dot and Key, market overview"
+                className="mk-icon mk-search-trigger"
+                aria-label="Search workspace, Command K"
+                onClick={() => setSheet("search")}
               >
-                <img
-                  src="/brand/logo.svg"
-                  width="278"
-                  height="65"
-                  alt="Dot & Key"
-                />
-                <span>
-                  Market
-                  <br />
-                  Studio
-                </span>
+                <Mark name="search" size={18} />
               </button>
-              <nav className="mk-nav" aria-label="Main navigation">
-                {VIEWS.map((v) => navItem(v))}
-              </nav>
-              <div className="mk-tools">
-                <button
-                  className="mk-icon mk-search-trigger"
-                  aria-label="Search workspace, Command K"
-                  onClick={() => setSheet("search")}
-                >
-                  <Mark name="search" size={18} />
-                </button>
-                <button
-                  className="mk-icon"
-                  aria-label="Help and walkthrough"
-                  onClick={() => setSheet("help")}
-                >
-                  <Mark name="help" size={18} />
-                </button>
-              </div>
-            </header>
-            <main className={"mk-main mk-view-" + view}>
-              <div className="mk-crumb">
-                <span className="mk-live-dot" />
-                <span>Workspace</span>
-                <Mark name="right" size={11} />
-                <span>{label(view)}</span>
-                {product && view === "products" && (
-                  <>
-                    <Mark name="right" size={11} />
-                    <span>Product detail</span>
-                  </>
-                )}
-              </div>
-              <div className="mk-intro">
-                <div>
-                  <h1>
-                    {headings[view]}
-                    <span className="mk-heading-dot">.</span>
-                  </h1>
-                  {subtitles[view] && <p>{subtitles[view]}</p>}
-                </div>
-                <div className="mk-controls">
-                  <button
-                    className="mk-control mk-category"
-                    data-tour="category"
-                    aria-label={"Change category, " + category}
-                    onClick={() => setSheet("category")}
-                  >
-                    <Mark
-                      name={category === "Sunscreen" ? "sun" : "stack"}
-                      size={16}
-                    />
-                    {category}
-                    <Mark name="chevron" size={14} />
-                  </button>
-                  <button
-                    className="mk-control mk-date"
-                    aria-label={
-                      "Reporting dates, " + asOf + " compared to " + compare
-                    }
-                    onClick={() => setSheet("dates")}
-                  >
-                    <Mark name="date" size={16} />
-                    <span>
-                      {dateLabel(asOf)}
-                      <small>vs {dateLabel(compare)}</small>
-                    </span>
-                    <Mark name="chevron" size={14} />
-                  </button>
-                  {view === "overview" && (
-                    <button
-                      className="mk-control mk-refresh"
-                      onClick={refresh}
-                      disabled={!!refreshing}
-                      aria-label={refreshing || "Refresh data"}
-                    >
-                      <Mark name="refresh" size={16} />
-                      <span>{refreshing || "Refresh data"}</span>
-                    </button>
-                  )}
-                </div>
-              </div>
-              {["customers", "strategy"].includes(view) && (
-                <div className="mk-mobile-research">
-                  <button
-                    aria-pressed={view === "strategy"}
-                    onClick={() => navigate("strategy")}
-                  >
-                    Strategy
-                  </button>
-                  <button
-                    aria-pressed={view === "customers"}
-                    onClick={() => navigate("customers")}
-                  >
-                    Customers
-                  </button>
-                </div>
-              )}
-              <div key={view} className="mk-view-body">
-                {view === "studio" ? (
-                  <Studio
-                    key={route.run || "watermelon-demo"}
-                    embedded={true}
-                    onRoute={(run, studioStep, cat) =>
-                      navigate("studio", {
-                        run,
-                        studioStep,
-                        category: cat || category,
-                      })
-                    }
-                    first={
-                      initialRun && initialRoute.run === route.run
-                        ? initialRun
-                        : null
-                    }
-                    initialId={route.run || "watermelon-demo"}
-                    initialView={route.studioStep}
-                    product={product}
-                  />
-                ) : state.error || !state.data ? (
-                  <Status error={state.error} retry={retry} />
-                ) : view === "overview" ? (
-                  <Overview
-                    data={state.data}
-                    select={(c) => navigate("overview", { category: c })}
-                    create={create}
-                    busy={busy}
-                  />
-                ) : view === "products" ? (
-                  product ? (
-                    <ProductDetail
-                      data={state.data}
-                      navigate={navigate}
-                      create={create}
-                      busy={busy}
-                    />
-                  ) : (
-                    <Products
-                      data={state.data}
-                      query={route.q}
-                      navigate={navigate}
-                    />
-                  )
-                ) : view === "competitors" ? (
-                  <Competitors
-                    data={state.data}
-                    category={category}
-                    asOf={route.as_of}
-                    card={card}
-                    version={version}
-                    retry={retry}
-                    create={create}
-                    busy={busy}
-                  />
-                ) : view === "customers" ? (
-                  <Customers data={state.data} create={create} busy={busy} />
-                ) : (
-                  <Strategy
-                    data={state.data}
-                    card={card}
-                    create={create}
-                    busy={busy}
-                  />
-                )}
-              </div>
-            </main>
-            <div className="mk-dock-wrap">
               <button
-                data-tour="ask"
-                className="mk-dock"
-                onClick={() => setSheet("ask")}
+                className="mk-icon"
+                aria-label="Help and walkthrough"
+                onClick={() => setSheet("help")}
               >
-                <span className="mk-dock-icon">
-                  <Mark name="studio" size={21} />
-                </span>
-                <strong>Ask the market</strong>
-                <span className="mk-dock-question">
-                  What would you like to explore next?
-                </span>
-                <span className="mk-slash">/command</span>
-                <span className="mk-dock-go">
-                  <Mark name="arrow" size={16} />
-                </span>
+                <Mark name="help" size={18} />
               </button>
             </div>
-            <nav className="mk-bottom-nav" aria-label="Mobile navigation">
-              {VIEWS.filter((v) => v !== "customers").map((v) =>
-                navItem(v, true),
+          </header>
+          <main className={"mk-main mk-view-" + view}>
+            <div className="mk-crumb">
+              <span className="mk-live-dot" />
+              <span>Workspace</span>
+              <Mark name="right" size={11} />
+              <span>{label(view)}</span>
+              {product && view === "products" && (
+                <>
+                  <Mark name="right" size={11} />
+                  <span>Product detail</span>
+                </>
               )}
-            </nav>
+            </div>
+            <div className="mk-intro">
+              <div>
+                <h1>
+                  {headings[view]}
+                  <span className="mk-heading-dot">.</span>
+                </h1>
+                {subtitles[view] && <p>{subtitles[view]}</p>}
+              </div>
+              <div className="mk-controls">
+                <button
+                  className="mk-control mk-category"
+                  data-tour="category"
+                  aria-label={"Change category, " + category}
+                  onClick={() => setSheet("category")}
+                >
+                  <Mark
+                    name={category === "Sunscreen" ? "sun" : "stack"}
+                    size={16}
+                  />
+                  {category}
+                  <Mark name="chevron" size={14} />
+                </button>
+                <button
+                  className="mk-control mk-date"
+                  aria-label={
+                    "Reporting dates, " + asOf + " compared to " + compare
+                  }
+                  onClick={() => setSheet("dates")}
+                >
+                  <Mark name="date" size={16} />
+                  <span>
+                    {dateLabel(asOf)}
+                    <small>vs {dateLabel(compare)}</small>
+                  </span>
+                  <Mark name="chevron" size={14} />
+                </button>
+                {view === "overview" && (
+                  <button
+                    className="mk-control mk-refresh"
+                    onClick={refresh}
+                    disabled={!!refreshing}
+                    aria-label={refreshing || "Refresh data"}
+                  >
+                    <Mark name="refresh" size={16} />
+                    <span>{refreshing || "Refresh data"}</span>
+                  </button>
+                )}
+              </div>
+            </div>
+            {["customers", "strategy"].includes(view) && (
+              <div className="mk-mobile-research">
+                <button
+                  aria-pressed={view === "strategy"}
+                  onClick={() => navigate("strategy")}
+                >
+                  Strategy
+                </button>
+                <button
+                  aria-pressed={view === "customers"}
+                  onClick={() => navigate("customers")}
+                >
+                  Customers
+                </button>
+              </div>
+            )}
+            <div key={view} className="mk-view-body">
+              {view === "studio" ? (
+                <Studio
+                  key={route.run || "watermelon-demo"}
+                  embedded={true}
+                  onRoute={(run, studioStep, cat) =>
+                    navigate("studio", {
+                      run,
+                      studioStep,
+                      category: cat || category,
+                    })
+                  }
+                  first={
+                    initialRun && initialRoute.run === route.run
+                      ? initialRun
+                      : null
+                  }
+                  initialId={route.run || "watermelon-demo"}
+                  initialView={route.studioStep}
+                  product={product}
+                />
+              ) : state.error || !state.data ? (
+                <Status error={state.error} retry={retry} />
+              ) : view === "overview" ? (
+                <Overview
+                  data={state.data}
+                  select={(c) => navigate("overview", { category: c })}
+                  create={create}
+                  busy={busy}
+                />
+              ) : view === "products" ? (
+                product ? (
+                  <ProductDetail
+                    data={state.data}
+                    navigate={navigate}
+                    create={create}
+                    busy={busy}
+                  />
+                ) : (
+                  <Products
+                    data={state.data}
+                    query={route.q}
+                    navigate={navigate}
+                  />
+                )
+              ) : view === "competitors" ? (
+                <Competitors
+                  data={state.data}
+                  category={category}
+                  asOf={route.as_of}
+                  card={card}
+                  version={version}
+                  retry={retry}
+                  create={create}
+                  busy={busy}
+                />
+              ) : view === "customers" ? (
+                <Customers data={state.data} create={create} busy={busy} />
+              ) : (
+                <Strategy
+                  data={state.data}
+                  card={card}
+                  create={create}
+                  busy={busy}
+                />
+              )}
+            </div>
+          </main>
+          <div className="mk-dock-wrap">
+            <button
+              data-tour="ask"
+              className="mk-dock"
+              onClick={() => setSheet("ask")}
+            >
+              <span className="mk-dock-icon">
+                <Mark name="studio" size={21} />
+              </span>
+              <strong>Ask the market</strong>
+              <span className="mk-dock-question">
+                What would you like to explore next?
+              </span>
+              <span className="mk-slash">/command</span>
+              <span className="mk-dock-go">
+                <Mark name="arrow" size={16} />
+              </span>
+            </button>
           </div>
+          <nav className="mk-bottom-nav" aria-label="Mobile navigation">
+            {VIEWS.filter((v) => v !== "customers").map((v) =>
+              navItem(v, true),
+            )}
+          </nav>
         </div>
-      </LayoutGroup>
+      </div>
+
       {sheet === "category" && (
         <Sheet title="Choose category" close={() => setSheet(null)}>
           <div className="mk-categories">
@@ -646,10 +682,11 @@ export default function MarketApp({
         </div>
       )}
       <AppExperience
+        welcomeInitially={initialWelcome}
         navigate={navigate}
         view={view}
         asOf={summary?.as_of || state.data?.as_of || route.as_of}
       />
-    </MotionConfig>
+    </>
   );
 }

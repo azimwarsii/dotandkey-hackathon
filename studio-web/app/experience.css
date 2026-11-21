@@ -1,4 +1,8 @@
 .welcome-sheet {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 100;
   padding: 0;
   max-width: min(430px, 92vw);
   width: 430px;
@@ -7,11 +11,16 @@
   border-radius: 30px;
   color: #1a1a1a;
   box-shadow: 0 22px 90px #0003;
-  font-family: inherit;
+  font-family: Poppins, Arial, sans-serif;
+}
+.welcome-sheet[open]:not(:modal) {
+  box-shadow:
+    0 22px 90px #0003,
+    0 0 0 100vmax #25282060;
 }
 .welcome-sheet::backdrop {
   background: #25282060;
-  backdrop-filter: blur(3px);
+  backdrop-filter: none;
 }
 .welcome-art {
   display: grid;

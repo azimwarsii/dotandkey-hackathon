@@ -1959,3 +1959,13 @@
     min-width: 300px;
   }
 }
+@media (max-width: 767px) {
+  .mk-dashboard > .mk-widget:nth-child(n + 3) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 240px;
+  }
+  .mk-dock,
+  .mk-bottom-nav {
+    backdrop-filter: none;
+  }
+}

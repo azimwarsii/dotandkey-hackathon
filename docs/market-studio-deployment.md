@@ -37,11 +37,12 @@ After merging the tested revision into the GitHub `main` branch, run the followi
 
 ## Verification
 
-GitHub Actions starts the three-container stack, runs Ruff and pytest, exercises the dashboard and offline campaign kit at 390 × 844 and 1440 × 900, and gates mobile Lighthouse performance and accessibility at 90. Playwright checks the PWA manifest, icons, active service worker and offline navigation. Screenshots and Lighthouse JSON are attached to each workflow run.
+GitHub Actions starts the three-container stack, runs Ruff and pytest, exercises the dashboard and offline campaign kit at 390 × 844 and 1440 × 900, and audits the production web origin three times in sequence with Lighthouse’s default simulated mobile throttling. The median performance and accessibility scores must each reach 90. Playwright checks the PWA manifest, icons, active service worker and offline navigation. The workflow attaches screenshots, all three Lighthouse reports, Chrome traces and network logs, a runner resource snapshot, and the median scores.
 
 With the stack running locally, run the browser checks directly. `STUDIO_TEST_ORIGIN` selects another origin and `STUDIO_TEST_CHROME` can point to an existing Chromium executable.
 
 ```sh
 .venv/bin/python -m playwright install chromium
 .venv/bin/python deploy/smoke.py
+python3 deploy/audit_web.py
 ```

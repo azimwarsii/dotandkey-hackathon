@@ -1,4 +1,5 @@
 import MarketApp from "./market-app";
+import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 export default async function Page({ searchParams }) {
@@ -46,6 +47,7 @@ export default async function Page({ searchParams }) {
     <MarketApp
       initialRoute={params}
       initialDate={initialData?.as_of || date}
+      initialWelcome={!(await cookies()).has("dk-welcome")}
       initialData={initialData}
       initialRun={initialRun}
     />

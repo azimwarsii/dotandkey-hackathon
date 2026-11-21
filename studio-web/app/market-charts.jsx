@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useId, useSyncExternalStore } from "react";
-import { useReducedMotion } from "motion/react";
+
 import {
   Mark,
   Count,
@@ -520,38 +520,40 @@ export function DotChart({ rows = [], launch = false }) {
     levels = 12,
     w = 360,
     h = 88;
-  const positions = rows.flatMap((r, i) => {
-    const lit = Math.max(
-      r.total > 0 ? 1 : 0,
-      Math.round(((r.total || 0) / max) * cols * levels),
+  const pattern = useId(),
+    step = (w - 10) / Math.max(n, 1),
+    pitch = (h - 9) / (levels - 1);
+  const radius = Math.min(2.65, (step / cols) * 0.33),
+    column = (j) => ((j + 0.5) / (cols + 0.8)) * step;
+  // The unlit grid repeats one pattern tile. A round-capped path paints all lit dots of one color.
+  const paths = new Map();
+  rows.forEach((row, i) => {
+    const count = Math.max(
+      row.total > 0 ? 1 : 0,
+      Math.round(((row.total || 0) / max) * cols * levels),
     );
-    return Array.from({ length: cols * levels }, (_, j) => {
-      const isLit = j < lit,
-        frac = (j + 0.5) / Math.max(lit, 1),
-        color = launch
-          ? "#26a9cf"
-          : frac < r.positive / Math.max(1, r.total)
-            ? "#83ac39"
-            : frac < (r.positive + r.neutral) / Math.max(1, r.total)
-              ? "#b2b7a6"
-              : frac <
-                  (r.positive + r.neutral + r.negative) / Math.max(1, r.total)
-                ? "#ef98af"
-                : "#939aa2";
-      return (
-        <circle
-          key={i + "-" + j}
-          cx={
-            5 +
-            ((i + ((j % cols) + 0.5) / (cols + 0.8)) * (w - 10)) /
-              Math.max(1, n)
-          }
-          cy={h - 4 - (Math.floor(j / cols) * (h - 9)) / (levels - 1)}
-          r={Math.min(2.65, ((w - 10) / Math.max(1, n) / cols) * 0.33)}
-          fill={isLit ? color : "#e2e4de"}
-        />
+    for (let j = 0; j < count; j++) {
+      const observed = ((j + 0.5) * row.total) / count;
+      let color = "#26a9cf";
+      if (!launch) {
+        if (observed < row.positive) color = "#83ac39";
+        else if (observed < row.positive + row.neutral) color = "#b2b7a6";
+        else if (observed < row.positive + row.neutral + row.negative)
+          color = "#ef98af";
+        else color = "#939aa2";
+      }
+      const x = 5 + i * step + column(j % cols),
+        y = h - 4 - Math.floor(j / cols) * pitch;
+      paths.set(
+        color,
+        (paths.get(color) || "") +
+          "M" +
+          x.toFixed(1) +
+          " " +
+          y.toFixed(1) +
+          "h.01",
       );
-    });
+    }
   });
   return (
     <div className="mk-dot-wrap">
@@ -564,7 +566,47 @@ export function DotChart({ rows = [], launch = false }) {
         <desc>
           Each group of dots represents one week in the selected period.
         </desc>
-        {positions}
+        <defs>
+          <pattern
+            id={pattern}
+            x={5}
+            y={h - 4 - (levels - 1) * pitch - pitch / 2}
+            width={step}
+            height={pitch}
+            patternUnits="userSpaceOnUse"
+            viewBox={"0 0 " + step + " " + pitch}
+            preserveAspectRatio="none"
+          >
+            {[0, 1, 2].map((j) => (
+              <circle
+                key={j}
+                cx={column(j)}
+                cy={pitch / 2}
+                r={radius}
+                fill="#e2e4de"
+              />
+            ))}
+          </pattern>
+        </defs>
+        {n > 0 && (
+          <rect
+            x={5}
+            y="0"
+            width={w - 10}
+            height={h}
+            fill={"url(#" + pattern + ")"}
+          />
+        )}
+        {[...paths].map(([color, d]) => (
+          <path
+            key={color}
+            d={d}
+            stroke={color}
+            strokeWidth={radius * 2}
+            strokeLinecap="round"
+            fill="none"
+          />
+        ))}
       </svg>
       <div className="mk-dot-axis">
         {[0, Math.floor(n / 2), n - 1]
@@ -638,19 +680,23 @@ export function Activity({ rows = [], launch = false }) {
 }
 export function Insight({ items = [], create, busy }) {
   const [index, setIndex] = useState(0),
-    [paused, setPaused] = useState(false),
-    reduced = useReducedMotion();
+    [paused, setPaused] = useState(false);
   useEffect(() => {
     setIndex(0);
   }, [items]);
   useEffect(() => {
-    if (paused || reduced || items.length < 2) return;
+    if (
+      paused ||
+      items.length < 2 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
     const timer = setTimeout(
       () => setIndex((x) => (x + 1) % items.length),
       12000,
     );
     return () => clearTimeout(timer);
-  }, [index, items, paused, reduced]);
+  }, [index, items, paused]);
   const item = items[index] || items[0];
   return (
     <section

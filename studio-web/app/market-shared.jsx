@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { animate, useReducedMotion } from "motion/react";
 
 export const VIEWS = [
   "overview",
@@ -26,21 +25,40 @@ export const label = (value) =>
   String(value ?? "")
     .replaceAll("_", " ")
     .replace(/^./, (s) => s.toUpperCase());
-export const number = (n, digits = 0) =>
-  n == null || !Number.isFinite(Number(n))
+const numberFormats = new Map();
+function numberFormat(maximum, minimum = 0) {
+  const key = maximum + "-" + minimum;
+  if (!numberFormats.has(key))
+    numberFormats.set(
+      key,
+      new Intl.NumberFormat("en-IN", {
+        maximumFractionDigits: maximum,
+        minimumFractionDigits: minimum,
+      }),
+    );
+  return numberFormats.get(key);
+}
+export const number = (value, digits = 0) =>
+  value == null || !Number.isFinite(Number(value))
     ? "—"
-    : Number(n).toLocaleString("en-IN", { maximumFractionDigits: digits });
+    : numberFormat(digits).format(Number(value));
 export const percent = (n, signed = false) =>
   n == null ? "—" : (signed && n > 0 ? "+" : "") + number(n * 100, 1) + "%";
 export const price = (n) => (n == null ? "—" : "₹" + number(n, 2));
+const dateFormats = new Map();
 export const dateLabel = (
   value,
   opts = { day: "numeric", month: "short", year: "numeric" },
 ) => {
   const date = new Date((value || "").slice(0, 10) + "T12:00:00Z");
-  return Number.isNaN(date.getTime())
-    ? "—"
-    : date.toLocaleDateString("en-GB", { ...opts, timeZone: "UTC" });
+  if (Number.isNaN(date.getTime())) return "—";
+  const key = JSON.stringify(opts);
+  if (!dateFormats.has(key))
+    dateFormats.set(
+      key,
+      new Intl.DateTimeFormat("en-GB", { ...opts, timeZone: "UTC" }),
+    );
+  return dateFormats.get(key).format(date);
 };
 export const withQuery = (path, values) => {
   const query = new URLSearchParams(
@@ -107,30 +125,33 @@ export function Mark({ name, size = 18 }) {
 }
 export function Count({ value, digits = 0 }) {
   const ref = useRef(null),
-    reduced = useReducedMotion();
+    previous = useRef(value);
   useEffect(() => {
-    if (value == null || !ref.current || reduced) return;
-    const node = ref.current,
-      control = animate(0, Number(value), {
-        duration: 0.6,
-        ease: "easeOut",
-        onUpdate: (n) => {
-          node.textContent = n.toLocaleString("en-IN", {
-            minimumFractionDigits: digits,
-            maximumFractionDigits: digits,
-          });
-        },
-      });
-    return () => control.stop();
-  }, [value, digits, reduced]);
+    const from = previous.current;
+    previous.current = value;
+    if (
+      from == null ||
+      value == null ||
+      from === value ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+    const el = ref.current,
+      formatter = numberFormat(digits, digits),
+      start = performance.now();
+    let frame;
+    function update(time) {
+      const progress = Math.min(1, (time - start) / 600);
+      const eased = 1 - (1 - progress) ** 3;
+      el.textContent = formatter.format(from + (value - from) * eased);
+      if (progress < 1) frame = requestAnimationFrame(update);
+    }
+    frame = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frame);
+  }, [value, digits]);
   return (
     <span ref={ref}>
-      {value == null
-        ? "—"
-        : Number(value).toLocaleString("en-IN", {
-            minimumFractionDigits: digits,
-            maximumFractionDigits: digits,
-          })}
+      {value == null ? "—" : numberFormat(digits, digits).format(value)}
     </span>
   );
 }
@@ -171,7 +192,20 @@ export function useMarketData(path, initial, version = 0) {
     let live = true;
     if (initial != null && !version && !cache.has(path))
       cache.set(path, initial);
-    setState({ path, data: cache.get(path) ?? null, error: null });
+    if (cache.has(path)) {
+      const data = cache.get(path);
+      setState((prior) =>
+        prior.path === path && prior.data === data && !prior.error
+          ? prior
+          : { path, data, error: null },
+      );
+      return;
+    }
+    setState((prior) =>
+      prior.path === path && !prior.data && !prior.error
+        ? prior
+        : { path, data: null, error: null },
+    );
     loadJSON(path)
       .then((data) => live && setState({ path, data, error: null }))
       .catch(

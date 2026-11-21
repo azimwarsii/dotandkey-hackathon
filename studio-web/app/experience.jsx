@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { driver } from "driver.js";
-import "driver.js/dist/driver.css";
 
 const prefix = "dk-market:";
 const read = (key) => {
@@ -90,8 +88,13 @@ function visibleTarget(name) {
       getComputedStyle(el).visibility !== "hidden",
   );
 }
-export default function AppExperience({ navigate, view, asOf: reportDate }) {
-  const [welcome, setWelcome] = useState(false),
+export default function AppExperience({
+  navigate,
+  view,
+  asOf: reportDate,
+  welcomeInitially,
+}) {
+  const [welcome, setWelcome] = useState(!!welcomeInitially),
     [page, setPage] = useState(0),
     [step, setStep] = useState(null);
   const [offline, setOffline] = useState(false),
@@ -115,7 +118,7 @@ export default function AppExperience({ navigate, view, asOf: reportDate }) {
   useEffect(() => {
     const visits = Number(read("visits") || 0) + 1;
     save("visits", String(visits));
-    setWelcome(!read("welcome"));
+    if (read("welcome")) setWelcome(false);
     setAsOf(read("snapshot") || "");
     setOffline(!navigator.onLine);
     const standalone =
@@ -194,8 +197,10 @@ export default function AppExperience({ navigate, view, asOf: reportDate }) {
     return () => clearTimeout(timer);
   }, [toast]);
   useEffect(() => {
-    if (welcome) {
-      modal.current?.showModal();
+    if (welcome && modal.current && !modal.current.matches(":modal")) {
+      // The first-run sheet is already visible in the HTML before hydration.
+      modal.current.close();
+      modal.current.showModal();
     }
   }, [welcome]);
   useEffect(() => {
@@ -230,13 +235,15 @@ export default function AppExperience({ navigate, view, asOf: reportDate }) {
         setStep(null);
       } else setStep(step + 1);
     };
-    const show = (tries) => {
+    const show = async (tries) => {
       if (cancelled) return;
       const element = visibleTarget(target);
       if (!element && tries < 60) {
         timer = setTimeout(() => show(tries + 1), 75);
         return;
       }
+      const { driver } = await import("./tour-driver");
+      if (cancelled) return;
       active = driver({
         animate: !matchMedia("(prefers-reduced-motion: reduce)").matches,
         stageRadius: 16,
@@ -287,6 +294,7 @@ export default function AppExperience({ navigate, view, asOf: reportDate }) {
   }, [step]);
   const close = () => {
     save("welcome", "1");
+    document.cookie = "dk-welcome=1; Path=/; Max-Age=31536000; SameSite=Lax";
     setWelcome(false);
   };
   const installNow = async () => {
@@ -309,6 +317,7 @@ export default function AppExperience({ navigate, view, asOf: reportDate }) {
       {welcome && (
         <dialog
           className="welcome-sheet"
+          open
           ref={modal}
           aria-label="Welcome to Market Studio"
           onCancel={close}
